@@ -1,0 +1,249 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>aer2enu</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="aer2enu_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>aer2enu</tt></h1><!--introduction--><p>ENU position and velocity from range, azimuth, elevation, and their rates.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Input/Output Parameters</a></li><li><a href="#5">Note</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">rho_enu = aer2enu(Az,El,rho)
+[rho_enu,rho_dot_enu] = aer2enu(Az,El,rho,Az_dot,El_dot,rho_dot)
+</pre><h2 id="2">Description</h2><p><tt>rho_enu = aer2enu(Az,El,rho)</tt> finds the satellite's ENU position resolved in the ENU frame, <img src="aer2enu_doc_eq16889038262160522285.png" alt="$[\vec{\rho}]_{\mathrm{ENU}}$" style="width:28px;height:11px;">, given its azimuth, <img src="aer2enu_doc_eq06602733409585225043.png" alt="$\mathrm{Az}$" style="width:13px;height:8px;">, elevation, <img src="aer2enu_doc_eq13787773640837631023.png" alt="$\mathrm{El}$" style="width:11px;height:8px;">, and range, <img src="aer2enu_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">.</p><p><tt>[rho_enu,rho_dot_enu] = aer2enu(Az,El,rho,Az_dot,El_dot,rho_dot)</tt> does the same as the syntax above, but also returns the satellite's ENU velocity resolved in the ENU frame, <img src="aer2enu_doc_eq02059105929506475960.png" alt="$\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$" style="width:31px;height:21px;">, by additionally specifying its azimuth rate, <img src="aer2enu_doc_eq17170491540954332042.png" alt="$\dot{\mathrm{Az}}$" style="width:13px;height:11px;">, elevation rate, <img src="aer2enu_doc_eq03086695295415487618.png" alt="$\dot{\mathrm{El}}$" style="width:11px;height:11px;">, and range rate, <img src="aer2enu_doc_eq10771208219775023762.png" alt="$\dot{\rho}$" style="width:6px;height:10px;">.</p><h2 id="4">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="6" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>Az</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{Az}" title="" /></td>
+          <td>azimuth</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">°</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>El</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{El}" title="" /></td>
+          <td>elevation</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">°</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>rho</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td>
+          <td>range</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">any</TT></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>Az_dot</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dot{\mathrm{Az}}" title="" /></td>
+          <td>(OPTIONAL) azimuth rate</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">°/s</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>El_dot</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dot{\mathrm{El}}" title="" /></td>
+          <td>(OPTIONAL) elevation rate</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">°/s</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>rho_dot</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dot{\rho}" title="" /></td>
+          <td>(OPTIONAL) range rate</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">same as <TT>any</TT></td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>rho_enu</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{\rho}]_{\mathrm{ENU}}" title="" /></td>
+          <td>ENU position resolved in ENU frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">same as <TT>rho</TT></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>rho_dot_enu</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\dot{\boldsymbol{\rho}}]_{\mathrm{ENU}}" title="" /></td>
+          <td>(OPTIONAL) ENU velocity resolved in ENU frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">same as <TT>rho_dot</TT></td>
+      </tr>
+  </table>
+</p><h2 id="5">Note</h2><div><ul><li><img src="aer2enu_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;"> and <img src="aer2enu_doc_eq10771208219775023762.png" alt="$\dot{\rho}$" style="width:6px;height:10px;"> can be input in any units, but they <i>must</i> be consistent. The units of <img src="aer2enu_doc_eq16889038262160522285.png" alt="$[\vec{\rho}]_{\mathrm{ENU}}$" style="width:28px;height:11px;"> will match those of <img src="aer2enu_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">, and the units of <img src="aer2enu_doc_eq02059105929506475960.png" alt="$\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$" style="width:31px;height:21px;"> will match those of <img src="aer2enu_doc_eq10771208219775023762.png" alt="$\dot{\rho}$" style="width:6px;height:10px;">.</li><li><img src="aer2enu_doc_eq06602733409585225043.png" alt="$\mathrm{Az}$" style="width:13px;height:8px;"> is measured clockwise from <img src="aer2enu_doc_eq05705075896852816573.png" alt="$N$" style="width:10px;height:8px;"> towards <img src="aer2enu_doc_eq06486484291675649329.png" alt="$E$" style="width:9px;height:8px;"> about the <img src="aer2enu_doc_eq04054596528756220535.png" alt="$U$" style="width:8px;height:8px;"> axis.</li><li><img src="aer2enu_doc_eq13787773640837631023.png" alt="$\mathrm{El}$" style="width:11px;height:8px;"> is measured from the <img src="aer2enu_doc_eq12262137370978446120.png" alt="$EN$" style="width:19px;height:8px;">-plane towards the satellite's ENU position vector, <img src="aer2enu_doc_eq14856668868691305864.png" alt="$\vec{\rho}$" style="width:6px;height:11px;">.</li><li><img src="aer2enu_doc_eq15698146871651897591.png" alt="$-90^{\circ}\leq\mathrm{El}\leq90^{\circ}$" style="width:78px;height:10px;"></li><li><img src="aer2enu_doc_eq01166307329807763933.png" alt="$0^{\circ}\leq\mathrm{Az}<360^{\circ}$" style="width:73px;height:10px;"></li></ul></div><h2 id="6">See also</h2><p><a href="enu2aer_doc.html"><tt>enu2aer</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |aer2enu|
+% ENU position and velocity from range, azimuth, elevation, and their
+% rates.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   rho_enu = aer2enu(Az,El,rho)
+%   [rho_enu,rho_dot_enu] = aer2enu(Az,El,rho,Az_dot,El_dot,rho_dot)
+%% Description
+% |rho_enu = aer2enu(Az,El,rho)| finds the satellite's ENU position
+% resolved in the ENU frame, $[\vec{\rho}]_{\mathrm{ENU}}$, given its 
+% azimuth, $\mathrm{Az}$, elevation, $\mathrm{El}$, and range, $\rho$.
+%%
+% |[rho_enu,rho_dot_enu] = aer2enu(Az,El,rho,Az_dot,El_dot,rho_dot)| does
+% the same as the syntax above, but also returns the satellite's ENU 
+% velocity resolved in the ENU frame, 
+% $\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$, by additionally 
+% specifying its azimuth rate, $\dot{\mathrm{Az}}$, elevation rate, 
+% $\dot{\mathrm{El}}$, and range rate, $\dot{\rho}$.
+% 
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="6" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>Az</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{Az}" title="" /></td>
+%           <td>azimuth</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">°</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>El</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{El}" title="" /></td>
+%           <td>elevation</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">°</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>rho</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td>
+%           <td>range</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">any</TT></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>Az_dot</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dot{\mathrm{Az}}" title="" /></td>
+%           <td>(OPTIONAL) azimuth rate</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">°/s</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>El_dot</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dot{\mathrm{El}}" title="" /></td>
+%           <td>(OPTIONAL) elevation rate</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">°/s</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>rho_dot</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dot{\rho}" title="" /></td>
+%           <td>(OPTIONAL) range rate</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">same as <TT>any</TT></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>rho_enu</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{\rho}]_{\mathrm{ENU}}" title="" /></td>
+%           <td>ENU position resolved in ENU frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">same as <TT>rho</TT></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>rho_dot_enu</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\dot{\boldsymbol{\rho}}]_{\mathrm{ENU}}" title="" /></td>
+%           <td>(OPTIONAL) ENU velocity resolved in ENU frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">same as <TT>rho_dot</TT></td>
+%       </tr>
+%   </table>
+% </html>
+%% Note
+% * $\rho$ and $\dot{\rho}$ can be input in any units, but they _must_ be 
+% consistent. The units of $[\vec{\rho}]_{\mathrm{ENU}}$ will match those 
+% of $\rho$, and the units of 
+% $\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$ will match those of
+% $\dot{\rho}$.
+% * $\mathrm{Az}$ is measured clockwise from $N$ towards $E$ about the $U$
+% axis.
+% * $\mathrm{El}$ is measured from the $EN$-plane towards the satellite's
+% ENU position vector, $\vec{\rho}$.
+% * $-90^{\circ}\leq\mathrm{El}\leq90^{\circ}$
+% * $0^{\circ}\leq\mathrm{Az}<360^{\circ}$
+%% See also
+% <enu2aer_doc.html |enu2aer|>
+##### SOURCE END #####
+--></body></html>

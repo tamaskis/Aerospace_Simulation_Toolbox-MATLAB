@@ -1,0 +1,187 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>legendre_recursion</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="legendre_recursion_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>legendre_recursion</tt></h1><!--introduction--><p>Recursive evaluation of coefficients related to the Legendre polynomials required for evaluating the gravitational acceleration.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[V,W] = legendre_recursion(r_ecef,R,N)
+</pre><h2 id="2">Description</h2><p><tt>[V,W] = legendre_recursion(r_ecef,R,N)</tt> returns the functions <tt>V(n,m)</tt> and <tt>W(n,m)</tt> that return coefficients (related to the Legendre polynomials) of arbitrary degree <img src="legendre_recursion_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;"> and order <img src="legendre_recursion_doc_eq18216620034067401164.png" alt="$m$" style="width:10px;height:6px;">, <img src="legendre_recursion_doc_eq00060194368605240194.png" alt="$V_{nm}$" style="width:18px;height:10px;"> and <img src="legendre_recursion_doc_eq13437896742096091546.png" alt="$W_{nm}$" style="width:22px;height:10px;">, needed to evaluate the gravitational acceleration, given the position resolved in the ECEF frame, <img src="legendre_recursion_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, the mean equatorial radius of the Earth, <img src="legendre_recursion_doc_eq12501411367295337294.png" alt="$R_{\oplus}$" style="width:14px;height:10px;">, and the maximum degree/order of the gravity model to use, <img src="legendre_recursion_doc_eq05705075896852816573.png" alt="$N$" style="width:10px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="3" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>r_ecef</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+          <td>position resolved in ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>R</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;R_{\oplus}" title="" /></td>
+          <td>Earth mean equatorial radius</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>N</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;N" title="" /></td>
+          <td>maximum degree/order to use</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>V</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;V(n,m)=V_{nm}" title="" /></td>
+          <td>function <TT>V(n,m)</TT> that returns Legendre coefficient of degree <img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /> and order <img src="https://latex.codecogs.com/svg.latex?\inline&space;m" title="" /> (<img src="https://latex.codecogs.com/svg.latex?\inline&space;V_{nm}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>W</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;W(n,m)=W_{nm}" title="" /></td>
+          <td>function <TT>W(n,m)</TT> that returns Legendre coefficient of degree <img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /> and order <img src="https://latex.codecogs.com/svg.latex?\inline&space;m" title="" /> (<img src="https://latex.codecogs.com/svg.latex?\inline&space;W_{nm}" title="" />)</td>
+          <td style="text-align:center">1×1<BR>function_handle</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |legendre_recursion|
+% Recursive evaluation of coefficients related to the Legendre polynomials
+% required for evaluating the gravitational acceleration.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   [V,W] = legendre_recursion(r_ecef,R,N)
+%% Description
+% |[V,W] = legendre_recursion(r_ecef,R,N)| returns the functions |V(n,m)|
+% and |W(n,m)| that return coefficients (related to the Legendre 
+% polynomials) of arbitrary degree $n$ and order $m$, $V_{nm}$ and 
+% $W_{nm}$, needed to evaluate the gravitational acceleration, given the 
+% position resolved in the ECEF frame, $[\mathbf{r}]_{\mathrm{ECEF}}$, the 
+% mean equatorial radius of the Earth, $R_{\oplus}$, and the maximum 
+% degree/order of the gravity model to use, $N$.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="3" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>r_ecef</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>position resolved in ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>R</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;R_{\oplus}" title="" /></td>
+%           <td>Earth mean equatorial radius</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>N</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;N" title="" /></td>
+%           <td>maximum degree/order to use</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>V</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;V(n,m)=V_{nm}" title="" /></td>
+%           <td>function <TT>V(n,m)</TT> that returns Legendre coefficient of degree <img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /> and order <img src="https://latex.codecogs.com/svg.latex?\inline&space;m" title="" /> (<img src="https://latex.codecogs.com/svg.latex?\inline&space;V_{nm}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>W</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;W(n,m)=W_{nm}" title="" /></td>
+%           <td>function <TT>W(n,m)</TT> that returns Legendre coefficient of degree <img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /> and order <img src="https://latex.codecogs.com/svg.latex?\inline&space;m" title="" /> (<img src="https://latex.codecogs.com/svg.latex?\inline&space;W_{nm}" title="" />)</td>
+%           <td style="text-align:center">1×1<BR>function_handle</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+##### SOURCE END #####
+--></body></html>

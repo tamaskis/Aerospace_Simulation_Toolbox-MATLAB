@@ -1,0 +1,247 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>load_sw</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="load_sw_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>load_sw</tt></h1><!--introduction--><p>Loads space weather data.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Input/Output Parameters</a></li><li><a href="#5">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[sw1,sw2] = load_sw
+[sw1,sw2] = load_sw(MJD_UTC0,duration)
+</pre><h2 id="2">Description</h2><p><tt>[sw1,sw2] = load_sw</tt> loads the full space weather data sets.</p><p><tt>[sw1,sw2] = load_sw(MJD_UTC0,duration)</tt> loads the space weather data sets with only the data needed for the simulations. "sw1" includes data from 3 days before the start of the simulation until the end of the simulation. "sw2" includes data from 5 days before the start of the simulation until the end of the simulation. The start date is specified as the modified Julian date of the initial UTC, and the end of the simulation is calculated using the simulation duration (<tt>duration</tt>, specified in hours).</p><h2 id="4">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>MJD_UTC0</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UTC},0}" title="" /></td>
+          <td>(OPTIONAL) initial UTC (Universal Coordinated Time)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">MJD</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>duration</TT></td>
+          <td style="text-align:center">-</td>
+          <td>(OPTIONAL) simulation duration </td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">h</td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>sw1</TT></td>
+          <td style="text-align:center">-</td>
+          <td>array storing 1st half of space weather data
+              <BR> -  Column 1: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /> -- UT1 (Universal Time 1)[MJD]
+              <BR> -  Column 2: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p1}" title="" /> -- planetary index (00:00-03:00)
+              <BR> -  Column 3: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p2}" title="" /> -- planetary index (03:00-06:00)
+              <BR> -  Column 4: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p3}" title="" /> -- planetary index (06:00-09:00)
+              <BR> -  Column 5: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p4}" title="" /> -- planetary index (09:00-12:00)
+              <BR> -  Column 6: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p5}" title="" /> -- planetary index (12:00-15:00)
+              <BR> -  Column 7: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p6}" title="" /> -- planetary index (15:00-18:00)
+              <BR> -  Column 8: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p7}" title="" /> -- planetary index (18:00-21:00)
+              <BR> -  Column 9: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p8}" title="" /> -- planetary index (21:00-00:00)
+              <BR> - Column 10: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p1}" title="" /> -- planetary amplitude (00:00-03:00) [γ]
+              <BR> - Column 11: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p2}" title="" /> -- planetary amplitude (03:00-06:00) [γ]
+              <BR> - Column 12: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p3}" title="" /> -- planetary amplitude (06:00-09:00) [γ]
+              <BR> - Column 13: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p4}" title="" /> -- planetary amplitude (09:00-12:00) [γ]
+              <BR> - Column 14: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p5}" title="" /> -- planetary amplitude (12:00-15:00) [γ]
+              <BR> - Column 15: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p6}" title="" /> -- planetary amplitude (15:00-18:00) [γ]
+              <BR> - Column 16: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p7}" title="" /> -- planetary amplitude (18:00-21:00) [γ]
+              <BR> - Column 17: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p8}" title="" /> -- planetary amplitude (21:00-00:00) [γ]
+              <BR> - Column 18: <img src="https://latex.codecogs.com/svg.latex?\inline&space;A_{p}" title="" /> -- daily planetary amplitude [γ]
+              <BR> - Column 19: <img src="https://latex.codecogs.com/svg.latex?\inline&space;F_{10.7}" title="" /> -- daily 10.7 cm solar flux [SFU]
+              <BR> - Column 20: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{F}_{10.7}" title="" /> -- centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;F_{10.7}" title="" /> [SFU]</td>
+          <td style="text-align:center">N×20<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>sw2</TT></td>
+          <td style="text-align:center">-</td>
+          <td>array storing 2nd half of space weather data
+              <BR> -      Column 1: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /> -- UT1 (Universal Time 1)[MJD]
+              <BR> -      Column 2: <img src="https://latex.codecogs.com/svg.latex?\inline&space;S_{10.7}" title="" /> -- daily 26-34 nm EUV index [SFU]
+              <BR> -      Column 3: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{S}_{10.7}" title="" /> -- centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;S_{10.7}" title="" /> [SFU]
+              <BR> -      Column 4: <img src="https://latex.codecogs.com/svg.latex?\inline&space;M_{10.7}" title="" /> -- daily Mg II index [SFU]
+              <BR> -      Column 5: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{M}_{10.7}" title="" /> -- centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;M_{10.7}" title="" /> [SFU]
+              <BR> -      Column 6: <img src="https://latex.codecogs.com/svg.latex?\inline&space;Y_{10.7}" title="" /> -- daily solar X-ray and Lyman-α emission mixed index [SFU]
+              <BR> -      Column 7: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{Y}_{10.7}" title="" /> -- centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;Y_{10.7}" title="" /> [SFU]
+              <BR> -  Columns 8-31: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{dTc}" title="" /> -- temperature change derived from Dst index for each hour of the day (column 8 --> 00:00, column 31 --> 23:00) [K]</td>
+          <td style="text-align:center">M×31<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><h2 id="5">Note</h2><div><ul><li>N = # of data entries for 1st half of space weather data.</li><li>M = # of data entries for 2nd half of space weather data.</li><li>The two data sets, <tt>sw1</tt> and <tt>sw2</tt>, have data for different dates (specifically, the <tt>sw1</tt> starts on an earlier date and ends on a later date than the <tt>sw2</tt> data set). Thus, they must be loaded separately.</li><li>Even when only a subset of the dates in <tt>sw1</tt> and <tt>sw2</tt> are taken (based on the simulation start/end times), they still must be loaded separately because they require a different range of dates. Specifically, the parameters in <tt>sw2</tt> are used for the Jacchia-Bowman 2008 model, and one of the parameters for this model requires a 5-day lag. However, for the parameters in the <tt>sw1</tt> data set, the largest lag required is a 3-day lag.</li></ul></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |load_sw|
+% Loads space weather data.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   [sw1,sw2] = load_sw
+%   [sw1,sw2] = load_sw(MJD_UTC0,duration)
+%% Description
+% |[sw1,sw2] = load_sw| loads the full space weather data sets.
+%%
+% |[sw1,sw2] = load_sw(MJD_UTC0,duration)| loads the space weather data
+% sets with only the data needed for the simulations. "sw1" includes data
+% from 3 days before the start of the simulation until the end of the
+% simulation. "sw2" includes data from 5 days before the start of the 
+% simulation until the end of the simulation. The start date is specified 
+% as the modified Julian date of the initial UTC, and the end of the 
+% simulation is calculated using the simulation duration (|duration|, 
+% specified in hours).
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>MJD_UTC0</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UTC},0}" title="" /></td>
+%           <td>(OPTIONAL) initial UTC (Universal Coordinated Time)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">MJD</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>duration</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td>(OPTIONAL) simulation duration </td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">h</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>sw1</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td>array storing 1st half of space weather data
+%               <BR> -  Column 1: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /> REPLACE_WITH_DASH_DASH UT1 (Universal Time 1)[MJD]
+%               <BR> -  Column 2: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p1}" title="" /> REPLACE_WITH_DASH_DASH planetary index (00:00-03:00)
+%               <BR> -  Column 3: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p2}" title="" /> REPLACE_WITH_DASH_DASH planetary index (03:00-06:00)
+%               <BR> -  Column 4: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p3}" title="" /> REPLACE_WITH_DASH_DASH planetary index (06:00-09:00)
+%               <BR> -  Column 5: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p4}" title="" /> REPLACE_WITH_DASH_DASH planetary index (09:00-12:00)
+%               <BR> -  Column 6: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p5}" title="" /> REPLACE_WITH_DASH_DASH planetary index (12:00-15:00)
+%               <BR> -  Column 7: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p6}" title="" /> REPLACE_WITH_DASH_DASH planetary index (15:00-18:00)
+%               <BR> -  Column 8: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p7}" title="" /> REPLACE_WITH_DASH_DASH planetary index (18:00-21:00)
+%               <BR> -  Column 9: <img src="https://latex.codecogs.com/svg.latex?\inline&space;K_{p8}" title="" /> REPLACE_WITH_DASH_DASH planetary index (21:00-00:00)
+%               <BR> - Column 10: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p1}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (00:00-03:00) [γ]
+%               <BR> - Column 11: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p2}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (03:00-06:00) [γ]
+%               <BR> - Column 12: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p3}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (06:00-09:00) [γ]
+%               <BR> - Column 13: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p4}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (09:00-12:00) [γ]
+%               <BR> - Column 14: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p5}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (12:00-15:00) [γ]
+%               <BR> - Column 15: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p6}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (15:00-18:00) [γ]
+%               <BR> - Column 16: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p7}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (18:00-21:00) [γ]
+%               <BR> - Column 17: <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p8}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (21:00-00:00) [γ]
+%               <BR> - Column 18: <img src="https://latex.codecogs.com/svg.latex?\inline&space;A_{p}" title="" /> REPLACE_WITH_DASH_DASH daily planetary amplitude [γ]
+%               <BR> - Column 19: <img src="https://latex.codecogs.com/svg.latex?\inline&space;F_{10.7}" title="" /> REPLACE_WITH_DASH_DASH daily 10.7 cm solar flux [SFU]
+%               <BR> - Column 20: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{F}_{10.7}" title="" /> REPLACE_WITH_DASH_DASH centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;F_{10.7}" title="" /> [SFU]</td>
+%           <td style="text-align:center">N×20<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>sw2</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td>array storing 2nd half of space weather data
+%               <BR> -      Column 1: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /> REPLACE_WITH_DASH_DASH UT1 (Universal Time 1)[MJD]
+%               <BR> -      Column 2: <img src="https://latex.codecogs.com/svg.latex?\inline&space;S_{10.7}" title="" /> REPLACE_WITH_DASH_DASH daily 26-34 nm EUV index [SFU]
+%               <BR> -      Column 3: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{S}_{10.7}" title="" /> REPLACE_WITH_DASH_DASH centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;S_{10.7}" title="" /> [SFU]
+%               <BR> -      Column 4: <img src="https://latex.codecogs.com/svg.latex?\inline&space;M_{10.7}" title="" /> REPLACE_WITH_DASH_DASH daily Mg II index [SFU]
+%               <BR> -      Column 5: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{M}_{10.7}" title="" /> REPLACE_WITH_DASH_DASH centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;M_{10.7}" title="" /> [SFU]
+%               <BR> -      Column 6: <img src="https://latex.codecogs.com/svg.latex?\inline&space;Y_{10.7}" title="" /> REPLACE_WITH_DASH_DASH daily solar X-ray and Lyman-α emission mixed index [SFU]
+%               <BR> -      Column 7: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{Y}_{10.7}" title="" /> REPLACE_WITH_DASH_DASH centered 81-day average of <img src="https://latex.codecogs.com/svg.latex?\inline&space;Y_{10.7}" title="" /> [SFU]
+%               <BR> -  Columns 8-31: <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{dTc}" title="" /> REPLACE_WITH_DASH_DASH temperature change derived from Dst index for each hour of the day (column 8 REPLACE_WITH_DASH_DASH> 00:00, column 31 REPLACE_WITH_DASH_DASH> 23:00) [K]</td>
+%           <td style="text-align:center">M×31<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+%% Note
+%
+% * N = # of data entries for 1st half of space weather data.
+% * M = # of data entries for 2nd half of space weather data.
+% * The two data sets, |sw1| and |sw2|, have data for different dates
+% (specifically, the |sw1| starts on an earlier date and ends on a later
+% date than the |sw2| data set). Thus, they must be loaded separately.
+% * Even when only a subset of the dates in |sw1| and |sw2| are taken
+% (based on the simulation start/end times), they still must be loaded
+% separately because they require a different range of dates. Specifically,
+% the parameters in |sw2| are used for the Jacchia-Bowman 2008 model, and
+% one of the parameters for this model requires a 5-day lag. However, for
+% the parameters in the |sw1| data set, the largest lag required is a 3-day
+% lag.
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,221 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ut12utc</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="ut12utc_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>ut12utc</tt></h1><!--introduction--><p>UTC from UT1.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD_UTC = ut12utc(MJD_UT1,DUT1)
+</pre><h2 id="2">Description</h2><p><tt>MJD_UTC = ut12utc(MJD_UT1,DUT1)</tt> determines UTC given UT1 and <img src="ut12utc_doc_eq16590871225131731567.png" alt="$\Delta\mathrm{UT1}$" style="width:30px;height:9px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>MJD_UT1</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /></td>
+          <td>UT1 (Universal Time 1)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">MJD</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>DUT1</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\Delta\mathrm{UT1}" title="" /></td></td>
+          <td>difference between UT1 and UTC</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">s</td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>MJD_UTC</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UTC}}" title="" /></td></td>
+          <td>UTC (Universal Coordinated Time)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">MJD</td>
+      </tr>
+  </table>
+</p><h2 id="4">Example</h2><p><i>Find UTC corresponding to January 1, 2000, 12:00:00 UT1.</i></p><p>First, let's find the modified Julian date of UT1.</p><pre class="codeinput">MJD_UT1 = cal2mjd([2000,1,1,12,0,0]);
+</pre><p>Next, let's find the difference between UTC and UT1.</p><pre class="codeinput">DUT1 = get_DUT1(MJD_UT1);
+</pre><p>Finding the modified Julian date of UTC,</p><pre class="codeinput">MJD_UTC = ut12utc(MJD_UT1,DUT1);
+</pre><p>Expressing UTC as a calendar date + hours, minutes, and seconds,</p><pre class="codeinput">cal_UTC = mjd2cal(MJD_UTC);
+year = cal_UTC(1)
+month = cal_UTC(2)
+day = cal_UTC(3)
+hour = cal_UTC(4)
+minute = cal_UTC(5)
+second = cal_UTC(6)
+</pre><pre class="codeoutput">
+year =
+
+        2000
+
+
+month =
+
+     1
+
+
+day =
+
+     1
+
+
+hour =
+
+    11
+
+
+minute =
+
+    59
+
+
+second =
+
+   59.6445
+
+</pre><h2 id="8">See also</h2><p><a href="gps2tai_doc.html"><tt>gps2tai</tt></a> | <a href="tai2gps_doc.html"><tt>tai2gps</tt></a> | <a href="tai2tt_doc.html"><tt>tai2tt</tt></a> | <a href="tai2utc_doc.html"><tt>tai2utc</tt></a> | <a href="tt2tai_doc.html"><tt>tt2tai</tt></a> | <a href="utc2tai_doc.html"><tt>utc2tai</tt></a> | <a href="utc2ut1_doc.html"><tt>utc2ut1</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |ut12utc|
+% UTC from UT1.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   MJD_UTC = ut12utc(MJD_UT1,DUT1)
+%% Description
+% |MJD_UTC = ut12utc(MJD_UT1,DUT1)| determines UTC given UT1 and 
+% $\Delta\mathrm{UT1}$.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>MJD_UT1</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /></td>
+%           <td>UT1 (Universal Time 1)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">MJD</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>DUT1</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\Delta\mathrm{UT1}" title="" /></td></td>
+%           <td>difference between UT1 and UTC</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">s</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>MJD_UTC</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UTC}}" title="" /></td></td>
+%           <td>UTC (Universal Coordinated Time)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">MJD</td>
+%       </tr>
+%   </table>
+% </html>
+%% Example
+% _Find UTC corresponding to January 1, 2000, 12:00:00 UT1._
+%
+% First, let's find the modified Julian date of UT1.
+MJD_UT1 = cal2mjd([2000,1,1,12,0,0]);
+%%
+% Next, let's find the difference between UTC and UT1.
+DUT1 = get_DUT1(MJD_UT1);
+%%
+% Finding the modified Julian date of UTC,
+MJD_UTC = ut12utc(MJD_UT1,DUT1);
+%%
+% Expressing UTC as a calendar date + hours, minutes, and seconds,
+cal_UTC = mjd2cal(MJD_UTC);
+year = cal_UTC(1)
+month = cal_UTC(2)
+day = cal_UTC(3)
+hour = cal_UTC(4)
+minute = cal_UTC(5)
+second = cal_UTC(6)
+%% See also
+% <gps2tai_doc.html |gps2tai|> | 
+% <tai2gps_doc.html |tai2gps|> | 
+% <tai2tt_doc.html |tai2tt|> | 
+% <tai2utc_doc.html |tai2utc|> | 
+% <tt2tai_doc.html |tt2tai|> | 
+% <utc2tai_doc.html |utc2tai|> | 
+% <utc2ut1_doc.html |utc2ut1|>
+##### SOURCE END #####
+--></body></html>

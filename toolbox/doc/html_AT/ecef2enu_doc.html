@@ -1,0 +1,228 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>ecef2enu</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="ecef2enu_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>ecef2enu</tt></h1><!--introduction--><p>ENU position and velocity from ECEF position and velocity.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#5">Input/Output Parameters</a></li><li><a href="#6">Note</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">rho_enu = ecef2enu(r_ecef,r0_ecef)
+[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef)
+[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef,v0_ecef)
+</pre><h2 id="2">Description</h2><p><tt>rho_enu = ecef2enu(r_ecef,r0_ecef)</tt> determines the satellite's ENU position, <img src="ecef2enu_doc_eq16889038262160522285.png" alt="$[\vec{\rho}]_{\mathrm{ENU}}$" style="width:28px;height:11px;">, given the satellite's ECEF position, <img src="ecef2enu_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, and the origin of the ENU frame resolved in the ECEF frame, <img src="ecef2enu_doc_eq14525203470695466333.png" alt="$[\mathbf{r}_{0}]_{\mathrm{ECEF}}$" style="width:36px;height:11px;">).</p><p><tt>[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef)</tt> determines the satellite's ENU position and velocity (<img src="ecef2enu_doc_eq16889038262160522285.png" alt="$[\vec{\rho}]_{\mathrm{ENU}}$" style="width:28px;height:11px;"> and <img src="ecef2enu_doc_eq02059105929506475960.png" alt="$\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$" style="width:31px;height:21px;">), given the ECEF position and velocity (<img src="ecef2enu_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;"> and <img src="ecef2enu_doc_eq04343149359230806616.png" alt="$[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}$" style="width:54px;height:13px;">) of the satellite, and the origin of the ENU frame resolved in the ECEF frame, <img src="ecef2enu_doc_eq14525203470695466333.png" alt="$[\mathbf{r}_{0}]_{\mathrm{ECEF}}$" style="width:36px;height:11px;">). This syntax assumes that the origin of the ENU frame is stationary with respect to the ECEF frame.</p><p><tt>[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef,v0_ecef)</tt> does the same as the syntax above, but does <i>not</i> assume that the origin of the ENU frame is stationary with respect to the ECEF frame. Instead, this velocity is specified by <img src="ecef2enu_doc_eq14483089635002631465.png" alt="$[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}$" style="width:59px;height:13px;">.</p><h2 id="5">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="4" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>r_ecef</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+          <td>satellite position resolved in ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">any</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>r0_ecef</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}_{0}]_{\mathrm{ECEF}}" title="" /></td>
+          <td>origin of ENU frame resolved in ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">any</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>v_ecef</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}" title="" /></td>
+          <td>(OPTIONAL) satellite ECEF velocity resolved in ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">any</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>v0_ecef</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}" title="" /></td>
+          <td>(OPTIONAL) ECEF velocity of ENU frame's origin resolved in ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">any</td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>rho_enu</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{\rho}]_{\mathrm{ENU}}" title="" /></td>
+          <td>ENU position resolved in ENU frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">same as <TT>r_ecef</TT></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>rho_dot_enu</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\dot{\boldsymbol{\rho}}]_{\mathrm{ENU}}" title="" /></td>
+          <td>ENU velocity resolved in ENU frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">same as <TT>v_ecef</TT></td>
+      </tr>
+  </table>
+</p><h2 id="6">Note</h2><div><ul><li><img src="ecef2enu_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, <img src="ecef2enu_doc_eq14525203470695466333.png" alt="$[\mathbf{r}_{0}]_{\mathrm{ECEF}}$" style="width:36px;height:11px;">, <img src="ecef2enu_doc_eq04343149359230806616.png" alt="$[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}$" style="width:54px;height:13px;">, and <img src="ecef2enu_doc_eq14483089635002631465.png" alt="$[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}$" style="width:59px;height:13px;"> can be input in any units, but they <i>must</i> be consistent. The units of <img src="ecef2enu_doc_eq16889038262160522285.png" alt="$[\vec{\rho}]_{\mathrm{ENU}}$" style="width:28px;height:11px;"> will match those of <img src="ecef2enu_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, and the units of <img src="ecef2enu_doc_eq02059105929506475960.png" alt="$\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$" style="width:31px;height:21px;"> will match those of <img src="ecef2enu_doc_eq04343149359230806616.png" alt="$[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}$" style="width:54px;height:13px;">.</li></ul></div><h2 id="7">See also</h2><p><a href="enu2ecef_doc.html"><tt>enu2ecef</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |ecef2enu|
+% ENU position and velocity from ECEF position and velocity.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   rho_enu = ecef2enu(r_ecef,r0_ecef)
+%   [rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef)
+%   [rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef,v0_ecef)
+%% Description
+% |rho_enu = ecef2enu(r_ecef,r0_ecef)| determines the satellite's ENU 
+% position, $[\vec{\rho}]_{\mathrm{ENU}}$, given the satellite's ECEF 
+% position, $[\mathbf{r}]_{\mathrm{ECEF}}$, and the origin of the ENU frame
+% resolved in the ECEF frame, $[\mathbf{r}_{0}]_{\mathrm{ECEF}}$).
+%%
+% |[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef)| determines the
+% satellite's ENU position and velocity ($[\vec{\rho}]_{\mathrm{ENU}}$ and 
+% $\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$), given the ECEF position
+% and velocity ($[\mathbf{r}]_{\mathrm{ECEF}}$ and 
+% $[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}$) of the satellite, and 
+% the origin of the ENU frame resolved in the ECEF frame, 
+% $[\mathbf{r}_{0}]_{\mathrm{ECEF}}$). This syntax assumes that the origin
+% of the ENU frame is stationary with respect to the ECEF frame.
+%%
+% |[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef,v0_ecef)| does
+% the same as the syntax above, but does _not_ assume that the origin of
+% the ENU frame is stationary with respect to the ECEF frame. Instead, this
+% velocity is specified by
+% $[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}$.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="4" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>r_ecef</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>satellite position resolved in ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">any</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>r0_ecef</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}_{0}]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>origin of ENU frame resolved in ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">any</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>v_ecef</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>(OPTIONAL) satellite ECEF velocity resolved in ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">any</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>v0_ecef</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>(OPTIONAL) ECEF velocity of ENU frame's origin resolved in ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">any</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>rho_enu</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{\rho}]_{\mathrm{ENU}}" title="" /></td>
+%           <td>ENU position resolved in ENU frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">same as <TT>r_ecef</TT></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>rho_dot_enu</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\dot{\boldsymbol{\rho}}]_{\mathrm{ENU}}" title="" /></td>
+%           <td>ENU velocity resolved in ENU frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">same as <TT>v_ecef</TT></td>
+%       </tr>
+%   </table>
+% </html>
+%% Note
+%
+% * $[\mathbf{r}]_{\mathrm{ECEF}}$, $[\mathbf{r}_{0}]_{\mathrm{ECEF}}$,
+% $[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}$, and 
+% $[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}$ can be input in any 
+% units, but they _must_ be consistent. The units of 
+% $[\vec{\rho}]_{\mathrm{ENU}}$ will match those of 
+% $[\mathbf{r}]_{\mathrm{ECEF}}$, and the units of
+% $\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$ will match those of
+% $[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}$.
+%% See also
+% <enu2ecef_doc.html |enu2ecef|>
+##### SOURCE END #####
+--></body></html>

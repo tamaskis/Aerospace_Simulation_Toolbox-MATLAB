@@ -1,0 +1,186 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>eci2rtn</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-13"><meta name="DC.source" content="eci2rtn_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>eci2rtn</tt></h1><!--introduction--><p>Deputy relative state in chief's RTN frame from absolute ECI states of chief and deputy.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">dX = eci2rtn(Xc,Xd)
+</pre><h2 id="2">Description</h2><p><tt>dX = eci2rtn(Xc,Xd)</tt> determines the deputy relative state in the chief's RTN frame, <img src="eci2rtn_doc_eq15205210464064665965.png" alt="$\delta\mathbf{X}$" style="width:15px;height:9px;">, given the absolute ECI states of the chief and deputy, <img src="eci2rtn_doc_eq00912392518987576744.png" alt="$\mathbf{X}_{c}$" style="width:13px;height:10px;"> and <img src="eci2rtn_doc_eq06440372979640351933.png" alt="$\mathbf{X}_{d}$" style="width:14px;height:10px;">, respectively.</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>Xc</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{X}_{c}" title="" /></td>
+          <td>chief ECI state</td>
+          <td style="text-align:center">6×1<BR>double</td>
+          <td style="text-align:center">any</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>Xd</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{X}_{d}" title="" /></td>
+          <td>deputy ECI state</td>
+          <td style="text-align:center">6×1<BR>double</td>
+          <td style="text-align:center">any</td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>dX</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\delta\mathbf{X}" title="" /></td></td>
+          <td>deputy relative state in chief's RTN frame</td>
+          <td style="text-align:center">6×1<BR>double</td>
+          <td style="text-align:center">same as <TT>Xc</TT> and <TT>Xd</TT></td>
+      </tr>
+  </table>
+</p><p>Note that the absolute ECI state states are defined as</p><p><img src="eci2rtn_doc_eq12609276655581142006.png" alt="$$\mathbf{X}_{c}=&#xA;\pmatrix{&#xA;  [\mathbf{r}_{c}]_{\mathrm{ECI}}\cr&#xA;  [\mathbf{v}_{c}]_{\mathrm{ECI}}\cr&#xA;}&#xA;,\quad\quad&#xA;\mathbf{X}_{d}=&#xA;\pmatrix{&#xA;  [\mathbf{r}_{d}]_{\mathrm{ECI}}\cr&#xA;  [\mathbf{v}_{d}]_{\mathrm{ECI}}\cr&#xA;}$$" style="width:186px;height:27px;"></p><p>while the deputy relative state in the chief's RTN frame is defined as</p><p><img src="eci2rtn_doc_eq05568617655560435452.png" alt="$$\delta\mathbf{X}=&#xA;\pmatrix{&#xA;  [\delta\mathbf{r}]_{\mathrm{RTN}}\cr&#xA;  \left[{}^{\mathrm{RTN}}\delta\mathbf{v}\right]_{\mathrm{RTN}}\cr&#xA;}$$" style="width:103px;height:27px;"></p><h2 id="4">Note</h2><div><ul><li><img src="eci2rtn_doc_eq00912392518987576744.png" alt="$\mathbf{X}_{c}$" style="width:13px;height:10px;"> and <img src="eci2rtn_doc_eq06440372979640351933.png" alt="$\mathbf{X}_{d}$" style="width:14px;height:10px;"> can be input in any units, as long as both are input with the same units.</li><li>The position and velocity components must have compatible units (i.e. the length units used for the velocity components should be consistent with the length units used for the position components).</li></ul></div><h2 id="5">See also</h2><p><a href="rtn2eci_doc.html"><tt>rtn2eci</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |eci2rtn|
+% Deputy relative state in chief's RTN frame from absolute ECI states of 
+% chief and deputy.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   dX = eci2rtn(Xc,Xd)
+%% Description
+% |dX = eci2rtn(Xc,Xd)| determines the deputy relative state in the chief's
+% RTN frame, $\delta\mathbf{X}$, given the absolute ECI states of the chief
+% and deputy, $\mathbf{X}_{c}$ and $\mathbf{X}_{d}$, respectively.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>Xc</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{X}_{c}" title="" /></td>
+%           <td>chief ECI state</td>
+%           <td style="text-align:center">6×1<BR>double</td>
+%           <td style="text-align:center">any</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>Xd</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{X}_{d}" title="" /></td>
+%           <td>deputy ECI state</td>
+%           <td style="text-align:center">6×1<BR>double</td>
+%           <td style="text-align:center">any</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>dX</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\delta\mathbf{X}" title="" /></td></td>
+%           <td>deputy relative state in chief's RTN frame</td>
+%           <td style="text-align:center">6×1<BR>double</td>
+%           <td style="text-align:center">same as <TT>Xc</TT> and <TT>Xd</TT></td>
+%       </tr>
+%   </table>
+% </html>
+%
+% Note that the absolute ECI state states are defined as
+%
+% $$\mathbf{X}_{c}=
+% \pmatrix{
+%   [\mathbf{r}_{c}]_{\mathrm{ECI}}\cr
+%   [\mathbf{v}_{c}]_{\mathrm{ECI}}\cr
+% }
+% ,\quad\quad
+% \mathbf{X}_{d}=
+% \pmatrix{
+%   [\mathbf{r}_{d}]_{\mathrm{ECI}}\cr
+%   [\mathbf{v}_{d}]_{\mathrm{ECI}}\cr
+% }$$
+%
+% while the deputy relative state in the chief's RTN frame is defined as
+%
+% $$\delta\mathbf{X}=
+% \pmatrix{
+%   [\delta\mathbf{r}]_{\mathrm{RTN}}\cr
+%   \left[{}^{\mathrm{RTN}}\delta\mathbf{v}\right]_{\mathrm{RTN}}\cr
+% }$$
+%% Note
+%
+% * $\mathbf{X}_{c}$ and $\mathbf{X}_{d}$ can be input in any units, as 
+% long as both are input with the same units.
+% * The position and velocity components must have compatible units (i.e.
+% the length units used for the velocity components should be consistent
+% with the length units used for the position components).
+%% See also
+% <rtn2eci_doc.html |rtn2eci|>
+##### SOURCE END #####
+--></body></html>

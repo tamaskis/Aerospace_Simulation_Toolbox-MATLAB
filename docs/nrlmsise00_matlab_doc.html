@@ -1,0 +1,269 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>nrlmsise00_matlab</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="nrlmsise00_matlab_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>nrlmsise00_matlab</tt></h1><!--introduction--><p>NRLMSISE-00 atmospheric model using the MATLAB Aerospace Toolbox's <tt>atmosnrlmsise00</tt> function.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[rho,n,T] = nrlmsise00_matlab(r_ecef,MJD_UT1,F107_avg,F107,ap_array)
+</pre><h2 id="2">Description</h2><p><tt>[rho,n,T] = nrlmsise00_matlab(r_ecef,MJD_UT1,F107_avg,F107,ap_array)</tt> determines the atmospheric mass density (<img src="nrlmsise00_matlab_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">), atmospheric constituent number densities (stored in <tt>n</tt>), and the temperature and exospheric temperature (stored in <tt>T</tt>). The inputs to this function are the satellite position resolved in the ECEF frame (<img src="nrlmsise00_matlab_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">), modified Julian date of UT1 (<img src="nrlmsise00_matlab_doc_eq11095008563007067201.png" alt="$\mathrm{MJD}_{\mathrm{UT1}}$" style="width:39px;height:10px;">), centered 81-day average of <img src="nrlmsise00_matlab_doc_eq10482125885064725100.png" alt="$F_{10.7}$" style="width:21px;height:10px;"> for the previous day (<img src="nrlmsise00_matlab_doc_eq01339368542780095761.png" alt="$\bar{F}_{10.7}$" style="width:21px;height:12px;">), 10.7 cm solar flux for the previous day (<img src="nrlmsise00_matlab_doc_eq10482125885064725100.png" alt="$F_{10.7}$" style="width:21px;height:10px;">), and an array of planetary amplitude (<img src="nrlmsise00_matlab_doc_eq13730016270551869260.png" alt="$a_{p}$" style="width:10px;height:8px;">) values (specified below).</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="5" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>r_ecef</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+          <td>position resolved in ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>MJD_UT1</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /></td>
+          <td>UT1 (Universal Time 1)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">MJD</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>F107_avg</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{F}_{10.7}" title="" /></td>
+          <td>centered 81-day average of F10.7 (1-day lag)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">SFU</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>F107</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;F_{10.7}" title="" /></td>
+          <td>daily 10.7 cm solar flux (1-day lag)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">SFU</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>ap_array</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}_{p}" title="" /></td>
+          <td>array of planetary amplitude values:
+              <BR> - 1. <img src="https://latex.codecogs.com/svg.latex?\inline&space;A_{p}" title="" /> -- daily planetary amplitude (current day - no lag)
+              <BR> - 2. <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p}" title="" /> -- planetary amplitude (current time)
+              <BR> - 3. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(a_{p})_{3}" title="" /> -- planetary amplitude 3 hours before current time
+              <BR> - 4. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(a_{p})_{6}" title="" /> -- planetary amplitude 6 hours before current time
+              <BR> - 5. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(a_{p})_{9}" title="" /> -- planetary amplitude 9 hours before current time
+              <BR> - 6. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(\bar{a}_{p})_{12\to33}" title="" /> -- average of eight 3-hour <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p}" title="" />'s from 12 to 33 hours prior to current time
+              <BR> - 7. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(\bar{a}_{p})_{36\to57}" title="" /> -- average of eight 3-hour <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p}" title="" />'s from 36 to 57 hours prior to current time</td>
+          <td style="text-align:center">1×7<BR>double</td>
+          <td style="text-align:center">γ</td>
+      </tr>
+      <tr>
+          <td rowspan="3" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>rho</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td>
+          <td>atmospheric mass density</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">kg/m<sup>3</sup></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>n</TT></td>
+          <td style="text-align:center">-</td>
+          <td>atmospheric constituent number densities
+              <BR> - <TT>nAr</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{Ar}}" title="" /> -- atomic argon number density)
+              <BR> - <TT>nH</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{H}}" title="" /> -- atomic hydrogen number density)
+              <BR> - <TT>nHe</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{He}}" title="" /> -- atomic helium number density)
+              <BR> - <TT>nN2</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{N}_{2}}" title="" /> -- diatomic nitrogen number density)
+              <BR> - <TT>nO</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{O}}" title="" /> -- atomic oxygen number density)
+              <BR> - <TT>nO2</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{O}_{2}}" title="" /> -- diatomic oxygen number density)</td>
+          <td style="text-align:center">1×1<BR>struct</td>
+          <td style="text-align:center">m<sup>-3</sup></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>T</TT></td>
+          <td style="text-align:center">-</td>
+          <td>temperatures
+              <BR> - <TT>T_h</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;T" title="" /> -- temperature at altitude)
+              <BR> - <TT>T_inf</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;T_{\infty}" title="" /> -- exospheric temperature)</td>
+          <td style="text-align:center">1×1<BR>struct</td>
+          <td style="text-align:center">K</td>
+      </tr>
+  </table>
+</p><h2 id="4">See also</h2><p><a href="exponential_doc.html"><tt>exponential</tt></a> | <a href="harris_priester_doc.html"><tt>harris_priester</tt></a> | <a href="jacchia_bowman_2008_doc.html"><tt>jacchia_bowman_2008</tt></a> | <a href="jacchia_roberts_doc.html"><tt>jacchia_roberts</tt></a> | <a href="nrlmsise00_doc.html"><tt>nrlmsise00</tt></a> | <a href="space_weather_doc.html"><tt>space_weather</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |nrlmsise00_matlab|
+% NRLMSISE-00 atmospheric model using the MATLAB Aerospace Toolbox's 
+% |atmosnrlmsise00| function.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   [rho,n,T] = nrlmsise00_matlab(r_ecef,MJD_UT1,F107_avg,F107,ap_array)
+%% Description
+% |[rho,n,T] = nrlmsise00_matlab(r_ecef,MJD_UT1,F107_avg,F107,ap_array)| 
+% determines the atmospheric mass density ($\rho$), atmospheric constituent
+% number densities (stored in |n|), and the temperature and exospheric 
+% temperature (stored in |T|). The inputs to this function are the
+% satellite position resolved in the ECEF frame 
+% ($[\mathbf{r}]_{\mathrm{ECEF}}$), modified Julian date of UT1 
+% ($\mathrm{MJD}_{\mathrm{UT1}}$), centered 81-day average of $F_{10.7}$
+% for the previous day ($\bar{F}_{10.7}$), 10.7 cm solar flux for the
+% previous day ($F_{10.7}$), and an array of planetary amplitude ($a_{p}$)
+% values (specified below).
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="5" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>r_ecef</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>position resolved in ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>MJD_UT1</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UT1}}" title="" /></td>
+%           <td>UT1 (Universal Time 1)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">MJD</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>F107_avg</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\bar{F}_{10.7}" title="" /></td>
+%           <td>centered 81-day average of F10.7 (1-day lag)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">SFU</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>F107</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;F_{10.7}" title="" /></td>
+%           <td>daily 10.7 cm solar flux (1-day lag)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">SFU</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>ap_array</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}_{p}" title="" /></td>
+%           <td>array of planetary amplitude values:
+%               <BR> - 1. <img src="https://latex.codecogs.com/svg.latex?\inline&space;A_{p}" title="" /> REPLACE_WITH_DASH_DASH daily planetary amplitude (current day - no lag)
+%               <BR> - 2. <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude (current time)
+%               <BR> - 3. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(a_{p})_{3}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude 3 hours before current time
+%               <BR> - 4. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(a_{p})_{6}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude 6 hours before current time
+%               <BR> - 5. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(a_{p})_{9}" title="" /> REPLACE_WITH_DASH_DASH planetary amplitude 9 hours before current time
+%               <BR> - 6. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(\bar{a}_{p})_{12\to33}" title="" /> REPLACE_WITH_DASH_DASH average of eight 3-hour <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p}" title="" />'s from 12 to 33 hours prior to current time
+%               <BR> - 7. <img src="https://latex.codecogs.com/svg.latex?\inline&space;(\bar{a}_{p})_{36\to57}" title="" /> REPLACE_WITH_DASH_DASH average of eight 3-hour <img src="https://latex.codecogs.com/svg.latex?\inline&space;a_{p}" title="" />'s from 36 to 57 hours prior to current time</td>
+%           <td style="text-align:center">1×7<BR>double</td>
+%           <td style="text-align:center">γ</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="3" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>rho</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td>
+%           <td>atmospheric mass density</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">kg/m<sup>3</sup></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>n</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td>atmospheric constituent number densities
+%               <BR> - <TT>nAr</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{Ar}}" title="" /> REPLACE_WITH_DASH_DASH atomic argon number density)
+%               <BR> - <TT>nH</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{H}}" title="" /> REPLACE_WITH_DASH_DASH atomic hydrogen number density)
+%               <BR> - <TT>nHe</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{He}}" title="" /> REPLACE_WITH_DASH_DASH atomic helium number density)
+%               <BR> - <TT>nN2</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{N}_{2}}" title="" /> REPLACE_WITH_DASH_DASH diatomic nitrogen number density)
+%               <BR> - <TT>nO</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{O}}" title="" /> REPLACE_WITH_DASH_DASH atomic oxygen number density)
+%               <BR> - <TT>nO2</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;n_{\mathrm{O}_{2}}" title="" /> REPLACE_WITH_DASH_DASH diatomic oxygen number density)</td>
+%           <td style="text-align:center">1×1<BR>struct</td>
+%           <td style="text-align:center">m<sup>-3</sup></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>T</TT></td>
+%           <td style="text-align:center">-</td>
+%           <td>temperatures
+%               <BR> - <TT>T_h</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;T" title="" /> REPLACE_WITH_DASH_DASH temperature at altitude)
+%               <BR> - <TT>T_inf</TT> (1×1 double, <img src="https://latex.codecogs.com/svg.latex?\inline&space;T_{\infty}" title="" /> REPLACE_WITH_DASH_DASH exospheric temperature)</td>
+%           <td style="text-align:center">1×1<BR>struct</td>
+%           <td style="text-align:center">K</td>
+%       </tr>
+%   </table>
+% </html>
+%% See also
+% <exponential_doc.html |exponential|> | 
+% <harris_priester_doc.html |harris_priester|> | 
+% <jacchia_bowman_2008_doc.html |jacchia_bowman_2008|> | 
+% <jacchia_roberts_doc.html |jacchia_roberts|> | 
+% <nrlmsise00_doc.html |nrlmsise00|> |
+% <space_weather_doc.html |space_weather|>
+##### SOURCE END #####
+--></body></html>

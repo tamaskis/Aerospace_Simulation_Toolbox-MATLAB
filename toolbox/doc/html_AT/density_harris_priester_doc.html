@@ -1,0 +1,175 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>density_harris_priester</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-02-15"><meta name="DC.source" content="density_harris_priester_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>density_harris_priester</tt></h1><!--introduction--><p>Modified Harris-Priester model for atmospheric mass density.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">rho = density_harris_priester(r_eci,r_ecef,r_sun_eci)
+</pre><h2 id="2">Description</h2><p><tt>rho = density_harris_priester(r_eci,r_ecef,r_sun_eci)</tt> determines the atmospheric mass density, <img src="density_harris_priester_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">, given the satellite position resolved in the ECI and ECEF frames, <img src="density_harris_priester_doc_eq12956213191610695038.png" alt="$[\mathbf{r}]_{\mathrm{ECI}}$" style="width:24px;height:11px;"> and <img src="density_harris_priester_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, respectively, and the position of the Sun resolved in the ECI frame, <img src="density_harris_priester_doc_eq05482446412659627746.png" alt="$[\mathbf{r}_{\odot}]_{\mathrm{ECI}}$" style="width:31px;height:11px;"></p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="3" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>r_eci</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECI}}" title="" /></td>
+          <td>satellite position resolved in ECI frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>r_ecef</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+          <td>satellite position resolved in ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>r_sun_eci</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}_{\odot}]_{\mathrm{ECI}}" title="" /></td>
+          <td>Sun position resolved in ECI frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>rho</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td></td>
+          <td>atmospheric mass density</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">kg/m<sup>3</sup></td>
+      </tr>
+  </table>
+</p><h2 id="4">See also</h2><p><a href="density_exponential_doc.html"><tt>density_exponential</tt></a> | <a href="density_jacchia_roberts_doc.html"><tt>density_jacchia_roberts</tt></a> | <a href="density_nrlmsise00_doc.html"><tt>density_nrlmsise00</tt></a> | <a href="density_nrlmsise00_matlab_doc.html"><tt>density_nrlmsise00_matlab</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |density_harris_priester|
+% Modified Harris-Priester model for atmospheric mass density.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   rho = density_harris_priester(r_eci,r_ecef,r_sun_eci)
+%% Description
+% |rho = density_harris_priester(r_eci,r_ecef,r_sun_eci)| determines the 
+% atmospheric mass density, $\rho$, given the satellite position resolved 
+% in the ECI and ECEF frames, $[\mathbf{r}]_{\mathrm{ECI}}$ and 
+% $[\mathbf{r}]_{\mathrm{ECEF}}$, respectively, and the position of the Sun
+% resolved in the ECI frame, $[\mathbf{r}_{\odot}]_{\mathrm{ECI}}$
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="3" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>r_eci</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECI}}" title="" /></td>
+%           <td>satellite position resolved in ECI frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>r_ecef</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>satellite position resolved in ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>r_sun_eci</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}_{\odot}]_{\mathrm{ECI}}" title="" /></td>
+%           <td>Sun position resolved in ECI frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>rho</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td></td>
+%           <td>atmospheric mass density</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">kg/m<sup>3</sup></td>
+%       </tr>
+%   </table>
+% </html>
+%% See also
+% <density_exponential_doc.html |density_exponential|> | 
+% <density_jacchia_roberts_doc.html |density_jacchia_roberts|> | 
+% <density_nrlmsise00_doc.html |density_nrlmsise00|> | 
+% <density_nrlmsise00_matlab_doc.html |density_nrlmsise00_matlab|>
+##### SOURCE END #####
+--></body></html>

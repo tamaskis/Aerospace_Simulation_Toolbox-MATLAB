@@ -1,0 +1,215 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>a2T</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="a2T_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>a2T</tt></h1><!--introduction--><p>Orbital period from semi-major axis.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Input/Output Parameters</a></li><li><a href="#5">Example #1: Orbit around the Earth.</a></li><li><a href="#8">Example #2: Orbit around the moon.</a></li><li><a href="#12">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">T = a2T(a)
+T = a2T(a,mu)
+</pre><h2 id="2">Description</h2><p><tt>T = a2T(a)</tt> finds the orbital period, <img src="a2T_doc_eq02773292069783016909.png" alt="$T$" style="width:8px;height:8px;">, given the semi-major axis, <img src="a2T_doc_eq04574278970515790912.png" alt="$a$" style="width:6px;height:6px;">, for a circular (<img src="a2T_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) or elliptical (<img src="a2T_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbit around the Earth.</p><p><tt>T = a2T(a,mu)</tt> finds the orbital period, <img src="a2T_doc_eq02773292069783016909.png" alt="$T$" style="width:8px;height:8px;">, given the semi-major axis, <img src="a2T_doc_eq04574278970515790912.png" alt="$a$" style="width:6px;height:6px;">, for a circular (<img src="a2T_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) or elliptical (<img src="a2T_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbit around a cental body with gravitational parameter <img src="a2T_doc_eq06904339251718989188.png" alt="$\mu$" style="width:7px;height:8px;">.</p><h2 id="4">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>a</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;a" title="" /></td>
+          <td>semi-major axis</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>mu</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mu" title="" /></td>
+          <td>(OPTIONAL) gravitational parameter</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">m<sup>3</sup>/s<sup>2</sup></td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>T</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;T" title="" /></td></td>
+          <td>orbital period</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">s</td>
+      </tr>
+  </table>
+</p><h2 id="5">Example #1: Orbit around the Earth.</h2><p><i>Find the period of an orbit around the Earth with semi-major axis <img src="a2T_doc_eq17980462415949572653.png" alt="$a=7000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 7000*1000;
+</pre><p>Finding the orbital period (in <img src="a2T_doc_eq06216042132226195025.png" alt="$\mathrm{s}$" style="width:4px;height:6px;">),</p><pre class="codeinput">T = a2T(a);
+</pre><p>Converting the orbital period to hours,</p><pre class="codeinput">T = T/3600
+</pre><pre class="codeoutput">
+T =
+
+    1.6190
+
+</pre><h2 id="8">Example #2: Orbit around the moon.</h2><p><i>Find the period of an orbit around the Moon with semi-major axis <img src="a2T_doc_eq15656791416632496945.png" alt="$a=3000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 3000*1000;
+</pre><p>Gravitational parameter of the moon (in <img src="a2T_doc_eq03238926069325008863.png" alt="$\mathrm{m^{3}/s^{2}}$" style="width:27px;height:12px;">),</p><pre class="codeinput">mu = MU_MOON;
+</pre><p>Finding the orbital period (in <img src="a2T_doc_eq06216042132226195025.png" alt="$\mathrm{s}$" style="width:4px;height:6px;">),</p><pre class="codeinput">T = a2T(a,mu)
+</pre><pre class="codeoutput">
+T =
+
+   1.4745e+04
+
+</pre><p>Converting the orbital period to hours,</p><pre class="codeinput">T = T/3600
+</pre><pre class="codeoutput">
+T =
+
+    4.0958
+
+</pre><h2 id="12">See also</h2><p><a href="a2n_doc.html"><tt>a2n</tt></a> | <a href="n2a_doc.html"><tt>n2a</tt></a> | <a href="n2T_doc.html"><tt>n2T</tt></a> | <a href="T2a_doc.html"><tt>T2a</tt></a> | <a href="T2n_doc.html"><tt>T2n</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |a2T|
+% Orbital period from semi-major axis.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   T = a2T(a)
+%   T = a2T(a,mu)
+%% Description
+% |T = a2T(a)| finds the orbital period, $T$, given the semi-major axis, 
+% $a$, for a circular ($e=0$) or elliptical ($0<e<1$) orbit around the 
+% Earth.
+%%
+% |T = a2T(a,mu)| finds the orbital period, $T$, given the semi-major axis, 
+% $a$, for a circular ($e=0$) or elliptical ($0<e<1$) orbit around a cental
+% body with gravitational parameter $\mu$.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>a</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;a" title="" /></td>
+%           <td>semi-major axis</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>mu</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mu" title="" /></td>
+%           <td>(OPTIONAL) gravitational parameter</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">m<sup>3</sup>/s<sup>2</sup></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>T</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;T" title="" /></td></td>
+%           <td>orbital period</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">s</td>
+%       </tr>
+%   </table>
+% </html>
+%% Example #1: Orbit around the Earth.
+% _Find the period of an orbit around the Earth with semi-major axis
+% $a=7000\;\mathrm{km}$._
+%
+% Defining the semi-major axis in meters,
+a = 7000*1000;
+%%
+% Finding the orbital period (in $\mathrm{s}$),
+T = a2T(a);
+%%
+% Converting the orbital period to hours,
+T = T/3600
+%% Example #2: Orbit around the moon.
+% _Find the period of an orbit around the Moon with semi-major axis
+% $a=3000\;\mathrm{km}$._
+%
+% Defining the semi-major axis in meters,
+a = 3000*1000;
+%%
+% Gravitational parameter of the moon (in $\mathrm{m^{3}/s^{2}}$),
+mu = MU_MOON;
+%%
+% Finding the orbital period (in $\mathrm{s}$),
+T = a2T(a,mu)
+%%
+% Converting the orbital period to hours,
+T = T/3600
+%% See also
+% <a2n_doc.html |a2n|> | 
+% <n2a_doc.html |n2a|> | 
+% <n2T_doc.html |n2T|> | 
+% <T2a_doc.html |T2a|> |
+% <T2n_doc.html |T2n|>
+##### SOURCE END #####
+--></body></html>

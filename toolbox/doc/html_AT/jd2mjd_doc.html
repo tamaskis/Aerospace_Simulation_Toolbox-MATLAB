@@ -1,0 +1,158 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>jd2mjd</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="jd2mjd_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>jd2mjd</tt></h1><!--introduction--><p>Modified Julian date from Julian date.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD = jd2mjd(JD)
+</pre><h2 id="2">Description</h2><p><tt>MJD = jd2mjd(JD)</tt> converts a Julian date to a modified Julian date.</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>JD</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{JD}" title="" /></td></td>
+          <td>Julian date</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">d</td>
+      </tr>
+      <tr>
+          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>MJD</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}" title="" /></td>
+          <td>modified Julian date</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">d</td>
+      </tr>
+  </table>
+</p><h2 id="4">Example</h2><p><i>Convert 2451545 JD to MJD.</i></p><pre class="codeinput">MJD = jd2mjd(2451545)
+</pre><pre class="codeoutput">
+MJD =
+
+   5.1544e+04
+
+</pre><h2 id="5">See also</h2><p><a href="cal2doy_doc.html"><tt>cal2doy</tt></a> | <a href="cal2mjd_doc.html"><tt>cal2mjd</tt></a> | <a href="doy2cal_doc.html"><tt>doy2cal</tt></a> | <a href="f2hms_doc.html"><tt>f2hms</tt></a> | <a href="hms2f_doc.html"><tt>hms2f</tt></a> | <a href="jd2t_doc.html"><tt>jd2t</tt></a> | <a href="mjd2cal_doc.html"><tt>mjd2cal</tt></a> | <a href="mjd2f_doc.html"><tt>mjd2f</tt></a> | <a href="mjd2jd_doc.html"><tt>mjd2jd</tt></a> | <a href="mjd2t_doc.html"><tt>mjd2t</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |jd2mjd|
+% Modified Julian date from Julian date.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   MJD = jd2mjd(JD)
+%% Description
+% |MJD = jd2mjd(JD)| converts a Julian date to a modified Julian date.
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>JD</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{JD}" title="" /></td></td>
+%           <td>Julian date</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">d</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>MJD</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}" title="" /></td>
+%           <td>modified Julian date</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">d</td>
+%       </tr>
+%   </table>
+% </html>
+%% Example
+% _Convert 2451545 JD to MJD._
+MJD = jd2mjd(2451545)
+%% See also
+% <cal2doy_doc.html |cal2doy|> | 
+% <cal2mjd_doc.html |cal2mjd|> | 
+% <doy2cal_doc.html |doy2cal|> | 
+% <f2hms_doc.html |f2hms|> | 
+% <hms2f_doc.html |hms2f|> | 
+% <jd2t_doc.html |jd2t|> |
+% <mjd2cal_doc.html |mjd2cal|> |
+% <mjd2f_doc.html |mjd2f|> |
+% <mjd2jd_doc.html |mjd2jd|> |
+% <mjd2t_doc.html |mjd2t|>
+##### SOURCE END #####
+--></body></html>

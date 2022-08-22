@@ -1,0 +1,251 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>dadX_drag</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-03-12"><meta name="DC.source" content="dadX_drag_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>dadX_drag</tt></h1><!--introduction--><p>Partial derivatives of drag acceleration with respect to position and inertial velocity, resolved in the ECI frame.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[dadr_D,dadv_D] = dadX_drag(r_eci,v_eci,w_eci,B,rho,drhodr,R_ecef2eci)
+</pre><h2 id="2">Description</h2><p><tt>[dadr_D,dadv_D] = dadX_drag(r_eci,v_eci,w_eci,B,rho,drhodr,R_ecef2eci)</tt> determines the partial derivatives of the drag acceleration with respect to position (<img src="dadX_drag_doc_eq12838722237860046379.png" alt="$[(\partial\mathbf{a}/\partial\mathbf{r})_{D}]_{\mathrm{ECI}}$" style="width:64px;height:11px;">) and inertial velocity (<img src="dadX_drag_doc_eq06505426739663350130.png" alt="$[(\partial\mathbf{a}/\partial\mathbf{v})_{D}]_{\mathrm{ECI}}$" style="width:66px;height:11px;">) resolved in the ECI frame given the position (<img src="dadX_drag_doc_eq12956213191610695038.png" alt="$[\mathbf{r}]_{\mathrm{ECI}}$" style="width:24px;height:11px;">), inertial velocity (<img src="dadX_drag_doc_eq06133646864746399724.png" alt="$[\mathbf{v}]_{\mathrm{ECI}}$" style="width:26px;height:11px;">), and Earth angular velocity resolved (<img src="dadX_drag_doc_eq00625781434950015327.png" alt="$[\vec{\omega}_{\odot}]_{\mathrm{ECI}}$" style="width:32px;height:11px;">) resolved in the ECI frame, the ballistic coefficient (<img src="dadX_drag_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;">), the atmospheric mass density (<img src="dadX_drag_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">), the partial derivative of atmospheric mass density with respect to position (<img src="dadX_drag_doc_eq12656030493825152944.png" alt="$[\partial\rho/\partial\mathbf{r}]_{\mathrm{ECEF}}$" style="width:55px;height:11px;">) resolved in the ECEF frame, and the rotation matrix from the ECEF frame to the ECI frame (<img src="dadX_drag_doc_eq14728827196602983985.png" alt="$[\mathbf{R}_{\mathrm{ECEF}\to\mathrm{ECI}}]$" style="width:56px;height:11px;">).</p><h2 id="3">Input/Output Parameters</h2><p>
+  <table border=1>
+      <tr>
+          <td></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td rowspan="7" style="text-align:center"><b>Input</b></td>
+          <td style="text-align:center"><TT>r_eci</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECI}}" title="" /></td>
+          <td>position resolved in ECI frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">m</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>v_eci</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{v}]_{\mathrm{ECI}}" title="" /></td>
+          <td>inertial velocity resolved in ECI frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">m/s</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>w_eci</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{\omega}_{\oplus}]_{\mathrm{ECI}}" title="" /></td>
+          <td>Earth angular velocity resolved in ECI frame frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">rad/s</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>B</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+          <td>ballistic coefficient</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">m<sup>2</sup>/kg</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>rho</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td>
+          <td>atmospheric mass density</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">kg/m<sup>3</sup></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>drhodr</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\dfrac{\partial\rho}{\partial\mathbf{r}}\right]_{\mathrm{ECEF}}" title="" /></td>
+          <td>partial derivative of atmospheric mass density with respect to position resolved in the ECEF frame</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">kg/m<sup>4</sup></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>R_ecef2eci</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{R}_{\mathrm{ECEF}\rightarrow\mathrm{ECI}}]" title="" /></td>
+          <td>rotation matrix from ECEF frame to ECI frame</td>
+          <td style="text-align:center">3×3<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td rowspan="2" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><TT>dadr_D</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\left(\dfrac{\partial\mathbf{a}}{\partial\mathbf{r}}\right)_{D}\right]_{\mathrm{ECI}}" title="" /></td></td>
+          <td>partial derivative of drag acceleration with respect to position</td>
+          <td style="text-align:center">3×3<BR>double</td>
+          <td style="text-align:center">s<sup>-2</sup></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>dadv_D</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\left(\dfrac{\partial\mathbf{a}}{\partial\mathbf{v}}\right)_{D}\right]_{\mathrm{ECI}}" title="" /></td></td>
+          <td>partial derivative of drag acceleration with respect to inertial velocity</td>
+          <td style="text-align:center">3×3<BR>double</td>
+          <td style="text-align:center">s<sup>-1</sup></td>
+      </tr>
+  </table>
+</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |dadX_drag|
+% Partial derivatives of drag acceleration with respect to position and 
+% inertial velocity, resolved in the ECI frame.
+% 
+% <index.html Back to Astrodynamics Toolbox Contents>.
+%% Syntax
+%   [dadr_D,dadv_D] = dadX_drag(r_eci,v_eci,w_eci,B,rho,drhodr,R_ecef2eci)
+%% Description
+% |[dadr_D,dadv_D] = dadX_drag(r_eci,v_eci,w_eci,B,rho,drhodr,R_ecef2eci)| 
+% determines the partial derivatives of the drag acceleration with respect 
+% to position 
+% ($[(\partial\mathbf{a}/\partial\mathbf{r})_{D}]_{\mathrm{ECI}}$) and 
+% inertial velocity 
+% ($[(\partial\mathbf{a}/\partial\mathbf{v})_{D}]_{\mathrm{ECI}}$) resolved
+% in the ECI frame given the position ($[\mathbf{r}]_{\mathrm{ECI}}$), 
+% inertial velocity ($[\mathbf{v}]_{\mathrm{ECI}}$), and Earth angular
+% velocity resolved ($[\vec{\omega}_{\odot}]_{\mathrm{ECI}}$) resolved in
+% the ECI frame, the ballistic coefficient ($B$), the atmospheric mass
+% density ($\rho$), the partial derivative of atmospheric mass density
+% with respect to position 
+% ($[\partial\rho/\partial\mathbf{r}]_{\mathrm{ECEF}}$) resolved in the
+% ECEF frame, and the rotation matrix from the ECEF frame to the ECI frame
+% ($[\mathbf{R}_{\mathrm{ECEF}\to\mathrm{ECI}}]$).
+%% Input/Output Parameters
+% <html>
+%   <table border=1>
+%       <tr>
+%           <td></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td rowspan="7" style="text-align:center"><b>Input</b></td>
+%           <td style="text-align:center"><TT>r_eci</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{r}]_{\mathrm{ECI}}" title="" /></td>
+%           <td>position resolved in ECI frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">m</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>v_eci</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{v}]_{\mathrm{ECI}}" title="" /></td>
+%           <td>inertial velocity resolved in ECI frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">m/s</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>w_eci</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{\omega}_{\oplus}]_{\mathrm{ECI}}" title="" /></td>
+%           <td>Earth angular velocity resolved in ECI frame frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">rad/s</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>B</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+%           <td>ballistic coefficient</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">m<sup>2</sup>/kg</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>rho</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\rho" title="" /></td>
+%           <td>atmospheric mass density</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">kg/m<sup>3</sup></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>drhodr</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\dfrac{\partial\rho}{\partial\mathbf{r}}\right]_{\mathrm{ECEF}}" title="" /></td>
+%           <td>partial derivative of atmospheric mass density with respect to position resolved in the ECEF frame</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">kg/m<sup>4</sup></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>R_ecef2eci</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\mathbf{R}_{\mathrm{ECEF}\rightarrow\mathrm{ECI}}]" title="" /></td>
+%           <td>rotation matrix from ECEF frame to ECI frame</td>
+%           <td style="text-align:center">3×3<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td rowspan="2" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><TT>dadr_D</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\left(\dfrac{\partial\mathbf{a}}{\partial\mathbf{r}}\right)_{D}\right]_{\mathrm{ECI}}" title="" /></td></td>
+%           <td>partial derivative of drag acceleration with respect to position</td>
+%           <td style="text-align:center">3×3<BR>double</td>
+%           <td style="text-align:center">s<sup>-2</sup></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>dadv_D</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\left(\dfrac{\partial\mathbf{a}}{\partial\mathbf{v}}\right)_{D}\right]_{\mathrm{ECI}}" title="" /></td></td>
+%           <td>partial derivative of drag acceleration with respect to inertial velocity</td>
+%           <td style="text-align:center">3×3<BR>double</td>
+%           <td style="text-align:center">s<sup>-1</sup></td>
+%       </tr>
+%   </table>
+% </html>
+##### SOURCE END #####
+--></body></html>
