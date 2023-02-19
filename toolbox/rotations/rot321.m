@@ -5,7 +5,7 @@
 %   R321 = rot321(theta1,theta2,theta3)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-02-18
+% Last Update: 2023-02-19
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -14,10 +14,6 @@
 %
 % TECHNICAL DOCUMENTATION:
 % https://tamaskis.github.io/files/Aerospace_Simulation.pdf
-
-% REFERENCES:
-%   [1] Wertz, "Spacecraft Attitude Determination and Control" 
-%       (pp. 763-764)
 %
 %--------------------------------------------------------------------------
 %
@@ -44,7 +40,7 @@ function R321 = rot321(theta1,theta2,theta3)
     s3 = sin(theta3);
     c3 = cos(theta3);
     
-    % rotation matrix
+    % constructs rotation matrix
     R321 = [ c2*c1            c2*s1           -s2;
             -c3*s1+s3*s2*c1   c3*c1+s3*s2*s1   s3*c2;
              s3*s1+c3*s2*c1  -s3*c1+c3*s2*s1   c3*c2];

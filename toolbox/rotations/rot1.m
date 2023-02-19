@@ -4,12 +4,16 @@
 %
 %   R1 = rot1(theta)
 %
-% Author: Tamas Kis
-% Last Update: 2022-01-05
+% Copyright © 2022 Tamas Kis
+% Last Update: 2023-02-19
+% Website: https://tamaskis.github.io
+% Contact: tamas.a.kis@outlook.com
 %
-% REFERENCES:
-%   [1] Vallado, "Fundamentals of Astrodynamics and Applications", 4th Ed.
-%       (p. 162)
+% TOOLBOX DOCUMENTATION:
+% https://tamaskis.github.io/Aerospace_Simulation_Toolbox-MATLAB/
+%
+% TECHNICAL DOCUMENTATION:
+% https://tamaskis.github.io/files/Aerospace_Simulation.pdf
 %
 %--------------------------------------------------------------------------
 %
@@ -25,7 +29,14 @@
 %
 %==========================================================================
 function R1 = rot1(theta)
-    R1 = [1   0            0;
-          0   cos(theta)   sin(theta);
-          0  -sin(theta)   cos(theta)];
+    
+    % precomputes trigonometric functions
+    c = cos(theta);
+    s = sin(theta);
+    
+    % constructs rotation matrix
+    R1 = [1   0   0;
+          0   c   s;
+          0  -s   c];
+    
 end
