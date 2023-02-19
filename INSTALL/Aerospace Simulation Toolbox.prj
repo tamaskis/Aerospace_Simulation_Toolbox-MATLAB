@@ -1,0 +1,142 @@
+<deployment-project plugin="plugin.toolbox" plugin-version="1.0">
+  <configuration file="/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/INSTALL/Aerospace Simulation Toolbox.prj" location="/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/INSTALL" name="Aerospace Simulation Toolbox" target="target.toolbox" target-name="Package Toolbox">
+    <param.appname>Aerospace Simulation Toolbox</param.appname>
+    <param.authnamewatermark>Tamas Kis</param.authnamewatermark>
+    <param.email>tamas.a.kis@outlook.com</param.email>
+    <param.company />
+    <param.summary />
+    <param.description />
+    <param.screenshot />
+    <param.version>1.0.0</param.version>
+    <param.output>${PROJECT_ROOT}/Aerospace Simulation Toolbox.mltbx</param.output>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.guid>1741034d-41f1-4e01-8d44-0e7b2c0ce576</param.guid>
+    <param.exclude.filters>.DS_Store</param.exclude.filters>
+    <param.exclude.pcodedmfiles>true</param.exclude.pcodedmfiles>
+    <param.examples />
+    <param.demosxml />
+    <param.apps />
+    <param.registered.apps />
+    <param.docs />
+    <param.getting.started.guide />
+    <param.matlabpath.excludes />
+    <param.javaclasspath.excludes />
+    <param.exported.on.package>false</param.exported.on.package>
+    <param.required.addons>
+      <requiredaddons>
+        <requiredAddOn downloadURL="" earliest="earliest" fromRepository="false" id="3a9dbddd-6f28-44fe-922d-d25a62292dc3" include="false" latest="latest">Numerical Differentiation Toolbox</requiredAddOn>
+        <requiredAddOn downloadURL="" earliest="earliest" fromRepository="false" id="47f7e986-2dcd-424a-aaea-530aaf69dd9d" include="false" latest="latest">IVP Solver Toolbox</requiredAddOn>
+      </requiredaddons>
+    </param.required.addons>
+    <param.matlab.project.id />
+    <param.matlab.project.name />
+    <param.release.start />
+    <param.release.end />
+    <param.release.current.only>false</param.release.current.only>
+    <param.compatiblity.windows>true</param.compatiblity.windows>
+    <param.compatiblity.macos>true</param.compatiblity.macos>
+    <param.compatiblity.linux>true</param.compatiblity.linux>
+    <param.compatiblity.matlabonline>true</param.compatiblity.matlabonline>
+    <param.installation.map />
+    <param.additional.sw.names />
+    <param.additional.sw.licenses />
+    <param.additional.sw.win.url />
+    <param.additional.sw.mac.url />
+    <param.additional.sw.linux.url />
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.summary />
+      <param.description />
+      <param.screenshot />
+      <param.output />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.exclude.pcodedmfiles />
+      <param.examples />
+      <param.demosxml />
+      <param.apps />
+      <param.registered.apps />
+      <param.docs />
+      <param.getting.started.guide />
+      <param.matlabpath.excludes />
+      <param.javaclasspath.excludes />
+      <param.exported.on.package />
+      <param.matlab.project.id />
+      <param.matlab.project.name />
+      <param.release.start />
+      <param.release.end />
+      <param.release.current.only />
+      <param.compatiblity.windows />
+      <param.compatiblity.macos />
+      <param.compatiblity.linux />
+      <param.compatiblity.matlabonline />
+      <param.installation.map />
+      <param.additional.sw.names />
+      <param.additional.sw.licenses />
+      <param.additional.sw.win.url />
+      <param.additional.sw.mac.url />
+      <param.additional.sw.linux.url />
+    </unset>
+    <fileset.rootdir>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox</file>
+    </fileset.rootdir>
+    <fileset.rootfiles>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/attitude</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/constants</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/data</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/doc</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/earthorientation</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/environmentmodels</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/forcemodels</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/gnss</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/initialization</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/kepler</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/kinematics</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/lib</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/linearization</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/orbits</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/propagators</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/relativeorbits</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/rotations</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/stateestimation</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/timescales</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/unitconversions</file>
+      <file>/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/toolbox/visualization</file>
+    </fileset.rootfiles>
+    <fileset.depfun.included />
+    <fileset.depfun.excluded>
+      <file>${MATLAB_ROOT}/toolbox/matlab/demos/topo.mat</file>
+    </fileset.depfun.excluded>
+    <fileset.package />
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}" name="Aerospace Simulation Toolbox.mltbx" optional="false">/Users/tamaskis/Documents/Projects/MATLAB/toolboxes/Aerospace_Simulation_Toolbox-MATLAB/INSTALL/Aerospace Simulation Toolbox.mltbx</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/Applications/MATLAB_R2022a.app</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>true</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>13.0.1</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>maci64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>

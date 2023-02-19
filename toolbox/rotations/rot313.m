@@ -1,12 +1,20 @@
 %==========================================================================
 %
-% rot313  Rotation matrix for the 3-1-3 Euler rotation sequence.
+% rot313  Rotation matrix for the 3-1-3 rotation sequence.
 %
-%   R313 = rot313(psi,theta,phi)
+%   R313 = rot313(theta1,theta2,theta3)
 %
-% Author: Tamas Kis
-% Last Update: 2022-01-05
+% Copyright © 2022 Tamas Kis
+% Last Update: 2023-02-18
+% Website: https://tamaskis.github.io
+% Contact: tamas.a.kis@outlook.com
 %
+% TOOLBOX DOCUMENTATION:
+% https://tamaskis.github.io/Aerospace_Simulation_Toolbox-MATLAB/
+%
+% TECHNICAL DOCUMENTATION:
+% https://tamaskis.github.io/files/Aerospace_Simulation.pdf
+
 % REFERENCES:
 %   [1] Wertz, "Spacecraft Attitude Determination and Control" 
 %       (pp. 763-764)
@@ -16,30 +24,29 @@
 % ------
 % INPUT:
 % ------
-%   psi     - (1×1 double) angle for 1st rotation (about 3rd axis) [rad]
-%   theta   - (1×1 double) angle for 2nd rotation (about 1st axis) [rad]
-%   phi     - (1×1 double) angle for 3rd rotation (about 3rd axis) [rad]
+%   theta1  - (1×1 double) angle for 1st rotation (about 3rd axis) [rad]
+%   theta2  - (1×1 double) angle for 2nd rotation (about 1st axis) [rad]
+%   theta3  - (1×1 double) angle for 3rd rotation (about 3rd axis) [rad]
 %
 % -------
 % OUTPUT:
 % -------
-%   R313    - (3×3 double) rotation matrix for 3-1-3 Euler rotation
-%             sequence
+%   R313    - (3×3 double) rotation matrix for 3-1-3 rotation sequence
 %
 %==========================================================================
-function R313 = rot313(psi,theta,phi)
+function R313 = rot313(theta1,theta2,theta3)
     
     % precomputes trigonometric functions
-    sp = sin(psi);
-    cp = cos(psi);
-    st = sin(theta);
-    ct = cos(theta);
-    sf = sin(phi);
-    cf = cos(phi);
-
-    % 3-1-3 rotation matrix
-    R313 = [ cf*cp-sf*ct*sp   cf*sp+sf*ct*cp   sf*st;
-            -sf*cp-cf*ct*sp  -sf*sp+cf*ct*cp   cf*st;
-             st*sp           -st*cp            ct];
-
+    s1 = sin(theta1);
+    c1 = cos(theta1);
+    s2 = sin(theta2);
+    c2 = cos(theta2);
+    s3 = sin(theta3);
+    c3 = cos(theta3);
+    
+    % rotation matrix for 3-1-3 rotation sequence
+    R313 = [ c3*c1-s3*c2*s1   c3*s1+s3*c2*c1   s3*s2;
+            -s3*c1-c3*c2*s1  -s3*s1+c3*c2*c1   c3*s2;
+             s2*s1           -s2*c1            c2];
+    
 end
