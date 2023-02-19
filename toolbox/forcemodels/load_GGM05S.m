@@ -25,17 +25,17 @@
 %
 %==========================================================================
 function GGM05S = load_GGM05S(N)
-
+    
     % loads full set of gravity coefficients
-    GGM05S = struct2array(load('GGM05S.mat'));
-
+    GGM05S = load_numeric_data('GGM05S.mat');
+    
     % defaults N to maximum possible value if not input
     if (nargin == 0) || isempty(N)
         N = size(GGM05S.C_norm,1)-1;
     end
-
+    
     % keeps coefficients up to degree/order N
     GGM05S.C_norm = GGM05S.C_norm(1:(N+1),1:(N+1));
     GGM05S.S_norm = GGM05S.S_norm(1:(N+1),1:(N+1));
-
+    
 end

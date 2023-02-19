@@ -35,28 +35,28 @@
 %
 %==========================================================================
 function eop = load_eop(MJD_UTC0,duration)
-
+    
     % loads full data set
-    eop = struct2array(load('eop.mat'));
-
+    eop = load_numeric_data('eop.mat');
+    
     % determines if inputs are provided
     MJD_UTC0_input = (nargin >= 1) && ~isempty(MJD_UTC0);
     duration_input = (nargin == 2) && ~isempty(duration);
     
     % trims data set to only keep relevant data for simulation
     if MJD_UTC0_input && duration_input
-
+        
         % start and end dates of data to keep (from start to end of sim)
         MJD_start = floor(MJD_UTC0);
         MJD_end = ceil(MJD_UTC0+duration/24);
-    
+        
         % start and end indices
         i_start = interval_search(eop(:,1),MJD_start,false);
         [~,i_end] = interval_search(eop(:,1),MJD_end,false);
-    
+        
         % removes unnecessary data
         eop = eop(i_start:i_end,:);
-
+        
     end
-
+    
 end

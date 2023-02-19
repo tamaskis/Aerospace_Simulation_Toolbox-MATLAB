@@ -31,15 +31,15 @@ function DAT = get_DAT(MJD)
     % loads DAT data
     %   --> first column is the date in MJD
     %   --> second column is DAT in seconds
-    DAT_data = struct2array(load('DAT.mat'));
-
+    DAT_data = load_numeric_data('DAT.mat');
+    
     % truncates date to beginning of day
     MJD = floor(MJD);
-
+    
     % if date is after the latest available data, set it to latest date in
     % data table
     MJD = min([MJD,DAT_data(end,1)]);
-
+    
     % if date is before the first available date, throw an error
     if (MJD < DAT_data(1,1))
         error('ΔAT data not available for specified date.');
@@ -48,5 +48,5 @@ function DAT = get_DAT(MJD)
     % extracts DAT from data
     index = interval_search(DAT_data(:,1),MJD);
     DAT = DAT_data(index,2);
-
+    
 end

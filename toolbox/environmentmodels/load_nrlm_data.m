@@ -17,5 +17,5 @@
 %
 %==========================================================================
 function nrlm_data = load_nrlm_data
-    nrlm_data = struct2array(load('nrlm_data.mat'));
+    nrlm_data = load_numeric_data('nrlm_data.mat');
 end

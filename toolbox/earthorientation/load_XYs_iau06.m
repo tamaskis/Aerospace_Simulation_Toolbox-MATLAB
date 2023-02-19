@@ -26,5 +26,5 @@
 %
 %==========================================================================
 function XYs_iau06 = load_XYs_iau06
-    XYs_iau06 = struct2array(load('XYs_iau06.mat'));
+    XYs_iau06 = load_numeric_data('XYs_iau06.mat');
 end

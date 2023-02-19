@@ -22,5 +22,5 @@
 %
 %==========================================================================
 function simdata = load_simdata(file_path)
-    simdata = struct2array(load(file_path));
+    simdata = load_numeric_data(file_path);
 end

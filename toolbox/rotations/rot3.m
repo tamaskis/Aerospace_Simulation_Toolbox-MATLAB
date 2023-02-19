@@ -4,6 +4,8 @@
 %
 %   R3 = rot3(theta)
 %
+% See also rot1, rot2, rot313, rot321.
+%
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-02-19
 % Website: https://tamaskis.github.io

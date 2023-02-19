@@ -63,9 +63,9 @@
 function [sw1,sw2] = load_sw(MJD_UTC0,duration)
     
     % loads full data sets
-    sw1 = struct2array(load('sw1.mat'));
-    sw2 = struct2array(load('sw2.mat'));
-
+    sw1 = load_numeric_data('sw1.mat');
+    sw2 = load_numeric_data('sw2.mat');
+    
     % determines if inputs are provided
     MJD_UTC0_input = (nargin >= 1) && ~isempty(MJD_UTC0);
     duration_input = (nargin == 2) && ~isempty(duration);
@@ -76,40 +76,40 @@ function [sw1,sw2] = load_sw(MJD_UTC0,duration)
     
     % trims data set to only keep relevant data for simulation
     if MJD_UTC0_input && duration_input
-
+        
         % start and end dates of data to keep (from 3 days before start to 
         % end of simulation)
         MJD_start = floor(MJD_UTC0)-3;
         MJD_end = ceil(MJD_UTC0+duration/24);
-    
+        
         % start and end indices
         i_start = interval_search(sw1(:,1),MJD_start,false);
         [~,i_end] = interval_search(sw1(:,1),MJD_end,false);
-    
+        
         % removes unnecessary data
         sw1 = sw1(i_start:i_end,:);
-
+        
     end
-
+    
     % ---------------------
     % 2nd half of data set.
     % ---------------------
     
     % trims data set to only keep relevant data for simulation
     if MJD_UTC0_input && duration_input
-
+        
         % start and end dates of data to keep (from 5 days before start to 
         % end of simulation)
         MJD_start = floor(MJD_UTC0)-5;
         MJD_end = ceil(MJD_UTC0+duration/24);
-    
+        
         % start and end indices
         i_start = interval_search(sw2(:,1),MJD_start,false);
         [~,i_end] = interval_search(sw2(:,1),MJD_end,false);
-    
+        
         % removes unnecessary data
         sw2 = sw2(i_start:i_end,:);
-
+        
     end
-
+    
 end

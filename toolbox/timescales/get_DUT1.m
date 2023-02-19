@@ -27,16 +27,16 @@ function DUT1 = get_DUT1(MJD)
     % loads DUT1 data
     %   --> first column is the data in MJD
     %   --> second column is DUT1 in seconds
-    DUT1_data = struct2array(load('DUT1.mat'));
-
+    DUT1_data = load_numeric_data('DUT1.mat');
+    
     % truncates to beginning of day
     MJD = floor(MJD);
-
+    
     % if date is before the first available date, throw an error
     if (MJD < DUT1_data(1,1))
         error('ΔUT1 data not available for specified date.');
     end
-
+    
     % if date is after last available date, throw an error
     if (MJD > DUT1_data(end,1))
         error('ΔUT1 data not available for specified date.');
@@ -44,5 +44,5 @@ function DUT1 = get_DUT1(MJD)
     
     % extracts DUT1 from data
     DUT1 = DUT1_data(DUT1_data(:,1)==MJD,2);
-
+    
 end

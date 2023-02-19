@@ -4,6 +4,8 @@
 %
 %   R321 = rot321(theta1,theta2,theta3)
 %
+% See also rot1, rot2, rot3, rot313.
+%
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-02-19
 % Website: https://tamaskis.github.io
