@@ -4,7 +4,7 @@
 % Runs all unit testing scripts.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-02-19
+% Last Update: 2023-04-04
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,8 +22,14 @@ clear; clc; close all;
 % adds path to testing scripts
 addpath('testsuites')
 
+% adds path to toolbox
+addpath(genpath('../toolbox'));
+
 
 
 %% RUNS ALL TESTS
 
+TEST_angles;
 TEST_rotations;
+TEST_time_scales;
+TEST_time_units;

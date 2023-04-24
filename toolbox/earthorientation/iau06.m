@@ -24,8 +24,8 @@
 % ------
 %   MJD_UT1     - (1×1 double) UT1 (Universal Time 1) [MJD]
 %   MJD_TT      - (1×1 double) TT (Terrestrial Time) [MJD]
-%   xp          - (1×1 double) polar coordinate of the CIP ['']
-%   yp          - (1×1 double) polar coordinate of the CIP ['']
+%   xp          - (1×1 double) polar coordinate of the CIP ["]
+%   yp          - (1×1 double) polar coordinate of the CIP ["]
 %   dX          - (1×1 double) correction term for X [mas]
 %   dY          - (1×1 double) correction term for Y [mas]
 %   LOD         - (1×1 double) length of day [ms]

@@ -1,0 +1,72 @@
+%==========================================================================
+%
+% mjd2cal  Gregorian (calendar) date from modified Julian date.
+%
+%   cal = mjd2cal(MJD)
+%
+% See also cal2doy, cal2mjd, doy2cal, f2hms, hms2f, jd2mjd, jd2t, mjd2f,
+% mjd2jd, mjd2t.
+%
+% Copyright © 2022 Tamas Kis
+% Last Update: 2023-04-01
+% Website: https://tamaskis.github.io
+% Contact: tamas.a.kis@outlook.com
+%
+% TOOLBOX DOCUMENTATION:
+% https://tamaskis.github.io/Aerospace_Simulation_Toolbox-MATLAB/
+%
+% TECHNICAL DOCUMENTATION:
+% https://tamaskis.github.io/files/Aerospace_Simulation.pdf
+%
+%--------------------------------------------------------------------------
+%
+% ------
+% INPUT:
+% ------
+%   MJD     - (1×1 double) modified Julian date [d]
+%
+% -------
+% OUTPUT:
+% -------
+%   cal     - (1×6 double) Gregorian (calendar) date [y,mo,d,h,m,s]
+%               --> output as [YYYY,MM,DD,hh,mm,ss]
+%
+%==========================================================================
+function cal = mjd2cal(MJD)
+    
+    % throws an error if date is before 1582 October 15
+    if MJD < -100840
+        error(['This function is only valid for modified Julian dates ',...
+            'greater than -100840 (corresponding to Gregorian dates ',...
+            'after 1582 October 14).']);
+    end
+    
+    % integer Julian day (Julian date at noon) [JD]
+    a = floor(MJD)+2400001;
+    
+    % auxiliary quantities
+    b = floor((a-1867216.25)/36524.25);
+    c = a+b-floor(b/4)+1525;
+    d = floor((c-121.1)/365.25);
+    e = floor(365.25*d);
+    f = floor((c-e)/30.6001);
+    
+    % day of month [d]
+    DD = c-e-floor(30.6001*f);
+    
+    % month of year [mo]
+    MM = f-1-12*floor(f/14);
+    
+    % year [y]
+    YYYY = d-4715-floor((7+MM)/10);
+    
+    % fraction of day [d]
+    f_DD = MJD-floor(MJD);
+
+    % hours, minutes, and seconds [h,m,s]
+    [hh,mm,ss] = f2hms(f_DD);
+    
+    % Gregorian date [y,mo,d,h,m,s]
+    cal = [YYYY,MM,DD,hh,mm,ss];
+    
+end

@@ -25,8 +25,8 @@
 % ------
 %   T_TT    - (1×1 double) Julian centuries since J2000.0 of TT
 %             (Terrestrial Time) [c]
-%   xp      - (1×1 double) polar coordinate of the CIP ['']
-%   yp      - (1×1 double) polar coordinate of the CIP ['']
+%   xp      - (1×1 double) polar coordinate of the CIP ["]
+%   yp      - (1×1 double) polar coordinate of the CIP ["]
 %
 % -------
 % OUTPUT:
@@ -36,7 +36,7 @@
 %==========================================================================
 function W = W_iau06(T_TT,xp,yp)
     
-    % s' ['']
+    % s' ["]
     sp = -0.000047*T_TT;
 
     % converts s', xp, and yp to radians

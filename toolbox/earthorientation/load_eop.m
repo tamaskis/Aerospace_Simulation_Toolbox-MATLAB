@@ -22,8 +22,8 @@
 % -------
 %   eop         - (N×6 double) array storing Earth orientation parameters
 %                   --> Column 1: MJD - modified Julian date [MJD]
-%                   --> Column 2: xp  - polar coordinate of the CIP ['']
-%                   --> Column 3: yp  - polar coordinate of the CIP ['']
+%                   --> Column 2: xp  - polar coordinate of the CIP ["]
+%                   --> Column 3: yp  - polar coordinate of the CIP ["]
 %                   --> Column 4: dX  - correction term for X [mas]
 %                   --> Column 5: dY  - correction term for Y [mas]
 %                   --> Column 6: LOD - length of day [ms]

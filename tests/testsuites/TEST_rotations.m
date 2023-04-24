@@ -4,20 +4,26 @@
 % Unit testing of the rot1, rot2, rot3,  rot313, and rot321 functions.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-02-18
+% Last Update: 2023-04-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
 % DEPENDENCIES:
 %   • Simple Unit Testing Toolbox (https://tamaskis.github.io/Simple_Unit_Testing_Toolbox-MATLAB)
-%   • Aerospace Dynamics Toolbox (https://tamaskis.github.io/Aerospace_Dynamics_Toolbox-MATLAB/)
+%   • Aerospace Simulation Toolbox (https://tamaskis.github.io/Aerospace_Simulation_Toolbox-MATLAB/)
 
+
+
+%% SCRIPT SETUP
+
+% clears Workspace and closes all figures
+clear; close all;
 
 
 
 %% INITIALIZE TEST SUITE
 
-test_suite = TestSuite('rotation tests',false);
+test_suite = TestSuite('rotation tests');
 
 
 
@@ -78,12 +84,12 @@ rot1_2pi_true = [1   0   0;
                  0   0   1];
 
 % adds tests
-test_suite.add_test(TestEqual(rot1_0,rot1_0_true,'rot1(0)',15));
-test_suite.add_test(TestEqual(rot1_pi_4,rot1_pi_4_true,'rot1(π/4)',15));
-test_suite.add_test(TestEqual(rot1_pi_2,rot1_pi_2_true,'rot1(π/2)',15));
-test_suite.add_test(TestEqual(rot1_3pi_4,rot1_3pi_4_true,'rot1(3π/4)',15));
+test_suite.add_test(TestEqual(rot1_0,rot1_0_true,'rot1(0)'));
+test_suite.add_test(TestEqual(rot1_pi_4,rot1_pi_4_true,'rot1(π/4)'));
+test_suite.add_test(TestEqual(rot1_pi_2,rot1_pi_2_true,'rot1(π/2)'));
+test_suite.add_test(TestEqual(rot1_3pi_4,rot1_3pi_4_true,'rot1(3π/4)'));
 test_suite.add_test(TestEqual(rot1_pi,rot1_pi_true,'rot1(π)',15));
-test_suite.add_test(TestEqual(rot1_5pi_4,rot1_5pi_4_true,'rot1(5π/4)',15));
+test_suite.add_test(TestEqual(rot1_5pi_4,rot1_5pi_4_true,'rot1(5π/4)'));
 test_suite.add_test(TestEqual(rot1_3pi_2,rot1_3pi_2_true,'rot1(3π/2)',15));
 test_suite.add_test(TestEqual(rot1_7pi_4,rot1_7pi_4_true,'rot1(7π/4)',15));
 test_suite.add_test(TestEqual(rot1_2pi,rot1_2pi_true,'rot1(2π)',15));
@@ -147,12 +153,12 @@ rot2_2pi_true = [1   0   0;
                  0   0   1];
 
 % adds tests
-test_suite.add_test(TestEqual(rot2_0,rot2_0_true,'rot2(0)',15));
-test_suite.add_test(TestEqual(rot2_pi_4,rot2_pi_4_true,'rot2(π/4)',15));
-test_suite.add_test(TestEqual(rot2_pi_2,rot2_pi_2_true,'rot2(π/2)',15));
-test_suite.add_test(TestEqual(rot2_3pi_4,rot2_3pi_4_true,'rot2(3π/4)',15));
+test_suite.add_test(TestEqual(rot2_0,rot2_0_true,'rot2(0)'));
+test_suite.add_test(TestEqual(rot2_pi_4,rot2_pi_4_true,'rot2(π/4)'));
+test_suite.add_test(TestEqual(rot2_pi_2,rot2_pi_2_true,'rot2(π/2)'));
+test_suite.add_test(TestEqual(rot2_3pi_4,rot2_3pi_4_true,'rot2(3π/4)'));
 test_suite.add_test(TestEqual(rot2_pi,rot2_pi_true,'rot2(π)',15));
-test_suite.add_test(TestEqual(rot2_5pi_4,rot2_5pi_4_true,'rot2(5π/4)',15));
+test_suite.add_test(TestEqual(rot2_5pi_4,rot2_5pi_4_true,'rot2(5π/4)'));
 test_suite.add_test(TestEqual(rot2_3pi_2,rot2_3pi_2_true,'rot2(3π/2)',15));
 test_suite.add_test(TestEqual(rot2_7pi_4,rot2_7pi_4_true,'rot2(7π/4)',15));
 test_suite.add_test(TestEqual(rot2_2pi,rot2_2pi_true,'rot2(2π)',15));
@@ -216,12 +222,12 @@ rot3_2pi_true = [1   0   0;
                  0   0   1];
 
 % adds tests
-test_suite.add_test(TestEqual(rot3_0,rot3_0_true,'rot3(0)',15));
-test_suite.add_test(TestEqual(rot3_pi_4,rot3_pi_4_true,'rot3(π/4)',15));
-test_suite.add_test(TestEqual(rot3_pi_2,rot3_pi_2_true,'rot3(π/2)',15));
-test_suite.add_test(TestEqual(rot3_3pi_4,rot3_3pi_4_true,'rot3(3π/4)',15));
+test_suite.add_test(TestEqual(rot3_0,rot3_0_true,'rot3(0)'));
+test_suite.add_test(TestEqual(rot3_pi_4,rot3_pi_4_true,'rot3(π/4)'));
+test_suite.add_test(TestEqual(rot3_pi_2,rot3_pi_2_true,'rot3(π/2)'));
+test_suite.add_test(TestEqual(rot3_3pi_4,rot3_3pi_4_true,'rot3(3π/4)'));
 test_suite.add_test(TestEqual(rot3_pi,rot3_pi_true,'rot3(π)',15));
-test_suite.add_test(TestEqual(rot3_5pi_4,rot3_5pi_4_true,'rot3(5π/4)',15));
+test_suite.add_test(TestEqual(rot3_5pi_4,rot3_5pi_4_true,'rot3(5π/4)'));
 test_suite.add_test(TestEqual(rot3_3pi_2,rot3_3pi_2_true,'rot3(3π/2)',15));
 test_suite.add_test(TestEqual(rot3_7pi_4,rot3_7pi_4_true,'rot3(7π/4)',15));
 test_suite.add_test(TestEqual(rot3_2pi,rot3_2pi_true,'rot3(2π)',15));
@@ -251,7 +257,7 @@ R321_true = rot1(theta3)*rot2(theta2)*rot3(theta1);
 R321_actual = rot321(theta1,theta2,theta3);
 
 % unit test
-test_suite.add_test(TestEqual(R321_actual,R321_true,'R321 forward',15));
+test_suite.add_test(TestEqual(R321_actual,R321_true,'R321 forward'));
 
 % ---------------
 % "Reverse" test.
@@ -265,7 +271,7 @@ R321_reverse_actual = rot321(theta1,theta2,theta3).';
 
 % unit test
 test_suite.add_test(TestEqual(R321_reverse_actual,R321_reverse_true,...
-    'R321 reverse',15));
+    'R321 reverse'));
 
 
 
@@ -288,7 +294,7 @@ R313_true = rot3(theta3)*rot1(theta2)*rot3(theta1);
 R313_actual = rot313(theta1,theta2,theta3);
 
 % unit test
-test_suite.add_test(TestEqual(R313_actual,R313_true,'R313 forward',15));
+test_suite.add_test(TestEqual(R313_actual,R313_true,'R313 forward'));
 
 % ---------------
 % "Reverse" test.

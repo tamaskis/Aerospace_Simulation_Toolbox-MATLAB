@@ -1,0 +1,99 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Time</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-01"><meta name="DC.source" content="index_time.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Time</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Time Scales</a></li><li><a href="#2">Unit Conversions</a></li></ul></div><h2 id="1">Time Scales</h2><div><ul><li><a href="get_DAT_doc.html"><b><tt>get_DAT</tt></b></a> Obtains the difference between UTC and TAI (<img src="index_time_eq09142653624661309053.png" alt="$\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$" style="width:95px;height:9px;">).</li><li><a href="get_DUT1_doc.html"><b><tt>get_DUT1</tt></b></a> Obtains the difference between UTC and UT1 (<img src="index_time_eq10378258814219133777.png" alt="$\Delta\mathrm{UT1}=\mathrm{UT1}-\mathrm{UTC}$" style="width:104px;height:9px;">).</li><li><a href="gps2tai_doc.html"><b><tt>gps2tai</tt></b></a> TAI from GPS time.</li><li><a href="gps2wks_doc.html"><b><tt>gps2wks</tt></b></a> GPS week and seconds from GPS time.</li><li><a href="tai2gps_doc.html"><b><tt>tai2gps</tt></b></a> GPS time from TAI.</li><li><a href="tai2tt_doc.html"><b><tt>tai2tt</tt></b></a> TT from TAI.</li><li><a href="tai2utc_doc.html"><b><tt>tai2utc</tt></b></a> UTC from TAI.</li><li><a href="tt2tai_doc.html"><b><tt>tt2tai</tt></b></a> TAI from TT.</li><li><a href="ut12utc_doc.html"><b><tt>ut12utc</tt></b></a> UTC from UT1.</li><li><a href="utc2tai_doc.html"><b><tt>utc2tai</tt></b></a> TAI from UTC.</li><li><a href="utc2ut1_doc.html"><b><tt>utc2ut1</tt></b></a> UT1 from UTC.</li><li><a href="wks2gps_doc.html"><b><tt>wks2gps</tt></b></a> GPS time from GPS week and seconds.</li></ul></div><h2 id="2">Unit Conversions</h2><div><ul><li><a href="cal2doy_doc.html"><b><tt>cal2doy</tt></b></a> Day of year from Gregorian (calendar) date.</li><li><a href="cal2mjd_doc.html"><b><tt>cal2mjd</tt></b></a> Modified Julian date from Gregorian (calendar) date.</li><li><a href="doy2cal_doc.html"><b><tt>doy2cal</tt></b></a> Gregorian (calendar) date from year and day of year.</li><li><a href="f2hms_doc.html"><b><tt>f2hms</tt></b></a> Hours, minutes, and seconds from fraction of day.</li><li><a href="hms2f_doc.html"><b><tt>hms2f</tt></b></a> Fraction of day from hours, minutes, and seconds.</li><li><a href="jd2mjd_doc.html"><b><tt>jd2mjd</tt></b></a> Modified Julian date from Julian date.</li><li><a href="jd2t_doc.html"><b><tt>jd2t</tt></b></a> Julian centuries since J2000.0 from Julian date.</li><li><a href="mjd2cal_doc.html"><b><tt>mjd2cal</tt></b></a> Gregorian (calendar) date from modified Julian date.</li><li><a href="mjd2f_doc.html"><b><tt>mjd2f</tt></b></a> Fraction of day from modified Julian date.</li><li><a href="mjd2jd_doc.html"><b><tt>mjd2jd</tt></b></a> Julian date from modified Julian date.</li><li><a href="mjd2t_doc.html"><b><tt>mjd2t</tt></b></a> Julian centuries since J2000.0 from modified Julian date.</li></ul></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Time
+%% Time Scales
+% * <get_DAT_doc.html *|get_DAT|*> Obtains the difference between UTC and TAI ($\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$).
+% * <get_DUT1_doc.html *|get_DUT1|*> Obtains the difference between UTC and UT1 ($\Delta\mathrm{UT1}=\mathrm{UT1}-\mathrm{UTC}$).
+% * <gps2tai_doc.html *|gps2tai|*> TAI from GPS time.
+% * <gps2wks_doc.html *|gps2wks|*> GPS week and seconds from GPS time.
+% * <tai2gps_doc.html *|tai2gps|*> GPS time from TAI.
+% * <tai2tt_doc.html *|tai2tt|*> TT from TAI.
+% * <tai2utc_doc.html *|tai2utc|*> UTC from TAI.
+% * <tt2tai_doc.html *|tt2tai|*> TAI from TT.
+% * <ut12utc_doc.html *|ut12utc|*> UTC from UT1.
+% * <utc2tai_doc.html *|utc2tai|*> TAI from UTC.
+% * <utc2ut1_doc.html *|utc2ut1|*> UT1 from UTC.
+% * <wks2gps_doc.html *|wks2gps|*> GPS time from GPS week and seconds.
+%% Unit Conversions
+% * <cal2doy_doc.html *|cal2doy|*> Day of year from Gregorian (calendar) date.
+% * <cal2mjd_doc.html *|cal2mjd|*> Modified Julian date from Gregorian (calendar) date.
+% * <doy2cal_doc.html *|doy2cal|*> Gregorian (calendar) date from year and day of year.
+% * <f2hms_doc.html *|f2hms|*> Hours, minutes, and seconds from fraction of day.
+% * <hms2f_doc.html *|hms2f|*> Fraction of day from hours, minutes, and seconds.
+% * <jd2mjd_doc.html *|jd2mjd|*> Modified Julian date from Julian date.
+% * <jd2t_doc.html *|jd2t|*> Julian centuries since J2000.0 from Julian date.
+% * <mjd2cal_doc.html *|mjd2cal|*> Gregorian (calendar) date from modified Julian date.
+% * <mjd2f_doc.html *|mjd2f|*> Fraction of day from modified Julian date.
+% * <mjd2jd_doc.html *|mjd2jd|*> Julian date from modified Julian date.
+% * <mjd2t_doc.html *|mjd2t|*> Julian centuries since J2000.0 from modified Julian date.
+##### SOURCE END #####
+--></body></html>
