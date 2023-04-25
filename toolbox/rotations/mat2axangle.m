@@ -5,7 +5,7 @@
 %   [e,Phi] = mat2axangle(R)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-23
+% Last Update: 2023-04-24
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -33,19 +33,64 @@
 % -----
 %   • Phi is returned as an angle between 0 and pi (inclusive).
 %   • e is return as a unit vector.
+%   • If Phi = 0, then e is returned as (1,0,0)ᵀ.
 %
 %==========================================================================
 function [e,Phi] = mat2axangle(R)
     
-    % principal angle [rad]
-    Phi = acos((R(1,1)+R(2,2)+R(3,3)-1)/2);
+    % cosine of the principal angle
+    c = (R(1,1)+R(2,2)+R(3,3)-1)/2;
     
-    % principal rotation vector
-    e = (1/(2*sin(Phi)))*[R(2,3)-R(3,2);
-                          R(3,1)-R(1,3);
-                          R(1,2)-R(2,1)];
+    % edge case #1: cos(Φ) = 1
+    if iabs(c-1) < 1e-11
+        
+        % principal rotation vector
+        e = [1;0;0];
+        
+        % principal angle [rad]
+        Phi = 0;
+        
+    % edge case #2: cos(Φ) = -1
+    elseif iabs(c+1) < 1e-11
+        
+        % principal angle [rad]
+        Phi = pi;
+        
+        % auxiliary matrix
+        A = R+eye(3,3);
+        
+        % determines principal rotation vector as first nonzero column of A
+        %   • if non nonzero column is found, then e = 0
+        e = zeros(3,1);
+        for i = 1:3
+            if inorm(A(:,i)) > 1e-3
+                e = A(:,i);
+                break;
+            end
+        end
+        
+    % base case
+    else
+        
+        % sine of the principal angle
+        s = sqrt(1-c^2);
+        
+        % principal angle
+        Phi = iatan2(s,c);
+        
+        % ensures that Φ ∈ [0,π]
+        if Phi < 0
+            Phi = Phi+pi;
+        end
+        
+        % principal rotation vector
+        e = [R(2,3)-R(3,2);
+             R(3,1)-R(1,3);
+             R(1,2)-R(2,1)];
+        
+    end
     
     % normalizes principal rotation vector
-    e = e/inorm(e);
+    e = e/norm(e);
     
 end
