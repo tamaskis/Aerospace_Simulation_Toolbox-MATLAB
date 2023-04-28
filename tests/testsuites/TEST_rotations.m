@@ -27,6 +27,62 @@ test_suite = TestSuite('rotation tests');
 
 
 
+%% eul2mat_321
+
+% TODO
+
+phi = pi/6;
+theta = -pi/6;
+psi = 3*pi/4;
+mat = eul2mat_321(psi,theta,phi);
+mat_true = [-0.6124,0.6124,0.5000;
+            -0.4356,-0.7891,0.4330;
+             0.6597,0.0474,0.7500];
+test_suite.add_test(TestEqual(mat,mat_true,'eul2mat_321 test 1',4));
+
+
+%% mat2eul_321
+
+% TODO
+
+R = [-0.6124,0.6124,0.5000;
+     -0.4356,-0.7891,0.4330;
+      0.6597,0.0474,0.7500];
+[psi_true,theta_true,phi_true] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi_true,theta_true,phi_true],[3*pi/4,-pi/6,pi/6],'mat2eul_321 test 1',4));
+
+% testing asin robustness
+
+% R = [-0.000000000000000   0.000000000000000  -1.000000000000001;
+%   -0.965925826289068  -0.258819045102521   0.000000000000000;
+%   -0.258819045102521   0.965925826289068   0.000000000000000];
+R = [-0.000000000000000   0.000000000000000  -1.000000000000000;
+  -0.965925826289068  -0.258819045102521   0.000000000000000;
+  -0.258819045102521   0.965925826289068   0.000000000000000];
+[psi_true,theta_true,phi_true] = mat2eul_321(R)
+test_suite.add_test(TestEqual([psi_true,theta_true,phi_true],[0,pi/2,-1.832596],'mat2eul_321 test 2',6));
+
+
+
+%% quat2mat
+
+% TODO
+
+% https://www.mathworks.com/help/aerotbx/ug/quat2dcm.html
+mat = quat2mat([sqrt(2)/2;0;sqrt(2)/2;0]);
+mat_true = [0,0,-1;0,1,0;1,0,0];
+test_suite.add_test(TestEqual(mat,mat_true,'q=(1,0,1,0)ᵀ',15));
+
+% https://www.mathworks.com/help/aerotbx/ug/quat2dcm.html
+mat = quat2mat([0.860663;0.43033;0.25820;0.08607]);
+mat_true = [0.8519,0.3704,-0.3704;
+            0.0741,0.6148,0.7852;
+            0.5185,-0.6963,0.4963];
+test_suite.add_test(TestEqual(mat,mat_true,'q=(0.860663;0.43033;0.25820;0.08607)ᵀ',4));
+
+
+
+
 %% rot1
 
 % θ = 0

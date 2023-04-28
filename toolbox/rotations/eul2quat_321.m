@@ -34,10 +34,18 @@
 function q = eul2quat_321(psi,theta,phi)
     
     % precomputes trigonometric functions
+    c1 = cos(phi/2);
+    s1 = sin(phi/2);
+    c2 = cos(theta/2);
+    s2 = sin(theta/2);
+    c3 = cos(psi/2);
+    s3 = sin(psi/2);
     
-    
-    % assembles quaternion
-    q = [];
+    % computes quaternion
+    q = [c1*c2*c3-s1*s2*s3;
+         s1*s2*c3+c1*c2*s3;
+         c1*s2*c3-s1*c2*s3;
+         s1*c2*c3+c1*s2*s3];
     
     % normalizes quaternion
     q = normalize_quat(q);

@@ -37,28 +37,45 @@ function [psi,theta,phi] = mat2eul_321(R)
     pitch_up = (R(1,3) <= -1);
     pitch_down = (R(1,3) >= 1);
     singular = (pitch_up || pitch_down);
-    
+
     % yaw angle [rad]
     if singular
         psi = 0;
     else
-        psi = iatan2(R(1,2),R(1,1));
+        psi = iatan2(R(12),R(11));
     end
-    
+
     % pitch angle [rad]
     if singular
         theta = -(pi/2)*sign(R(1,3));
     else
         theta = -asin(R(1,3));
     end
-    
-    % roll angle [rad]
-    if pitch_up
-        phi = iatan2(R(2,1),R(3,1));
-    elseif pitch_down
-        phi = iatan2(R(3,2),R(2,2));
-    else
-        phi = iatan2(R(2,3),R(3,3));
-    end
+
+%     % base case
+%     if abs(R(1,3)) < 1
+%         
+%         % yaw angle [rad]
+%         psi = iatan2(R(1,2),R(1,1));
+%         
+%         % pitch angle [rad]
+%         theta = -asin(R(1,3));
+%         
+%         % roll angle [rad]
+%         phi = iatan2(R(2,3),R(3,3));
+%         
+%     % edge case: corresponding to singularity with pitch is ±(π/2)
+%     else
+%         
+%         % yaw angle [rad]
+%         psi = 0;
+%         
+%         % pitch angle [rad]
+%         theta = -(pi/2)*sign(R(1,3));
+%         
+%         % roll angle [rad]
+%         phi = iatan2(R(2,1),R(3,1));
+%         
+%     end
     
 end

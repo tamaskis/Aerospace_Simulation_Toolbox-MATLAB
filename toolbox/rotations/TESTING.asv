@@ -8,7 +8,7 @@ R = eul2mat_321(psi,theta,phi)
 R = [-0.000000000000000   0.000000000000000  -1.000000000000000
   -0.965925826289068  -0.258819045102521   0.000000000000000;
   -0.258819045102521   0.965925826289068   0.000000000000000];
-[psi2,theta2,phi2] = mat2eul_321(R)
+[phi2,theta2,psi2] = mat2eul_321(R)
 % 
 % function R = eul2mat_test(psi,theta,phi)
 %     R = [cos(theta)*cos(psi),cos(theta)*sin(psi),-sin(theta);
