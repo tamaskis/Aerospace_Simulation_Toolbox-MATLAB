@@ -30,6 +30,13 @@
 %   theta   - (1×1 double) pitch angle (2nd rotation, about 2nd axis) [rad]
 %   phi     - (1×1 double) roll angle (3rd rotation, about 1st axis) [rad]
 %
+% -----
+% NOTE:
+% -----
+%   • When a singularity corresponding to the pitch angles of ±(π/2) is
+%     encountered, the yaw angle is set to 0 and the roll angle is
+%     determined accordingly.
+%
 %==========================================================================
 function [psi,theta,phi] = mat2eul_321(R)
     
@@ -56,7 +63,7 @@ function [psi,theta,phi] = mat2eul_321(R)
     if pitch_up
         phi = iatan2(R(2,1),R(3,1));
     elseif pitch_down
-        phi = iatan2(R(3,2),R(2,2));
+        phi = -iatan2(R(3,2),R(2,2));
     else
         phi = iatan2(R(2,3),R(3,3));
     end

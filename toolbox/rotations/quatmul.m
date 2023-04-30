@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% quatmul  Hamilton product (multiplication) of two unit quaternions.
+% quatmul  Quaternion multiplication (Hamilton product).
 %
 %   pq = quatmul(p,q)
 %
@@ -38,6 +38,6 @@ function pq = quatmul(p,q)
           p(1)*q(4)+p(2)*q(3)-p(3)*q(2)+p(4)*q(1)];
     
     % normalize the result
-    pq = normalize_quat(pq);
+    pq = quatnorm(pq);
     
 end

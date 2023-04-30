@@ -1,11 +1,11 @@
 %==========================================================================
 %
-% quatinv  Inverse of a unit quaternion.
+% quatinv  Inverse of a quaternion.
 %
 %   q_inv = quatinv(q)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-23
+% Last Update: 2023-04-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -20,15 +20,20 @@
 % ------
 % INPUT:
 % ------
-%   q       - (4×1 double) unit quaternion
+%   q       - (4×1 double) quaternion
 %
 % -------
 % OUTPUT:
 % -------
-%   q_inv   - (4×1 double) unit quaternion inverse
+%   q_inv   - (4×1 double) quaternion inverse
 %
 %==========================================================================
 function q_inv = quatinv(q)
-    q_inv = [ q(1);
-             -q(2:4)];
+    
+    % quaternion conjugate
+    q_conj = quatconj(q);
+    
+    % quaternion inverse
+    q_inv = quatnorm(q_conj);
+    
 end

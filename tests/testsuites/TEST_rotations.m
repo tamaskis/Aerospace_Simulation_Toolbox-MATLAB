@@ -19,67 +19,14 @@
 % clears Workspace and closes all figures
 clear; close all;
 
+% sets random seed
+rng(1);
+
 
 
 %% INITIALIZE TEST SUITE
 
 test_suite = TestSuite('rotation tests');
-
-
-
-%% eul2mat_321
-
-% TODO
-
-phi = pi/6;
-theta = -pi/6;
-psi = 3*pi/4;
-mat = eul2mat_321(psi,theta,phi);
-mat_true = [-0.6124,0.6124,0.5000;
-            -0.4356,-0.7891,0.4330;
-             0.6597,0.0474,0.7500];
-test_suite.add_test(TestEqual(mat,mat_true,'eul2mat_321 test 1',4));
-
-
-%% mat2eul_321
-
-% TODO
-
-R = [-0.6124,0.6124,0.5000;
-     -0.4356,-0.7891,0.4330;
-      0.6597,0.0474,0.7500];
-[psi_true,theta_true,phi_true] = mat2eul_321(R);
-test_suite.add_test(TestEqual([psi_true,theta_true,phi_true],[3*pi/4,-pi/6,pi/6],'mat2eul_321 test 1',4));
-
-% testing asin robustness
-
-% R = [-0.000000000000000   0.000000000000000  -1.000000000000001;
-%   -0.965925826289068  -0.258819045102521   0.000000000000000;
-%   -0.258819045102521   0.965925826289068   0.000000000000000];
-R = [-0.000000000000000   0.000000000000000  -1.000000000000000;
-  -0.965925826289068  -0.258819045102521   0.000000000000000;
-  -0.258819045102521   0.965925826289068   0.000000000000000];
-[psi_true,theta_true,phi_true] = mat2eul_321(R)
-test_suite.add_test(TestEqual([psi_true,theta_true,phi_true],[0,pi/2,-1.832596],'mat2eul_321 test 2',6));
-
-
-
-%% quat2mat
-
-% TODO
-
-% https://www.mathworks.com/help/aerotbx/ug/quat2dcm.html
-mat = quat2mat([sqrt(2)/2;0;sqrt(2)/2;0]);
-mat_true = [0,0,-1;0,1,0;1,0,0];
-test_suite.add_test(TestEqual(mat,mat_true,'q=(1,0,1,0)ᵀ',15));
-
-% https://www.mathworks.com/help/aerotbx/ug/quat2dcm.html
-mat = quat2mat([0.860663;0.43033;0.25820;0.08607]);
-mat_true = [0.8519,0.3704,-0.3704;
-            0.0741,0.6148,0.7852;
-            0.5185,-0.6963,0.4963];
-test_suite.add_test(TestEqual(mat,mat_true,'q=(0.860663;0.43033;0.25820;0.08607)ᵀ',4));
-
 
 
 
@@ -366,6 +313,208 @@ R313_reverse_actual = rot313(theta1,theta2,theta3).';
 test_suite.add_test(TestEqual(R313_reverse_actual,R313_reverse_true,...
     'R313 reverse',15));
 
+
+
+%% eul2mat_321
+
+% test against rot321
+psi = 30*(pi/180);
+theta = -40*(pi/180);
+phi = 50*(pi/180);
+R = eul2mat_321(psi,theta,phi);
+R_true = rot321(psi,theta,phi);
+test_suite.add_test(TestEqual(R,R_true,'eul2mat_321 test 1',4));
+
+
+% numerical test
+psi = 3*pi/4;
+theta = -pi/6;
+phi = pi/6;
+R = eul2mat_321(psi,theta,phi);
+R_true = [-0.6124,0.6124,0.5000;
+            -0.4356,-0.7891,0.4330;
+             0.6597,0.0474,0.7500];
+test_suite.add_test(TestEqual(R,R_true,'eul2mat_321 test 2',4));
+
+
+
+%% mat2eul_321
+
+% basic test
+psi_true = 3*pi/4;
+theta_true = -pi/6;
+phi_true = pi/6;
+R = eul2mat_321(psi_true,theta_true,phi_true);
+[psi,theta,phi] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi,theta,phi],[psi_true,theta_true,phi_true],'mat2eul_321 basic test',15));
+
+% pitch-up singularity test 1 (pitch = π/2)
+psi_true = 0;
+theta_true = pi/2;
+phi_true = pi/5;
+R = eul2mat_321(psi_true,theta_true,phi_true);
+[psi,theta,phi] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi,theta,phi],[psi_true,theta_true,phi_true],'mat2eul_321 pitch-up singularity test 1 (0 yaw)'));
+
+% pitch-up singularity test 2
+psi_true = -pi/6;
+theta_true = pi/2;
+phi_true = pi/5;
+R = eul2mat_321(psi_true,theta_true,phi_true);
+[psi,theta,phi] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi,theta,phi],[0,pi/2,1.1519],'mat2eul_321 pitch-up singularity test 2 (nonzero yaw)',4));
+
+% pitch-up singularity test 3
+R(1,3) = R(1,3)-1e-14;
+[psi,theta,phi] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi,theta,phi],[0,pi/2,1.1519],'mat2eul_321 pitch-up singularity test 3 (nonzero yaw, numerical robustness)',4));
+
+% pitch-down singularity test 1
+psi_true = 0;
+theta_true = -pi/2;
+phi_true = pi/5;
+R = eul2mat_321(psi_true,theta_true,phi_true);
+[psi,theta,phi] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi_true,theta_true,phi_true],[psi,theta,phi],'mat2eul_321 pitch-down singularity test 1 (0 yaW)'));
+
+% pitch-down singularity test 2
+psi_true = -pi/6;
+theta_true = -pi/2;
+phi_true = pi/5;
+R = eul2mat_321(psi_true,theta_true,phi_true);
+[psi,theta,phi] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi,theta,phi],[0,-pi/2,0.1047],'mat2eul_321 pitch-down singularity test 2 (nonzero yaw)',4));
+
+% pitch-down singularity test 3
+R(1,3) = R(1,3)+1e-14;
+[psi,theta,phi] = mat2eul_321(R);
+test_suite.add_test(TestEqual([psi,theta,phi],[0,-pi/2,0.1047],'mat2eul_321 pitch-down singularity test 3 (nonzero yaw, numerical robustness)',4));
+
+% long test
+psi = linspace(-pi,pi);
+psi = psi(randperm(100));
+theta = linspace(-pi/2+0.001,pi/2-0.001);
+theta = theta(randperm(100));
+phi = linspace(pi,-pi);
+phi = phi(randperm(100));
+psi_recalc = zeros(1,100);
+theta_recalc = zeros(1,100);
+phi_recalc = zeros(1,100);
+for i = 1:100
+    [psi_recalc(i),theta_recalc(i),phi_recalc(i)] = mat2eul_321(...
+        eul2mat_321(psi(i),theta(i),phi(i)));
+end
+test_suite.add_test(TestEqual(psi_recalc,psi,'mat2eul_321 long test - psi',12));
+test_suite.add_test(TestEqual(theta_recalc,theta,'mat2eul_321 long test - theta',12));
+test_suite.add_test(TestEqual(phi_recalc,phi,'mat2eul_321 long test - phi',13));
+
+
+
+%% quat2mat
+
+% test 1
+R = quat2mat([1;0;1;0]);
+R_true = [0,0,-1;0,1,0;1,0,0];
+test_suite.add_test(TestEqual(R,R_true,'quat2mat test 1',15));
+
+% test 2
+R = quat2mat([1;0.5;0.3;0.1]);
+R_true = [0.8519,0.3704,-0.3704;
+          0.0741,0.6148,0.7852;
+          0.5185,-0.6963,0.4963];
+test_suite.add_test(TestEqual(R,R_true,'quat2mat test 2',4));
+
+
+
+%% eul2quat_321
+
+% simple test
+psi = pi/6;
+theta = -pi/6;
+phi = 3*pi/4;
+q = eul2quat_321(psi,theta,phi);
+q_true = [0.2952;0.8876;0.1353;0.3266];
+test_suite.add_test(TestEqual(q,q_true,'eul2quat_321 simple test',4));
+
+% long test
+psi = linspace(-pi,pi);
+psi = psi(randperm(100));
+theta = linspace(-pi/2,pi/2);
+theta = theta(randperm(100));
+phi = linspace(pi,-pi);
+phi = phi(randperm(100));
+R = zeros(3,3,100);
+R_true = zeros(3,3,100);
+for i = 1:100
+    q = eul2quat_321(psi(i),theta(i),phi(i));
+    R(:,:,i) = quat2mat(q);
+    R_true(:,:,i) = eul2mat_321(psi(i),theta(i),phi(i));
+end
+test_suite.add_test(TestEqual(R,R_true,'eul2quat_321 long test',14));
+
+
+
+%% mat2quat
+
+% test 1
+q = mat2quat([0,0,-1;0,1,0;1,0,0]);
+q_true = [sqrt(2)/2;0;sqrt(2)/2;0];
+test_suite.add_test(TestEqual(q,q_true,'mat2quat test 1'));
+
+% test 2
+R = [0.8519,0.3704,-0.3704;
+     0.0741,0.6148,0.7852;
+     0.5185,-0.6963,0.4963];
+q = mat2quat(R);
+q_true = [0.8607;0.4303;0.2582;0.0861];
+test_suite.add_test(TestEqual(q,q_true,'mat2quat test 2',4));
+
+% long test
+psi = linspace(-pi,pi);
+psi = psi(randperm(100));
+theta = linspace(-pi/2,pi/2);
+theta = theta(randperm(100));
+phi = linspace(pi,-pi);
+phi = phi(randperm(100));
+q = zeros(4,100);
+q_true = zeros(4,100);
+for i = 1:100
+    q(:,i) = eul2quat_321(psi(i),theta(i),phi(i));
+    q_true(:,i) = mat2quat(eul2mat_321(psi(i),theta(i),phi(i)));
+end
+test_suite.add_test(TestEqual(q,q_true,'mat2quat long test',15));
+
+
+
+%% quat2eul_321
+
+% simple test
+[psi,theta,phi] = quat2eul_321([0.2952;0.8876;0.1353;0.3266]);
+test_suite.add_test(TestEqual(psi,pi/6,'quat2eul_321 simple test - psi',5));
+test_suite.add_test(TestEqual(theta,-pi/6,'quat2eul_321 simple test - theta',4));
+test_suite.add_test(TestEqual(phi,3*pi/4,'quat2eul_321 simple test - phi',4));
+
+% long test
+psi = linspace(-pi,pi);
+psi = psi(randperm(100));
+theta = linspace(-pi/2+0.001,pi/2-0.001);
+theta = theta(randperm(100));
+phi = linspace(pi,-pi);
+phi = phi(randperm(100));
+psi_recalc = zeros(1,100);
+theta_recalc = zeros(1,100);
+phi_recalc = zeros(1,100);
+for i = 1:100
+    [psi_recalc(i),theta_recalc(i),phi_recalc(i)] = quat2eul_321(...
+        eul2quat_321(psi(i),theta(i),phi(i)));
+end
+test_suite.add_test(TestEqual(psi_recalc,psi,'quat2eul_321 long test - psi',12));
+test_suite.add_test(TestEqual(theta_recalc,theta,'quat2eul_321 long test - theta',12));
+test_suite.add_test(TestEqual(phi_recalc,phi,'quat2eul_321 long test - phi',12));
+
+
+
+%% 
 
 
 %% RUNS TEST SUITE

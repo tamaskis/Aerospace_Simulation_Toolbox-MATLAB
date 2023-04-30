@@ -36,6 +36,6 @@ function q = axangle2quat(e,Phi)
          sin(Phi/2)*e];
     
     % normalizes quaternion
-    q = normalize_quat(q);
+    q = quatnorm(q);
     
 end

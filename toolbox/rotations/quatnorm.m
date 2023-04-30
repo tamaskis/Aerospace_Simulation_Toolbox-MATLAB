@@ -1,11 +1,11 @@
 %==========================================================================
 %
-% quat2mat  Quaternion to rotation matrix.
+% quatnorm  Normalize a quaternion.
 %
-%   R = quat2mat(q)
+%   q = quatnorm(q)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-23
+% Last Update: 2023-04-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -25,23 +25,9 @@
 % -------
 % OUTPUT:
 % -------
-%   R       - (3×3 double) rotation matrix
+%   q       - (4×1 double) unit quaternion
 %
 %==========================================================================
-function R = quat2mat(q)
-    
-    % normalizes quaternion
-    q = quatnorm(q);
-    
-    % unpacks unit quaternion
-    q0 = q(1);
-    q1 = q(2);
-    q2 = q(3);
-    q3 = q(4);
-    
-    % rotation matrix
-    R = [1-2*(q2^2+q3^2)   2*(q1*q2+q0*q3)   2*(q1*q3-q0*q2);
-         2*(q1*q2-q0*q3)   1-2*(q1^2+q3^2)   2*(q2*q3+q0*q1);
-         2*(q1*q3+q0*q2)   2*(q2*q3-q0*q1)   1-2*(q1^2+q2^2)];
-    
+function q = quatnorm(q)
+    q = q/inorm(q);
 end

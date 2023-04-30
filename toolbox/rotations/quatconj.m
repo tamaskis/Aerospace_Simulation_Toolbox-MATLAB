@@ -1,11 +1,11 @@
 %==========================================================================
 %
-% normalize_quat  Normalize a quaternion.
+% quatconj  Conjugate of a quaternion.
 %
-%   q = normalize_quat(q)
+%   q_conj = quatconj(q)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-23
+% Last Update: 2023-04-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -25,9 +25,10 @@
 % -------
 % OUTPUT:
 % -------
-%   q       - (4×1 double) unit quaternion
+%   q_conj  - (4×1 double) quaternion conjugate
 %
 %==========================================================================
-function q = normalize_quat(q)
-    q = q/inorm(q);
+function q_conj = quatconj(q)
+    q_conj = [ q(1);
+              -q(2:4)];
 end

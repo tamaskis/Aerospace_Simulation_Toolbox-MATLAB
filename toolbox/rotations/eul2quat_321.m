@@ -6,7 +6,7 @@
 %   q = eul2quat_321(psi,theta,phi)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-23
+% Last Update: 2023-04-29
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -42,12 +42,17 @@ function q = eul2quat_321(psi,theta,phi)
     s3 = sin(psi/2);
     
     % computes quaternion
-    q = [c1*c2*c3-s1*s2*s3;
-         s1*s2*c3+c1*c2*s3;
-         c1*s2*c3-s1*c2*s3;
-         s1*c2*c3+c1*s2*s3];
+    q = [c1*c2*c3+s1*s2*s3;
+         s1*c2*c3-c1*s2*s3;
+         c1*s2*c3+s1*c2*s3;
+         c1*c2*s3-s1*s2*c3];
+    
+    % ensures first element of quaternion is positive
+    if q(1) < 0
+        q = -q;
+    end
     
     % normalizes quaternion
-    q = normalize_quat(q);
+    q = quatnorm(q);
     
 end
