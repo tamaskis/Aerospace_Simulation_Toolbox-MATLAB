@@ -31,9 +31,17 @@
 %==========================================================================
 function q = axangle2quat(e,Phi)
     
+    % normalize the principal rotation vector
+    e = e/inorm(e);
+    
     % determines quaternion
     q = [cos(Phi/2);
          sin(Phi/2)*e];
+    
+    % ensures scalar component of quaternion is positive
+    if q(1) < 0
+        q = -q;
+    end
     
     % normalizes quaternion
     q = quatnorm(q);

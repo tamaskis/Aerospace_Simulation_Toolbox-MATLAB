@@ -514,7 +514,16 @@ test_suite.add_test(TestEqual(phi_recalc,phi,'quat2eul_321 long test - phi',12))
 
 
 
-%% 
+%% axangle2quat
+
+test_suite.add_test(TestEqual(axangle2quat([1;0;0],0),[1;0;0;0],'quat2axangle test 1'));
+test_suite.add_test(TestEqual(axangle2quat([1;0;0],pi),[0;1;0;0],'quat2axangle test 2'));
+test_suite.add_test(TestEqual(axangle2quat([-1;-1;-1],0),[1;0;0;0],'quat2axangle test 3'));
+test_suite.add_test(TestEqual(axangle2quat([-1;-1;-1],pi),[0;-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3],'quat2axangle test 4'));
+test_suite.add_test(TestEqual(axangle2quat([1;0;0],pi/2),[sqrt(2)/2;sqrt(2)/2;0;0],'quat2axangle test 5'));
+test_suite.add_test(TestEqual(axangle2quat([-1;-1;-1],pi/2),[sqrt(2)/2;-sqrt(6)/6;-sqrt(6)/6;-sqrt(6)/6],'quat2axangle test 6'));
+test_suite.add_test(TestEqual(axangle2quat([0;0.5;-0.3],7*pi/4),[0.9239;0;-0.3281;0.1969],'quat2axangle test 7',4));
+
 
 
 %% RUNS TEST SUITE
