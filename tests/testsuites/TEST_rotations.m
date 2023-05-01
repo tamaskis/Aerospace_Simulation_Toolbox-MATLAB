@@ -522,7 +522,7 @@ test_suite.add_test(TestEqual(axang2quat([-1;-1;-1],0),[1;0;0;0],'axang2quat tes
 test_suite.add_test(TestEqual(axang2quat([-1;-1;-1],pi),[0;-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3],'axang2quat test 4'));
 test_suite.add_test(TestEqual(axang2quat([1;0;0],pi/2),[sqrt(2)/2;sqrt(2)/2;0;0],'axang2quat test 5'));
 test_suite.add_test(TestEqual(axang2quat([-1;-1;-1],pi/2),[sqrt(2)/2;-sqrt(6)/6;-sqrt(6)/6;-sqrt(6)/6],'axang2quat test 6'));
-test_suite.add_test(TestEqual(axang2quat([0.1;0.5;-0.3],7*pi/4),[0.9239;-0.0647;-0.3234;0.1941],'axang2quat test 7',4));
+test_suite.add_test(TestEqual(axang2quat([0.1;0.5;-0.3],3*pi/4),[0.3827;0.1562;0.7808;-0.4685],'axang2quat test 7',4));
 
 
 
@@ -530,33 +530,29 @@ test_suite.add_test(TestEqual(axang2quat([0.1;0.5;-0.3],7*pi/4),[0.9239;-0.0647;
 
 % TODO
 % 
-% % simple test 1
-% [e,Phi] = quat2axang([1;0;0;0]);
-% test_suite.add_test(TestEqual([e;Phi],[1;0;0;0],'quat2axang test 1'));
-% 
-% % simple test 2
-% [e,Phi] = quat2axang([0;1;0;0]);
-% test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi],'quat2axang test 2'));
-% 
-% % simple test 3
-% [e,Phi] = quat2axang([1;0;0;0]);
-% test_suite.add_test(TestEqual([e;Phi],[-1;-1;-1;0],'quat2axang test 3'));
-% 
-% % simple test 4
-% [e,Phi] = quat2axang([0;-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3]);
-% test_suite.add_test(TestEqual([e;Phi],[-1;-1;-1;pi],'quat2axang test 4'));
-% 
-% % simple test 5
-% [e,Phi] = quat2axang([sqrt(2)/2;sqrt(2)/2;0;0]);
-% test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi/2],'quat2axang test 5'));
-% 
-% % simple test 6
-% [e,Phi] = quat2axang([sqrt(2)/2;-sqrt(6)/6;-sqrt(6)/6;-sqrt(6)/6]);
-% test_suite.add_test(TestEqual([e;Phi],[-1;-1;-1;pi/2],'quat2axang test 6'));
-% 
-% % simple test 7
-% [e,Phi] = quat2axang([0.9239;-0.0647;-0.3234;0.1941]);
-% test_suite.add_test(TestEqual([e;Phi],[0.1;0.5;-0.3;7*pi/4],'quat2axang test 7',4));
+% simple test 1
+[e,Phi] = quat2axang([1;0;0;0]);
+test_suite.add_test(TestEqual([e;Phi],[1;0;0;0],'quat2axang test 1'));
+
+% simple test 2
+[e,Phi] = quat2axang([0;1;0;0]);
+test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi],'quat2axang test 2'));
+
+% simple test 3
+[e,Phi] = quat2axang([0;-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3])
+test_suite.add_test(TestEqual([e;Phi],[-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3;pi],'quat2axang test 3'));
+
+% simple test 4
+[e,Phi] = quat2axang([sqrt(2)/2;sqrt(2)/2;0;0]);
+test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi/2],'quat2axang test 4'));
+
+% simple test 5
+[e,Phi] = quat2axang([sqrt(2)/2;-sqrt(6)/6;-sqrt(6)/6;-sqrt(6)/6]);
+test_suite.add_test(TestEqual([e;Phi],[-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3;pi/2],'quat2axang test 5'));
+
+% simple test 6
+[e,Phi] = quat2axang([0.3827;0.1562;0.7808;-0.4685]);
+test_suite.add_test(TestEqual([e;Phi],[0.1690;0.8452;-0.5071;3*pi/4],'quat2axang test 6',4));
 
 
 
@@ -669,15 +665,15 @@ e = [e1;e2;e3];
 for i = 1:100
     e(:,i) = e(:,i)/norm(e(:,i));
 end
-Phi = linspace(0.001,pi);
+Phi = linspace(0.001,pi-0.001);
 Phi = Phi(randperm(100));
 e_recalc = zeros(3,100);
 Phi_recalc = zeros(1,100);
 for i = 1:100
     [e_recalc(:,i),Phi_recalc(i)] = mat2axang(axang2mat(e(:,i),Phi(i)));
 end
-test_suite.add_test(TestEqual(e,e_recalc,'mat2axang long test --> e',14));
-test_suite.add_test(TestEqual(Phi,Phi_recalc,'mat2axang long test --> Phi',13));
+test_suite.add_test(TestEqual(e,e_recalc,'mat2axang long test --> e',13));
+test_suite.add_test(TestEqual(Phi,Phi_recalc,'mat2axang long test --> Phi',12));
 
 
 

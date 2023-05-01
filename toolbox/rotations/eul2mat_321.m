@@ -5,8 +5,12 @@
 %
 %   R = eul2mat_321(psi,theta,phi)
 %
+% See also axangle2eul_321, axang2mat, axang2quat, eul2axang_321,
+% eul2quat_321, mat2axang, mat2eul_321, mat2quat, quat2axang, quat2eul_321,
+% quat2mat.
+%
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-23
+% Last Update: 2023-04-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

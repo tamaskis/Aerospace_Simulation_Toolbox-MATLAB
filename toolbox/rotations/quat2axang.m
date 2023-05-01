@@ -1,12 +1,12 @@
 %==========================================================================
 %
-% quat2mat  Quaternion to rotation matrix.
+% quat2axang  Quaternion to axis-angle representation.
 %
-%   R = quat2mat(q)
+%   [e,Phi] = quat2axang(q)
 %
 % See also axangle2eul_321, axang2mat, axang2quat, eul2axang_321,
-% eul2mat_321, eul2quat_321, mat2axang, mat2eul_321, mat2quat, quat2axang,
-% quat2eul_321.
+% eul2mat_321, eul2quat_321, mat2axang, mat2eul_321, mat2quat, 
+% quat2eul_321, quat2mat.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-04-30
@@ -29,10 +29,16 @@
 % -------
 % OUTPUT:
 % -------
-%   R       - (3×3 double) rotation matrix
+%   e       - (3×1 double) principal rotation vector
+%   Phi     - (1×1 double) principal angle [rad]
 %
 %==========================================================================
-function R = quat2mat(q)
+function [e,Phi] = quat2axang(q)
+    
+    % ensures the scalar component of the quaternion is positive
+    if q(1) < 0
+        q = -q;
+    end
     
     % normalizes quaternion
     q = quatnorm(q);
@@ -43,9 +49,17 @@ function R = quat2mat(q)
     q2 = q(3);
     q3 = q(4);
     
-    % rotation matrix
-    R = [1-2*(q2^2+q3^2)   2*(q1*q2+q0*q3)   2*(q1*q3-q0*q2);
-         2*(q1*q2-q0*q3)   1-2*(q1^2+q3^2)   2*(q2*q3+q0*q1);
-         2*(q1*q3+q0*q2)   2*(q2*q3-q0*q1)   1-2*(q1^2+q2^2)];
+    % principal rotation vector
+    if abs(q0) < 1
+        e = [q1;q2;q3];
+    else
+        e = [1;0;0];
+    end
+    
+    % normalizes principal rotation vector
+    e = e/inorm(e);
+    
+    % principal angle [rad]
+    Phi = 2*acos(q0);
     
 end

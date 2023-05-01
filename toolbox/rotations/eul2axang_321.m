@@ -1,12 +1,12 @@
 %==========================================================================
 %
-% eul2quat_321  3-2-1 Euler angles (yaw, pitch, and roll) to unit
-% quaternion.
+% eul2axang_321  3-2-1 Euler angles (yaw, pitch, and roll) to axis-angle 
+% representation.
 %
-%   q = eul2quat_321(psi,theta,phi)
+%   [e,Phi] = eul2axang_321(psi,theta,phi)
 %
-% See also axangle2eul_321, axang2mat, axang2quat, eul2axang_321,
-% eul2mat_321, mat2axang, mat2eul_321, mat2quat, quat2axang, quat2eul_321,
+% See also axangle2eul_321, axang2mat, axang2quat, eul2mat_321,
+% eul2quat_321, mat2axang, mat2eul_321, mat2quat, quat2axang, quat2eul_321,
 % quat2mat.
 %
 % Copyright © 2022 Tamas Kis
@@ -32,31 +32,12 @@
 % -------
 % OUTPUT:
 % -------
-%   q       - (4×1 double) unit quaternion
+%   e       - (3×1 double) principal rotation vector
+%   Phi     - (1×1 double) principal angle [rad]
 %
 %==========================================================================
-function q = eul2quat_321(psi,theta,phi)
+function [e,Phi] = eul2axang_321(psi,theta,phi)
     
-    % precomputes trigonometric functions
-    c1 = cos(phi/2);
-    s1 = sin(phi/2);
-    c2 = cos(theta/2);
-    s2 = sin(theta/2);
-    c3 = cos(psi/2);
-    s3 = sin(psi/2);
     
-    % computes quaternion
-    q = [c1*c2*c3+s1*s2*s3;
-         s1*c2*c3-c1*s2*s3;
-         c1*s2*c3+s1*c2*s3;
-         c1*c2*s3-s1*s2*c3];
-    
-    % ensures first element of quaternion is positive
-    if q(1) < 0
-        q = -q;
-    end
-    
-    % normalizes quaternion
-    q = quatnorm(q);
     
 end
