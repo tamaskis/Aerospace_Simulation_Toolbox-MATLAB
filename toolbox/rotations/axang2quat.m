@@ -1,8 +1,8 @@
 %==========================================================================
 %
-% axangle2quat  Axis-angle representation to unit quaternion.
+% axang2quat  Axis-angle representation to unit quaternion.
 %
-%   q = axangle2quat(e,Phi)
+%   q = axang2quat(e,Phi)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-04-23
@@ -29,9 +29,9 @@
 %   q       - (4×1 double) unit quaternion
 %
 %==========================================================================
-function q = axangle2quat(e,Phi)
+function q = axang2quat(e,Phi)
     
-    % normalize the principal rotation vector
+    % normalizes principal rotation vector
     e = e/inorm(e);
     
     % determines quaternion

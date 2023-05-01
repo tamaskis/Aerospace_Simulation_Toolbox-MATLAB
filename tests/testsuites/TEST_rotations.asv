@@ -647,16 +647,16 @@ test_suite.add_test(TestEqual([e;Phi],[0;1;0;pi/2],'mat2axang test 1'));
 test_suite.add_test(TestEqual([e;Phi],[0.2182;0.4364;-0.8729;3*pi/4],'mat2axang test 2',4));
 
 % edge case test: Φ = 0
-e = [0.2673;0.5345;0.8018];
+e = [1;2;3];
 Phi = 0;
 [e_recalc,Phi_recalc] = mat2axang(axang2mat(e,Phi));
 test_suite.add_test(TestEqual([e_recalc;Phi_recalc],[1;0;0;0],'mat2axang Φ = 0 singularity'));
 
 % edge case test: Φ = π
-e = [0.2673;0.5345;0.8018];
+e = [1;2;3]/norm([1;2;3]);
 Phi = pi;
 [e_recalc,Phi_recalc] = mat2axang(axang2mat(e,Phi));
-test_suite.add_test(TestEqual([e_recalc;Phi_recalc],[e;Phi],'mat2axang Φ = π singularity',4));
+test_suite.add_test(TestEqual([e_recalc;Phi_recalc],[e;Phi],'mat2axang Φ = π singularity',15));
 
 % long test
 e1 = linspace(-1,1);

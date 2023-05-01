@@ -1,11 +1,11 @@
 %==========================================================================
 %
-% mat2axangle  Axis-angle representation to unit quaternion.
+% mat2axang  Rotation matrix to axis-angle representation.
 %
-%   [e,Phi] = mat2axangle(R)
+%   [e,Phi] = mat2axang(R)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-24
+% Last Update: 2023-04-30
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -36,7 +36,7 @@
 %   • If Phi = 0, then e is returned as (1,0,0)ᵀ.
 %
 %==========================================================================
-function [e,Phi] = mat2axangle(R)
+function [e,Phi] = mat2axang(R)
     
     % cosine of the principal angle
     c = (R(1,1)+R(2,2)+R(3,3)-1)/2;
@@ -78,15 +78,16 @@ function [e,Phi] = mat2axangle(R)
         % principal angle
         Phi = iatan2(s,c);
         
-        % ensures that Φ ∈ [0,π]
-        if Phi < 0
-            Phi = Phi+pi;
-        end
-        
         % principal rotation vector
         e = [R(2,3)-R(3,2);
              R(3,1)-R(1,3);
              R(1,2)-R(2,1)];
+        
+        % ensures that Φ ∈ [0,π]
+        if Phi < 0
+            Phi = Phi+pi;
+            e = -e;
+        end
         
     end
     

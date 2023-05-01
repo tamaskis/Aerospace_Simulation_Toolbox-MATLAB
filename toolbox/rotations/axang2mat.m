@@ -1,12 +1,11 @@
 %==========================================================================
 %
-% axangle2eul_321  Axis-angle representation to 3-2-1 Euler angles (yaw, 
-% pitch, and roll).
+% axang2mat  Axis-angle representation to rotation matrix.
 %
-%   [psi,theta,phi] = axangle2eul_321(e,Phi)
+%   R = axang2mat(e,Phi)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-25
+% Last Update: 2023-04-23
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -27,29 +26,24 @@
 % -------
 % OUTPUT:
 % -------
-%   psi     - (1×1 double) yaw angle (1st rotation, about 3rd axis) [rad]
-%   theta   - (1×1 double) pitch angle (2nd rotation, about 2nd axis) [rad]
-%   phi     - (1×1 double) roll angle (3rd rotation, about 1st axis) [rad]
+%   R       - (3×3 double) rotation matrix
 %
 %==========================================================================
-function [psi,theta,phi] = axangle2eul_321(e,Phi)
+function R = axang2mat(e,Phi)
+    
+    % normalizes principal rotation vector
+    e = e/inorm(e);
     
     % precomputes trigonometric functions
     c = cos(Phi);
     s = sin(Phi);
     
-    % yaw angle [rad]
-    psi = iatan2(e(1)*e(2)*(1-c)+e(3)*s,e(1)^2*(1-c)+c);
+    % auxiliary parameter
+    a = 1-c;
     
-    % pitch angle [rad]
-    a = e(1)*e(3)*(1-c)-e(2)*s;
-    if iabs(a) < 1
-        theta = -asin(a);
-    else
-        theta = -pi*sign(a);
-    end
-    
-    % roll angle [rad]
-    phi = iatan2(e(2)*e(3)*(1-c)+e(1)*s,e(3)^2*(1-c)+c);
+    % rotation matrix
+    R = [e(1)^2*a+c           e(1)*e(2)*a+e(3)*s   e(1)*e(3)*a-e(2)*s;
+         e(2)*e(1)*a-e(3)*s   e(2)^2*a+c           e(2)*e(3)*a+e(1)*s;
+         e(3)*e(1)*a+e(2)*s   e(3)*e(2)*a-e(1)*s   e(3)^2*a+c];
     
 end
