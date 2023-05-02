@@ -10,7 +10,7 @@
 % quat2mat.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-30
+% Last Update: 2023-05-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -38,6 +38,10 @@
 %==========================================================================
 function [e,Phi] = eul2axang_321(psi,theta,phi)
     
+    % unit quaternion
+    q = eul2quat_321(psi,theta,phi);
     
+    % principal rotation vector and principal angle [rad]
+    [e,Phi] = quat2axang(q);
     
 end

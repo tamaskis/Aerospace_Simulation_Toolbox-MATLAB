@@ -4,7 +4,7 @@
 % Unit testing of the rot1, rot2, rot3,  rot313, and rot321 functions.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-01
+% Last Update: 2023-05-01
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -404,9 +404,7 @@ for i = 1:100
     [psi_recalc(i),theta_recalc(i),phi_recalc(i)] = mat2eul_321(...
         eul2mat_321(psi(i),theta(i),phi(i)));
 end
-test_suite.add_test(TestEqual(psi_recalc,psi,'mat2eul_321 long test --> psi',12));
-test_suite.add_test(TestEqual(theta_recalc,theta,'mat2eul_321 long test --> theta',12));
-test_suite.add_test(TestEqual(phi_recalc,phi,'mat2eul_321 long test --> phi',13));
+test_suite.add_test(TestEqual([psi_recalc;theta_recalc;phi_recalc],[psi;theta;phi],'mat2eul_321 long test',12));
 
 
 
@@ -508,9 +506,7 @@ for i = 1:100
     [psi_recalc(i),theta_recalc(i),phi_recalc(i)] = quat2eul_321(...
         eul2quat_321(psi(i),theta(i),phi(i)));
 end
-test_suite.add_test(TestEqual(psi_recalc,psi,'quat2eul_321 long test --> psi',12));
-test_suite.add_test(TestEqual(theta_recalc,theta,'quat2eul_321 long test --> theta',12));
-test_suite.add_test(TestEqual(phi_recalc,phi,'quat2eul_321 long test --> phi',12));
+test_suite.add_test(TestEqual([psi_recalc;theta_recalc;phi_recalc],[psi;theta;phi],'quat2eul_321 long test',12));
 
 
 
@@ -528,31 +524,49 @@ test_suite.add_test(TestEqual(axang2quat([0.1;0.5;-0.3],3*pi/4),[0.3827;0.1562;0
 
 %% quat2axang
 
-% TODO
-% 
-% simple test 1
+% singularity test
 [e,Phi] = quat2axang([1;0;0;0]);
-test_suite.add_test(TestEqual([e;Phi],[1;0;0;0],'quat2axang test 1'));
+test_suite.add_test(TestEqual([e;Phi],[1;0;0;0],'quat2axang singularity test'));
+
+% simple test 1
+[e,Phi] = quat2axang([0;1;0;0]);
+test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi],'quat2axang test 1'));
 
 % simple test 2
-[e,Phi] = quat2axang([0;1;0;0]);
-test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi],'quat2axang test 2'));
+[e,Phi] = quat2axang([0;-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3]);
+test_suite.add_test(TestEqual([e;Phi],[-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3;pi],'quat2axang test 2'));
 
 % simple test 3
-[e,Phi] = quat2axang([0;-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3])
-test_suite.add_test(TestEqual([e;Phi],[-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3;pi],'quat2axang test 3'));
+[e,Phi] = quat2axang([sqrt(2)/2;sqrt(2)/2;0;0]);
+test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi/2],'quat2axang test 3'));
 
 % simple test 4
-[e,Phi] = quat2axang([sqrt(2)/2;sqrt(2)/2;0;0]);
-test_suite.add_test(TestEqual([e;Phi],[1;0;0;pi/2],'quat2axang test 4'));
+[e,Phi] = quat2axang([sqrt(2)/2;-sqrt(6)/6;-sqrt(6)/6;-sqrt(6)/6]);
+test_suite.add_test(TestEqual([e;Phi],[-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3;pi/2],'quat2axang test 4'));
 
 % simple test 5
-[e,Phi] = quat2axang([sqrt(2)/2;-sqrt(6)/6;-sqrt(6)/6;-sqrt(6)/6]);
-test_suite.add_test(TestEqual([e;Phi],[-sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3;pi/2],'quat2axang test 5'));
-
-% simple test 6
 [e,Phi] = quat2axang([0.3827;0.1562;0.7808;-0.4685]);
-test_suite.add_test(TestEqual([e;Phi],[0.1690;0.8452;-0.5071;3*pi/4],'quat2axang test 6',4));
+test_suite.add_test(TestEqual([e;Phi],[0.1690;0.8452;-0.5071;3*pi/4],'quat2axang test 5',4));
+
+% long test
+e1 = linspace(-1,1);
+e1 = e1(randperm(100));
+e2 = linspace(-1,1);
+e2 = e2(randperm(100));
+e3 = linspace(-1,1);
+e3 = e3(randperm(100));
+e = [e1;e2;e3];
+for i = 1:100
+    e(:,i) = e(:,i)/norm(e(:,i));
+end
+Phi = linspace(0.001,pi);
+Phi = Phi(randperm(100));
+e_recalc = zeros(3,100);
+Phi_recalc = zeros(1,100);
+for i = 1:100
+    [e_recalc(:,i),Phi_recalc(i)] = quat2axang(axang2quat(e(:,i),Phi(i)));
+end
+test_suite.add_test(TestEqual([e;Phi],[e_recalc;Phi_recalc],'quat2axang long test',12));
 
 
 
@@ -582,51 +596,6 @@ for i = 1:100
     R(:,:,i) = axang2mat(e(:,i),Phi(i));
 end
 test_suite.add_test(TestEqual(R,R_true,'axang2mat long test',14));
-
-
-
-%% axang2eul_321
-
-% simple test 1
-[psi,theta,phi] = axang2eul_321([1;0;0],0);
-test_suite.add_test(TestEqual([psi,theta,phi],[0,0,0],'axang2eul_321 test 1'));
-
-% simple test 2
-[psi,theta,phi] = axang2eul_321([-5;4;-2],0);
-test_suite.add_test(TestEqual([psi,theta,phi],[0,0,0],'axang2eul_321 test 2'));
-
-% simple test 3
-[psi,theta,phi] = axang2eul_321([0;1;0],pi/2);
-test_suite.add_test(TestEqual([psi,theta,phi],[0,pi/2,0],'axang2eul_321 test 3'));
-
-% simple test 4
-[psi,theta,phi] = axang2eul_321([0.1;0.2;-0.4],5*pi/4);
-test_suite.add_test(TestEqual([psi,theta,phi],[2.2471,0.0166,-0.9352],'axang2eul_321 test 4',4));
-
-% long test
-e1 = linspace(-1,1);
-e1 = e1(randperm(100));
-e2 = linspace(-1,1);
-e2 = e2(randperm(100));
-e3 = linspace(-1,1);
-e3 = e3(randperm(100));
-e = [e1;e2;e3];
-Phi = linspace(0,2*pi);
-Phi = Phi(randperm(100));
-psi = zeros(1,100);
-psi_true = zeros(1,100);
-theta = zeros(1,100);
-theta_true = zeros(1,100);
-phi = zeros(1,100);
-phi_true = zeros(1,100);
-for i = 1:100
-    R = axang2mat(e(:,i),Phi(i));
-    [psi_true(i),theta_true(i),phi_true(i)] = mat2eul_321(R);
-    [psi(i),theta(i),phi(i)] = axang2eul_321(e(:,i),Phi(i));
-end
-test_suite.add_test(TestEqual(psi,psi_true,'axang2eul_321 long test --> yaw'));
-test_suite.add_test(TestEqual(theta,theta_true,'axang2eul_321 long test --> pitch'));
-test_suite.add_test(TestEqual(phi,phi_true,'axang2eul_321 long test --> roll'));
 
 
 
@@ -672,8 +641,62 @@ Phi_recalc = zeros(1,100);
 for i = 1:100
     [e_recalc(:,i),Phi_recalc(i)] = mat2axang(axang2mat(e(:,i),Phi(i)));
 end
-test_suite.add_test(TestEqual(e,e_recalc,'mat2axang long test --> e',13));
-test_suite.add_test(TestEqual(Phi,Phi_recalc,'mat2axang long test --> Phi',12));
+test_suite.add_test(TestEqual([e;Phi],[e_recalc;Phi_recalc],'mat2axang long test',12));
+
+
+
+%% axang2eul_321
+
+% simple test 1
+[psi,theta,phi] = axang2eul_321([1;0;0],0);
+test_suite.add_test(TestEqual([psi,theta,phi],[0,0,0],'axang2eul_321 test 1'));
+
+% simple test 2
+[psi,theta,phi] = axang2eul_321([-5;4;-2],0);
+test_suite.add_test(TestEqual([psi,theta,phi],[0,0,0],'axang2eul_321 test 2'));
+
+% simple test 3
+[psi,theta,phi] = axang2eul_321([0;1;0],pi/2);
+test_suite.add_test(TestEqual([psi,theta,phi],[0,pi/2,0],'axang2eul_321 test 3'));
+
+% simple test 4
+[psi,theta,phi] = axang2eul_321([0.1;0.2;-0.4],5*pi/4);
+test_suite.add_test(TestEqual([psi,theta,phi],[2.2471,0.0166,-0.9352],'axang2eul_321 test 4',4));
+
+% long test
+e1 = linspace(-1,1);
+e1 = e1(randperm(100));
+e2 = linspace(-1,1);
+e2 = e2(randperm(100));
+e3 = linspace(-1,1);
+e3 = e3(randperm(100));
+e = [e1;e2;e3];
+Phi = linspace(0,2*pi);
+Phi = Phi(randperm(100));
+psi = zeros(1,100);
+psi_true = zeros(1,100);
+theta = zeros(1,100);
+theta_true = zeros(1,100);
+phi = zeros(1,100);
+phi_true = zeros(1,100);
+for i = 1:100
+    R = axang2mat(e(:,i),Phi(i));
+    [psi_true(i),theta_true(i),phi_true(i)] = mat2eul_321(R);
+    [psi(i),theta(i),phi(i)] = axang2eul_321(e(:,i),Phi(i));
+end
+test_suite.add_test(TestEqual([psi;theta;phi],[psi_true;theta_true;phi_true],'axang2eul_321 long test'));
+
+
+
+%% eul2axang_321
+
+% simple test 1
+[e,Phi] = eul2axang_321(0,0,0);
+test_suite.add_test(TestEqual([e;Phi],[1;0;0;0],'eul2axang_321 test 1'));
+
+% simple test 2
+[e,Phi] = eul2axang_321(pi/4,pi/8,-pi/6);
+test_suite.add_test(TestEqual([e;Phi],[-0.5930;0.1488;0.7913;1.0869],'eul2axang_321 test 2',4));
 
 
 

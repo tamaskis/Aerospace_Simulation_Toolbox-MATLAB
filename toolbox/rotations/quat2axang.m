@@ -59,6 +59,9 @@ function [e,Phi] = quat2axang(q)
     % normalizes principal rotation vector
     e = e/inorm(e);
     
+    % ensures |q₀| ≤ 1
+    q0 = imax(imin(q0,1),-1);
+    
     % principal angle [rad]
     Phi = 2*acos(q0);
     
