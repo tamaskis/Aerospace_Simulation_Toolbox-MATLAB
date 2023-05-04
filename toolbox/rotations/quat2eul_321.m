@@ -33,11 +33,25 @@
 %   theta   - (1×1 double) pitch angle (2nd rotation, about 2nd axis) [rad]
 %   phi     - (1×1 double) roll angle (3rd rotation, about 1st axis) [rad]
 %
+% -----
+% NOTE:
+% -----
+%   • The quaternion, q = (q₀,q₁,q₂,q₃)ᵀ, should be input using the 
+%     scalar-first convention, where q₀ is the scalar component and 
+%     qᵥ = (q₁,q₂,q₃)ᵀ is the vector component.
+%   • q does not have to be input as a unit quaternion.
+%   • ψ ∈ (-π,π]
+%   • θ ∈ [-π/2,π/2]
+%   • φ ∈ (-π,π]
+%   • When a singularity corresponding to the pitch angles of θ = ±(π/2) is
+%     encountered, the yaw angle (ψ) is set to 0 and the roll angle (φ) is
+%     determined accordingly.
+%
 %==========================================================================
 function [psi,theta,phi] = quat2eul_321(q)
     
     % normalizes quaternion
-    q = quatnorm(q);
+    q = quatnormalize(q);
     
     % unpacks unit quaternion
     q0 = q(1);

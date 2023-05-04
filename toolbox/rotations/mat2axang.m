@@ -35,15 +35,18 @@
 % -----
 % NOTE:
 % -----
-%   • Phi is returned as an angle between 0 and pi (inclusive).
-%   • e is return as a unit vector.
-%   • If Phi = 0, then e is returned as (1,0,0)ᵀ.
+%   • ||e|| = 1
+%   • Φ ∈ [0,π]
+%   • If Φ = 0, then e is returned as (1,0,0)ᵀ.
 %
 %==========================================================================
 function [e,Phi] = mat2axang(R)
     
     % cosine of the principal angle
     c = (R(1,1)+R(2,2)+R(3,3)-1)/2;
+    
+    % ensures |c| ≤ 1
+    c = imax(imin(c,1),-1);
     
     % edge case #1: cos(Φ) = 1
     if iabs(c-1) < 1e-11

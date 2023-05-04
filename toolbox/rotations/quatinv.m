@@ -34,6 +34,6 @@ function q_inv = quatinv(q)
     q_conj = quatconj(q);
     
     % quaternion inverse
-    q_inv = quatnorm(q_conj);
+    q_inv = quatnormalize(q_conj);
     
 end

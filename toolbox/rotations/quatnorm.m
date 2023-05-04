@@ -1,8 +1,8 @@
 %==========================================================================
 %
-% quatnorm  Normalize a quaternion.
+% quatnorm  Norm of a quaternion.
 %
-%   q = quatnorm(q)
+%   q_norm = quatnorm(q)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-04-29
@@ -25,9 +25,9 @@
 % -------
 % OUTPUT:
 % -------
-%   q       - (4×1 double) unit quaternion
+%   q_norm  - (1×1 double) norm of the quaternion
 %
 %==========================================================================
 function q = quatnorm(q)
-    q = q/inorm(q);
+    q = inorm(q);
 end

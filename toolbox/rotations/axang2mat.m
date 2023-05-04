@@ -32,6 +32,11 @@
 % -------
 %   R       - (3×3 double) rotation matrix
 %
+% -----
+% NOTE:
+% -----
+%   • e does not have to be input as a unit vector.
+%
 %==========================================================================
 function R = axang2mat(e,Phi)
     

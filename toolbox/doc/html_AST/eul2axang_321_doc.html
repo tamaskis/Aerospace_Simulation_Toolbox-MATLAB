@@ -1,0 +1,231 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>eul2axang_321</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-03"><meta name="DC.source" content="eul2axang_321_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>eul2axang_321</tt></h1><!--introduction--><p>3-2-1 Euler angles (yaw, pitch, and roll) to axis-angle representation.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[e,Phi] = eul2axang_321(psi,theta,phi)
+</pre><h2 id="2">Description</h2><p><tt>[e,Phi] = eul2axang_321(psi,theta,phi)</tt> finds the principal rotation vector and principal angle corresponding to the specified 3-2-1 Euler angles (yaw, pitch, and roll).</p><h2 id="3">Inputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>psi</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\psi" title="" /></td>
+          <td>yaw angle (1st rotation, about 3rd axis)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">rad</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>theta</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta" title="" /></td>
+          <td>pitch angle (2nd rotation, about 2nd axis)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">rad</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>phi</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\phi" title="" /></td>
+          <td>roll angle (3rd rotation, about 1st axis)</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">rad</td>
+      </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>e</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{e}" title="" /></td>
+          <td>principal rotation vector</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>Phi</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\Phi" title="" /></td>
+          <td>principal angle</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">rad</td>
+      </tr>
+  </table>
+</p><h2 id="5">Note</h2><div><ul><li><img src="eul2axang_321_doc_eq16622136527845266471.png" alt="$\left\|\mathbf{e}\right\|=1$" style="width:35px;height:11px;"></li><li><img src="eul2axang_321_doc_eq10745434733753327377.png" alt="$\Phi\in[0,\pi]$" style="width:43px;height:11px;"></li><li>If <img src="eul2axang_321_doc_eq06217471778082405699.png" alt="$\Phi=0$" style="width:28px;height:8px;">, then <img src="eul2axang_321_doc_eq07453326560499469056.png" alt="$\mathbf{e}$" style="width:6px;height:6px;"> is returned as <img src="eul2axang_321_doc_eq11160971750524886146.png" alt="$(1,0,0)^{T}$" style="width:40px;height:13px;">.</li></ul></div><h2 id="6">Example</h2><p><i>Find the axis-angle representation of a rotation specified by the 3-2-1 Euler angles <img src="eul2axang_321_doc_eq15496612890459663456.png" alt="$\psi=\pi/3$" style="width:40px;height:11px;">, <img src="eul2axang_321_doc_eq15964431059417494709.png" alt="$\theta=-\pi/6$" style="width:46px;height:11px;">, and <img src="eul2axang_321_doc_eq01109954715629912161.png" alt="$\phi=-2\pi/3$" style="width:53px;height:11px;">.</i></p><p>Defining the 3-2-1 Euler angles,</p><pre class="codeinput">psi = pi/3;
+theta = -pi/6;
+phi = -2*pi/3;
+</pre><p>Computing the axis-angle representation,</p><pre class="codeinput">[e,Phi] = eul2axang_321(psi,theta,phi)
+</pre><pre class="codeoutput">
+e =
+
+   -0.7782
+   -0.6255
+    0.0559
+
+
+Phi =
+
+    2.0236
+
+</pre><h2 id="8">See also</h2><p>TODO</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |eul2axang_321|
+% 3-2-1 Euler angles (yaw, pitch, and roll) to axis-angle representation.
+% 
+% <index_rotations.html Back to *Rotations*>.
+%% Syntax
+%   [e,Phi] = eul2axang_321(psi,theta,phi)
+%% Description
+% |[e,Phi] = eul2axang_321(psi,theta,phi)| finds the principal rotation
+% vector and principal angle corresponding to the specified 3-2-1 Euler 
+% angles (yaw, pitch, and roll).
+%% Inputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>psi</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\psi" title="" /></td>
+%           <td>yaw angle (1st rotation, about 3rd axis)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">rad</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>theta</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta" title="" /></td>
+%           <td>pitch angle (2nd rotation, about 2nd axis)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">rad</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>phi</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\phi" title="" /></td>
+%           <td>roll angle (3rd rotation, about 1st axis)</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">rad</td>
+%       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>e</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{e}" title="" /></td>
+%           <td>principal rotation vector</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>Phi</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\Phi" title="" /></td>
+%           <td>principal angle</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">rad</td>
+%       </tr>
+%   </table>
+% </html>
+%% Note
+% * $\left\|\mathbf{e}\right\|=1$
+% * $\Phi\in[0,\pi]$
+% * If $\Phi=0$, then $\mathbf{e}$ is returned as $(1,0,0)^{T}$.
+%% Example
+% _Find the axis-angle representation of a rotation specified by the 3-2-1
+% Euler angles $\psi=\pi/3$, $\theta=-\pi/6$, and $\phi=-2\pi/3$._
+%
+% Defining the 3-2-1 Euler angles,
+psi = pi/3;
+theta = -pi/6;
+phi = -2*pi/3;
+%%
+% Computing the axis-angle representation,
+[e,Phi] = eul2axang_321(psi,theta,phi)
+%% See also
+% TODO
+##### SOURCE END #####
+--></body></html>

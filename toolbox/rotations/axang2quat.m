@@ -9,7 +9,7 @@
 % quat2mat.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-30
+% Last Update: 2023-05-03
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -32,6 +32,15 @@
 % -------
 %   q       - (4×1 double) unit quaternion
 %
+% -----
+% NOTE:
+% -----
+%   • e does not have to be input as a unit vector.
+%   • The unit quaternion, q = (q₀,q₁,q₂,q₃)ᵀ, is returned using the 
+%     scalar-first convention, where q₀ is the scalar component and 
+%     qᵥ = (q₁,q₂,q₃)ᵀ is the vector component.
+%   • The scalar component, q₀, is chosen to be positive.
+%
 %==========================================================================
 function q = axang2quat(e,Phi)
     
@@ -48,6 +57,6 @@ function q = axang2quat(e,Phi)
     end
     
     % normalizes quaternion
-    q = quatnorm(q);
+    q = quatnormalize(q);
     
 end

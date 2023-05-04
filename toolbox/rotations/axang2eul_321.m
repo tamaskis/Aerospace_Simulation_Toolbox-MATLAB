@@ -34,6 +34,17 @@
 %   theta   - (1×1 double) pitch angle (2nd rotation, about 2nd axis) [rad]
 %   phi     - (1×1 double) roll angle (3rd rotation, about 1st axis) [rad]
 %
+% -----
+% NOTE:
+% -----
+%   • e does not have to be input as a unit vector.
+%   • ψ ∈ (-π,π]
+%   • θ ∈ [-π/2,π/2]
+%   • φ ∈ (-π,π]
+%   • When a singularity corresponding to the pitch angles of θ = ±(π/2) is
+%     encountered, the yaw angle (ψ) is set to 0 and the roll angle (φ) is
+%     determined accordingly.
+%
 %==========================================================================
 function [psi,theta,phi] = axang2eul_321(e,Phi)
     

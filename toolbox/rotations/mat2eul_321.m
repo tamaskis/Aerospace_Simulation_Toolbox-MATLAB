@@ -37,8 +37,11 @@
 % -----
 % NOTE:
 % -----
-%   • When a singularity corresponding to the pitch angles of ±(π/2) is
-%     encountered, the yaw angle is set to 0 and the roll angle is
+%   • ψ ∈ (-π,π]
+%   • θ ∈ [-π/2,π/2]
+%   • φ ∈ (-π,π]
+%   • When a singularity corresponding to the pitch angles of θ = ±(π/2) is
+%     encountered, the yaw angle (ψ) is set to 0 and the roll angle (φ) is
 %     determined accordingly.
 %
 %==========================================================================

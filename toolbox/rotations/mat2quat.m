@@ -31,6 +31,14 @@
 % -------
 %   q       - (4×1 double) unit quaternion
 %
+% -----
+% NOTE:
+% -----
+%   • The unit quaternion, q = (q₀,q₁,q₂,q₃)ᵀ, is returned using the 
+%     scalar-first convention, where q₀ is the scalar component and 
+%     qᵥ = (q₁,q₂,q₃)ᵀ is the vector component.
+%   • The scalar component, q₀, is chosen to be positive.
+%
 %==========================================================================
 function q = mat2quat(R)
     
@@ -51,6 +59,6 @@ function q = mat2quat(R)
          q3];
     
     % normalizes quaternion
-    q = quatnorm(q);
+    q = quatnormalize(q);
     
 end

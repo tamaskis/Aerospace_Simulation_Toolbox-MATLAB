@@ -31,11 +31,19 @@
 % -------
 %   R       - (3×3 double) rotation matrix
 %
+% -----
+% NOTE:
+% -----
+%   • The quaternion, q = (q₀,q₁,q₂,q₃)ᵀ, should be input using the 
+%     scalar-first convention, where q₀ is the scalar component and 
+%     qᵥ = (q₁,q₂,q₃)ᵀ is the vector component.
+%   • q does not have to be input as a unit quaternion.
+%
 %==========================================================================
 function R = quat2mat(q)
     
     % normalizes quaternion
-    q = quatnorm(q);
+    q = quatnormalize(q);
     
     % unpacks unit quaternion
     q0 = q(1);

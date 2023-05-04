@@ -35,6 +35,13 @@
 %   e       - (3×1 double) principal rotation vector
 %   Phi     - (1×1 double) principal angle [rad]
 %
+% -----
+% NOTE:
+% -----
+%   • ||e|| = 1
+%   • Φ ∈ [0,π]
+%   • If Φ = 0, then e is returned as (1,0,0)ᵀ.
+%
 %==========================================================================
 function [e,Phi] = eul2axang_321(psi,theta,phi)
     
