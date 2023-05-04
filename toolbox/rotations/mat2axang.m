@@ -99,6 +99,6 @@ function [e,Phi] = mat2axang(R)
     end
     
     % normalizes principal rotation vector
-    e = e/norm(e);
+    e = e/inorm(e);
     
 end
