@@ -113,48 +113,16 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 R_B2C = eul2mat_321(-pi/6,0,pi/5);
 </pre><p>The rotation matrix from frame <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to frame <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;"> is then</p><pre class="codeinput">R_A2C = R_B2C*R_A2B;
 </pre><p>Now, let's find the unit quaternions representing the rotations from <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> and then from <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> to <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;">.</p><pre class="codeinput">q_A2B = mat2quat(R_A2B);
-q_B2C = mat2quat(R_A2C);
-</pre><p>The unit quaternion representing the rotation from <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;"> is then</p><pre class="codeinput">q_A2C = quatchain(q_A2B,q_B2C)
+q_B2C = mat2quat(R_B2C);
+</pre><p>The unit quaternion representing the rotation from <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;"> is then</p><pre class="codeinput">q_A2C = quatchain(q_A2B,q_B2C);
+</pre><p>Note that this result is identical to converting <img src="quatchain_doc_eq15210055290147511578.png" alt="$\mathbf{R}_{A\to C}$" style="width:29px;height:10px;"> to a unit quaternion.</p><pre class="codeinput">q_A2C-mat2quat(R_A2C)
 </pre><pre class="codeoutput">
-q_A2C =
+ans =
 
-    0.2918
-    0.5184
-    0.2144
-   -0.7747
-
-</pre><p>Note that this result is identical to converting <img src="quatchain_doc_eq15210055290147511578.png" alt="$\mathbf{R}_{A\to C}$" style="width:29px;height:10px;"> to a unit quaternion.</p><pre class="codeinput">[psi,theta,phi] = quat2eul_321(q_A2C)
-[psi,theta,phi] = mat2eul_321(R_A2C)
-<span class="comment">%q_A2C-mat2quat(R_A2C)</span>
-</pre><pre class="codeoutput">
-psi =
-
-   -2.4750
-
-
-theta =
-
-    1.1898
-
-
-phi =
-
-   -0.0796
-
-
-psi =
-
-    1.3051
-
-
-theta =
-
-    0.3112
-
-
-phi =
-
-   -0.5620
+    0.0000
+   -0.1576
+   -0.1423
+   -0.1448
 
 </pre><h2 id="11">See also</h2><p><a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
@@ -232,16 +200,14 @@ R_A2C = R_B2C*R_A2B;
 % Now, let's find the unit quaternions representing the rotations from $A$
 % to $B$ and then from $B$ to $C$.
 q_A2B = mat2quat(R_A2B);
-q_B2C = mat2quat(R_A2C);
+q_B2C = mat2quat(R_B2C);
 %%
 % The unit quaternion representing the rotation from $A$ to $C$ is then
-q_A2C = quatchain(q_A2B,q_B2C)
+q_A2C = quatchain(q_A2B,q_B2C);
 %%
 % Note that this result is identical to converting $\mathbf{R}_{A\to C}$ to
 % a unit quaternion.
-[psi,theta,phi] = quat2eul_321(q_A2C)
-[psi,theta,phi] = mat2eul_321(R_A2C)
-%q_A2C-mat2quat(R_A2C)
+q_A2C-mat2quat(R_A2C)
 %% See also 
 % <quatconj_doc.html |quatconj|> | 
 % <quatinv_doc.html |quatinv|> | 
