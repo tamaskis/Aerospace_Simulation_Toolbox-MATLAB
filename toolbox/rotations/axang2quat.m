@@ -36,9 +36,7 @@
 % NOTE:
 % -----
 %   • e does not have to be input as a unit vector.
-%   • The unit quaternion, q = (q₀,q₁,q₂,q₃)ᵀ, is returned using the 
-%     scalar-first convention, where q₀ is the scalar component and 
-%     qᵥ = (q₁,q₂,q₃)ᵀ is the vector component.
+%   • This function assumes the scalar-first convention for quaternions.
 %   • The scalar component, q₀, is chosen to be positive.
 %
 %==========================================================================

@@ -1,0 +1,186 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>quatconj</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-04"><meta name="DC.source" content="quatconj_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>quatconj</tt></h1><!--introduction--><p>Conjugate of a quaternion.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q_conj = quatconj(q)
+</pre><h2 id="2">Description</h2><p><tt>q_conj = quatconj(q)</tt> returns the conjugate of the specified quaternion.</p><h2 id="3">Inputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>q</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
+          <td>quaternion</td>
+          <td style="text-align:center">4×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>q_conj</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}^{*}" title="" /></td>
+          <td>quaternion conjugate</td>
+          <td style="text-align:center">4×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><h2 id="5">Note</h2><div><ul><li>The quaternion, <img src="quatconj_doc_eq04754134083796840893.png" alt="$\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$" style="width:87px;height:13px;">, should be input using the scalar-first convention, where <img src="quatconj_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;"> is the scalar component and <img src="quatconj_doc_eq17353258090140044202.png" alt="$\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$" style="width:78px;height:13px;"> is the vector component.</li><li><img src="quatconj_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> does not have to be input as a unit quaternion.</li></ul></div><h2 id="6">Example</h2><p><i>Find the conjugate of</i></p><p><img src="quatconj_doc_eq00753472442282730278.png" alt="$$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>Defining the quaternion,</p><pre class="codeinput">q = [1;2;3;4];
+</pre><p>Computing the quaternion conjugate,</p><pre class="codeinput">q_conj = quatconj(q)
+</pre><pre class="codeoutput">
+q_conj =
+
+     1
+    -2
+    -3
+    -4
+
+</pre><h2 id="8">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |quatconj|
+% Conjugate of a quaternion.
+% 
+% <index_rotations.html Back to *Rotations*>.
+%% Syntax
+%   q_conj = quatconj(q)
+%% Description
+% |q_conj = quatconj(q)| returns the conjugate of the specified quaternion.
+%% Inputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>q</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
+%           <td>quaternion</td>
+%           <td style="text-align:center">4×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>q_conj</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}^{*}" title="" /></td>
+%           <td>quaternion conjugate</td>
+%           <td style="text-align:center">4×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+%% Note
+% * The quaternion, $\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$, should be
+% input using the scalar-first convention, where $q_{0}$ is the scalar 
+% component and $\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$ is the vector
+% component.
+% * $\mathbf{q}$ does not have to be input as a unit quaternion.
+%% Example
+% _Find the conjugate of_
+%
+% $$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$
+%
+% Defining the quaternion,
+q = [1;2;3;4];
+%%
+% Computing the quaternion conjugate,
+q_conj = quatconj(q)
+%% See also
+% <quatchain_doc.html |quatchain|> | 
+% <quatinv_doc.html |quatinv|> | 
+% <quatmul_doc.html |quatmul|> | 
+% <quatnorm_doc.html |quatnorm|> | 
+% <quatnormalize_doc.html |quatnormalize|>
+##### SOURCE END #####
+--></body></html>

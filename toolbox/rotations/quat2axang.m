@@ -35,9 +35,7 @@
 % -----
 % NOTE:
 % -----
-%   • The quaternion, q = (q₀,q₁,q₂,q₃)ᵀ, should be input using the 
-%     scalar-first convention, where q₀ is the scalar component and 
-%     qᵥ = (q₁,q₂,q₃)ᵀ is the vector component.
+%   • This function assumes the scalar-first convention for quaternions.
 %   • q does not have to be input as a unit quaternion.
 %   • ||e|| = 1
 %   • Φ ∈ [0,π]

@@ -4,6 +4,8 @@
 %
 %   q = quatnormalize(q)
 %
+% See also quatchain, quatconj, quatinv, quatmul, quatnorm.
+%
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-04-29
 % Website: https://tamaskis.github.io
