@@ -36,11 +36,20 @@
 %   • This function assumes the scalar-first convention for quaternions.
 %   • p and q do not have to be input as unit quaternions, and r is not 
 %     returned as a unit quaternion.
+%   • The scalar component of r is chosen to be positive.
 %     
 %==========================================================================
 function r = quatmul(p,q)
+    
+    % evaluates Hamilton product
     r = [p(1)*q(1)-p(2)*q(2)-p(3)*q(3)-p(4)*q(4);
          p(1)*q(2)+p(2)*q(1)+p(3)*q(4)-p(4)*q(3);
          p(1)*q(3)-p(2)*q(4)+p(3)*q(1)+p(4)*q(2);
          p(1)*q(4)+p(2)*q(3)-p(3)*q(2)+p(4)*q(1)];
+    
+    % ensures scalar component of quaternion is positive
+    if r(1) < 0
+        r = -r;
+    end
+    
 end

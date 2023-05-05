@@ -57,7 +57,7 @@ function q = eul2quat_321(psi,theta,phi)
          c1*s2*c3+s1*c2*s3;
          c1*c2*s3-s1*s2*c3];
     
-    % ensures first element of quaternion is positive
+    % ensures scalar component of quaternion is positive
     if q(1) < 0
         q = -q;
     end

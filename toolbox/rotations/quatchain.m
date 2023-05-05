@@ -39,17 +39,13 @@
 %   • This function assumes the scalar-first convention for quaternions.
 %   • It is assumed that q_A2B and q_B2C are input as unit quaternions.
 %   • q_A2C is returned as a unit quaternion.
+%   • The scalar component of q_A2C is chosen to be positive.
 %     
 %==========================================================================
 function q_A2C = quatchain(q_A2B,q_B2C)
     
     % evaluates Hamilton product to find chained rotation
-    q_A2C = quatmul(q_B2C,q_A2B);
-    
-    % ensures first element of quaternion is positive
-    if q_A2C(1) < 0
-        q_A2C = -q_A2C;
-    end
+    q_A2C = quatmul(q_A2B,q_B2C);
     
     % normalizes the result
     q_A2C = quatnormalize(q_A2C);

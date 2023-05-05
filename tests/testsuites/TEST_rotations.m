@@ -701,10 +701,12 @@ test_suite.add_test(TestEqual([e;Phi],[-0.5930;0.1488;0.7913;1.0869],'eul2axang_
 
 
 %% quatmul
-% TODO
 
-q = [1 0 1 0];
-r = [1 0.5 0.5 0.75];
+% TODO: https://www.mathworks.com/help/aerotbx/ug/quatmultiply.html
+
+q = [1;0;1;0];
+r = [1;0.5;0.5;0.75];
+quatmul(q,r)
 
 
 %% RUNS TEST SUITE
