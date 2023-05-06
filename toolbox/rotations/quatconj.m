@@ -33,7 +33,8 @@
 % NOTE:
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
-%   • q does not have to be input as a unit quaternion.
+%   • q does not have to be input as a unit quaternion, and q_conj is not
+%     returned as a unit quaternion.
 %
 %==========================================================================
 function q_conj = quatconj(q)

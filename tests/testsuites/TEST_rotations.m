@@ -1,10 +1,13 @@
 %% TEST_rotations.m
 % Aerospace Simulation Toolbox
 %
-% Unit testing of the rot1, rot2, rot3,  rot313, and rot321 functions.
+% Unit testing of the axang2eul_321, axang2mat, axang2quat, eul2axang_321,
+% eul2mat_321, eul2quat_321, mat2axang, mat2eul_321, mat2quat, quat2axang,
+% quat2eul_321, quat2mat, quatchain, quatconj, quatinv, quatmul, quatnorm,
+% quatnormalize, rot1, rot2, rot3, rot313, and rot321 functions.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-01
+% Last Update: 2023-05-05
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -702,11 +705,120 @@ test_suite.add_test(TestEqual([e;Phi],[-0.5930;0.1488;0.7913;1.0869],'eul2axang_
 
 %% quatmul
 
-% TODO: https://www.mathworks.com/help/aerotbx/ug/quatmultiply.html
+p = [1;0;1;0];
+q = [1;0.5;0.5;0.75];
+r = [2;1;0.1;0.1];
+test_suite.add_test(TestEqual(quatmul(p,p),[0;0;2;0],'quatmul test 1'));
+test_suite.add_test(TestEqual(quatmul(p,q),[0.5;1.25;1.5;0.25],'quatmul test 2'));
+test_suite.add_test(TestEqual(quatmul(p,r),[1.9;1.1;2.1;-0.9],'quatmul test 3'));
 
-q = [1;0;1;0];
-r = [1;0.5;0.5;0.75];
-quatmul(q,r)
+
+
+%% quatconj
+
+test_suite.add_test(TestEqual(quatconj([1;2;3;4]),[1;-2;-3;-4],'quatconj test 1'));
+test_suite.add_test(TestEqual(quatconj([1;-2;-3;-4]),[1;2;3;4],'quatconj test 2'));
+test_suite.add_test(TestEqual(quatconj([1;0;0;0]),[1;0;0;0],'quatconj test 3'));
+
+
+
+%% quatnorm
+
+test_suite.add_test(TestEqual(quatnorm([1;2;3;4]),5.4772,'quatnorm test 1',4));
+test_suite.add_test(TestEqual(quatnorm([1;1;1;1]),2,'quatnorm test 2'));
+test_suite.add_test(TestEqual(quatnorm([0;1;-1;-1]),sqrt(3),'quatnorm test 3'));
+test_suite.add_test(TestEqual(quatnorm([0;-1;0;0]),1,'quatnorm test 4'));
+
+
+
+%% quatnormalize
+
+% simple tests
+test_suite.add_test(TestEqual(quatnormalize([1;2;3;4]),[0.1826;0.3651;0.5477;0.7303],'quatnormalize test 1',4));
+test_suite.add_test(TestEqual(quatnormalize([1;1;1;1]),[0.5;0.5;0.5;0.5],'quatnormalize test 2'));
+test_suite.add_test(TestEqual(quatnormalize([0;1;-1;-1]),[0;sqrt(3)/3;-sqrt(3)/3;-sqrt(3)/3],'quatnormalize test 3'));
+test_suite.add_test(TestEqual(quatnormalize([0;-1;0;0]),[0;-1;0;0],'quatnormalize test 4'));
+
+% long test
+q0 = linspace(-10,10);
+q0 = q0(randperm(100));
+q1 = linspace(-10,10);
+q1 = q1(randperm(100));
+q2 = linspace(-10,10);
+q2 = q2(randperm(100));
+q3 = linspace(-10,10);
+q3 = q3(randperm(100));
+q = [q0;q1;q2;q3];
+q_norm = zeros(1,100);
+for i = 1:100
+    q_norm(i) = quatnorm(quatnormalize(q(:,i)));
+end
+test_suite.add_test(TestEqual(q_norm,ones(1,100),'quatnormalize long test',15));
+
+
+
+%% quatinv
+
+% simple tests
+test_suite.add_test(TestEqual(quatinv([1;2;3;4]),[1/30;-1/15;-1/10;-26/195],'quatinv test 1'));
+test_suite.add_test(TestEqual(quatinv([1;1;1;1]),[0.25;-0.25;-0.25;-0.25],'quatinv test 2'));
+test_suite.add_test(TestEqual(quatinv([0;1;-1;-1]),[0;-1/3;1/3;1/3],'quatinv test 3'));
+test_suite.add_test(TestEqual(quatinv([0;-1;0;0]),[0;1;0;0],'quatinv test 4'));
+
+% long test
+q0 = linspace(-10,10);
+q0 = q0(randperm(100));
+q1 = linspace(-10,10);
+q1 = q1(randperm(100));
+q2 = linspace(-10,10);
+q2 = q2(randperm(100));
+q3 = linspace(-10,10);
+q3 = q3(randperm(100));
+q = [q0;q1;q2;q3];
+q_prod = zeros(4,100);
+for i = 1:100
+    q_prod(:,i) = quatmul(q(:,i),quatinv(q(:,i)));
+end
+q_prod_true = zeros(4,100);
+q_prod_true(1,:) = ones(1,100);
+test_suite.add_test(TestEqual(q_prod,q_prod_true,'quatinv long test',15));
+
+
+
+%% quatchain
+
+% simple test
+q_A2B = [0.1826;0.3651;0.5477;0.7303];
+q_B2C = [0.2662;-0.0690;-0.3451;0.8973];
+q_A2C = quatchain(q_A2B,q_B2C);
+test_suite.add_test(TestEqual(q_A2C,[0.3925;-0.8281;0.2952;-0.2701],'quatchain simple test',4));
+
+% long test
+psi1 = linspace(-pi,pi);
+psi1 = psi1(randperm(100));
+theta1 = linspace(-pi/2,pi/2);
+theta1 = theta1(randperm(100));
+phi1 = linspace(pi,-pi);
+phi1 = phi1(randperm(100));
+psi2 = linspace(-pi,pi);
+psi2 = psi2(randperm(100));
+theta2 = linspace(-pi/2,pi/2);
+theta2 = theta2(randperm(100));
+phi2 = linspace(pi,-pi);
+phi2 = phi2(randperm(100));
+q_A2C = zeros(4,100);
+q_A2C_true = zeros(4,100);
+for i = 1:100
+    q_A2B = eul2quat_321(psi1(i),theta1(i),phi1(i));
+    q_B2C = eul2quat_321(psi2(i),theta2(i),phi2(i));
+    q_A2C(:,i) = quatchain(q_A2B,q_B2C);
+    R_A2B = eul2mat_321(psi1(i),theta1(i),phi1(i));
+    R_B2C = eul2mat_321(psi2(i),theta2(i),phi2(i));
+    R_A2C = R_B2C*R_A2B;
+    q_A2C_true(:,i) = mat2quat(R_A2C);
+end
+test_suite.add_test(TestEqual(q_A2C,q_A2C_true,'quatchain long test',15));
+
 
 
 %% RUNS TEST SUITE
