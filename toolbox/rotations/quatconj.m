@@ -4,10 +4,11 @@
 %
 %   q_conj = quatconj(q)
 %
-% See also quatchain, quatinv, quatmul, quatnorm, quatnormalize.
+% See also quatchain, quatinv, quatmul, quatnorm, quatnormalize,
+% quatrotate.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-29
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -33,8 +34,9 @@
 % NOTE:
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
-%   • q does not have to be input as a unit quaternion, and q_conj is not
-%     returned as a unit quaternion.
+%   • q does not have to be input as a unit quaternion (this function is
+%     for all quaternions, not just unit quaternions).
+%   • q_conj is not normalized.
 %
 %==========================================================================
 function q_conj = quatconj(q)

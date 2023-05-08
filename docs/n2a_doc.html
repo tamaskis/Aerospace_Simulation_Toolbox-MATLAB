@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>n2a</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="n2a_doc.m"><style type="text/css">
+      --><title>n2a</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="n2a_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,10 +67,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>n2a</tt></h1><!--introduction--><p>Semi-major axis from mean motion.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Input/Output Parameters</a></li><li><a href="#5">Example #1: Orbit around the Earth.</a></li><li><a href="#7">Example #2: Orbit around the moon.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">a = n2a(n)
+  </style></head><body><div class="content"><h1><tt>n2a</tt></h1><!--introduction--><p>Semi-major axis from mean motion.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Input/Output Parameters</a></li><li><a href="#5">Example #1: Orbit around the Earth.</a></li><li><a href="#7">Example #2: Orbit around the moon.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">a = n2a(n)
 a = n2a(n,mu)
 </pre><h2 id="2">Description</h2><p><tt>a = n2a(n)</tt> finds the semi-major axis, <img src="n2a_doc_eq04574278970515790912.png" alt="$a$" style="width:6px;height:6px;">, given the mean motion, <img src="n2a_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;">, for a circular (<img src="n2a_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) or elliptical (<img src="n2a_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbit around the Earth.</p><p><tt>a = n2a(n,mu)</tt> finds the semi-major axis, <img src="n2a_doc_eq04574278970515790912.png" alt="$a$" style="width:6px;height:6px;">, given the mean motion, <img src="n2a_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;">, for a circular (<img src="n2a_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) or elliptical (<img src="n2a_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbit around a cental body with gravitational parameter <img src="n2a_doc_eq06904339251718989188.png" alt="$\mu$" style="width:7px;height:8px;">.</p><h2 id="4">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -123,7 +123,7 @@ a =
 %% |n2a|
 % Semi-major axis from mean motion.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   a = n2a(n)
 %   a = n2a(n,mu)
@@ -136,7 +136,7 @@ a =
 % body with gravitational parameter $\mu$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

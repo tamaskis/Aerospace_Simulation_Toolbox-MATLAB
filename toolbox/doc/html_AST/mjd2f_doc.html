@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>mjd2f</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="mjd2f_doc.m"><style type="text/css">
+      --><title>mjd2f</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="mjd2f_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>mjd2f</tt></h1><!--introduction--><p>Fraction of day from modified Julian date.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example #1: Positive MJD.</a></li><li><a href="#5">Example #2: Negative MJD.</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">f_DD = mjd2f(MJD)
-</pre><h2 id="2">Description</h2><p><tt>f_DD = mjd2f(MJD)</tt> finds the fraction of day given the modified Julian date.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  </style></head><body><div class="content"><h1><tt>mjd2f</tt></h1><!--introduction--><p>Fraction of day from modified Julian date.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example #1: Positive MJD.</a></li><li><a href="#6">Example #2: Negative MJD.</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">f_DD = mjd2f(MJD)
+</pre><h2 id="2">Description</h2><p><tt>f_DD = mjd2f(MJD)</tt> finds the fraction of day given the modified Julian date.</p><h2 id="3">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -79,15 +78,23 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>MJD</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}" title="" /></td></td>
           <td>modified Julian date</td>
           <td style="text-align:center">1×1<BR>double</td>
           <td style="text-align:center">d</td>
       </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>f_DD</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f_{\mathrm{DD}}" title="" /></td></td>
           <td>fraction of day</td>
@@ -95,34 +102,33 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">d</td>
       </tr>
   </table>
-</p><h2 id="4">Example #1: Positive MJD.</h2><p><i>Find the fraction of day for modified Julian date of 58321.67.</i></p><pre class="codeinput">f_DD = mjd2f(58321.67)
+</p><h2 id="5">Example #1: Positive MJD.</h2><p><i>Find the fraction of day for modified Julian date of 58321.67.</i></p><pre class="codeinput">f_DD = mjd2f(58321.67)
 </pre><pre class="codeoutput">
 f_DD =
 
     0.6700
 
-</pre><h2 id="5">Example #2: Negative MJD.</h2><p><i>Find the fraction of day for modified Julian date of -5.34.</i></p><pre class="codeinput">f_DD = mjd2f(-5.34)
+</pre><h2 id="6">Example #2: Negative MJD.</h2><p><i>Find the fraction of day for modified Julian date of -5.34.</i></p><pre class="codeinput">f_DD = mjd2f(-5.34)
 </pre><pre class="codeoutput">
 f_DD =
 
-    0.3400
+    0.6600
 
-</pre><h2 id="6">See also</h2><p><a href="cal2doy_doc.html"><tt>cal2doy</tt></a> | <a href="cal2mjd_doc.html"><tt>cal2mjd</tt></a> | <a href="doy2cal_doc.html"><tt>doy2cal</tt></a> | <a href="f2hms_doc.html"><tt>f2hms</tt></a> | <a href="hms2f_doc.html"><tt>hms2f</tt></a> | <a href="jd2mjd_doc.html"><tt>jd2mjd</tt></a> | <a href="jd2t_doc.html"><tt>jd2t</tt></a> | <a href="mjd2cal_doc.html"><tt>mjd2cal</tt></a> | <a href="mjd2jd_doc.html"><tt>mjd2jd</tt></a> | <a href="mjd2t_doc.html"><tt>mjd2t</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="7">See also</h2><p><a href="cal2doy_doc.html"><tt>cal2doy</tt></a> | <a href="cal2mjd_doc.html"><tt>cal2mjd</tt></a> | <a href="doy2cal_doc.html"><tt>doy2cal</tt></a> | <a href="f2hms_doc.html"><tt>f2hms</tt></a> | <a href="hms2f_doc.html"><tt>hms2f</tt></a> | <a href="jd2mjd_doc.html"><tt>jd2mjd</tt></a> | <a href="jd2t_doc.html"><tt>jd2t</tt></a> | <a href="mjd2cal_doc.html"><tt>mjd2cal</tt></a> | <a href="mjd2jd_doc.html"><tt>mjd2jd</tt></a> | <a href="mjd2t_doc.html"><tt>mjd2t</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |mjd2f|
 % Fraction of day from modified Julian date.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   f_DD = mjd2f(MJD)
 %% Description
 % |f_DD = mjd2f(MJD)| finds the fraction of day given the modified Julian
 % date.
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -130,15 +136,25 @@ f_DD =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>MJD</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}" title="" /></td></td>
 %           <td>modified Julian date</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %           <td style="text-align:center">d</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>f_DD</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;f_{\mathrm{DD}}" title="" /></td></td>
 %           <td>fraction of day</td>

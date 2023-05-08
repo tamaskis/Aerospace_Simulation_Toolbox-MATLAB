@@ -1,13 +1,13 @@
 %==========================================================================
 %
-% get_DAT  Obtains the difference between TAI and UTC (ΔAT = TAI - UTC).
+% get_dat  Obtains the difference between TAI and UTC (ΔAT = TAI - UTC).
 %
-%   DAT = get_DAT(MJD)
+%   DAT = get_dat(MJD)
 %
-% See also get_DUT1.
+% See also get_dut1.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-01
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,39 +22,50 @@
 % ------
 % INPUT:
 % ------
-%   MJD     - (1×1 double) modified Julian date (any time scale) [MJD]
+%   MJD     - (1×1 double) modified Julian date of any time scale [MJD]
 %
 % -------
 % OUTPUT:
 % -------
-%   DAT    - (1×1 double) difference between TAI (International Atomic 
-%            Time) and UTC (Universal Coordinated Time) [s]
-%               --> ΔAT = TAI - UTC
+%   DAT    - (1×1 double) leap seconds (difference between TAI 
+%            (International Atomic Time) and UTC (Universal Coordinated 
+%            Time) [s]
+%
+% -----
+% NOTE:
+% -----
+%   • ΔAT = TAI - UTC
 %
 %==========================================================================
-function DAT = get_DAT(MJD)
+function DAT = get_dat(MJD)
     
-    % loads DAT data
-    %   --> first column is the date in MJD
-    %   --> second column is DAT in seconds
+    % loads ΔAT data
+    %   • first column is the date in MJD
+    %   • second column is ΔAT in seconds
     DAT_data = load_numeric_data('DAT.mat');
     
-    % truncates date to beginning of day
-    MJD = floor(MJD);
+    % extracts x and y vectors
+    x = DAT_data(:,1);
+    y = DAT_data(:,2);
     
-    % if date is after the latest available data, set it to latest date in
-    % data table
-    if MJD > DAT_data(end,1)
-        MJD = DAT_data(end,1);
+    % gets length of data
+    N = length(x);
+    
+    % edge case: specified date is after last available date
+    if MJD > x(N)
+        DAT = y(N);
+        
+    % base case: specified date is either (a) before first available date
+    % in the data set or (b) contained within the available dates in the 
+    % data set
+    else
+        
+        % finds the lower bound of interval containing specified date
+        [l,~] = find_interval(x,MJD);
+        
+        % extracts leap seconds from data table
+        DAT = y(l);
+        
     end
-    
-    % if date is before the first available date, throw an error
-    if (MJD < DAT_data(1,1))
-        error('ΔAT data not available for specified date.');
-    end
-    
-    % extracts DAT from data
-    index = interval_search(DAT_data(:,1),MJD);
-    DAT = DAT_data(index,2);
     
 end

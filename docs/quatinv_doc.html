@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>quatinv</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-04"><meta name="DC.source" content="quatinv_doc.m"><style type="text/css">
+      --><title>quatinv</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="quatinv_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -102,7 +102,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">-</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li><img src="quatinv_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> does not have to be input as a unit quaternion, and <img src="quatinv_doc_eq10976324360866935783.png" alt="$\mathbf{q}^{-1}$" style="width:16px;height:12px;"> is not returned as a unit quaternion.</li></ul></div><h2 id="6">Example</h2><p><i>Find the inverse of</i></p><p><img src="quatinv_doc_eq00753472442282730278.png" alt="$$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>Defining the quaternion,</p><pre class="codeinput">q = [1;2;3;4];
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li><img src="quatinv_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> does not have to be input as a unit quaternion (this function is for all quaternions, not just unit quaternions).</li><li><img src="quatinv_doc_eq10976324360866935783.png" alt="$\mathbf{q}^{-1}$" style="width:16px;height:12px;"> is not normalized.</li></ul></div><h2 id="6">Example</h2><p><i>Find the inverse of</i></p><p><img src="quatinv_doc_eq00753472442282730278.png" alt="$$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>Defining the quaternion,</p><pre class="codeinput">q = [1;2;3;4];
 </pre><p>Computing the quaternion inverse,</p><pre class="codeinput">q_inv = quatinv(q)
 </pre><pre class="codeoutput">
 q_inv =
@@ -121,7 +121,7 @@ q_prod =
          0
    -0.0000
 
-</pre><h2 id="9">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="9">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |quatinv|
 % Inverse of a quaternion.
@@ -171,8 +171,9 @@ q_prod =
 % </html>
 %% Note
 % * This function assumes the scalar-first convention for quaternions.
-% * $\mathbf{q}$ does not have to be input as a unit quaternion, and 
-% $\mathbf{q}^{-1}$ is not returned as a unit quaternion.
+% * $\mathbf{q}$ does not have to be input as a unit quaternion (this
+% function is for all quaternions, not just unit quaternions).
+% * $\mathbf{q}^{-1}$ is not normalized.
 %% Example
 % _Find the inverse of_
 %
@@ -192,6 +193,7 @@ q_prod = quatmul(q,q_inv)
 % <quatconj_doc.html |quatconj|> | 
 % <quatmul_doc.html |quatmul|> | 
 % <quatnorm_doc.html |quatnorm|> | 
-% <quatnormalize_doc.html |quatnormalize|>
+% <quatnormalize_doc.html |quatnormalize|> | 
+% <quatrotate_doc.html |quatrotate|>
 ##### SOURCE END #####
 --></body></html>

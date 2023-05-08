@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>eci2ecef_matrix_approx</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="eci2ecef_matrix_approx_doc.m"><style type="text/css">
+      --><title>eci2ecef_matrix_approx</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="eci2ecef_matrix_approx_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,12 +67,12 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>eci2ecef_matrix_approx</tt></h1><!--introduction--><p>Rotation matrix from Earth-centered inertial (ECI) frame to Earth-centered Earth-fixed (ECEF) frame (approximate).</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#6">Input/Output Parameters</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1)
+  </style></head><body><div class="content"><h1><tt>eci2ecef_matrix_approx</tt></h1><!--introduction--><p>Rotation matrix from Earth-centered inertial (ECI) frame to Earth-centered Earth-fixed (ECEF) frame (approximate).</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#6">Input/Output Parameters</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1)
 R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,<span class="string">'Linear'</span>)
 R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,<span class="string">'IAU2006/2000'</span>)
 R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,<span class="string">'Vallado'</span>)
 </pre><h2 id="2">Description</h2><p><tt>R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1)</tt> finds the rotation matrix from the Earth-centered inertial (ECI) frame to the Earth-Centered Earth-fixed (ECEF) frame, <img src="eci2ecef_matrix_approx_doc_eq17883318107889963553.png" alt="$[\mathbf{R}_{\mathrm{ECI}\to\mathrm{ECEF}}]$" style="width:56px;height:11px;">, given the modified Julian date of UT1, <img src="eci2ecef_matrix_approx_doc_eq11095008563007067201.png" alt="$\mathrm{MJD}_{\mathrm{UT1}}$" style="width:39px;height:10px;">. This syntax uses the <tt>gmst_linear</tt> function to calculate the Greenwich mean sidereal time (GMST), <img src="eci2ecef_matrix_approx_doc_eq17708998460813248823.png" alt="$\theta_{\mathrm{GMST}}$" style="width:28px;height:10px;">.</p><p><tt>R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,'Linear')</tt> does the same as the syntax above.</p><p><tt>R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,'IAU2006/2000')</tt> finds the same rotation matrix, but uses the <tt>gmst_iau06</tt> function to calculate the GMST.</p><p><tt>R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,'Vallado')</tt> finds the same rotation matrix, but uses the <tt>gmst_vallado</tt> function to calculate the GMST.</p><h2 id="6">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -111,7 +111,7 @@ R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,<span class="string">'Vallado'</span
 % Rotation matrix from Earth-centered inertial (ECI) frame to 
 % Earth-centered Earth-fixed (ECEF) frame (approximate).
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1)
 %   R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,'Linear')
@@ -137,7 +137,7 @@ R_eci2ecef = eci2ecef_matrix_approx(MJD_UT1,<span class="string">'Vallado'</span
 % GMST.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

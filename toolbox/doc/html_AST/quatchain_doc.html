@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>quatchain</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-04"><meta name="DC.source" content="quatchain_doc.m"><style type="text/css">
+      --><title>quatchain</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="quatchain_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>quatchain</tt></h1><!--introduction--><p>Chaining rotations represented by unit quaternions.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#11">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q_A2C = quatchain(q_A2B,q_B2C)
+  </style></head><body><div class="content"><h1><tt>quatchain</tt></h1><!--introduction--><p>Chaining passive rotations represented by unit quaternions.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#11">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q_A2C = quatchain(q_A2B,q_B2C)
 </pre><h2 id="2">Description</h2><p><tt>q_A2C = quatchain(q_A2B,q_B2C)</tt> returns the quaternion <img src="quatchain_doc_eq05376053981390079408.png" alt="$\mathbf{q}_{A\to B}$" style="width:26px;height:8px;"> representing the rotation from frame <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to frame <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;">, given the quaternions representing the rotations from frame <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to frame <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> and then from frame <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> to frame <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;"> (<img src="quatchain_doc_eq05376053981390079408.png" alt="$\mathbf{q}_{A\to B}$" style="width:26px;height:8px;"> and <img src="quatchain_doc_eq00791914280824671942.png" alt="$\mathbf{q}_{B\to C}$" style="width:27px;height:8px;">, respectively).</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
@@ -109,12 +109,20 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">-</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li>It is assumed that <img src="quatchain_doc_eq05376053981390079408.png" alt="$\mathbf{q}_{A\to B}$" style="width:26px;height:8px;"> and <img src="quatchain_doc_eq00791914280824671942.png" alt="$\mathbf{q}_{B\to C}$" style="width:27px;height:8px;"> are input as unit quaternions.</li><li><img src="quatchain_doc_eq16981846592054423564.png" alt="$\mathbf{q}_{A\to C}$" style="width:26px;height:8px;"> is returned as a unit quaternion.</li></ul></div><h2 id="6">Example</h2><p>First, let's construct two rotation matrices representing rotations from frame <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to frame <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> and then from frame <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> to frame <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;">.</p><pre class="codeinput">R_A2B = eul2mat_321(pi/2,pi/4,-pi/3);
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li>This function assumes that <img src="quatchain_doc_eq05376053981390079408.png" alt="$\mathbf{q}_{A\to B}$" style="width:26px;height:8px;"> and <img src="quatchain_doc_eq00791914280824671942.png" alt="$\mathbf{q}_{B\to C}$" style="width:27px;height:8px;"> are input as unit quaternions, so it does <i>not</i> normalize them.</li><li><img src="quatchain_doc_eq16981846592054423564.png" alt="$\mathbf{q}_{A\to C}$" style="width:26px;height:8px;"> is normalized.</li><li>The scalar component of <img src="quatchain_doc_eq16981846592054423564.png" alt="$\mathbf{q}_{A\to C}$" style="width:26px;height:8px;"> is chosen to be positive.</li></ul></div><h2 id="6">Example</h2><p>First, let's construct two rotation matrices representing rotations from frame <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to frame <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> and then from frame <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> to frame <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;">.</p><pre class="codeinput">R_A2B = eul2mat_321(pi/2,pi/4,-pi/3);
 R_B2C = eul2mat_321(-pi/6,0,pi/5);
 </pre><p>The rotation matrix from frame <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to frame <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;"> is then</p><pre class="codeinput">R_A2C = R_B2C*R_A2B;
 </pre><p>Now, let's find the unit quaternions representing the rotations from <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> and then from <img src="quatchain_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;"> to <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;">.</p><pre class="codeinput">q_A2B = mat2quat(R_A2B);
 q_B2C = mat2quat(R_B2C);
-</pre><p>The unit quaternion representing the rotation from <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;"> is then</p><pre class="codeinput">q_A2C = quatchain(q_A2B,q_B2C);
+</pre><p>The unit quaternion representing the rotation from <img src="quatchain_doc_eq08772416954200330719.png" alt="$A$" style="width:8px;height:8px;"> to <img src="quatchain_doc_eq08596374860807106346.png" alt="$C$" style="width:8px;height:8px;"> is then</p><pre class="codeinput">q_A2C = quatchain(q_A2B,q_B2C)
+</pre><pre class="codeoutput">
+q_A2C =
+
+    0.7281
+   -0.3081
+   -0.0480
+    0.6105
+
 </pre><p>Note that this result is identical to converting <img src="quatchain_doc_eq15210055290147511578.png" alt="$\mathbf{R}_{A\to C}$" style="width:29px;height:10px;"> to a unit quaternion.</p><pre class="codeinput">q_A2C-mat2quat(R_A2C)
 </pre><pre class="codeoutput">
 ans =
@@ -126,10 +134,10 @@ ans =
     0.0278
    -0.1110
 
-</pre><h2 id="11">See also</h2><p><a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="11">See also</h2><p><a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |quatchain|
-% Chaining rotations represented by unit quaternions.
+% Chaining passive rotations represented by unit quaternions.
 % 
 % <index_rotations.html Back to *Rotations*>.
 %% Syntax
@@ -187,9 +195,11 @@ ans =
 % </html>
 %% Note
 % * This function assumes the scalar-first convention for quaternions.
-% * It is assumed that $\mathbf{q}_{A\to B}$ and $\mathbf{q}_{B\to C}$ are
-% input as unit quaternions.
-% * $\mathbf{q}_{A\to C}$ is returned as a unit quaternion.
+% * This function assumes that $\mathbf{q}_{A\to B}$ and 
+% $\mathbf{q}_{B\to C}$ are input as unit quaternions, so it does _not_
+% normalize them.
+% * $\mathbf{q}_{A\to C}$ is normalized.
+% * The scalar component of $\mathbf{q}_{A\to C}$ is chosen to be positive.
 %% Example
 % First, let's construct two rotation matrices representing rotations from
 % frame $A$ to frame $B$ and then from frame $B$ to frame $C$.
@@ -205,7 +215,7 @@ q_A2B = mat2quat(R_A2B);
 q_B2C = mat2quat(R_B2C);
 %%
 % The unit quaternion representing the rotation from $A$ to $C$ is then
-q_A2C = quatchain(q_A2B,q_B2C);
+q_A2C = quatchain(q_A2B,q_B2C)
 %%
 % Note that this result is identical to converting $\mathbf{R}_{A\to C}$ to
 % a unit quaternion.
@@ -213,8 +223,9 @@ q_A2C-mat2quat(R_A2C)
 %% See also 
 % <quatconj_doc.html |quatconj|> | 
 % <quatinv_doc.html |quatinv|> | 
-% <quatmul_doc.html |quatmul|> |
+% <quatmul_doc.html |quatmul|> | 
 % <quatnorm_doc.html |quatnorm|> | 
-% <quatnormalize_doc.html |quatnormalize|>
+% <quatnormalize_doc.html |quatnormalize|> | 
+% <quatrotate_doc.html |quatrotate|>
 ##### SOURCE END #####
 --></body></html>

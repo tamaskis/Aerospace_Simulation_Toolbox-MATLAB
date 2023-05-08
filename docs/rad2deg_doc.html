@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>rad2deg</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="rad2deg_doc.m"><style type="text/css">
+      --><title>rad2deg</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="rad2deg_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>rad2deg</tt></h1><!--introduction--><p>Radians to degrees.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">theta_deg = rad2deg(theta_rad)
-</pre><h2 id="2">Description</h2><p><tt>theta_deg = rad2deg(theta_rad)</tt> converts an angle <img src="rad2deg_doc_eq05246873011375979495.png" alt="$\theta$" style="width:5px;height:8px;"> from radians (<img src="rad2deg_doc_eq12047063164687384205.png" alt="$\theta^{\mathrm{rad}}$" style="width:17px;height:10px;">) to degrees (<img src="rad2deg_doc_eq13927121575391906461.png" alt="$\theta^{\circ}$" style="width:9px;height:8px;">).</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  </style></head><body><div class="content"><h1><tt>rad2deg</tt></h1><!--introduction--><p>Radians to degrees.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">theta_deg = rad2deg(theta_rad)
+</pre><h2 id="2">Description</h2><p><tt>theta_deg = rad2deg(theta_rad)</tt> converts an angle <img src="rad2deg_doc_eq05246873011375979495.png" alt="$\theta$" style="width:5px;height:8px;"> from radians (<img src="rad2deg_doc_eq12047063164687384205.png" alt="$\theta^{\mathrm{rad}}$" style="width:17px;height:10px;">) to degrees (<img src="rad2deg_doc_eq13927121575391906461.png" alt="$\theta^{\circ}$" style="width:9px;height:8px;">).</p><h2 id="3">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -79,15 +78,23 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>theta_rad</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta^{\mathrm{rad}}" title="" /></td></td>
           <td>angle in radians</td>
           <td style="text-align:center">1×1<BR>double</td>
           <td style="text-align:center">rad</td>
       </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>theta_deg</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta^{\circ}" title="" /></td>
           <td>angle in degrees</td>
@@ -95,29 +102,28 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">°</td>
       </tr>
   </table>
-</p><h2 id="4">Example</h2><p><i>Convert <img src="rad2deg_doc_eq04531413984531681768.png" alt="$\theta=1\;\mathrm{rad}$" style="width:45px;height:8px;"> to degrees.</i></p><pre class="codeinput">theta_rad = 1;
+</p><h2 id="5">Example</h2><p><i>Convert <img src="rad2deg_doc_eq04531413984531681768.png" alt="$\theta=1\;\mathrm{rad}$" style="width:45px;height:8px;"> to degrees.</i></p><pre class="codeinput">theta_rad = 1;
 theta_deg = rad2deg(theta_rad)
 </pre><pre class="codeoutput">
 theta_deg =
 
    57.2958
 
-</pre><h2 id="5">See also</h2><p><a href="deg2rad_doc.html"><tt>deg2rad</tt></a> | <a href="deg2arcsec_doc.html"><tt>deg2arcsec</tt></a> | <a href="rad2arcsec_doc.html"><tt>rad2arcsec</tt></a> | <a href="arcsec2deg_doc.html"><tt>arcsec2deg</tt></a> | <a href="arcsec2rad_doc.html"><tt>arcsec2rad</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="6">See also</h2><p><a href="deg2rad_doc.html"><tt>deg2rad</tt></a> | <a href="deg2arcsec_doc.html"><tt>deg2arcsec</tt></a> | <a href="rad2arcsec_doc.html"><tt>rad2arcsec</tt></a> | <a href="arcsec2deg_doc.html"><tt>arcsec2deg</tt></a> | <a href="arcsec2rad_doc.html"><tt>arcsec2rad</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |rad2deg|
 % Radians to degrees.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   theta_deg = rad2deg(theta_rad)
 %% Description
 % |theta_deg = rad2deg(theta_rad)| converts an angle $\theta$ from radians
 % ($\theta^{\mathrm{rad}}$) to degrees ($\theta^{\circ}$).
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -125,15 +131,25 @@ theta_deg =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>theta_rad</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta^{\mathrm{rad}}" title="" /></td></td>
 %           <td>angle in radians</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %           <td style="text-align:center">rad</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>theta_deg</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta^{\circ}" title="" /></td>
 %           <td>angle in degrees</td>

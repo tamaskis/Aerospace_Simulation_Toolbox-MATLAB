@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>quatconj</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-04"><meta name="DC.source" content="quatconj_doc.m"><style type="text/css">
+      --><title>quatconj</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="quatconj_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -102,7 +102,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">-</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li>The quaternion, <img src="quatconj_doc_eq04754134083796840893.png" alt="$\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$" style="width:87px;height:13px;">, should be input using the scalar-first convention, where <img src="quatconj_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;"> is the scalar component and <img src="quatconj_doc_eq17353258090140044202.png" alt="$\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$" style="width:78px;height:13px;"> is the vector component.</li><li><img src="quatconj_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> does not have to be input as a unit quaternion.</li></ul></div><h2 id="6">Example</h2><p><i>Find the conjugate of</i></p><p><img src="quatconj_doc_eq00753472442282730278.png" alt="$$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>Defining the quaternion,</p><pre class="codeinput">q = [1;2;3;4];
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li><img src="quatconj_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> does not have to be input as a unit quaternion (this function is for all quaternions, not just unit quaternions).</li><li><img src="quatconj_doc_eq09717668614517485092.png" alt="$\mathbf{q}^{*}$" style="width:10px;height:10px;"> is not normalized.</li></ul></div><h2 id="6">Example</h2><p><i>Find the conjugate of</i></p><p><img src="quatconj_doc_eq00753472442282730278.png" alt="$$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>Defining the quaternion,</p><pre class="codeinput">q = [1;2;3;4];
 </pre><p>Computing the quaternion conjugate,</p><pre class="codeinput">q_conj = quatconj(q)
 </pre><pre class="codeoutput">
 q_conj =
@@ -112,7 +112,7 @@ q_conj =
     -3
     -4
 
-</pre><h2 id="8">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="8">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |quatconj|
 % Conjugate of a quaternion.
@@ -161,11 +161,10 @@ q_conj =
 %   </table>
 % </html>
 %% Note
-% * The quaternion, $\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$, should be
-% input using the scalar-first convention, where $q_{0}$ is the scalar 
-% component and $\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$ is the vector
-% component.
-% * $\mathbf{q}$ does not have to be input as a unit quaternion.
+% * This function assumes the scalar-first convention for quaternions.
+% * $\mathbf{q}$ does not have to be input as a unit quaternion (this
+% function is for all quaternions, not just unit quaternions).
+% * $\mathbf{q}^{*}$ is not normalized.
 %% Example
 % _Find the conjugate of_
 %
@@ -181,6 +180,7 @@ q_conj = quatconj(q)
 % <quatinv_doc.html |quatinv|> | 
 % <quatmul_doc.html |quatmul|> | 
 % <quatnorm_doc.html |quatnorm|> | 
-% <quatnormalize_doc.html |quatnormalize|>
+% <quatnormalize_doc.html |quatnormalize|> | 
+% <quatrotate_doc.html |quatrotate|>
 ##### SOURCE END #####
 --></body></html>

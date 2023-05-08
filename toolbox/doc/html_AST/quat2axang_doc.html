@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>quat2axang</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-03"><meta name="DC.source" content="quat2axang_doc.m"><style type="text/css">
+      --><title>quat2axang</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="quat2axang_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -109,7 +109,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">rad</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li>The quaternion, <img src="quat2axang_doc_eq04754134083796840893.png" alt="$\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$" style="width:87px;height:13px;">, should be input using the scalar-first convention, where <img src="quat2axang_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;"> is the scalar component and <img src="quat2axang_doc_eq17353258090140044202.png" alt="$\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$" style="width:78px;height:13px;"> is the vector component.</li><li><img src="quat2axang_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> does not have to be input as a unit quaternion.</li><li><img src="quat2axang_doc_eq16622136527845266471.png" alt="$\left\|\mathbf{e}\right\|=1$" style="width:35px;height:11px;"></li><li><img src="quat2axang_doc_eq10745434733753327377.png" alt="$\Phi\in[0,\pi]$" style="width:43px;height:11px;"></li><li>If <img src="quat2axang_doc_eq06217471778082405699.png" alt="$\Phi=0$" style="width:28px;height:8px;">, then <img src="quat2axang_doc_eq07453326560499469056.png" alt="$\mathbf{e}$" style="width:6px;height:6px;"> is returned as <img src="quat2axang_doc_eq11160971750524886146.png" alt="$(1,0,0)^{T}$" style="width:40px;height:13px;">.</li></ul></div><h2 id="6">Example</h2><p><i>Find the axis-angle representation of the rotation specified by the unit quaternion</i></p><p><img src="quat2axang_doc_eq02644678102981385372.png" alt="$$\mathbf{q}=\pmatrix{0.3827 \cr 0.1562 \cr 0.7808 \cr -0.4685}$$" style="width:80px;height:48px;"></p><p>Defining the unit quaternion,</p><pre class="codeinput">q = [0.3827;0.1562;0.7808;-0.4685];
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li>This function normalizes the input quaternion.</li><li><img src="quat2axang_doc_eq16622136527845266471.png" alt="$\left\|\mathbf{e}\right\|=1$" style="width:35px;height:11px;"></li><li><img src="quat2axang_doc_eq10745434733753327377.png" alt="$\Phi\in[0,\pi]$" style="width:43px;height:11px;"></li><li>If <img src="quat2axang_doc_eq06217471778082405699.png" alt="$\Phi=0$" style="width:28px;height:8px;">, then <img src="quat2axang_doc_eq07453326560499469056.png" alt="$\mathbf{e}$" style="width:6px;height:6px;"> is returned as <img src="quat2axang_doc_eq11160971750524886146.png" alt="$(1,0,0)^{T}$" style="width:40px;height:13px;">.</li></ul></div><h2 id="6">Example</h2><p><i>Find the axis-angle representation of the rotation specified by the unit quaternion</i></p><p><img src="quat2axang_doc_eq02644678102981385372.png" alt="$$\mathbf{q}=\pmatrix{0.3827 \cr 0.1562 \cr 0.7808 \cr -0.4685}$$" style="width:80px;height:48px;"></p><p>Defining the unit quaternion,</p><pre class="codeinput">q = [0.3827;0.1562;0.7808;-0.4685];
 </pre><p>Computing the axis-angle representation,</p><pre class="codeinput">[e,Phi] = quat2axang(q)
 </pre><pre class="codeoutput">
 e =
@@ -123,7 +123,7 @@ Phi =
 
     2.3562
 
-</pre><h2 id="8">See also</h2><p>TODO</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="8">See also</h2><p><a href="axang2eul_321_doc.html"><tt>axang2eul_321</tt></a> | <a href="axang2mat_doc.html"><tt>axang2mat</tt></a> | <a href="axang2quat_doc.html"><tt>axang2quat</tt></a> | <a href="eul2axang_321_doc.html"><tt>eul2axang_321</tt></a> | <a href="eul2mat_321_doc.html"><tt>eul2mat_321</tt></a> | <a href="eul2quat_321_doc.html"><tt>eul2quat_321</tt></a> | <a href="mat2axang_doc.html"><tt>mat2axang</tt></a> | <a href="mat2eul_321_doc.html"><tt>mat2eul_321</tt></a> | <a href="mat2quat_doc.html"><tt>mat2quat</tt></a> | <a href="quat2eul_321_doc.html"><tt>quat2eul_321</tt></a> | <a href="quat2mat_doc.html"><tt>quat2mat</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |quat2axang|
 % Quaternion to axis-angle representation.
@@ -180,11 +180,8 @@ Phi =
 %   </table>
 % </html>
 %% Note
-% * The quaternion, $\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$, should be
-% input using the scalar-first convention, where $q_{0}$ is the scalar 
-% component and $\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$ is the vector
-% component.
-% * $\mathbf{q}$ does not have to be input as a unit quaternion.
+% * This function assumes the scalar-first convention for quaternions.
+% * This function normalizes the input quaternion.
 % * $\left\|\mathbf{e}\right\|=1$
 % * $\Phi\in[0,\pi]$
 % * If $\Phi=0$, then $\mathbf{e}$ is returned as $(1,0,0)^{T}$.
@@ -200,6 +197,16 @@ q = [0.3827;0.1562;0.7808;-0.4685];
 % Computing the axis-angle representation,
 [e,Phi] = quat2axang(q)
 %% See also
-% TODO
+% <axang2eul_321_doc.html |axang2eul_321|> | 
+% <axang2mat_doc.html |axang2mat|> | 
+% <axang2quat_doc.html |axang2quat|> | 
+% <eul2axang_321_doc.html |eul2axang_321|> |
+% <eul2mat_321_doc.html |eul2mat_321|> |
+% <eul2quat_321_doc.html |eul2quat_321|> |
+% <mat2axang_doc.html |mat2axang|> |
+% <mat2eul_321_doc.html |mat2eul_321|> |
+% <mat2quat_doc.html |mat2quat|> |
+% <quat2eul_321_doc.html |quat2eul_321|> |
+% <quat2mat_doc.html |quat2mat|>
 ##### SOURCE END #####
 --></body></html>

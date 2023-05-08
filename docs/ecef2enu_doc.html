@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ecef2enu</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="ecef2enu_doc.m"><style type="text/css">
+      --><title>ecef2enu</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="ecef2enu_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,11 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>ecef2enu</tt></h1><!--introduction--><p>ENU position and velocity from ECEF position and velocity.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#5">Input/Output Parameters</a></li><li><a href="#6">Note</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">rho_enu = ecef2enu(r_ecef,r0_ecef)
+  </style></head><body><div class="content"><h1><tt>ecef2enu</tt></h1><!--introduction--><p>ENU position and velocity from ECEF position and velocity.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#5">Input/Output Parameters</a></li><li><a href="#6">Note</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">rho_enu = ecef2enu(r_ecef,r0_ecef)
 [rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef)
 [rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef,v0_ecef)
 </pre><h2 id="2">Description</h2><p><tt>rho_enu = ecef2enu(r_ecef,r0_ecef)</tt> determines the satellite's ENU position, <img src="ecef2enu_doc_eq16889038262160522285.png" alt="$[\vec{\rho}]_{\mathrm{ENU}}$" style="width:28px;height:11px;">, given the satellite's ECEF position, <img src="ecef2enu_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, and the origin of the ENU frame resolved in the ECEF frame, <img src="ecef2enu_doc_eq14525203470695466333.png" alt="$[\mathbf{r}_{0}]_{\mathrm{ECEF}}$" style="width:36px;height:11px;">).</p><p><tt>[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef)</tt> determines the satellite's ENU position and velocity (<img src="ecef2enu_doc_eq16889038262160522285.png" alt="$[\vec{\rho}]_{\mathrm{ENU}}$" style="width:28px;height:11px;"> and <img src="ecef2enu_doc_eq02059105929506475960.png" alt="$\left[\dot{\vec{\rho}}\right]_{\mathrm{ENU}}$" style="width:31px;height:21px;">), given the ECEF position and velocity (<img src="ecef2enu_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;"> and <img src="ecef2enu_doc_eq04343149359230806616.png" alt="$[{}^{\mathrm{ECEF}}\mathbf{v}]_{\mathrm{ECEF}}$" style="width:54px;height:13px;">) of the satellite, and the origin of the ENU frame resolved in the ECEF frame, <img src="ecef2enu_doc_eq14525203470695466333.png" alt="$[\mathbf{r}_{0}]_{\mathrm{ECEF}}$" style="width:36px;height:11px;">). This syntax assumes that the origin of the ENU frame is stationary with respect to the ECEF frame.</p><p><tt>[rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef,v0_ecef)</tt> does the same as the syntax above, but does <i>not</i> assume that the origin of the ENU frame is stationary with respect to the ECEF frame. Instead, this velocity is specified by <img src="ecef2enu_doc_eq14483089635002631465.png" alt="$[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}$" style="width:59px;height:13px;">.</p><h2 id="5">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -130,7 +130,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %% |ecef2enu|
 % ENU position and velocity from ECEF position and velocity.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   rho_enu = ecef2enu(r_ecef,r0_ecef)
 %   [rho_enu,rho_dot_enu] = ecef2enu(r_ecef,r0_ecef,v_ecef)
@@ -157,7 +157,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % $[{}^{\mathrm{ECEF}}\mathbf{v}_{0}]_{\mathrm{ECEF}}$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

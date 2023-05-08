@@ -9,7 +9,7 @@
 % quat2eul_321.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-30
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -35,7 +35,7 @@
 % NOTE:
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
-%   • q does not have to be input as a unit quaternion.
+%   • This function normalizes the input quaternion.
 %
 %==========================================================================
 function R = quat2mat(q)

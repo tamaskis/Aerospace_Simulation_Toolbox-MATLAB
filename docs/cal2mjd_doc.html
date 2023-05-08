@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>cal2mjd</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="cal2mjd_doc.m"><style type="text/css">
+      --><title>cal2mjd</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="cal2mjd_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,12 +67,11 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>cal2mjd</tt></h1><!--introduction--><p>Modified Julian date from Gregorian (calendar) date.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Input/Output Parameters</a></li><li><a href="#5">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD = cal2mjd(cal)
+  </style></head><body><div class="content"><h1><tt>cal2mjd</tt></h1><!--introduction--><p>Modified Julian date from Gregorian (calendar) date.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Inputs</a></li><li><a href="#5">Outputs</a></li><li><a href="#6">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD = cal2mjd(cal)
 MJD = cal2mjd([YYYY,MM,DD,hh,mm,ss])
-</pre><h2 id="2">Description</h2><p><tt>MJD = cal2mjd(cal)</tt> converts a Gregorian date to a modified Julian date.</p><p><tt>MJD = cal2mjd([YYYY,MM,DD,hh,mm,ss])</tt> does the same as the syntax above (this syntax is meant to demonstrate the format of the input <tt>cal</tt>).</p><h2 id="4">Input/Output Parameters</h2><p>
-  <table border=1>
+</pre><h2 id="2">Description</h2><p><tt>MJD = cal2mjd(cal)</tt> converts a Gregorian date to a modified Julian date.</p><p><tt>MJD = cal2mjd([YYYY,MM,DD,hh,mm,ss])</tt> does the same as the syntax above (this syntax is meant to demonstrate the format of the input <tt>cal</tt>).</p><h2 id="4">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -80,15 +79,23 @@ MJD = cal2mjd([YYYY,MM,DD,hh,mm,ss])
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>cal</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{c}" title="" /></td></td>
           <td>Gregorian (calendar) date (input as [YYYY,MM,DD,hh,mm,ss])</td>
           <td style="text-align:center">1×6<BR>double</td>
           <td style="text-align:center">[y,mo,d,h,m,s]</td>
       </tr>
+  </table>
+</p><h2 id="5">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>MJD</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}" title="" /></td>
           <td>modified Julian date</td>
@@ -96,18 +103,18 @@ MJD = cal2mjd([YYYY,MM,DD,hh,mm,ss])
           <td style="text-align:center">d</td>
       </tr>
   </table>
-</p><h2 id="5">Example</h2><p><i>Find the modified Julian date of January 1, 2000, 12:00:00.</i></p><pre class="codeinput">MJD = cal2mjd([2000,1,1,12,0,0])
+</p><h2 id="6">Example</h2><p><i>Find the modified Julian date of January 1, 2000, 12:00:00.</i></p><pre class="codeinput">MJD = cal2mjd([2000,1,1,12,0,0])
 </pre><pre class="codeoutput">
 MJD =
 
    5.1544e+04
 
-</pre><h2 id="6">See also</h2><p><a href="cal2doy_doc.html"><tt>cal2doy</tt></a> | <a href="doy2cal_doc.html"><tt>doy2cal</tt></a> | <a href="f2hms_doc.html"><tt>f2hms</tt></a> | <a href="hms2f_doc.html"><tt>hms2f</tt></a> | <a href="jd2mjd_doc.html"><tt>jd2mjd</tt></a> | <a href="jd2t_doc.html"><tt>jd2t</tt></a> | <a href="mjd2cal_doc.html"><tt>mjd2cal</tt></a> | <a href="mjd2f_doc.html"><tt>mjd2f</tt></a> | <a href="mjd2jd_doc.html"><tt>mjd2jd</tt></a> | <a href="mjd2t_doc.html"><tt>mjd2t</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="7">See also</h2><p><a href="cal2doy_doc.html"><tt>cal2doy</tt></a> | <a href="doy2cal_doc.html"><tt>doy2cal</tt></a> | <a href="f2hms_doc.html"><tt>f2hms</tt></a> | <a href="hms2f_doc.html"><tt>hms2f</tt></a> | <a href="jd2mjd_doc.html"><tt>jd2mjd</tt></a> | <a href="jd2t_doc.html"><tt>jd2t</tt></a> | <a href="mjd2cal_doc.html"><tt>mjd2cal</tt></a> | <a href="mjd2f_doc.html"><tt>mjd2f</tt></a> | <a href="mjd2jd_doc.html"><tt>mjd2jd</tt></a> | <a href="mjd2t_doc.html"><tt>mjd2t</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |cal2mjd|
 % Modified Julian date from Gregorian (calendar) date.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   MJD = cal2mjd(cal)
 %   MJD = cal2mjd([YYYY,MM,DD,hh,mm,ss])
@@ -116,11 +123,10 @@ MJD =
 %%
 % |MJD = cal2mjd([YYYY,MM,DD,hh,mm,ss])| does the same as the syntax above
 % (this syntax is meant to demonstrate the format of the input |cal|).
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -128,15 +134,25 @@ MJD =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>cal</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{c}" title="" /></td></td>
 %           <td>Gregorian (calendar) date (input as [YYYY,MM,DD,hh,mm,ss])</td>
 %           <td style="text-align:center">1×6<BR>double</td>
 %           <td style="text-align:center">[y,mo,d,h,m,s]</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>MJD</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}" title="" /></td>
 %           <td>modified Julian date</td>

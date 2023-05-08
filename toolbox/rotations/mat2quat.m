@@ -9,7 +9,7 @@
 % quat2eul_321, quat2mat.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-30
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %

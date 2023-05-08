@@ -9,7 +9,7 @@
 % quat2mat.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-03
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -35,7 +35,7 @@
 % -----
 % NOTE:
 % -----
-%   • e does not have to be input as a unit vector.
+%   • This function normalizes e.
 %   • This function assumes the scalar-first convention for quaternions.
 %   • The scalar component, q₀, is chosen to be positive.
 %

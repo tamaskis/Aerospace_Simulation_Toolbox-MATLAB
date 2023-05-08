@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>quatmul</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-04"><meta name="DC.source" content="quatmul_doc.m"><style type="text/css">
+      --><title>quatmul</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="quatmul_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -109,18 +109,18 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">-</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li><img src="quatmul_doc_eq03649988629740635444.png" alt="$\mathbf{p}$" style="width:7px;height:8px;"> and <img src="quatmul_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> do not have to be input as unit quaternions, and <img src="quatmul_doc_eq10596031629969548763.png" alt="$\mathbf{r}$" style="width:5px;height:5px;"> is not returned as a unit quaternion.</li></ul></div><h2 id="6">Example</h2><p><i>Find the Hamilton product of</i></p><p><img src="quatmul_doc_eq02735723967917482589.png" alt="$$\mathbf{p}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>and</p><p><img src="quatmul_doc_eq17033295673866584251.png" alt="$$\mathbf{q}=\pmatrix{0.5 \cr 2 \cr 0.1 \cr -0.05}$$" style="width:69px;height:48px;"></p><p>Defining the quaternions,</p><pre class="codeinput">p = [1;2;3;4];
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li><img src="quatmul_doc_eq03649988629740635444.png" alt="$\mathbf{p}$" style="width:7px;height:8px;"> and <img src="quatmul_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> do not have to be input as unit quaternions (this function is for all quaternions, not just unit quaternions).</li><li><img src="quatmul_doc_eq10596031629969548763.png" alt="$\mathbf{r}$" style="width:5px;height:5px;"> is not normalized.</li><li>The scalar component of <img src="quatmul_doc_eq10596031629969548763.png" alt="$\mathbf{r}$" style="width:5px;height:5px;"> is chosen to be positive.</li></ul></div><h2 id="6">Example</h2><p><i>Find the Hamilton product of</i></p><p><img src="quatmul_doc_eq02735723967917482589.png" alt="$$\mathbf{p}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>and</p><p><img src="quatmul_doc_eq17033295673866584251.png" alt="$$\mathbf{q}=\pmatrix{0.5 \cr 2 \cr 0.1 \cr -0.05}$$" style="width:69px;height:48px;"></p><p>Defining the quaternions,</p><pre class="codeinput">p = [1;2;3;4];
 q = [0.5;2;0.1;-0.05];
 </pre><p>Computing the Hamilton product of <img src="quatmul_doc_eq03649988629740635444.png" alt="$\mathbf{p}$" style="width:7px;height:8px;"> and <img src="quatmul_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;">,</p><pre class="codeinput">r = quatmul(p,q)
 </pre><pre class="codeoutput">
 r =
 
-   -3.6000
-    2.4500
-    9.7000
-   -3.8500
+    3.6000
+   -2.4500
+   -9.7000
+    3.8500
 
-</pre><h2 id="8">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="8">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |quatmul|
 % Quaternion multiplication (Hamilton product).
@@ -178,7 +178,10 @@ r =
 %% Note
 % * This function assumes the scalar-first convention for quaternions.
 % * $\mathbf{p}$ and $\mathbf{q}$ do not have to be input as unit 
-% quaternions, and $\mathbf{r}$ is not returned as a unit quaternion.
+% quaternions (this function is for all quaternions, not just unit
+% quaternions).
+% * $\mathbf{r}$ is not normalized.
+% * The scalar component of $\mathbf{r}$ is chosen to be positive.
 %% Example
 % _Find the Hamilton product of_
 %
@@ -199,6 +202,7 @@ r = quatmul(p,q)
 % <quatconj_doc.html |quatconj|> | 
 % <quatinv_doc.html |quatinv|> | 
 % <quatnorm_doc.html |quatnorm|> | 
-% <quatnormalize_doc.html |quatnormalize|>
+% <quatnormalize_doc.html |quatnormalize|> | 
+% <quatrotate_doc.html |quatrotate|>
 ##### SOURCE END #####
 --></body></html>

@@ -1,13 +1,13 @@
 %==========================================================================
 %
-% quatchain  Chaining rotations represented by unit quaternions.
+% quatchain  Chaining passive rotations represented by unit quaternions.
 %
 %   q_A2C = quatchain(q_A2B,q_B2C)
 %
-% See also quatchain, quatconj, quatinv, quatmul, quatnorm, quatnormalize.
+% See also quatconj, quatinv, quatmul, quatnorm, quatnormalize, quatrotate.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-04
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -37,8 +37,9 @@
 % NOTE:
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
-%   • It is assumed that q_A2B and q_B2C are input as unit quaternions.
-%   • q_A2C is returned as a unit quaternion.
+%   • This function assumes that q_A2B and q_B2C are input as unit 
+%     quaternions, so it does NOT normalize them.
+%   • q_A2C is normalized.
 %   • The scalar component of q_A2C is chosen to be positive.
 %     
 %==========================================================================

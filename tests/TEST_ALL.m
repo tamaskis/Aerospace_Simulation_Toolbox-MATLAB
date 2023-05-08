@@ -4,7 +4,7 @@
 % Runs all unit testing scripts.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-30
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -29,7 +29,8 @@ addpath(genpath('../toolbox'));
 
 %% RUNS ALL TESTS
 
-%TEST_angles;
+TEST_angles;
+TEST_kinematics;
 TEST_rotations;
-%TEST_time_scales;
-%TEST_time_units;
+TEST_time_scales;
+TEST_time_units;

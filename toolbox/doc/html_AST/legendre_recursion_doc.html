@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>legendre_recursion</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="legendre_recursion_doc.m"><style type="text/css">
+      --><title>legendre_recursion</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="legendre_recursion_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>legendre_recursion</tt></h1><!--introduction--><p>Recursive evaluation of coefficients related to the Legendre polynomials required for evaluating the gravitational acceleration.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[V,W] = legendre_recursion(r_ecef,R,N)
+  </style></head><body><div class="content"><h1><tt>legendre_recursion</tt></h1><!--introduction--><p>Recursive evaluation of coefficients related to the Legendre polynomials required for evaluating the gravitational acceleration.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[V,W] = legendre_recursion(r_ecef,R,N)
 </pre><h2 id="2">Description</h2><p><tt>[V,W] = legendre_recursion(r_ecef,R,N)</tt> returns the functions <tt>V(n,m)</tt> and <tt>W(n,m)</tt> that return coefficients (related to the Legendre polynomials) of arbitrary degree <img src="legendre_recursion_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;"> and order <img src="legendre_recursion_doc_eq18216620034067401164.png" alt="$m$" style="width:10px;height:6px;">, <img src="legendre_recursion_doc_eq00060194368605240194.png" alt="$V_{nm}$" style="width:18px;height:10px;"> and <img src="legendre_recursion_doc_eq13437896742096091546.png" alt="$W_{nm}$" style="width:22px;height:10px;">, needed to evaluate the gravitational acceleration, given the position resolved in the ECEF frame, <img src="legendre_recursion_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, the mean equatorial radius of the Earth, <img src="legendre_recursion_doc_eq12501411367295337294.png" alt="$R_{\oplus}$" style="width:14px;height:10px;">, and the maximum degree/order of the gravity model to use, <img src="legendre_recursion_doc_eq05705075896852816573.png" alt="$N$" style="width:10px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -122,7 +122,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % Recursive evaluation of coefficients related to the Legendre polynomials
 % required for evaluating the gravitational acceleration.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   [V,W] = legendre_recursion(r_ecef,R,N)
 %% Description
@@ -135,7 +135,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % degree/order of the gravity model to use, $N$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

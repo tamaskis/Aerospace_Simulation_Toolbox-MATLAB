@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>ecef2geod</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="ecef2geod_doc.m"><style type="text/css">
+      --><title>ecef2geod</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="ecef2geod_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>ecef2geod</tt></h1><!--introduction--><p>Geodetic coordinates from ECEF position.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">r_ecef = ecef2geod(lat,lon,h)
+  </style></head><body><div class="content"><h1><tt>ecef2geod</tt></h1><!--introduction--><p>Geodetic coordinates from ECEF position.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">r_ecef = ecef2geod(lat,lon,h)
 </pre><h2 id="2">Description</h2><p><tt>r_ecef = ecef2geod(lat,lon,h)</tt> determines the geodetic latitude, <img src="ecef2geod_doc_eq16179117359969153947.png" alt="$\phi$" style="width:6px;height:10px;">, geodetic longitude, <img src="ecef2geod_doc_eq14606202617661871665.png" alt="$\lambda$" style="width:6px;height:8px;">, and geodetic altitude, <img src="ecef2geod_doc_eq16410644637423230129.png" alt="$h$" style="width:6px;height:8px;">, given the ECEF position, <img src="ecef2geod_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -114,7 +114,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %% |ecef2geod|
 % Geodetic coordinates from ECEF position.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   r_ecef = ecef2geod(lat,lon,h)
 %% Description
@@ -123,7 +123,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % position, $[\mathbf{r}]_{\mathrm{ECEF}}$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

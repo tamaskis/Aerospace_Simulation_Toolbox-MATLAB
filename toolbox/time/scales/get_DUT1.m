@@ -1,13 +1,13 @@
 %==========================================================================
 %
-% get_DUT1  Obtains the difference between UT1 and UTC (ΔUT1 = UT1 - UTC).
+% get_dut1  Obtains the difference between UT1 and UTC (ΔUT1 = UT1 - UTC).
 %
 %   DUT1 = get_DUT1(MJD)
 %
-% See also get_DAT.
+% See also get_dat.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-04-01
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,37 +22,49 @@
 % ------
 % INPUT:
 % ------
-%   MJD     - (1×1 double) modified Julian date (any time scale) [MJD]
+%   MJD     - (1×1 double) modified Julian date of any time scale [MJD]
 %
 % -------
 % OUTPUT:
 % -------
 %   DUT1    - (1×1 double) difference between UT1 (Universal Time 1) and 
 %             UTC (Universal Coordinated Time) [s]
-%               --> ΔUT1 = UT1 - UTC
+%
+% -----
+% NOTE:
+% -----
+%   • ΔUT1 = UT1 - UTC
 %
 %==========================================================================
-function DUT1 = get_DUT1(MJD)
+function DUT1 = get_dut1(MJD)
     
-    % loads DUT1 data
-    %   --> first column is the data in MJD
-    %   --> second column is DUT1 in seconds
+    % loads ΔUT1 data
+    %   • first column is the date in MJD
+    %   • second column is ΔAT in seconds
     DUT1_data = load_numeric_data('DUT1.mat');
     
-    % truncates to beginning of day
-    MJD = floor(MJD);
+    % extracts x and y vectors
+    x = DUT1_data(:,1);
+    y = DUT1_data(:,2);
     
-    % if date is before the first available date, throw an error
-    if (MJD < DUT1_data(1,1))
-        error('ΔUT1 data not available for specified date.');
+    % gets length of data
+    N = length(x);
+    
+    % edge case: specified date is after last available date
+    if MJD > x(N)
+        DUT1 = y(N);
+        
+    % base case: specified date is either (a) before first available date
+    % in the data set or (b) contained within the available dates in the 
+    % data set
+    else
+        
+        % finds the lower bound of interval containing specified date
+        [l,~] = find_interval(x,MJD);
+        
+        % extracts ΔUT1 from data table
+        DUT1 = y(l);
+        
     end
-    
-    % if date is after last available date, throw an error
-    if (MJD > DUT1_data(end,1))
-        error('ΔUT1 data not available for specified date.');
-    end
-    
-    % extracts DUT1 from data
-    DUT1 = DUT1_data(DUT1_data(:,1)==MJD,2);
     
 end

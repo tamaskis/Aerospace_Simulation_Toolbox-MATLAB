@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>dadX_third_body</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="dadX_third_body_doc.m"><style type="text/css">
+      --><title>dadX_third_body</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="dadX_third_body_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>dadX_third_body</tt></h1><!--introduction--><p>Partial derivatives of third-body gravitational acceleration with respect to position and inertial velocity.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[dadr_3,dadv_3] = dadX_third_body(r,r3,mu3)
+  </style></head><body><div class="content"><h1><tt>dadX_third_body</tt></h1><!--introduction--><p>Partial derivatives of third-body gravitational acceleration with respect to position and inertial velocity.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[dadr_3,dadv_3] = dadX_third_body(r,r3,mu3)
 </pre><h2 id="2">Description</h2><p><tt>[dadr_3,dadv_3] = dadX_third_body(r,r3,mu3)</tt> determines the partial derivatives of the third-body gravitational acceleration with respect to position (<img src="dadX_third_body_doc_eq16975521501540516116.png" alt="$(\partial\mathbf{a}/\partial\mathbf{r})_{3}$" style="width:41px;height:11px;">) and inertial velocity (<img src="dadX_third_body_doc_eq06878446002723133615.png" alt="$(\partial\mathbf{a}/\partial\mathbf{v})_{3}$" style="width:43px;height:11px;">) given the satellite position (<img src="dadX_third_body_doc_eq10596031629969548763.png" alt="$\mathbf{r}$" style="width:5px;height:5px;">), third-body position (<img src="dadX_third_body_doc_eq16235845213397957655.png" alt="$\mathbf{r}_{3}$" style="width:9px;height:7px;">), and third-body gravitational parameter (<img src="dadX_third_body_doc_eq16838621152544264328.png" alt="$\mu_{3}$" style="width:10px;height:8px;">).</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -122,7 +122,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % Partial derivatives of third-body gravitational acceleration with respect
 % to position and inertial velocity.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   [dadr_3,dadv_3] = dadX_third_body(r,r3,mu3)
 %% Description
@@ -134,7 +134,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % ($\mathbf{r}_{3}$), and third-body gravitational parameter ($\mu_{3}$).
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

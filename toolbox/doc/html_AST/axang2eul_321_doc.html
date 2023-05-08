@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>axang2eul_321</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-03"><meta name="DC.source" content="axang2eul_321_doc.m"><style type="text/css">
+      --><title>axang2eul_321</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="axang2eul_321_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -123,7 +123,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">rad</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li><img src="axang2eul_321_doc_eq07453326560499469056.png" alt="$\mathbf{e}$" style="width:6px;height:6px;"> does not have to be input as a unit vector.</li><li><img src="axang2eul_321_doc_eq08948324404564026707.png" alt="$\psi\in(-\pi,\pi]$" style="width:54px;height:11px;"></li><li><img src="axang2eul_321_doc_eq04647376344619944763.png" alt="$\theta\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$" style="width:54px;height:14px;"></li><li><img src="axang2eul_321_doc_eq06750480787777368700.png" alt="$\phi\in(-\pi,\pi]$" style="width:53px;height:11px;"></li><li>When a singularity corresponding to the pitch angles of <img src="axang2eul_321_doc_eq16838803713468941624.png" alt="$\theta=\pm\pi/2$" style="width:46px;height:11px;"> is encountered, the yaw angle (<img src="axang2eul_321_doc_eq03702555302202684472.png" alt="$\psi$" style="width:7px;height:10px;">) is set to 0 and the roll angle (<img src="axang2eul_321_doc_eq16179117359969153947.png" alt="$\phi$" style="width:6px;height:10px;">) is determined accordingly.</li></ul></div><h2 id="6">Example</h2><p><i>Find the 3-2-1 Euler angles corresponding to a rotation of <img src="axang2eul_321_doc_eq11362860478385037728.png" alt="$\Phi=\pi/3$" style="width:40px;height:11px;"> about the axis <img src="axang2eul_321_doc_eq03481059199015059708.png" alt="$\mathbf{e}=(\sqrt{3}/3,\sqrt{3}/3,\sqrt{3}/3)^{T}$" style="width:121px;height:13px;">.</i></p><p>Defining the principal rotation vector,</p><pre class="codeinput">e = (sqrt(3)/3)*[1;1;1];
+</p><h2 id="5">Note</h2><div><ul><li>This function normalizes <img src="axang2eul_321_doc_eq07453326560499469056.png" alt="$\mathbf{e}$" style="width:6px;height:6px;">.</li><li><img src="axang2eul_321_doc_eq08948324404564026707.png" alt="$\psi\in(-\pi,\pi]$" style="width:54px;height:11px;"></li><li><img src="axang2eul_321_doc_eq04647376344619944763.png" alt="$\theta\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$" style="width:54px;height:14px;"></li><li><img src="axang2eul_321_doc_eq06750480787777368700.png" alt="$\phi\in(-\pi,\pi]$" style="width:53px;height:11px;"></li><li>When a singularity corresponding to the pitch angles of <img src="axang2eul_321_doc_eq16838803713468941624.png" alt="$\theta=\pm\pi/2$" style="width:46px;height:11px;"> is encountered, the yaw angle (<img src="axang2eul_321_doc_eq03702555302202684472.png" alt="$\psi$" style="width:7px;height:10px;">) is set to 0 and the roll angle (<img src="axang2eul_321_doc_eq16179117359969153947.png" alt="$\phi$" style="width:6px;height:10px;">) is determined accordingly.</li></ul></div><h2 id="6">Example</h2><p><i>Find the 3-2-1 Euler angles corresponding to a rotation of <img src="axang2eul_321_doc_eq11362860478385037728.png" alt="$\Phi=\pi/3$" style="width:40px;height:11px;"> about the axis <img src="axang2eul_321_doc_eq03481059199015059708.png" alt="$\mathbf{e}=(\sqrt{3}/3,\sqrt{3}/3,\sqrt{3}/3)^{T}$" style="width:121px;height:13px;">.</i></p><p>Defining the principal rotation vector,</p><pre class="codeinput">e = (sqrt(3)/3)*[1;1;1];
 </pre><p>Defining the principal angle,</p><pre class="codeinput">Phi = pi/3;
 </pre><p>Computing the 3-2-1 Euler angles,</p><pre class="codeinput">[psi,theta,phi] = axang2eul_321(e,Phi)
 </pre><pre class="codeoutput">
@@ -141,7 +141,7 @@ phi =
 
     0.7854
 
-</pre><h2 id="9">See also</h2><p>TODO</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="9">See also</h2><p><a href="axang2mat_doc.html"><tt>axang2mat</tt></a> | <a href="axang2quat_doc.html"><tt>axang2quat</tt></a> | <a href="eul2axang_321_doc.html"><tt>eul2axang_321</tt></a> | <a href="eul2mat_321_doc.html"><tt>eul2mat_321</tt></a> | <a href="eul2quat_321_doc.html"><tt>eul2quat_321</tt></a> | <a href="mat2axang_doc.html"><tt>mat2axang</tt></a> | <a href="mat2eul_321_doc.html"><tt>mat2eul_321</tt></a> | <a href="mat2quat_doc.html"><tt>mat2quat</tt></a> | <a href="quat2axang_doc.html"><tt>quat2axang</tt></a> | <a href="quat2eul_321_doc.html"><tt>quat2eul_321</tt></a> | <a href="quat2mat_doc.html"><tt>quat2mat</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |axang2eul_321|
 % Axis-angle representation to 3-2-1 Euler angles (yaw, pitch, and roll).
@@ -213,7 +213,7 @@ phi =
 %   </table>
 % </html>
 %% Note
-% * $\mathbf{e}$ does not have to be input as a unit vector.
+% * This function normalizes $\mathbf{e}$.
 % * $\psi\in(-\pi,\pi]$
 % * $\theta\in\left[-\frac{\pi}{2},\frac{\pi}{2}\right]$
 % * $\phi\in(-\pi,\pi]$
@@ -233,6 +233,16 @@ Phi = pi/3;
 % Computing the 3-2-1 Euler angles,
 [psi,theta,phi] = axang2eul_321(e,Phi)
 %% See also
-% TODO
+% <axang2mat_doc.html |axang2mat|> | 
+% <axang2quat_doc.html |axang2quat|> | 
+% <eul2axang_321_doc.html |eul2axang_321|> |
+% <eul2mat_321_doc.html |eul2mat_321|> |
+% <eul2quat_321_doc.html |eul2quat_321|> |
+% <mat2axang_doc.html |mat2axang|> |
+% <mat2eul_321_doc.html |mat2eul_321|> |
+% <mat2quat_doc.html |mat2quat|> |
+% <quat2axang_doc.html |quat2axang|> |
+% <quat2eul_321_doc.html |quat2eul_321|> |
+% <quat2mat_doc.html |quat2mat|>
 ##### SOURCE END #####
 --></body></html>

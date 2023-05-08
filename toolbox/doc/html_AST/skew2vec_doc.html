@@ -1,0 +1,198 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>skew2vec</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="skew2vec_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>skew2vec</tt></h1><!--introduction--><p>Converts a skew-symmetric matrix representing a cross product to a vector.</p><p><a href="index.html">Back to <b>Kinematics</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#9">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">a = skew2vec(ax)
+</pre><h2 id="2">Description</h2><p><tt>a = skew2vec(ax)</tt> finds the vector <img src="skew2vec_doc_eq05817455672257988295.png" alt="$\mathbf{a}$" style="width:6px;height:6px;"> from the skew-symmetrix matrix <img src="skew2vec_doc_eq17224192750100561742.png" alt="$\mathbf{a}^{\times}$" style="width:11px;height:9px;">, where <img src="skew2vec_doc_eq16956319603765107340.png" alt="$\mathbf{a}\times\mathbf{b}=\mathbf{a}^{\times}\mathbf{b}$" style="width:61px;height:9px;">.</p><h2 id="3">Inputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>ax</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}^{\times}" title="" /></td>
+          <td>skew-symmetrix matrix where <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}\times\mathbf{b}=\mathbf{a}^{\times}\mathbf{b}" title=""/></td>
+          <td style="text-align:center">3×3<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>a</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}" title=""/></td>
+          <td>vector</td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><h2 id="5">Example</h2><p>Consider the skew-symmetric matrix</p><p><img src="skew2vec_doc_eq03296990741641252841.png" alt="$$\mathbf{a}^{\times}=\pmatrix{0 &amp; -3 &amp; 2 \cr 3 &amp; 0 &amp; -1 \cr -2 &amp; 1 &amp; 0}$$" style="width:111px;height:40px;"></p><p>Defining this matrix in MATLAB,</p><pre class="codeinput">ax = [ 0  -3   2;
+       3   0  -1;
+      -2   1   0];
+</pre><p>Let <img src="skew2vec_doc_eq04584381293210277049.png" alt="$\mathbf{a}^{\times}\mathbf{b}=\mathbf{a}\times\mathbf{b}$" style="width:61px;height:9px;">. Then <img src="skew2vec_doc_eq05817455672257988295.png" alt="$\mathbf{a}$" style="width:6px;height:6px;"> is given by</p><pre class="codeinput">a = skew2vec(ax)
+</pre><pre class="codeoutput">
+a =
+
+     1
+     2
+     3
+
+</pre><p>For <img src="skew2vec_doc_eq10427904543201383492.png" alt="$\mathbf{b}=(-4,2,-11)^{T}$" style="width:85px;height:13px;">, let's verify that <img src="skew2vec_doc_eq04584381293210277049.png" alt="$\mathbf{a}^{\times}\mathbf{b}=\mathbf{a}\times\mathbf{b}$" style="width:61px;height:9px;">.</p><pre class="codeinput">b = [-4;2;-11];
+ax*b-cross(a,b)
+</pre><pre class="codeoutput">
+ans =
+
+     0
+     0
+     0
+
+</pre><h2 id="9">See also</h2><p><a href="vec2skew_doc.html"><tt>vec2skew</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |skew2vec|
+% Converts a skew-symmetric matrix representing a cross product to a
+% vector.
+% 
+% <index.html Back to *Kinematics*>.
+%% Syntax
+%   a = skew2vec(ax)
+%% Description
+% |a = skew2vec(ax)| finds the vector $\mathbf{a}$ from the skew-symmetrix 
+% matrix $\mathbf{a}^{\times}$, where 
+% $\mathbf{a}\times\mathbf{b}=\mathbf{a}^{\times}\mathbf{b}$.
+%% Inputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>ax</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}^{\times}" title="" /></td>
+%           <td>skew-symmetrix matrix where <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}\times\mathbf{b}=\mathbf{a}^{\times}\mathbf{b}" title=""/></td>
+%           <td style="text-align:center">3×3<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>a</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{a}" title=""/></td>
+%           <td>vector</td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+%% Example
+% Consider the skew-symmetric matrix
+%
+% $$\mathbf{a}^{\times}=\pmatrix{0 & -3 & 2 \cr 3 & 0 & -1 \cr -2 & 1 & 0}$$
+%
+% Defining this matrix in MATLAB,
+ax = [ 0  -3   2;
+       3   0  -1;
+      -2   1   0];
+%%
+% Let $\mathbf{a}^{\times}\mathbf{b}=\mathbf{a}\times\mathbf{b}$. Then
+% $\mathbf{a}$ is given by
+%%
+a = skew2vec(ax)
+%%
+% For $\mathbf{b}=(-4,2,-11)^{T}$, let's verify that 
+% $\mathbf{a}^{\times}\mathbf{b}=\mathbf{a}\times\mathbf{b}$.
+b = [-4;2;-11];
+ax*b-cross(a,b)
+%% See also
+% <vec2skew_doc.html |vec2skew|>
+##### SOURCE END #####
+--></body></html>

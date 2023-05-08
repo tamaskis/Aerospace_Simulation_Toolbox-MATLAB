@@ -4,10 +4,11 @@
 %
 %   r = quatmul(p,q)
 %
-% See also quatchain, quatconj, quatinv, quatnorm, quatnormalize.
+% See also quatchain, quatconj, quatinv, quatnorm, quatnormalize,
+% quatrotate.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-04
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -34,8 +35,9 @@
 % NOTE:
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
-%   • p and q do not have to be input as unit quaternions, and r is not 
-%     returned as a unit quaternion.
+%   • p and q do not have to be input as unit quaternions (this function is
+%     for all quaternions, not just unit quaternions).
+%   • r is not normalized.
 %   • The scalar component of r is chosen to be positive.
 %     
 %==========================================================================

@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>tai2utc</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="tai2utc_doc.m"><style type="text/css">
+      --><title>tai2utc</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="tai2utc_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>tai2utc</tt></h1><!--introduction--><p>UTC from TAI.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD_UTC = tai2utc(MJD_TAI,DAT)
-</pre><h2 id="2">Description</h2><p><tt>MJD_UTC = tai2utc(MJD_TAI,DAT)</tt> determines UTC given TAI and <img src="tai2utc_doc_eq14847800311235842253.png" alt="$\Delta\mathrm{AT}$" style="width:24px;height:8px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  </style></head><body><div class="content"><h1><tt>tai2utc</tt></h1><!--introduction--><p>UTC from TAI.</p><p><a href="index_time.html">Back to <b>Time</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#9">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD_UTC = tai2utc(MJD_TAI,DAT)
+</pre><h2 id="2">Description</h2><p><tt>MJD_UTC = tai2utc(MJD_TAI,DAT)</tt> determines UTC given TAI and <img src="tai2utc_doc_eq14847800311235842253.png" alt="$\Delta\mathrm{AT}$" style="width:24px;height:8px;">.</p><h2 id="3">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -79,7 +78,6 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="2" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>MJD_TAI</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{TAI}}" title="" /></td>
           <td>TAI (International Atomic Time)</td>
@@ -93,8 +91,17 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">1×1<BR>double</td>
           <td style="text-align:center">s</td>
       </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>MJD_UTC</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UTC}}" title="" /></td></td>
           <td>UTC (Universal Coordinated Time)</td>
@@ -102,8 +109,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">MJD</td>
       </tr>
   </table>
-</p><h2 id="4">Example</h2><p><i>Find UTC corresponding to January 1, 2000, 12:00:00 TAI.</i></p><p>First, let's find the modified Julian date of TAI.</p><pre class="codeinput">MJD_TAI = cal2mjd([2000,1,1,12,0,0]);
-</pre><p>Next, let's find the difference between TAI and UTC.</p><pre class="codeinput">DAT = get_DAT(MJD_TAI);
+</p><h2 id="5">Example</h2><p><i>Find UTC corresponding to January 1, 2000, 12:00:00 TAI.</i></p><p>First, let's find the modified Julian date of TAI.</p><pre class="codeinput">MJD_TAI = cal2mjd([2000,1,1,12,0,0]);
+</pre><p>Next, let's find the difference between TAI and UTC.</p><pre class="codeinput">DAT = get_dat(MJD_TAI);
 </pre><p>Finding the modified Julian date of UTC,</p><pre class="codeinput">MJD_UTC = tai2utc(MJD_TAI,DAT);
 </pre><p>Expressing UTC as a calendar date + hours, minutes, and seconds,</p><pre class="codeinput">cal_UTC = mjd2cal(MJD_UTC);
 year = cal_UTC(1)
@@ -142,22 +149,21 @@ second =
 
    28.0000
 
-</pre><h2 id="8">See also</h2><p><a href="gps2tai_doc.html"><tt>gps2tai</tt></a> | <a href="tai2gps_doc.html"><tt>tai2gps</tt></a> | <a href="tai2tt_doc.html"><tt>tai2tt</tt></a> | <a href="tt2tai_doc.html"><tt>tt2tai</tt></a> | <a href="ut12utc_doc.html"><tt>ut12utc</tt></a> | <a href="utc2tai_doc.html"><tt>utc2tai</tt></a> | <a href="utc2ut1_doc.html"><tt>utc2ut1</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="9">See also</h2><p><a href="gps2tai_doc.html"><tt>gps2tai</tt></a> | <a href="tai2gps_doc.html"><tt>tai2gps</tt></a> | <a href="tai2tt_doc.html"><tt>tai2tt</tt></a> | <a href="tt2tai_doc.html"><tt>tt2tai</tt></a> | <a href="ut12utc_doc.html"><tt>ut12utc</tt></a> | <a href="utc2tai_doc.html"><tt>utc2tai</tt></a> | <a href="utc2ut1_doc.html"><tt>utc2ut1</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |tai2utc|
 % UTC from TAI.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index_time.html Back to *Time*>.
 %% Syntax
 %   MJD_UTC = tai2utc(MJD_TAI,DAT)
 %% Description
 % |MJD_UTC = tai2utc(MJD_TAI,DAT)| determines UTC given TAI and 
 % $\Delta\mathrm{AT}$.
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -165,7 +171,6 @@ second =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>MJD_TAI</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{TAI}}" title="" /></td>
 %           <td>TAI (International Atomic Time)</td>
@@ -179,8 +184,19 @@ second =
 %           <td style="text-align:center">1×1<BR>double</td>
 %           <td style="text-align:center">s</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>MJD_UTC</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{UTC}}" title="" /></td></td>
 %           <td>UTC (Universal Coordinated Time)</td>
@@ -196,7 +212,7 @@ second =
 MJD_TAI = cal2mjd([2000,1,1,12,0,0]);
 %%
 % Next, let's find the difference between TAI and UTC.
-DAT = get_DAT(MJD_TAI);
+DAT = get_dat(MJD_TAI);
 %%
 % Finding the modified Julian date of UTC,
 MJD_UTC = tai2utc(MJD_TAI,DAT);

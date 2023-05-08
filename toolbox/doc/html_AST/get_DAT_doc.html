@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>get_DAT</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-04-01"><meta name="DC.source" content="get_DAT_doc.m"><style type="text/css">
+      --><title>get_dat</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="get_dat_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,8 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>get_DAT</tt></h1><!--introduction--><p>Obtains the difference between TAI and UTC (<img src="get_DAT_doc_eq09142653624661309053.png" alt="$\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$" style="width:95px;height:9px;">).</p><p><a href="index_time.html">Back to <b>Time</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">DAT = get_DAT(MJD)
-</pre><h2 id="2">Description</h2><p><tt>DAT = get_DAT(MJD)</tt> returns the difference between TAI and UTC (<img src="get_DAT_doc_eq09142653624661309053.png" alt="$\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$" style="width:95px;height:9px;">).</p><h2 id="3">Inputs</h2><p>
+  </style></head><body><div class="content"><h1><tt>get_dat</tt></h1><!--introduction--><p>Obtains the difference between TAI and UTC (i.e. leap seconds) (<img src="get_dat_doc_eq09142653624661309053.png" alt="$\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$" style="width:95px;height:9px;">).</p><p><a href="index_time.html">Back to <b>Time</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">DAT = get_dat(MJD)
+</pre><h2 id="2">Description</h2><p><tt>DAT = get_dat(MJD)</tt> returns the difference between TAI and UTC (i.e. leap seconds) (<img src="get_dat_doc_eq09142653624661309053.png" alt="$\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$" style="width:95px;height:9px;">).</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
@@ -102,24 +102,25 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">s</td>
       </tr>
   </table>
-</p><h2 id="5">Example</h2><p><i>Obtain <img src="get_DAT_doc_eq14847800311235842253.png" alt="$\Delta\mathrm{AT}$" style="width:24px;height:8px;"> for January 1, 2000.</i></p><p>First, let's convert this calendar date to a modified Julian date.</p><pre class="codeinput">MJD = cal2mjd([2000,1,1,0,0,0]);
-</pre><p>Finding <img src="get_DAT_doc_eq14847800311235842253.png" alt="$\Delta\mathrm{AT}$" style="width:24px;height:8px;">,</p><pre class="codeinput">DAT = get_DAT(MJD)
+</p><h2 id="5">Example</h2><p><i>Obtain <img src="get_dat_doc_eq14847800311235842253.png" alt="$\Delta\mathrm{AT}$" style="width:24px;height:8px;"> for January 1, 2000.</i></p><p>First, let's convert this calendar date to a modified Julian date.</p><pre class="codeinput">MJD = cal2mjd([2000,1,1,0,0,0]);
+</pre><p>Finding <img src="get_dat_doc_eq14847800311235842253.png" alt="$\Delta\mathrm{AT}$" style="width:24px;height:8px;">,</p><pre class="codeinput">DAT = get_dat(MJD)
 </pre><pre class="codeoutput">
 DAT =
 
     32
 
-</pre><h2 id="7">See also</h2><p><a href="get_DUT1_doc.html"><tt>get_DUT1</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="7">See also</h2><p><a href="get_dut1_doc.html"><tt>get_dut1</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% |get_DAT|
-% Obtains the difference between TAI and UTC ($\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$).
+%% |get_dat|
+% Obtains the difference between TAI and UTC (i.e. leap seconds) 
+% ($\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$).
 % 
 % <index_time.html Back to *Time*>.
 %% Syntax
-%   DAT = get_DAT(MJD)
+%   DAT = get_dat(MJD)
 %% Description
-% |DAT = get_DAT(MJD)| returns the difference between TAI and UTC
-% ($\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$).
+% |DAT = get_dat(MJD)| returns the difference between TAI and UTC
+% (i.e. leap seconds) ($\Delta\mathrm{AT}=\mathrm{TAI}-\mathrm{UTC}$).
 %% Inputs
 % <html>
 %   <table>
@@ -165,8 +166,8 @@ DAT =
 MJD = cal2mjd([2000,1,1,0,0,0]);
 %%
 % Finding $\Delta\mathrm{AT}$,
-DAT = get_DAT(MJD)
+DAT = get_dat(MJD)
 %% See also
-% <get_DUT1_doc.html |get_DUT1|>
+% <get_dut1_doc.html |get_dut1|>
 ##### SOURCE END #####
 --></body></html>

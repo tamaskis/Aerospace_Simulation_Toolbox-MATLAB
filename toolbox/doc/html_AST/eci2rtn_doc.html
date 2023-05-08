@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>eci2rtn</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="eci2rtn_doc.m"><style type="text/css">
+      --><title>eci2rtn</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="eci2rtn_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>eci2rtn</tt></h1><!--introduction--><p>Deputy relative state in chief's RTN frame from absolute ECI states of chief and deputy.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">dX = eci2rtn(Xc,Xd)
+  </style></head><body><div class="content"><h1><tt>eci2rtn</tt></h1><!--introduction--><p>Deputy relative state in chief's RTN frame from absolute ECI states of chief and deputy.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li><li><a href="#5">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">dX = eci2rtn(Xc,Xd)
 </pre><h2 id="2">Description</h2><p><tt>dX = eci2rtn(Xc,Xd)</tt> determines the deputy relative state in the chief's RTN frame, <img src="eci2rtn_doc_eq15205210464064665965.png" alt="$\delta\mathbf{X}$" style="width:15px;height:9px;">, given the absolute ECI states of the chief and deputy, <img src="eci2rtn_doc_eq00912392518987576744.png" alt="$\mathbf{X}_{c}$" style="width:13px;height:10px;"> and <img src="eci2rtn_doc_eq06440372979640351933.png" alt="$\mathbf{X}_{d}$" style="width:14px;height:10px;">, respectively.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -108,7 +108,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % Deputy relative state in chief's RTN frame from absolute ECI states of 
 % chief and deputy.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   dX = eci2rtn(Xc,Xd)
 %% Description
@@ -117,7 +117,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % and deputy, $\mathbf{X}_{c}$ and $\mathbf{X}_{d}$, respectively.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>dadX_two_body</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="dadX_two_body_doc.m"><style type="text/css">
+      --><title>dadX_two_body</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="dadX_two_body_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>dadX_two_body</tt></h1><!--introduction--><p>Partial derivatives of two-body/Keplerian gravitational acceleration with respect to position and inertial velocity.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[dadr_kep,dadv_kep] = dadX_two_body(r)
+  </style></head><body><div class="content"><h1><tt>dadX_two_body</tt></h1><!--introduction--><p>Partial derivatives of two-body/Keplerian gravitational acceleration with respect to position and inertial velocity.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[dadr_kep,dadv_kep] = dadX_two_body(r)
 </pre><h2 id="2">Description</h2><p><tt>[dadr_kep,dadv_kep] = dadX_two_body(r)</tt> determines the partial derivatives of the two-body/Keplerian gravitational acceleration with respect to position (<img src="dadX_two_body_doc_eq00436710827899571252.png" alt="$(\partial\mathbf{a}/\partial\mathbf{r})_{\mathrm{kep}}$" style="width:49px;height:12px;">) and inertial velocity (<img src="dadX_two_body_doc_eq09346847779508417886.png" alt="$(\partial\mathbf{a}/\partial\mathbf{v})_{\mathrm{kep}}$" style="width:51px;height:12px;">) given the position, <img src="dadX_two_body_doc_eq10596031629969548763.png" alt="$\mathbf{r}$" style="width:5px;height:5px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -108,7 +108,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % Partial derivatives of two-body/Keplerian gravitational acceleration with
 % respect to position and inertial velocity.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   [dadr_kep,dadv_kep] = dadX_two_body(r)
 %% Description
@@ -120,7 +120,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % the position, $\mathbf{r}$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

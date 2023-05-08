@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Q_iau06</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="Q_iau06_doc.m"><style type="text/css">
+      --><title>Q_iau06</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="Q_iau06_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>Q_iau06</tt></h1><!--introduction--><p>Precession-nutation matrix (IAU2006/2000, CIO based).</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
+  </style></head><body><div class="content"><h1><tt>Q_iau06</tt></h1><!--introduction--><p>Precession-nutation matrix (IAU2006/2000, CIO based).</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
 </pre><h2 id="2">Description</h2><p><tt>Q = Q_iau06(T_TT,dX,dY,XYs_iau06)</tt> returns the precession-nutation matrix, <img src="Q_iau06_doc_eq13127007163882210368.png" alt="$[\mathbf{Q}]$" style="width:13px;height:11px;">, given the Julian centuries since J2000.0 of TT (Terrestrial Time), <img src="Q_iau06_doc_eq15466779791589015633.png" alt="$T_{\mathrm{TT}}$" style="width:18px;height:10px;">, the correction terms <img src="Q_iau06_doc_eq09411907068235815820.png" alt="$dX$" style="width:15px;height:8px;"> and <img src="Q_iau06_doc_eq13109938897011593798.png" alt="$dY$" style="width:15px;height:8px;">, and the data needed to compute <img src="Q_iau06_doc_eq06131207690312052730.png" alt="$X$" style="width:10px;height:8px;">, <img src="Q_iau06_doc_eq11798597659537815498.png" alt="$Y$" style="width:9px;height:8px;">, and <img src="Q_iau06_doc_eq04799535687386240985.png" alt="$s$" style="width:5px;height:6px;">. This matrix represents the transformation from the Celestial Intermediate Reference System (CIRS) to the Geocentric Celestial Reference Frame (GCRF).</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -130,7 +130,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %% |Q_iau06|
 % Precession-nutation matrix (IAU2006/2000, CIO based).
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
 %% Description
@@ -142,7 +142,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % System (CIRS) to the Geocentric Celestial Reference Frame (GCRF).
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

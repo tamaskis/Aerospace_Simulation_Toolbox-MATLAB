@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>tof2M</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="tof2M_doc.m"><style type="text/css">
+      --><title>tof2M</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="tof2M_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,11 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>tof2M</tt></h1><!--introduction--><p>Mean anomaly from time of flight.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#5">Input/Output Parameters</a></li><li><a href="#6">Example #1: Given time of flight.</a></li><li><a href="#8">Example #2: Given initial and current times.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">M = tof2M(M0,n,TOF)
+  </style></head><body><div class="content"><h1><tt>tof2M</tt></h1><!--introduction--><p>Mean anomaly from time of flight.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#5">Input/Output Parameters</a></li><li><a href="#6">Example #1: Given time of flight.</a></li><li><a href="#8">Example #2: Given initial and current times.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">M = tof2M(M0,n,TOF)
 M = tof2M(M0,n,t,t0)
 [M,k] = tof2M(__)
 </pre><h2 id="2">Description</h2><p><tt>M = tof2M(M0,n,TOF)</tt> finds the current mean anomaly, <img src="tof2M_doc_eq09319732146067371049.png" alt="$M$" style="width:12px;height:8px;">, given the initial mean anomaly (<img src="tof2M_doc_eq08938396601909087111.png" alt="$M_{0}$" style="width:15px;height:10px;">), mean motion (<img src="tof2M_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;">), and time of flight (<img src="tof2M_doc_eq17283004917720915874.png" alt="$t-t_{0}$" style="width:25px;height:9px;">) since <img src="tof2M_doc_eq08938396601909087111.png" alt="$M_{0}$" style="width:15px;height:10px;">.</p><p><tt>M = tof2M(M0,n,t,t0)</tt> finds the current mean anomaly, <img src="tof2M_doc_eq09319732146067371049.png" alt="$M$" style="width:12px;height:8px;">, given the initial mean anomaly (<img src="tof2M_doc_eq08938396601909087111.png" alt="$M_{0}$" style="width:15px;height:10px;">), mean motion (<img src="tof2M_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;">), current time (<img src="tof2M_doc_eq10146963226942718528.png" alt="$t$" style="width:4px;height:8px;">), and initial time <img src="tof2M_doc_eq01155172633856785494.png" alt="$t_{0}$" style="width:8px;height:9px;">.</p><p><tt>[M,k] = tof2M()</tt> does the same as the previous two syntaxes, but also returns the integer number of completed orbits, <img src="tof2M_doc_eq12829740475467572519.png" alt="$k$" style="width:6px;height:8px;">.</p><h2 id="5">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -155,7 +155,7 @@ k =
 %% |tof2M|
 % Mean anomaly from time of flight.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   M = tof2M(M0,n,TOF)
 %   M = tof2M(M0,n,t,t0)
@@ -173,7 +173,7 @@ k =
 % returns the integer number of completed orbits, $k$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

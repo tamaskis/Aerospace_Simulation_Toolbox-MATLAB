@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>dadX_srp</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="dadX_srp_doc.m"><style type="text/css">
+      --><title>dadX_srp</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="dadX_srp_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>dadX_srp</tt></h1><!--introduction--><p>Partial derivatives of solar radiation pressure acceleration with respect to position and inertial velocity.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[dadr_srp,dadv_srp] = dadX_srp(r,r_sun,CR,Asrp,m)
+  </style></head><body><div class="content"><h1><tt>dadX_srp</tt></h1><!--introduction--><p>Partial derivatives of solar radiation pressure acceleration with respect to position and inertial velocity.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[dadr_srp,dadv_srp] = dadX_srp(r,r_sun,CR,Asrp,m)
 </pre><h2 id="2">Description</h2><p><tt>[dadr_srp,dadv_srp] = dadX_srp(r,r_sun,CR,Asrp,m)</tt> determines the partial derivatives of the solar radiation pressure acceleration with respect to position (<img src="dadX_srp_doc_eq10003101973391004242.png" alt="$(\partial\mathbf{a}/\partial\mathbf{r})_{\mathrm{srp}}$" style="width:48px;height:12px;">) and inertial velocity (<img src="dadX_srp_doc_eq05153173370200941903.png" alt="$(\partial\mathbf{a}/\partial\mathbf{v})_{\mathrm{srp}}$" style="width:50px;height:12px;">) given the satellite position (<img src="dadX_srp_doc_eq10596031629969548763.png" alt="$\mathbf{r}$" style="width:5px;height:5px;">), Sun position (<img src="dadX_srp_doc_eq12940399415825379692.png" alt="$\mathbf{r}_{\odot}$" style="width:11px;height:8px;">), coefficient of reflectivity (<img src="dadX_srp_doc_eq08154096953882848158.png" alt="$C_{R}$" style="width:14px;height:10px;">), SRP reference area (<img src="dadX_srp_doc_eq16474555592620872396.png" alt="$A_{\mathrm{srp}}$" style="width:19px;height:11px;">), and satellite mass (<img src="dadX_srp_doc_eq18216620034067401164.png" alt="$m$" style="width:10px;height:6px;">).</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -136,7 +136,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % Partial derivatives of solar radiation pressure acceleration with respect
 % to position and inertial velocity.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   [dadr_srp,dadv_srp] = dadX_srp(r,r_sun,CR,Asrp,m)
 %% Description
@@ -150,7 +150,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % reference area ($A_{\mathrm{srp}}$), and satellite mass ($m$).
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

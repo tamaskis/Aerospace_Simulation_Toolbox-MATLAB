@@ -2,12 +2,13 @@
 % Aerospace Simulation Toolbox
 %
 % Unit testing of the axang2eul_321, axang2mat, axang2quat, eul2axang_321,
-% eul2mat_321, eul2quat_321, mat2axang, mat2eul_321, mat2quat, quat2axang,
-% quat2eul_321, quat2mat, quatchain, quatconj, quatinv, quatmul, quatnorm,
-% quatnormalize, rot1, rot2, rot3, rot313, and rot321 functions.
+% eul2mat_321, eul2quat_321, mat2axang, mat2eul_321, mat2quat, matchain, 
+% matrotate, quat2axang, quat2eul_321, quat2mat, quatchain, quatconj,
+% quatinv, quatmul, quatnorm, quatnormalize, quatrotate, rot1, rot2, rot3,
+% rot313, and rot321 functions.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-05
+% Last Update: 2023-05-07
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -703,6 +704,32 @@ test_suite.add_test(TestEqual([e;Phi],[-0.5930;0.1488;0.7913;1.0869],'eul2axang_
 
 
 
+%% matrotate
+
+R_A2B = [0.5721,0.4156,-0.7071;
+         -0.7893,0.0446,-0.6124;
+         -0.2230,0.9084,0.3536];
+rA = [5;4;3];
+rB = [2.4016;-5.6053;3.5794];
+test_suite.add_test(TestEqual(matrotate(R_A2B,rA),rB,'matrotate test',4));
+
+
+
+%% matchain
+
+R_A2B = [0.5721,0.4156,-0.7071;
+         -0.7893,0.0446,-0.6124;
+         -0.2230,0.9084,0.3536];
+R_B2C = [-0.5721,-0.5721,0.5878;
+         0.0064,0.7135,0.7006;
+         -0.8202,0.4046,-0.4045];
+R_A2C = [-0.0068,0.2707,0.9627;
+         -0.7157,0.6709,-0.1937;
+         -0.6984,-0.6903,0.1892];
+test_suite.add_test(TestEqual(matchain(R_A2B,R_B2C),R_A2C,'matchain test',4));
+
+
+
 %% quatmul
 
 p = [1;0;1;0];
@@ -818,6 +845,15 @@ for i = 1:100
     q_A2C_true(:,i) = mat2quat(R_A2C);
 end
 test_suite.add_test(TestEqual(q_A2C,q_A2C_true,'quatchain long test',15));
+
+
+
+%% quatrotate
+
+q_A2B = [0.7018;-0.5417;0.1724;0.4292];
+rA = [5;4;3];
+rB = [2.4016;-5.6053;3.5794];
+test_suite.add_test(TestEqual(quatrotate(q_A2B,rA),rB,'quatrotate test',3));
 
 
 

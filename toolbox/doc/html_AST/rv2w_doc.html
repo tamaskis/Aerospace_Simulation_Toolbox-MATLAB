@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>rv2w</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="rv2w_doc.m"><style type="text/css">
+      --><title>rv2w</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="rv2w_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>rv2w</tt></h1><!--introduction--><p>Frame angular velocity from position and velocity.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">w = rv2w(r,v)
+  </style></head><body><div class="content"><h1><tt>rv2w</tt></h1><!--introduction--><p>Frame angular velocity from position and velocity.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">w = rv2w(r,v)
 </pre><h2 id="2">Description</h2><p><tt>w = rv2w(r,v)</tt> finds the angular velocity <img src="rv2w_doc_eq06478645515987921479.png" alt="$[\vec{\omega}]_{F/E}$" style="width:28px;height:13px;"> of frame <img src="rv2w_doc_eq01768238589472138476.png" alt="$F$" style="width:8px;height:8px;"> relative to frame <img src="rv2w_doc_eq06486484291675649329.png" alt="$E$" style="width:9px;height:8px;">, resolved in frame <img src="rv2w_doc_eq06486484291675649329.png" alt="$E$" style="width:9px;height:8px;"> , given the position resolved in frame <img src="rv2w_doc_eq06486484291675649329.png" alt="$E$" style="width:9px;height:8px;">, <img src="rv2w_doc_eq12656864002519186834.png" alt="$[\mathbf{r}]_{E}$" style="width:16px;height:11px;">, and the velocity relative to <i>and</i> resolved in frame <img src="rv2w_doc_eq06486484291675649329.png" alt="$E$" style="width:9px;height:8px;">, <img src="rv2w_doc_eq17902257568829715669.png" alt="$[{}^{E}\mathbf{v}]_{E}$" style="width:25px;height:13px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -107,7 +107,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %% |rv2w|
 % Frame angular velocity from position and velocity.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   w = rv2w(r,v)
 %% Description
@@ -117,7 +117,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % relative to _and_ resolved in frame $E$, $[{}^{E}\mathbf{v}]_{E}$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

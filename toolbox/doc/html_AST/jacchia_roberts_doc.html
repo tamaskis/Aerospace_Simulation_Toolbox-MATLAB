@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>jacchia_roberts</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="jacchia_roberts_doc.m"><style type="text/css">
+      --><title>jacchia_roberts</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="jacchia_roberts_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>jacchia_roberts</tt></h1><!--introduction--><p>Jacchia-Roberts atmospheric model.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[rho,n,T] = jacchia_roberts(r_ecef,r_sun_eci,R_eci2ecef,MJD_UT1,MJD_TT,F107_avg,F107,Kp)
+  </style></head><body><div class="content"><h1><tt>jacchia_roberts</tt></h1><!--introduction--><p>Jacchia-Roberts atmospheric model.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">[rho,n,T] = jacchia_roberts(r_ecef,r_sun_eci,R_eci2ecef,MJD_UT1,MJD_TT,F107_avg,F107,Kp)
 </pre><h2 id="2">Description</h2><p><tt>[rho,n,T] = jacchia_roberts(r_ecef,r_sun_eci,R_eci2ecef,MJD_UT1,MJD_TT,F107_avg,F107,Kp)</tt> determines the atmospheric mass density (<img src="jacchia_roberts_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">), atmospheric constituent number densities (stored in <tt>n</tt>), and the temperature and exospheric temperature (stored in <tt>T</tt>). The inputs to this function are the satellite position resolved in the ECEF frame (<img src="jacchia_roberts_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">), Sun position resolved in the ECI frame (<img src="jacchia_roberts_doc_eq05482446412659627746.png" alt="$[\mathbf{r}_{\odot}]_{\mathrm{ECI}}$" style="width:31px;height:11px;">), ECI --&gt; ECEF rotation matrix (<img src="jacchia_roberts_doc_eq17883318107889963553.png" alt="$[\mathbf{R}_{\mathrm{ECI}\to\mathrm{ECEF}}]$" style="width:56px;height:11px;">), modified Julian dates of UT1 (<img src="jacchia_roberts_doc_eq11095008563007067201.png" alt="$\mathrm{MJD}_{\mathrm{UT1}}$" style="width:39px;height:10px;">) and TT (<img src="jacchia_roberts_doc_eq10737617481260157072.png" alt="$\mathrm{MJD}_{\mathrm{TT}}$" style="width:35px;height:10px;">), centered 81-day average of <img src="jacchia_roberts_doc_eq10482125885064725100.png" alt="$F_{10.7}$" style="width:21px;height:10px;"> (<img src="jacchia_roberts_doc_eq01339368542780095761.png" alt="$\bar{F}_{10.7}$" style="width:21px;height:12px;">) for the previous day, 10.7 cm solar flux for the previous day (<img src="jacchia_roberts_doc_eq10482125885064725100.png" alt="$F_{10.7}$" style="width:21px;height:10px;">), and the planetary index 3 hours before current time (<img src="jacchia_roberts_doc_eq10855870920420757690.png" alt="$K_{p}$" style="width:14px;height:11px;">).</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -171,7 +171,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %% |jacchia_roberts|
 % Jacchia-Roberts atmospheric model.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   [rho,n,T] = jacchia_roberts(r_ecef,r_sun_eci,R_eci2ecef,MJD_UT1,MJD_TT,F107_avg,F107,Kp)
 %% Description
@@ -190,7 +190,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % time ($K_{p}$).
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

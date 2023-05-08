@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>axang2quat</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-03"><meta name="DC.source" content="axang2quat_doc.m"><style type="text/css">
+      --><title>axang2quat</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="axang2quat_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -109,7 +109,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">-</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li><img src="axang2quat_doc_eq07453326560499469056.png" alt="$\mathbf{e}$" style="width:6px;height:6px;"> does not have to be input as a unit vector.</li><li>The unit quaternion, <img src="axang2quat_doc_eq04754134083796840893.png" alt="$\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$" style="width:87px;height:13px;">, is returned using the scalar-first convention, where <img src="axang2quat_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;"> is the scalar component and <img src="axang2quat_doc_eq17353258090140044202.png" alt="$\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$" style="width:78px;height:13px;"> is the vector component.</li><li>The scalar component, <img src="axang2quat_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;">, is chosen to be positive.</li></ul></div><h2 id="6">Example</h2><p><i>Find the unit quaternion corresponding to a rotation of <img src="axang2quat_doc_eq11362860478385037728.png" alt="$\Phi=\pi/3$" style="width:40px;height:11px;"> about the axis <img src="axang2quat_doc_eq03481059199015059708.png" alt="$\mathbf{e}=(\sqrt{3}/3,\sqrt{3}/3,\sqrt{3}/3)^{T}$" style="width:121px;height:13px;">.</i></p><p>Defining the principal rotation vector,</p><pre class="codeinput">e = (sqrt(3)/3)*[1;1;1];
+</p><h2 id="5">Note</h2><div><ul><li>This function normalizes <img src="axang2quat_doc_eq07453326560499469056.png" alt="$\mathbf{e}$" style="width:6px;height:6px;">.</li><li>This function assumes the scalar-first convention for quaternions.</li><li>The scalar component, <img src="axang2quat_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;">, is chosen to be positive.</li></ul></div><h2 id="6">Example</h2><p><i>Find the unit quaternion corresponding to a rotation of <img src="axang2quat_doc_eq11362860478385037728.png" alt="$\Phi=\pi/3$" style="width:40px;height:11px;"> about the axis <img src="axang2quat_doc_eq03481059199015059708.png" alt="$\mathbf{e}=(\sqrt{3}/3,\sqrt{3}/3,\sqrt{3}/3)^{T}$" style="width:121px;height:13px;">.</i></p><p>Defining the principal rotation vector,</p><pre class="codeinput">e = (sqrt(3)/3)*[1;1;1];
 </pre><p>Defining the principal angle,</p><pre class="codeinput">Phi = pi/3;
 </pre><p>Computing the unit quaternion,</p><pre class="codeinput">q = axang2quat(e,Phi)
 </pre><pre class="codeoutput">
@@ -120,7 +120,7 @@ q =
     0.2887
     0.2887
 
-</pre><h2 id="9">See also</h2><p>TODO</p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="9">See also</h2><p><a href="axang2eul_321_doc.html"><tt>axang2eul_321</tt></a> | <a href="axang2mat_doc.html"><tt>axang2mat</tt></a> | <a href="eul2axang_321_doc.html"><tt>eul2axang_321</tt></a> | <a href="eul2mat_321_doc.html"><tt>eul2mat_321</tt></a> | <a href="eul2quat_321_doc.html"><tt>eul2quat_321</tt></a> | <a href="mat2axang_doc.html"><tt>mat2axang</tt></a> | <a href="mat2eul_321_doc.html"><tt>mat2eul_321</tt></a> | <a href="mat2quat_doc.html"><tt>mat2quat</tt></a> | <a href="quat2axang_doc.html"><tt>quat2axang</tt></a> | <a href="quat2eul_321_doc.html"><tt>quat2eul_321</tt></a> | <a href="quat2mat_doc.html"><tt>quat2mat</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |axang2quat|
 % Axis-angle representation to unit quaternion.
@@ -177,11 +177,8 @@ q =
 %   </table>
 % </html>
 %% Note
-% * $\mathbf{e}$ does not have to be input as a unit vector.
-% * The unit quaternion, $\mathbf{q}=(q_{0},q_{1},q_{2},q_{3})^{T}$, is
-% returned using the scalar-first convention, where $q_{0}$ is the scalar 
-% component and $\mathbf{q}_{v}=(q_{1},q_{2},q_{3})^{T}$ is the vector
-% component.
+% * This function normalizes $\mathbf{e}$.
+% * This function assumes the scalar-first convention for quaternions.
 % * The scalar component, $q_{0}$, is chosen to be positive.
 %% Example
 % _Find the unit quaternion corresponding to a rotation of $\Phi=\pi/3$
@@ -196,6 +193,16 @@ Phi = pi/3;
 % Computing the unit quaternion,
 q = axang2quat(e,Phi)
 %% See also
-% TODO
+% <axang2eul_321_doc.html |axang2eul_321|> | 
+% <axang2mat_doc.html |axang2mat|> | 
+% <eul2axang_321_doc.html |eul2axang_321|> |
+% <eul2mat_321_doc.html |eul2mat_321|> |
+% <eul2quat_321_doc.html |eul2quat_321|> |
+% <mat2axang_doc.html |mat2axang|> |
+% <mat2eul_321_doc.html |mat2eul_321|> |
+% <mat2quat_doc.html |mat2quat|> |
+% <quat2axang_doc.html |quat2axang|> |
+% <quat2eul_321_doc.html |quat2eul_321|> |
+% <quat2mat_doc.html |quat2mat|>
 ##### SOURCE END #####
 --></body></html>

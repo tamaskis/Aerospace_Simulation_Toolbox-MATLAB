@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>harris_priester</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="harris_priester_doc.m"><style type="text/css">
+      --><title>harris_priester</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="harris_priester_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>harris_priester</tt></h1><!--introduction--><p>Modified Harris-Priester model for atmospheric mass density.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">rho = harris_priester(r_eci,r_ecef,r_sun_eci)
+  </style></head><body><div class="content"><h1><tt>harris_priester</tt></h1><!--introduction--><p>Modified Harris-Priester model for atmospheric mass density.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">rho = harris_priester(r_eci,r_ecef,r_sun_eci)
 </pre><h2 id="2">Description</h2><p><tt>rho = harris_priester(r_eci,r_ecef,r_sun_eci)</tt> determines the atmospheric mass density, <img src="harris_priester_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">, given the satellite position resolved in the ECI and ECEF frames, <img src="harris_priester_doc_eq12956213191610695038.png" alt="$[\mathbf{r}]_{\mathrm{ECI}}$" style="width:24px;height:11px;"> and <img src="harris_priester_doc_eq08632949360693803085.png" alt="$[\mathbf{r}]_{\mathrm{ECEF}}$" style="width:31px;height:11px;">, respectively, and the position of the Sun resolved in the ECI frame, <img src="harris_priester_doc_eq05482446412659627746.png" alt="$[\mathbf{r}_{\odot}]_{\mathrm{ECI}}$" style="width:31px;height:11px;">.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -114,7 +114,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %% |harris_priester|
 % Modified Harris-Priester model for atmospheric mass density.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   rho = harris_priester(r_eci,r_ecef,r_sun_eci)
 %% Description
@@ -125,7 +125,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % resolved in the ECI frame, $[\mathbf{r}_{\odot}]_{\mathrm{ECI}}$.
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>drag</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="drag_doc.m"><style type="text/css">
+      --><title>drag</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="drag_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,9 +67,9 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>drag</tt></h1><!--introduction--><p>Perturbing acceleration due to atmospheric drag.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">f_D_eci = drag(r_eci,v_eci,w_eci,rho,B)
+  </style></head><body><div class="content"><h1><tt>drag</tt></h1><!--introduction--><p>Perturbing acceleration due to atmospheric drag.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">f_D_eci = drag(r_eci,v_eci,w_eci,rho,B)
 </pre><h2 id="2">Description</h2><p><tt>f_D_eci = drag(r_eci,v_eci,w_eci,rho,B)</tt> determines the perturbing acceleration due to atmospheric drag resolved in the ECI (<img src="drag_doc_eq10211072324919443730.png" alt="$[\mathbf{f}_{D}]_{\mathrm{ECI}}$" style="width:30px;height:11px;">) given the ECI position and velocity resolved in the ECI frame (<img src="drag_doc_eq12956213191610695038.png" alt="$[\mathbf{r}]_{\mathrm{ECI}}$" style="width:24px;height:11px;"> and <img src="drag_doc_eq06133646864746399724.png" alt="$[\mathbf{v}]_{\mathrm{ECI}}$" style="width:26px;height:11px;">), the angular velocity of the Earth resolved in the ECI frame (<img src="drag_doc_eq04208137860791935127.png" alt="$[\vec{\omega}_{\oplus}]_{\mathrm{ECI}}$" style="width:32px;height:11px;">), the atmospheric mass density (<img src="drag_doc_eq17454244308657937853.png" alt="$\rho$" style="width:6px;height:8px;">), and the ballistic coefficient (<img src="drag_doc_eq10348488793466917580.png" alt="$B$" style="width:9px;height:8px;">).</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  <table>
       <tr>
           <td></td>
           <td style="text-align:center"><b>Variable</b></td>
@@ -128,7 +128,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 %% |drag|
 % Perturbing acceleration due to atmospheric drag.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
 %   f_D_eci = drag(r_eci,v_eci,w_eci,rho,B)
 %% Description
@@ -141,7 +141,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % atmospheric mass density ($\rho$), and the ballistic coefficient ($B$).
 %% Input/Output Parameters
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
 %           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>

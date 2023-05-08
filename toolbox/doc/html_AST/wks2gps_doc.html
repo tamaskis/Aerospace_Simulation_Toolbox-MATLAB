@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>wks2gps</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-02-19"><meta name="DC.source" content="wks2gps_doc.m"><style type="text/css">
+      --><title>wks2gps</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="wks2gps_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>wks2gps</tt></h1><!--introduction--><p>GPS time from GPS week and seconds.</p><p><a href="index.html">Back to Astrodynamics Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD_GPS = wks2gps(wk,s)
-</pre><h2 id="2">Description</h2><p><tt>MJD_GPS = wks2gps(wk,s)</tt> determines the GPS time given the GPS week and seconds.</p><h2 id="3">Input/Output Parameters</h2><p>
-  <table border=1>
+  </style></head><body><div class="content"><h1><tt>wks2gps</tt></h1><!--introduction--><p>GPS time from GPS week and seconds.</p><p><a href="index_time.html">Back to <b>Time</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#7">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">MJD_GPS = wks2gps(wk,s)
+</pre><h2 id="2">Description</h2><p><tt>MJD_GPS = wks2gps(wk,s)</tt> determines the GPS time given the GPS week and seconds.</p><h2 id="3">Inputs</h2><p>
+  <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -79,7 +78,6 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="2" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>wk</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{wk}" title="" /></td>
           <td>GPS week</td>
@@ -93,8 +91,17 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">1×1<BR>double</td>
           <td style="text-align:center">s</td>
       </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>MJD_GPS</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{GPS}}" title="" /></td></td>
           <td>GPS time</td>
@@ -102,7 +109,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">MJD</td>
       </tr>
   </table>
-</p><h2 id="4">Example</h2><p><i>Find the GPS time (as a Gregorian date) corresponding to GPS week 2195 and 250527 seconds.</i></p><p>First, let's find the modified Julian date of GPS time.</p><pre class="codeinput">MJD_GPS = wks2gps(2195,250527);
+</p><h2 id="5">Example</h2><p><i>Find the GPS time (as a Gregorian date) corresponding to GPS week 2195 and 250527 seconds.</i></p><p>First, let's find the modified Julian date of GPS time.</p><pre class="codeinput">MJD_GPS = wks2gps(2195,250527);
 </pre><p>Finding the corresponding Gregorian date,</p><pre class="codeinput">cal = mjd2cal(MJD_GPS);
 YYYY = cal(1)
 MM = cal(2)
@@ -140,22 +147,21 @@ ss =
 
    27.0000
 
-</pre><h2 id="6">See also</h2><p><a href="gps2wks_doc.html"><tt>gps2wks</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="7">See also</h2><p><a href="gps2wks_doc.html"><tt>gps2wks</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |wks2gps|
 % GPS time from GPS week and seconds.
 % 
-% <index.html Back to Astrodynamics Toolbox Contents>.
+% <index_time.html Back to *Time*>.
 %% Syntax
 %   MJD_GPS = wks2gps(wk,s)
 %% Description
 % |MJD_GPS = wks2gps(wk,s)| determines the GPS time given the GPS week and
 % seconds.
-%% Input/Output Parameters
+%% Inputs
 % <html>
-%   <table border=1>
+%   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -163,7 +169,6 @@ ss =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>wk</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{wk}" title="" /></td>
 %           <td>GPS week</td>
@@ -177,8 +182,19 @@ ss =
 %           <td style="text-align:center">1×1<BR>double</td>
 %           <td style="text-align:center">s</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>MJD_GPS</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathrm{MJD}_{\mathrm{GPS}}" title="" /></td></td>
 %           <td>GPS time</td>
