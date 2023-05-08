@@ -4,8 +4,8 @@
 %
 %   r = quatmul(p,q)
 %
-% See also quatchain, quatconj, quatinv, quatnorm, quatnormalize,
-% quatrotate.
+% See also quatang, quatchain, quatconj, quatinv, quatnorm, quatnormalize,
+% quatrotate, quatslerp.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-05-07

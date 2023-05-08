@@ -857,6 +857,37 @@ test_suite.add_test(TestEqual(quatrotate(q_A2B,rA),rB,'quatrotate test',3));
 
 
 
+%% quatang
+
+% TODO
+
+% q1 = [ 0.968; 0.008; -0.008; 0.252]; q1 = quatnormalize(q1);
+% q2 = [ 0.382; 0.605;  0.413; 0.563]; q2 = quatnormalize(q2);
+% q = quatmul(quatconj(q1),q2)
+% [~,Phi] = quat2axang(q);
+% Phi = Phi*(180/pi)
+
+q1 = [1;0;0;0];
+q2 = eul2quat_321(pi/3,0,0);
+
+% q1 = [0.008;-0.008;0.252;0.968];
+% q1 = quatnormalize(q1);
+% 
+% q2 = [0.605;0.413;0.563;0.382];
+% q2 = quatnormalize(q2);
+
+q = quatmul(quatconj(q1),q2);
+[~,Phi] = quat2axang(q);
+Phi = Phi*(180/pi)
+
+theta = quatang(q1,q2)*(180/pi)
+
+
+%% quatslerp
+
+% TODO
+
+
 %% RUNS TEST SUITE
 
 test_suite.run;

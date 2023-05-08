@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>quatnormalize</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="quatnormalize_doc.m"><style type="text/css">
+      --><title>quatang</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="quatang_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,8 +67,8 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>quatnormalize</tt></h1><!--introduction--><p>Inverse of a quaternion.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q = quatnormalize(q)
-</pre><h2 id="2">Description</h2><p><tt>q = quatnormalize(q)</tt> normalizes the specified quaternion.</p><h2 id="3">Inputs</h2><p>
+  </style></head><body><div class="content"><h1><tt>quatang</tt></h1><!--introduction--><p>Angle between two unit quaternions.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">theta = quatang(q1,q2)
+</pre><h2 id="2">Description</h2><p><tt>theta = quatang(q1,q2)</tt> returns the angle between two unit quaternions.</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
           <td style="text-align:center"><b>Variable</b></td>
@@ -78,9 +78,16 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td style="text-align:center"><TT>q</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
-          <td>quaternion</td>
+          <td style="text-align:center"><TT>q1</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{1}" title="" /></td>
+          <td>unit quaternion</td>
+          <td style="text-align:center">4×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>q2</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{2}" title="" /></td>
+          <td>unit quaternion</td>
           <td style="text-align:center">4×1<BR>double</td>
           <td style="text-align:center">-</td>
       </tr>
@@ -95,39 +102,31 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td style="text-align:center"><TT>q</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
-          <td>unit quaternion</td>
-          <td style="text-align:center">4×1<BR>double</td>
-          <td style="text-align:center">-</td>
+          <td style="text-align:center"><TT>theta</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta" title="" /></td>
+          <td>angle between the unit quaternions</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">rad</td>
       </tr>
   </table>
-</p><h2 id="5">Example</h2><p><i>Normalize the qauternion</i></p><p><img src="quatnormalize_doc_eq00753472442282730278.png" alt="$$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$" style="width:47px;height:48px;"></p><p>Defining the quaternion,</p><pre class="codeinput">q = [1;2;3;4];
-</pre><p>Normalizing the quaternion,</p><pre class="codeinput">q = quatnormalize(q)
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes that <img src="quatang_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatang_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;"> are input as unit quaternions, so it does <i>not</i> normalize them.</li></ul></div><h2 id="6">Example</h2><p><i>Find the angle between</i></p><p><img src="quatang_doc_eq05183154587751679603.png" alt="$$\mathbf{q}_{1}=\pmatrix{0.0080 \cr -0.0080 \cr 0.2519 \cr 0.9677}$$" style="width:85px;height:48px;"></p><p><i>and</i></p><p><img src="quatang_doc_eq05772078432916722031.png" alt="$$\mathbf{q}_{2}=\pmatrix{0.6052 \cr 0.4131 \cr 0.5631 \cr 0.3821}$$" style="width:76px;height:48px;"></p><p>Defining the unit quaternions,</p><pre class="codeinput">q1 = [0.0080;-0.0080;0.2519;0.9677];
+q2 = [0.6052;0.4131;0.5631;0.3821];
+</pre><p>Computing the angle between the unit quaternions,</p><pre class="codeinput">theta = quatang(q1,q2)
 </pre><pre class="codeoutput">
-q =
+theta =
 
-    0.1826
-    0.3651
-    0.5477
-    0.7303
+    2.0639
 
-</pre><p>Verifying that the updated quaternion has magnitude 1,</p><pre class="codeinput">q_norm = quatnorm(q)
-</pre><pre class="codeoutput">
-q_norm =
-
-    1.0000
-
-</pre><h2 id="8">See also</h2><p><a href="quatang_doc.html"><tt>quatang</tt></a> | <a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a> | <a href="quatslerp_doc.html"><tt>quatslerp</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="8">See also</h2><p><a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a> | <a href="quatslerp_doc.html"><tt>quatslerp</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% |quatnormalize|
-% Inverse of a quaternion.
+%% |quatang|
+% Angle between two unit quaternions.
 % 
 % <index_rotations.html Back to *Rotations*>.
 %% Syntax
-%   q = quatnormalize(q)
+%   theta = quatang(q1,q2)
 %% Description
-% |q = quatnormalize(q)| normalizes the specified quaternion.
+% |theta = quatang(q1,q2)| returns the angle between two unit quaternions.
 %% Inputs
 % <html>
 %   <table>
@@ -139,9 +138,16 @@ q_norm =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td style="text-align:center"><TT>q</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
-%           <td>quaternion</td>
+%           <td style="text-align:center"><TT>q1</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{1}" title="" /></td>
+%           <td>unit quaternion</td>
+%           <td style="text-align:center">4×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>q2</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{2}" title="" /></td>
+%           <td>unit quaternion</td>
 %           <td style="text-align:center">4×1<BR>double</td>
 %           <td style="text-align:center">-</td>
 %       </tr>
@@ -158,34 +164,39 @@ q_norm =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td style="text-align:center"><TT>q</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
-%           <td>unit quaternion</td>
-%           <td style="text-align:center">4×1<BR>double</td>
-%           <td style="text-align:center">-</td>
+%           <td style="text-align:center"><TT>theta</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\theta" title="" /></td>
+%           <td>angle between the unit quaternions</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">rad</td>
 %       </tr>
 %   </table>
 % </html>
+%% Note
+% * This function assumes that $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$ are
+% input as unit quaternions, so it does _not_ normalize them.
 %% Example
-% _Normalize the qauternion_
+% _Find the angle between_
 %
-% $$\mathbf{q}=\pmatrix{1 \cr 2 \cr 3 \cr 4}$$
+% $$\mathbf{q}_{1}=\pmatrix{0.0080 \cr -0.0080 \cr 0.2519 \cr 0.9677}$$
 %
-% Defining the quaternion,
-q = [1;2;3;4];
+% _and_
+%
+% $$\mathbf{q}_{2}=\pmatrix{0.6052 \cr 0.4131 \cr 0.5631 \cr 0.3821}$$
+%
+% Defining the unit quaternions,
+q1 = [0.0080;-0.0080;0.2519;0.9677];
+q2 = [0.6052;0.4131;0.5631;0.3821];
 %%
-% Normalizing the quaternion,
-q = quatnormalize(q)
-%%
-% Verifying that the updated quaternion has magnitude 1,
-q_norm = quatnorm(q)
+% Computing the angle between the unit quaternions,
+theta = quatang(q1,q2)
 %% See also
-% <quatang_doc.html |quatang|> | 
 % <quatchain_doc.html |quatchain|> | 
 % <quatconj_doc.html |quatconj|> | 
 % <quatinv_doc.html |quatinv|> | 
 % <quatmul_doc.html |quatmul|> | 
 % <quatnorm_doc.html |quatnorm|> | 
+% <quatnormalize_doc.html |quatnormalize|> | 
 % <quatrotate_doc.html |quatrotate|> | 
 % <quatslerp_doc.html |quatslerp|>
 ##### SOURCE END #####

@@ -4,7 +4,8 @@
 %
 %   q_A2C = quatchain(q_A2B,q_B2C)
 %
-% See also quatconj, quatinv, quatmul, quatnorm, quatnormalize, quatrotate.
+% See also quatang, quatconj, quatinv, quatmul, quatnorm, quatnormalize,
+% quatrotate, quatslerp.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-05-07

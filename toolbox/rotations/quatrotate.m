@@ -4,7 +4,8 @@
 %
 %   rB = quatrotate(q_A2B,rA)
 %
-% See also quatchain, quatconj, quatinv, quatmul, quatnorm, quatnormalize.
+% See also quatang, quatchain, quatconj, quatinv, quatmul, quatnorm,
+% quatnormalize, quatslerp.
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-05-07

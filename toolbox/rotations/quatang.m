@@ -1,10 +1,10 @@
 %==========================================================================
 %
-% quatnorm  Norm of a quaternion.
+% quatang  Angle between two unit quaternions.
 %
-%   q_norm = quatnorm(q)
+%   theta = quatang(q1,q2)
 %
-% See also quatang, quatchain, quatconj, quatinv, quatmul, quatnormalize,
+% See also quatchain, quatconj, quatinv, quatmul, quatnorm, quatnormalize,
 % quatrotate, quatslerp.
 %
 % Copyright © 2022 Tamas Kis
@@ -23,14 +23,21 @@
 % ------
 % INPUT:
 % ------
-%   q       - (4×1 double) quaternion
+%   q1      - (4×1 double) unit quaternion
+%   q2      - (4×1 double) unit quaternion
 %
 % -------
 % OUTPUT:
 % -------
-%   q_norm  - (1×1 double) norm of the quaternion
+%   theta   - (1×1 double) angle between the two unit quaternions [rad]
+%
+% -----
+% NOTE:
+% -----
+%   • This function assumes that q1 and q2 are input as unit quaternions, 
+%     so it does NOT normalize them.
 %
 %==========================================================================
-function q = quatnorm(q)
-    q = inorm(q);
+function theta = quatang(q1,q2)
+    theta = 4*iatan2(quatnorm(q1-q2),quatnorm(q1+q2));
 end

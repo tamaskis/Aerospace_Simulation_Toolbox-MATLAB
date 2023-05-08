@@ -1,0 +1,223 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>quatslerp</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-08"><meta name="DC.source" content="quatslerp_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>quatslerp</tt></h1><!--introduction--><p>Spherical linear interpolation (SLERP) between two unit quaternions.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q = quatslerp(q1,q2,t)
+</pre><h2 id="2">Description</h2><p><tt>q = quatslerp(q1,q2,t)</tt> interpolates a quaternion that is at the proportion <img src="quatslerp_doc_eq10146963226942718528.png" alt="$t$" style="width:4px;height:8px;"> along the great arc between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;"> on the unit sphere.</p><h2 id="3">Inputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>q1</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{1}" title="" /></td>
+          <td>unit quaternion</td>
+          <td style="text-align:center">4×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>q2</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{2}" title="" /></td>
+          <td>unit quaternion</td>
+          <td style="text-align:center">4×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>t</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;t" title="" /></td>
+          <td>interpolation parameter</td>
+          <td style="text-align:center">1×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><h2 id="4">Outputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>q</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
+          <td>interpolated unit quaternions</td>
+          <td style="text-align:center">4×1<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+  </table>
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes that <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;"> are input as unit quaternions, so it does <i>not</i> normalize them.</li><li><img src="quatslerp_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> is normalized.</li></ul></div><h2 id="6">Example</h2><p><i>Consider the two quaternions</i></p><p><img src="quatslerp_doc_eq07814813192026389500.png" alt="$$\mathbf{q}_{1}=\pmatrix{0.0080 \cr -0.0080 \cr 0.2519 \cr 0.9677},\quad\quad\mathbf{q}_{2}=\pmatrix{0.6052 \cr 0.4131 \cr 0.5631 \cr 0.3821}$$" style="width:193px;height:48px;"></p><p><i>Interpolate for a third quaternion that is <img src="quatslerp_doc_eq15049265142985856405.png" alt="$60\%$" style="width:20px;height:9px;"> of the way between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;">.</i></p><p>Defining the unit quaternions,</p><pre class="codeinput">q1 = [0.0080;-0.0080;0.2519;0.9677];
+q2 = [0.6052;0.4131;0.5631;0.3821];
+</pre><p>Computing the unit quaternion that is 60%% of the way between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;">,</p><pre class="codeinput">q = quatslerp(q1,q2,0.6)
+</pre><pre class="codeoutput">
+q =
+
+   -0.6837
+   -0.4773
+   -0.4428
+    0.3295
+
+</pre><h2 id="8">See also</h2><p><a href="quatang_doc.html"><tt>quatang</tt></a> | <a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |quatslerp|
+% Spherical linear interpolation (SLERP) between two unit quaternions.
+% 
+% <index_rotations.html Back to *Rotations*>.
+%% Syntax
+%   q = quatslerp(q1,q2,t)
+%% Description
+% |q = quatslerp(q1,q2,t)| interpolates a quaternion that is at the
+% proportion $t$ along the great arc between $\mathbf{q}_{1}$ and 
+% $\mathbf{q}_{2}$ on the unit sphere.
+%% Inputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>q1</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{1}" title="" /></td>
+%           <td>unit quaternion</td>
+%           <td style="text-align:center">4×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>q2</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}_{2}" title="" /></td>
+%           <td>unit quaternion</td>
+%           <td style="text-align:center">4×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>t</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;t" title="" /></td>
+%           <td>interpolation parameter</td>
+%           <td style="text-align:center">1×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>q</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{q}" title="" /></td>
+%           <td>interpolated unit quaternions</td>
+%           <td style="text-align:center">4×1<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%   </table>
+% </html>
+%% Note
+% * This function assumes that $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$ are
+% input as unit quaternions, so it does _not_ normalize them.
+% * $\mathbf{q}$ is normalized.
+%% Example
+% _Consider the two quaternions_
+%
+% $$\mathbf{q}_{1}=\pmatrix{0.0080 \cr -0.0080 \cr 0.2519 \cr 0.9677},\quad\quad\mathbf{q}_{2}=\pmatrix{0.6052 \cr 0.4131 \cr 0.5631 \cr 0.3821}$$
+%
+% _Interpolate for a third quaternion that is $60\%$ of the way between
+% $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$._
+%
+% Defining the unit quaternions,
+q1 = [0.0080;-0.0080;0.2519;0.9677];
+q2 = [0.6052;0.4131;0.5631;0.3821];
+%%
+% Computing the unit quaternion that is 60%% of the way between
+% $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$,
+q = quatslerp(q1,q2,0.6)
+%% See also
+% <quatang_doc.html |quatang|> | 
+% <quatchain_doc.html |quatchain|> | 
+% <quatconj_doc.html |quatconj|> | 
+% <quatinv_doc.html |quatinv|> | 
+% <quatmul_doc.html |quatmul|> | 
+% <quatnorm_doc.html |quatnorm|> | 
+% <quatnormalize_doc.html |quatnormalize|> | 
+% <quatrotate_doc.html |quatrotate|>
+##### SOURCE END #####
+--></body></html>
