@@ -859,28 +859,41 @@ test_suite.add_test(TestEqual(quatrotate(q_A2B,rA),rB,'quatrotate test',3));
 
 %% quatang
 
-% TODO
+% simple test
+q1 = [0.9173;-0.3023;-0.0655;0.2508];
+q2 = [0.5972;0.5180;-0.2343;0.5658];
+test_suite.add_test(TestEqual(quatang(q1,q2),1.9805,'quatang simple test',4));
 
-% q1 = [ 0.968; 0.008; -0.008; 0.252]; q1 = quatnormalize(q1);
-% q2 = [ 0.382; 0.605;  0.413; 0.563]; q2 = quatnormalize(q2);
-% q = quatmul(quatconj(q1),q2)
-% [~,Phi] = quat2axang(q);
-% Phi = Phi*(180/pi)
+% long test
+q1_0 = linspace(-10,10);
+q1_0 = q1_0(randperm(100));
+q1_1 = linspace(-10,10);
+q1_1 = q1_1(randperm(100));
+q1_2 = linspace(-10,10);
+q1_2 = q1_2(randperm(100));
+q1_3 = linspace(-10,10);
+q1_3 = q1_3(randperm(100));
+q1 = [q1_0;q1_1;q1_2;q1_3];
+q2_0 = linspace(-10,10);
+q2_0 = q2_0(randperm(100));
+q2_1 = linspace(-10,10);
+q2_1 = q2_1(randperm(100));
+q2_2 = linspace(-10,10);
+q2_2 = q2_2(randperm(100));
+q2_3 = linspace(-10,10);
+q2_3 = q2_3(randperm(100));
+q2 = [q2_0;q2_1;q2_2;q2_3];
+for i = 1:100
+    q1(:,i) = quatnormalize(q1(:,i));
+    q2(:,i) = quatnormalize(q2(:,i));
+end
+for i = 1:100
+    q = quatmul(quatconj(q1(:,i)),q2(:,i));
+    [~,Phi(i)] = quat2axang(q);
+    theta(i) = quatang(q1(:,i),q2(:,i));
+end
+test_suite.add_test(TestEqual(theta,Phi,'quatang long test',14));
 
-q1 = [1;0;0;0];
-q2 = eul2quat_321(pi/3,0,0);
-
-% q1 = [0.008;-0.008;0.252;0.968];
-% q1 = quatnormalize(q1);
-% 
-% q2 = [0.605;0.413;0.563;0.382];
-% q2 = quatnormalize(q2);
-
-q = quatmul(quatconj(q1),q2);
-[~,Phi] = quat2axang(q);
-Phi = Phi*(180/pi)
-
-theta = quatang(q1,q2)*(180/pi)
 
 
 %% quatslerp

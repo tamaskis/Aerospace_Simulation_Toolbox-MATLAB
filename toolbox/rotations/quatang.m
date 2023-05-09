@@ -36,8 +36,18 @@
 % -----
 %   • This function assumes that q1 and q2 are input as unit quaternions, 
 %     so it does NOT normalize them.
+%   • This function returns the smaller of the two angles between the unit
+%     quaternions, such that θ ∈ [0,π].
 %
 %==========================================================================
 function theta = quatang(q1,q2)
+    
+    % angle between the unit quaternions [rad]
     theta = 4*iatan2(quatnorm(q1-q2),quatnorm(q1+q2));
+    
+    % adjusts angle to ensure shortest arc is used
+    if theta > pi
+        theta = 2*pi-theta;
+    end
+    
 end
