@@ -898,7 +898,20 @@ test_suite.add_test(TestEqual(theta,Phi,'quatang long test',14));
 
 %% quatslerp
 
-% TODO
+% tests 1-3
+q1 = [0.9173;-0.3023;-0.0655;0.2508];
+q2 = [0.5972;0.5180;-0.2343;0.5658];
+test_suite.add_test(TestEqual(quatslerp(q1,q2,0),q1,'quatslerp test 1',4));
+test_suite.add_test(TestEqual(quatslerp(q1,q2,1),q2,'quatslerp test 2',4));
+test_suite.add_test(TestEqual(quatslerp(q1,q2,0.2),[0.9215;-0.1355;-0.1109;0.3467],'quatslerp test 3',4));
+
+% test 4-6
+q1 = [0.9173;0.3023;0.0655;0.2508];
+q2 = [0.1826;-0.3651;-0.5477;-0.7303];
+test_suite.add_test(TestEqual(quatslerp(q1,q2,0),q1,'quatslerp test 4',4));
+test_suite.add_test(TestEqual(quatslerp(q1,q2,1),q2,'quatslerp test 5',4));
+test_suite.add_test(TestEqual(quatslerp(q1,q2,0.8),[0.0913;0.4192;0.5196;0.7389],'quatslerp test 6',4));
+
 
 
 %% RUNS TEST SUITE

@@ -1,6 +1,7 @@
 %==========================================================================
 %
-% axang2mat  Axis-angle representation to rotation matrix.
+% axang2mat  Axis-angle representation to rotation matrix (passive
+% rotation).
 %
 %   R = axang2mat(e,Phi)
 %

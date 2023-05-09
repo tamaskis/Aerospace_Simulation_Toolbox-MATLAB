@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>quatslerp</tt></h1><!--introduction--><p>Spherical linear interpolation (SLERP) between two unit quaternions.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q = quatslerp(q1,q2,t)
+  </style></head><body><div class="content"><h1><tt>quatslerp</tt></h1><!--introduction--><p>Spherical linear interpolation (SLERP) between two unit quaternions.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example #1</a></li><li><a href="#8">Example #2</a></li><li><a href="#12">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q = quatslerp(q1,q2,t)
 </pre><h2 id="2">Description</h2><p><tt>q = quatslerp(q1,q2,t)</tt> interpolates a quaternion that is at the proportion <img src="quatslerp_doc_eq10146963226942718528.png" alt="$t$" style="width:4px;height:8px;"> along the great arc between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;"> on the unit sphere.</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
@@ -116,18 +116,39 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">-</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li>This function assumes that <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;"> are input as unit quaternions, so it does <i>not</i> normalize them.</li><li><img src="quatslerp_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> is normalized.</li></ul></div><h2 id="6">Example</h2><p><i>Consider the two quaternions</i></p><p><img src="quatslerp_doc_eq07814813192026389500.png" alt="$$\mathbf{q}_{1}=\pmatrix{0.0080 \cr -0.0080 \cr 0.2519 \cr 0.9677},\quad\quad\mathbf{q}_{2}=\pmatrix{0.6052 \cr 0.4131 \cr 0.5631 \cr 0.3821}$$" style="width:193px;height:48px;"></p><p><i>Interpolate for a third quaternion that is <img src="quatslerp_doc_eq15049265142985856405.png" alt="$60\%$" style="width:20px;height:9px;"> of the way between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;">.</i></p><p>Defining the unit quaternions,</p><pre class="codeinput">q1 = [0.0080;-0.0080;0.2519;0.9677];
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li>This function assumes that <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;"> are input as unit quaternions, so it does <i>not</i> normalize them.</li><li><img src="quatslerp_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> is normalized.</li><li>The scalar part of <img src="quatslerp_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> is chosen to be positive.</li></ul></div><h2 id="6">Example #1</h2><p><i>Consider the two quaternions</i></p><p><img src="quatslerp_doc_eq07814813192026389500.png" alt="$$\mathbf{q}_{1}=\pmatrix{0.0080 \cr -0.0080 \cr 0.2519 \cr 0.9677},\quad\quad\mathbf{q}_{2}=\pmatrix{0.6052 \cr 0.4131 \cr 0.5631 \cr 0.3821}$$" style="width:193px;height:48px;"></p><p><i>Interpolate for a third quaternion that is <img src="quatslerp_doc_eq15049265142985856405.png" alt="$60\%$" style="width:20px;height:9px;"> of the way between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;">.</i></p><p>Defining the unit quaternions,</p><pre class="codeinput">q1 = [0.0080;-0.0080;0.2519;0.9677];
 q2 = [0.6052;0.4131;0.5631;0.3821];
 </pre><p>Computing the unit quaternion that is 60%% of the way between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;">,</p><pre class="codeinput">q = quatslerp(q1,q2,0.6)
 </pre><pre class="codeoutput">
 q =
 
-   -0.6837
-   -0.4773
-   -0.4428
-    0.3295
+    0.4130
+    0.2756
+    0.4985
+    0.7107
 
-</pre><h2 id="8">See also</h2><p><a href="quatang_doc.html"><tt>quatang</tt></a> | <a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="8">Example #2</h2><p>Let's define two quaternions we want to interpolate between via SLERP.</p><pre class="codeinput">q1 = [0.9173;0.3023;0.0655;0.2508];
+q2 = [0.1826;-0.3651;-0.5477;-0.7303];
+</pre><p>Performing SLERP at a large number of points between <img src="quatslerp_doc_eq17462223813946516522.png" alt="$\mathbf{q}_{1}$" style="width:10px;height:8px;"> and <img src="quatslerp_doc_eq05989319759439807967.png" alt="$\mathbf{q}_{2}$" style="width:10px;height:8px;">,</p><pre class="codeinput">t = 0:0.01:1;
+q = zeros(4,length(t));
+<span class="keyword">for</span> i = 1:length(t)
+    q(:,i) = quatslerp(q1,q2,t(i));
+<span class="keyword">end</span>
+</pre><p>Let's rotate the unit vector <img src="quatslerp_doc_eq11160971750524886146.png" alt="$(1,0,0)^{T}$" style="width:40px;height:13px;"> through each of the orientations we just defined to trace out a path on the unit sphere. Note that we use the conjugate of <img src="quatslerp_doc_eq13308750406766542880.png" alt="$\mathbf{q}$" style="width:7px;height:8px;"> since we are performing an active rotation in this case, and <tt>quatrotate</tt> expects a quaternion representing a passive rotation.</p><pre class="codeinput">e = [1;0;0];
+e_rotated = zeros(3,length(t));
+<span class="keyword">for</span> i = 1:length(t)
+    e_rotated(:,i) = quatrotate(quatconj(q(:,i)),e);
+<span class="keyword">end</span>
+</pre><p>Plotting the path on the unit sphere,</p><pre class="codeinput">[X,Y,Z] = sphere;
+figure;
+hold <span class="string">on</span>;
+surf(X,Y,Z,<span class="string">'FaceColor'</span>,[0.75,0.75,0.75])
+plot3(e_rotated(1,:),e_rotated(2,:),e_rotated(3,:),<span class="string">'LineWidth'</span>,2.5,<span class="keyword">...</span>
+    <span class="string">'Color'</span>,<span class="string">'black'</span>);
+axis <span class="string">off</span>;
+axis <span class="string">equal</span>;
+view([170,20]);
+</pre><img vspace="5" hspace="5" src="quatslerp_doc_01.png" alt=""> <h2 id="12">See also</h2><p><a href="quatang_doc.html"><tt>quatang</tt></a> | <a href="quatchain_doc.html"><tt>quatchain</tt></a> | <a href="quatconj_doc.html"><tt>quatconj</tt></a> | <a href="quatinv_doc.html"><tt>quatinv</tt></a> | <a href="quatmul_doc.html"><tt>quatmul</tt></a> | <a href="quatnorm_doc.html"><tt>quatnorm</tt></a> | <a href="quatnormalize_doc.html"><tt>quatnormalize</tt></a> | <a href="quatrotate_doc.html"><tt>quatrotate</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |quatslerp|
 % Spherical linear interpolation (SLERP) between two unit quaternions.
@@ -192,10 +213,12 @@ q =
 %   </table>
 % </html>
 %% Note
+% * This function assumes the scalar-first convention for quaternions.
 % * This function assumes that $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$ are
 % input as unit quaternions, so it does _not_ normalize them.
 % * $\mathbf{q}$ is normalized.
-%% Example
+% * The scalar part of $\mathbf{q}$ is chosen to be positive.
+%% Example #1
 % _Consider the two quaternions_
 %
 % $$\mathbf{q}_{1}=\pmatrix{0.0080 \cr -0.0080 \cr 0.2519 \cr 0.9677},\quad\quad\mathbf{q}_{2}=\pmatrix{0.6052 \cr 0.4131 \cr 0.5631 \cr 0.3821}$$
@@ -210,6 +233,40 @@ q2 = [0.6052;0.4131;0.5631;0.3821];
 % Computing the unit quaternion that is 60%% of the way between
 % $\mathbf{q}_{1}$ and $\mathbf{q}_{2}$,
 q = quatslerp(q1,q2,0.6)
+%% Example #2
+% Let's define two quaternions we want to interpolate between via SLERP.
+q1 = [0.9173;0.3023;0.0655;0.2508];
+q2 = [0.1826;-0.3651;-0.5477;-0.7303];
+%%
+% Performing SLERP at a large number of points between $\mathbf{q}_{1}$ and
+% $\mathbf{q}_{2}$,
+t = 0:0.01:1;
+q = zeros(4,length(t));
+for i = 1:length(t)
+    q(:,i) = quatslerp(q1,q2,t(i));
+end
+%%
+% Let's rotate the unit vector $(1,0,0)^{T}$ through each of the
+% orientations we just defined to trace out a path on the unit sphere. Note
+% that we use the conjugate of $\mathbf{q}$ since we are performing an
+% active rotation in this case, and |quatrotate| expects a quaternion
+% representing a passive rotation.
+e = [1;0;0];
+e_rotated = zeros(3,length(t));
+for i = 1:length(t)
+    e_rotated(:,i) = quatrotate(quatconj(q(:,i)),e);
+end
+%%
+% Plotting the path on the unit sphere,
+[X,Y,Z] = sphere;
+figure;
+hold on;
+surf(X,Y,Z,'FaceColor',[0.75,0.75,0.75])
+plot3(e_rotated(1,:),e_rotated(2,:),e_rotated(3,:),'LineWidth',2.5,...
+    'Color','black');
+axis off;
+axis equal;
+view([170,20]);
 %% See also
 % <quatang_doc.html |quatang|> | 
 % <quatchain_doc.html |quatchain|> | 

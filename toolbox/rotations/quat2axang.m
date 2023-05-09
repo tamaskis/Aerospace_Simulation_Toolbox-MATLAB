@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% quat2axang  Quaternion to axis-angle representation.
+% quat2axang  Quaternion to axis-angle representation (passive rotation).
 %
 %   [e,Phi] = quat2axang(q)
 %
@@ -44,7 +44,7 @@
 %==========================================================================
 function [e,Phi] = quat2axang(q)
     
-    % ensures the scalar component of the quaternion is positive
+    % ensures the scalar part of the quaternion is positive
     if q(1) < 0
         q = -q;
     end
@@ -72,6 +72,7 @@ function [e,Phi] = quat2axang(q)
     q0 = imax(imin(q0,1),-1);
     
     % principal angle [rad]
-    Phi = 2*acos(q0);
+    %Phi = 2*acos(q0);
+    Phi = 2*iatan2(inorm([q1;q2;q3]),q0);
     
 end

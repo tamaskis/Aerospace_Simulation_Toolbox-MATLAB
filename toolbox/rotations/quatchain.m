@@ -41,7 +41,7 @@
 %   • This function assumes that q_A2B and q_B2C are input as unit 
 %     quaternions, so it does NOT normalize them.
 %   • q_A2C is normalized.
-%   • The scalar component of q_A2C is chosen to be positive.
+%   • The scalar part of q_A2C is chosen to be positive.
 %     
 %==========================================================================
 function q_A2C = quatchain(q_A2B,q_B2C)

@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % eul2axang_321  3-2-1 Euler angles (yaw, pitch, and roll) to axis-angle 
-% representation.
+% representation (passive rotation).
 %
 %   [e,Phi] = eul2axang_321(psi,theta,phi)
 %

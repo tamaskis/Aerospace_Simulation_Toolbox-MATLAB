@@ -1,6 +1,7 @@
 %==========================================================================
 %
-% mat2axang  Rotation matrix to axis-angle representation.
+% mat2axang  Rotation matrix to axis-angle representation (passive
+% rotation).
 %
 %   [e,Phi] = mat2axang(R)
 %

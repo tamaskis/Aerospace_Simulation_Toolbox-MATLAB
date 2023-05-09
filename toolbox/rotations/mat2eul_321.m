@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % mat2eul_321  Rotation matrix to 3-2-1 Euler angles (yaw, pitch, and
-% roll).
+% roll) (passive rotation).
 %
 %   [psi,theta,phi] = mat2eul_321(R)
 %

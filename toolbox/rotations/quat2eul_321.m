@@ -1,6 +1,7 @@
 %==========================================================================
 %
-% quat2eul_321  Quaternion to 3-2-1 Euler angles (yaw, pitch, and roll).
+% quat2eul_321  Quaternion to 3-2-1 Euler angles (yaw, pitch, and roll)
+% (passive rotation).
 %
 %   [psi,theta,phi] = quat2eul_321(q)
 %

@@ -1,6 +1,7 @@
 %==========================================================================
 %
-% rot321  Rotation matrix for the 3-2-1 rotation sequence.
+% rot321  Rotation matrix for the 3-2-1 rotation sequence (passive 
+% rotation).
 %
 %   R321 = rot321(theta1,theta2,theta3)
 %

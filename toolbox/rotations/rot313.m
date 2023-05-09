@@ -1,6 +1,7 @@
 %==========================================================================
 %
-% rot313  Rotation matrix for the 3-1-3 rotation sequence.
+% rot313  Rotation matrix for the 3-1-3 rotation sequence (passive
+% rotation).
 %
 %   R313 = rot313(theta1,theta2,theta3)
 %

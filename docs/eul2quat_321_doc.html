@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>eul2quat_321</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-07"><meta name="DC.source" content="eul2quat_321_doc.m"><style type="text/css">
+      --><title>eul2quat_321</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-08"><meta name="DC.source" content="eul2quat_321_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>eul2quat_321</tt></h1><!--introduction--><p>3-2-1 Euler angles (yaw, pitch, and roll) to unit quaternion.</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q = eul2quat_321(psi,theta,phi)
+  </style></head><body><div class="content"><h1><tt>eul2quat_321</tt></h1><!--introduction--><p>3-2-1 Euler angles (yaw, pitch, and roll) to unit quaternion (passive rotation).</p><p><a href="index_rotations.html">Back to <b>Rotations</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Inputs</a></li><li><a href="#4">Outputs</a></li><li><a href="#5">Note</a></li><li><a href="#6">Example</a></li><li><a href="#8">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">q = eul2quat_321(psi,theta,phi)
 </pre><h2 id="2">Description</h2><p><tt>q = eul2quat_321(psi,theta,phi)</tt> finds the unit quaternion corresponding to the specified 3-2-1 Euler angles (yaw, pitch, and roll).</p><h2 id="3">Inputs</h2><p>
   <table>
       <tr>
@@ -116,7 +116,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">-</td>
       </tr>
   </table>
-</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li>The scalar component, <img src="eul2quat_321_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;">, is chosen to be positive.</li></ul></div><h2 id="6">Example</h2><p><i>Find the unit quaternion corresponding to the 3-2-1 Euler angles <img src="eul2quat_321_doc_eq15496612890459663456.png" alt="$\psi=\pi/3$" style="width:40px;height:11px;">, <img src="eul2quat_321_doc_eq15964431059417494709.png" alt="$\theta=-\pi/6$" style="width:46px;height:11px;">, and <img src="eul2quat_321_doc_eq01109954715629912161.png" alt="$\phi=-2\pi/3$" style="width:53px;height:11px;">.</i></p><p>Defining the 3-2-1 Euler angles,</p><pre class="codeinput">psi = pi/3;
+</p><h2 id="5">Note</h2><div><ul><li>This function assumes the scalar-first convention for quaternions.</li><li>The scalar part, <img src="eul2quat_321_doc_eq10375290423162370415.png" alt="$q_{0}$" style="width:9px;height:8px;">, is chosen to be positive.</li></ul></div><h2 id="6">Example</h2><p><i>Find the unit quaternion corresponding to the 3-2-1 Euler angles <img src="eul2quat_321_doc_eq15496612890459663456.png" alt="$\psi=\pi/3$" style="width:40px;height:11px;">, <img src="eul2quat_321_doc_eq15964431059417494709.png" alt="$\theta=-\pi/6$" style="width:46px;height:11px;">, and <img src="eul2quat_321_doc_eq01109954715629912161.png" alt="$\phi=-2\pi/3$" style="width:53px;height:11px;">.</i></p><p>Defining the 3-2-1 Euler angles,</p><pre class="codeinput">psi = pi/3;
 theta = -pi/6;
 phi = -2*pi/3;
 </pre><p>Computing the unit quaternion,</p><pre class="codeinput">q = eul2quat_321(psi,theta,phi)
@@ -131,7 +131,8 @@ q =
 </pre><h2 id="8">See also</h2><p><a href="axang2eul_321_doc.html"><tt>axang2eul_321</tt></a> | <a href="axang2mat_doc.html"><tt>axang2mat</tt></a> | <a href="axang2quat_doc.html"><tt>axang2quat</tt></a> | <a href="eul2axang_321_doc.html"><tt>eul2axang_321</tt></a> | <a href="eul2mat_321_doc.html"><tt>eul2mat_321</tt></a> | <a href="mat2axang_doc.html"><tt>mat2axang</tt></a> | <a href="mat2eul_321_doc.html"><tt>mat2eul_321</tt></a> | <a href="mat2quat_doc.html"><tt>mat2quat</tt></a> | <a href="quat2axang_doc.html"><tt>quat2axang</tt></a> | <a href="quat2eul_321_doc.html"><tt>quat2eul_321</tt></a> | <a href="quat2mat_doc.html"><tt>quat2mat</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |eul2quat_321|
-% 3-2-1 Euler angles (yaw, pitch, and roll) to unit quaternion.
+% 3-2-1 Euler angles (yaw, pitch, and roll) to unit quaternion (passive 
+% rotation).
 % 
 % <index_rotations.html Back to *Rotations*>.
 %% Syntax
@@ -193,7 +194,7 @@ q =
 % </html>
 %% Note
 % * This function assumes the scalar-first convention for quaternions.
-% * The scalar component, $q_{0}$, is chosen to be positive.
+% * The scalar part, $q_{0}$, is chosen to be positive.
 %% Example
 % _Find the unit quaternion corresponding to the 3-2-1 Euler angles 
 % $\psi=\pi/3$, $\theta=-\pi/6$, and $\phi=-2\pi/3$._

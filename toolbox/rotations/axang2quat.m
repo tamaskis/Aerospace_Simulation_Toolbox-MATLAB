@@ -1,6 +1,7 @@
 %==========================================================================
 %
-% axang2quat  Axis-angle representation to unit quaternion.
+% axang2quat  Axis-angle representation to unit quaternion (passive
+% rotation).
 %
 %   q = axang2quat(e,Phi)
 %
@@ -37,7 +38,7 @@
 % -----
 %   • This function normalizes e.
 %   • This function assumes the scalar-first convention for quaternions.
-%   • The scalar component, q₀, is chosen to be positive.
+%   • The scalar part, q₀, is chosen to be positive.
 %
 %==========================================================================
 function q = axang2quat(e,Phi)
@@ -49,7 +50,7 @@ function q = axang2quat(e,Phi)
     q = [cos(Phi/2);
          sin(Phi/2)*e];
     
-    % ensures scalar component of quaternion is positive
+    % ensures scalar part of quaternion is positive
     if q(1) < 0
         q = -q;
     end

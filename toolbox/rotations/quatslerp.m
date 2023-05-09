@@ -41,7 +41,7 @@
 %   • This function assumes that q1 and q2 are input as unit quaternions, 
 %     so it does NOT normalize them.
 %   • q is normalized.
-%   • The scalar component of q is chosen to be positive.
+%   • The scalar part of q is chosen to be positive.
 %
 %==========================================================================
 function q = quatslerp(q1,q2,t)
@@ -64,7 +64,7 @@ function q = quatslerp(q1,q2,t)
     % normalizes the result
     q = quatnormalize(q);
     
-    % ensures scalar component of quaternion is positive
+    % ensures scalar part of quaternion is positive
     if q(1) < 0
         q = -q;
     end

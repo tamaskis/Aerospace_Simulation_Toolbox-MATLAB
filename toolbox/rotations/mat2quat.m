@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% mat2quat  Rotation matrix to unit quaternion.
+% mat2quat  Rotation matrix to unit quaternion (passive rotation).
 %
 %   q = mat2quat(R)
 %
@@ -35,7 +35,7 @@
 % NOTE:
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
-%   • The scalar component, q₀, is chosen to be positive.
+%   • The scalar part, q₀, is chosen to be positive.
 %
 %==========================================================================
 function q = mat2quat(R)

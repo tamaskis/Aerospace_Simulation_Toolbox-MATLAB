@@ -1,7 +1,7 @@
 %==========================================================================
 %
 % eul2quat_321  3-2-1 Euler angles (yaw, pitch, and roll) to unit
-% quaternion.
+% quaternion (passive rotation).
 %
 %   q = eul2quat_321(psi,theta,phi)
 %
@@ -38,7 +38,7 @@
 % NOTE:
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
-%   • The scalar component, q₀, is chosen to be positive.
+%   • The scalar part, q₀, is chosen to be positive.
 %
 %==========================================================================
 function q = eul2quat_321(psi,theta,phi)
@@ -57,7 +57,7 @@ function q = eul2quat_321(psi,theta,phi)
          c1*s2*c3+s1*c2*s3;
          c1*c2*s3-s1*s2*c3];
     
-    % ensures scalar component of quaternion is positive
+    % ensures scalar part of quaternion is positive
     if q(1) < 0
         q = -q;
     end

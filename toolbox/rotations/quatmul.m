@@ -38,7 +38,7 @@
 %   • p and q do not have to be input as unit quaternions (this function is
 %     for all quaternions, not just unit quaternions).
 %   • r is not normalized.
-%   • The scalar component of r is chosen to be positive.
+%   • The scalar part of r is chosen to be positive.
 %     
 %==========================================================================
 function r = quatmul(p,q)
@@ -49,7 +49,7 @@ function r = quatmul(p,q)
          p(1)*q(3)-p(2)*q(4)+p(3)*q(1)+p(4)*q(2);
          p(1)*q(4)+p(2)*q(3)-p(3)*q(2)+p(4)*q(1)];
     
-    % ensures scalar component of quaternion is positive
+    % ensures scalar part of quaternion is positive
     if r(1) < 0
         r = -r;
     end

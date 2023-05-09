@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% quat2mat  Quaternion to rotation matrix.
+% quat2mat  Quaternion to rotation matrix (passive rotation).
 %
 %   R = quat2mat(q)
 %
