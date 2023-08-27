@@ -1,13 +1,11 @@
 %==========================================================================
 %
-% rot_pqw2rsw  Rotation matrix for a passive rotation about the 3rd axis.
+% rv2e  Eccentricity from position and velocity.
 %
-%   R_pqw2rsw = rot_pqw2rsw(nu)
-%
-% See also rot_rsw2pqw.
+%   e = rv2e(r,v,mu)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-08-26
+% Last Update: 2023-08-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,15 +20,23 @@
 % ------
 % INPUT:
 % ------
-%   nu          - (1×1 double) true anomaly [rad]
+%   r       - (3×1 double) position expressed in the inerial frame [m]
+%   v 	    - (3×1 double) inertial velocity expressed in the inertial
+%             frame [m/s]
+%   mu      - (1×1 double) standard gravitational parameter [m³/s²]
 %
 % -------
 % OUTPUT:
 % -------
-%   R_pqw2rsw   - (3×3 double) passive rotation matrix about from perifocal
-%                 (PQW) frame to RSW frame
+%   e       - (1×1 double) eccentricity [-]
 %
 %==========================================================================
-function R_pqw2rsw = rot_pqw2rsw(nu)
-    R_pqw2rsw = rot3(nu);
+function e = rv2e(r,v,mu)
+    
+    % eccentricity vector expressed in the inertial frame
+    e_vec = rv2e_vec(r,v,mu);
+    
+    % eccentricity
+    e = inorm(e_vec);
+    
 end

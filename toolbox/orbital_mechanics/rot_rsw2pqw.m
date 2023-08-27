@@ -1,13 +1,14 @@
 %==========================================================================
 %
-% rot_rsw2pqw  Rotation matrix for a passive rotation about the 3rd axis.
+% rot_rsw2pqw  Passive rotation matrix from the RSW frame to the perifocal
+% (PQW) frame to the RSW frame.
 %
 %   R_rsw2pqw = rot_rsw2pqw(nu)
 %
 % See also rot_pqw2rsw.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-08-26
+% Last Update: 2023-08-27
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -27,8 +28,8 @@
 % -------
 % OUTPUT:
 % -------
-%   R_rsw2pqw   - (3×3 double) passive rotation matrix about from RSW frame
-%                 to perifocal (PQW) frame
+%   R_rsw2pqw   - (3×3 double) passive rotation matrix from the RSW frame
+%                 to the perifocal (PQW) frame
 %
 %==========================================================================
 function R_rsw2pqw = rot_rsw2pqw(nu)

@@ -1,4 +1,4 @@
-%% TEST_orbit.m
+%% TEST_orbital_mechanics.m
 % Aerospace Simulation Toolbox
 %
 % Unit testing of the TODO functions.
@@ -26,7 +26,7 @@ rng(1);
 
 %% INITIALIZE TEST SUITE
 
-test_suite = TestSuite('orbit tests');
+test_suite = TestSuite('orbital mechanics tests');
 
 
 
@@ -277,6 +277,52 @@ test_suite.add_test(TestEqual(rot_rsw2pqw_5pi_3,rot_rsw2pqw_5pi_3_true,'rot_rsw2
 test_suite.add_test(TestEqual(rot_rsw2pqw_7pi_4,rot_rsw2pqw_7pi_4_true,'rot_rsw2pqw(7π/4)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_11pi_6,rot_rsw2pqw_11pi_6_true,'rot_rsw2pqw(11π/6)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_2pi,rot_rsw2pqw_2pi_true,'rot_rsw2pqw(2π)',15));
+
+
+
+%% rv2e_vec
+
+r = [5053;-2276;-5182];
+v = [113286;181566;48281];
+mu = 3.986004418e14;
+e_vec = rv2e_vec(r,v,mu);
+e_vec_true = [-0.029973965190951;0.066603000645626;0.068285909115768];
+test_suite.add_test(TestEqual(e_vec,e_vec_true,'rv2e_vec',15));
+
+
+
+%% rv2e
+
+r = [5053;-2276;-5182];
+v = [113286;181566;48281];
+mu = 3.986004418e14;
+e = rv2e(r,v,mu);
+e_true = 0.099986817471288;
+test_suite.add_test(TestEqual(e,e_true,'rv2e',15));
+
+
+
+%% rvh2e_vec
+
+r = [5053;-2276;-5182];
+v = [113286;181566;48281];
+h = [830987456;-831011945;1175291934];
+mu = 3.986004418e14;
+e_vec = rvh2e_vec(r,v,h,mu);
+e_vec_true = [-0.029973965190951;0.066603000645626;0.068285909115768];
+test_suite.add_test(TestEqual(e_vec,e_vec_true,'rvh2e_vec',15));
+
+
+
+%% rvh2e
+
+r = [5053;-2276;-5182];
+v = [113286;181566;48281];
+h = [830987456;-831011945;1175291934];
+mu = 3.986004418e14;
+e = rvh2e(r,v,h,mu);
+e_true = 0.099986817471287;
+test_suite.add_test(TestEqual(e,e_true,'rvh2e',15));
 
 
 
