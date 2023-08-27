@@ -42,11 +42,23 @@ rot1_0_true = [1   0   0;
                0   1   0;
                0   0   1];
 
+% θ = pi/6
+rot1_pi_6 = rot1(pi/6);
+rot1_pi_6_true = [1   0           0;
+                  0   sqrt(3)/2   1/2;
+                  0  -1/2         sqrt(3)/2];
+
 % θ = π/4
 rot1_pi_4 = rot1(pi/4);
 rot1_pi_4_true = [1   0           0;
                   0   sqrt(2)/2   sqrt(2)/2;
                   0  -sqrt(2)/2   sqrt(2)/2];
+
+% θ = π/3
+rot1_pi_3 = rot1(pi/3);
+rot1_pi_3_true = [1   0           0;
+                  0   1/2         sqrt(3)/2;
+                  0  -sqrt(3)/2   1/2];
 
 % θ = π/2
 rot1_pi_2 = rot1(pi/2);
@@ -54,11 +66,23 @@ rot1_pi_2_true = [1   0   0;
                   0   0   1;
                   0  -1   0];
 
+% θ = 2π/3
+rot1_2pi_3 = rot1(2*pi/3);
+rot1_2pi_3_true = [1   0           0;
+                   0  -1/2         sqrt(3)/2;
+                   0  -sqrt(3)/2  -1/2];
+
 % θ = 3π/4
 rot1_3pi_4 = rot1(3*pi/4);
 rot1_3pi_4_true = [1   0           0;
                    0  -sqrt(2)/2   sqrt(2)/2;
                    0  -sqrt(2)/2  -sqrt(2)/2];
+
+% θ = 5π/6
+rot1_5pi_6 = rot1(5*pi/6);
+rot1_5pi_6_true = [1   0           0;
+                   0  -sqrt(3)/2   1/2;
+                   0  -1/2        -sqrt(3)/2];
 
 % θ = π
 rot1_pi = rot1(pi);
@@ -66,11 +90,23 @@ rot1_pi_true = [1   0   0;
                 0  -1   0;
                 0   0  -1];
 
+% θ = 7π/6
+rot1_7pi_6 = rot1(7*pi/6);
+rot1_7pi_6_true = [1   0           0;
+                   0  -sqrt(3)/2  -1/2;
+                   0   1/2        -sqrt(3)/2];
+
 % θ = 5π/4
 rot1_5pi_4 = rot1(5*pi/4);
 rot1_5pi_4_true = [1   0           0;
                    0  -sqrt(2)/2  -sqrt(2)/2;
                    0   sqrt(2)/2  -sqrt(2)/2];
+
+% θ = 4π/3
+rot1_4pi_3 = rot1(4*pi/3);
+rot1_4pi_3_true = [1   0           0;
+                   0  -1/2        -sqrt(3)/2;
+                   0   sqrt(3)/2  -1/2];
 
 % θ = 3π/2
 rot1_3pi_2 = rot1(3*pi/2);
@@ -78,11 +114,23 @@ rot1_3pi_2_true = [1   0   0;
                    0   0  -1;
                    0   1   0];
 
+% θ = 5π/3
+rot1_5pi_3 = rot1(5*pi/3);
+rot1_5pi_3_true = [1   0           0;
+                   0   1/2        -sqrt(3)/2;
+                   0   sqrt(3)/2   1/2];
+
 % θ = 7π/4
 rot1_7pi_4 = rot1(7*pi/4);
 rot1_7pi_4_true = [1   0           0;
                    0   sqrt(2)/2  -sqrt(2)/2;
                    0   sqrt(2)/2   sqrt(2)/2];
+
+% θ = 11π/6
+rot1_11pi_6 = rot1(11*pi/6);
+rot1_11pi_6_true = [1   0           0;
+                    0   sqrt(3)/2  -1/2;
+                    0   1/2         sqrt(3)/2];
 
 % θ = 2π
 rot1_2pi = rot1(2*pi);
@@ -92,13 +140,21 @@ rot1_2pi_true = [1   0   0;
 
 % adds tests
 test_suite.add_test(TestEqual(rot1_0,rot1_0_true,'rot1(0)'));
+test_suite.add_test(TestEqual(rot1_pi_6,rot1_pi_6_true,'rot1(π/6)'));
 test_suite.add_test(TestEqual(rot1_pi_4,rot1_pi_4_true,'rot1(π/4)'));
+test_suite.add_test(TestEqual(rot1_pi_3,rot1_pi_3_true,'rot1(π/3)',15));
 test_suite.add_test(TestEqual(rot1_pi_2,rot1_pi_2_true,'rot1(π/2)'));
+test_suite.add_test(TestEqual(rot1_2pi_3,rot1_2pi_3_true,'rot1(2π/3)',15));
 test_suite.add_test(TestEqual(rot1_3pi_4,rot1_3pi_4_true,'rot1(3π/4)'));
+test_suite.add_test(TestEqual(rot1_5pi_6,rot1_5pi_6_true,'rot1(5π/6)'));
 test_suite.add_test(TestEqual(rot1_pi,rot1_pi_true,'rot1(π)',15));
+test_suite.add_test(TestEqual(rot1_7pi_6,rot1_7pi_6_true,'rot1(7π/6)',15));
 test_suite.add_test(TestEqual(rot1_5pi_4,rot1_5pi_4_true,'rot1(5π/4)'));
+test_suite.add_test(TestEqual(rot1_4pi_3,rot1_4pi_3_true,'rot1(4π/3)',15));
 test_suite.add_test(TestEqual(rot1_3pi_2,rot1_3pi_2_true,'rot1(3π/2)',15));
+test_suite.add_test(TestEqual(rot1_5pi_3,rot1_5pi_3_true,'rot1(5π/3)',15));
 test_suite.add_test(TestEqual(rot1_7pi_4,rot1_7pi_4_true,'rot1(7π/4)',15));
+test_suite.add_test(TestEqual(rot1_11pi_6,rot1_11pi_6_true,'rot1(11π/6)',15));
 test_suite.add_test(TestEqual(rot1_2pi,rot1_2pi_true,'rot1(2π)',15));
 
 
@@ -111,11 +167,23 @@ rot2_0_true = [1   0   0;
                0   1   0;
                0   0   1];
 
+% θ = π/6
+rot2_pi_6 = rot2(pi/6);
+rot2_pi_6_true = [sqrt(3)/2   0  -1/2;
+                  0           1   0;
+                  1/2         0   sqrt(3)/2];
+
 % θ = π/4
 rot2_pi_4 = rot2(pi/4);
 rot2_pi_4_true = [sqrt(2)/2   0  -sqrt(2)/2;
                   0           1   0;
                   sqrt(2)/2   0   sqrt(2)/2];
+
+% θ = π/3
+rot2_pi_3 = rot2(pi/3);
+rot2_pi_3_true = [1/2         0  -sqrt(3)/2;
+                  0           1   0;
+                  sqrt(3)/2   0   1/2];
 
 % θ = π/2
 rot2_pi_2 = rot2(pi/2);
@@ -123,11 +191,23 @@ rot2_pi_2_true = [0   0  -1;
                   0   1   0;
                   1   0   0];
 
+% θ = 2π/3
+rot2_2pi_3 = rot2(2*pi/3);
+rot2_2pi_3_true = [-1/2         0  -sqrt(3)/2;
+                    0           1   0;
+                    sqrt(3)/2   0  -1/2];
+
 % θ = 3π/4
 rot2_3pi_4 = rot2(3*pi/4);
 rot2_3pi_4_true = [-sqrt(2)/2   0  -sqrt(2)/2;
                     0           1   0;
                     sqrt(2)/2   0  -sqrt(2)/2];
+
+% θ = 5π/6
+rot2_5pi_6 = rot2(5*pi/6);
+rot2_5pi_6_true = [-sqrt(3)/2   0  -1/2;
+                    0           1   0;
+                    1/2         0  -sqrt(3)/2];
 
 % θ = π
 rot2_pi = rot2(pi);
@@ -135,11 +215,23 @@ rot2_pi_true = [-1   0   0;
                  0   1   0;
                  0   0  -1];
 
+% θ = 7π/6
+rot2_7pi_6 = rot2(7*pi/6);
+rot2_7pi_6_true = [-sqrt(3)/2   0   1/2;
+                    0           1   0;
+                   -1/2         0  -sqrt(3)/2];
+
 % θ = 5π/4
 rot2_5pi_4 = rot2(5*pi/4);
 rot2_5pi_4_true = [-sqrt(2)/2   0   sqrt(2)/2;
                     0           1   0;
                    -sqrt(2)/2   0  -sqrt(2)/2];
+
+% θ = 4π/3
+rot2_4pi_3 = rot2(4*pi/3);
+rot2_4pi_3_true = [-1/2         0   sqrt(3)/2;
+                    0           1   0;
+                   -sqrt(3)/2   0  -1/2];
 
 % θ = 3π/2
 rot2_3pi_2 = rot2(3*pi/2);
@@ -147,11 +239,23 @@ rot2_3pi_2_true = [ 0   0   1;
                     0   1   0;
                    -1   0   0];
 
+% θ = 5π/3
+rot2_5pi_3 = rot2(5*pi/3);
+rot2_5pi_3_true = [ 1/2         0   sqrt(3)/2;
+                    0           1   0;
+                   -sqrt(3)/2   0   1/2];
+
 % θ = 7π/4
 rot2_7pi_4 = rot2(7*pi/4);
 rot2_7pi_4_true = [ sqrt(2)/2   0   sqrt(2)/2;
                     0           1   0;
                    -sqrt(2)/2   0   sqrt(2)/2];
+
+% θ = 11π/6
+rot2_11pi_6 = rot2(11*pi/6);
+rot2_11pi_6_true = [ sqrt(3)/2   0   1/2;
+                     0           1   0;
+                    -1/2         0   sqrt(3)/2];
 
 % θ = 2π
 rot2_2pi = rot2(2*pi);
@@ -159,15 +263,23 @@ rot2_2pi_true = [1   0   0;
                  0   1   0;
                  0   0   1];
 
-% adds tests
+% % adds tests
 test_suite.add_test(TestEqual(rot2_0,rot2_0_true,'rot2(0)'));
+test_suite.add_test(TestEqual(rot2_pi_6,rot2_pi_6_true,'rot2(π/6)'));
 test_suite.add_test(TestEqual(rot2_pi_4,rot2_pi_4_true,'rot2(π/4)'));
+test_suite.add_test(TestEqual(rot2_pi_3,rot2_pi_3_true,'rot2(π/3)',15));
 test_suite.add_test(TestEqual(rot2_pi_2,rot2_pi_2_true,'rot2(π/2)'));
+test_suite.add_test(TestEqual(rot2_2pi_3,rot2_2pi_3_true,'rot2(2π/3)',15));
 test_suite.add_test(TestEqual(rot2_3pi_4,rot2_3pi_4_true,'rot2(3π/4)'));
+test_suite.add_test(TestEqual(rot2_5pi_6,rot2_5pi_6_true,'rot2(5π/6)'));
 test_suite.add_test(TestEqual(rot2_pi,rot2_pi_true,'rot2(π)',15));
+test_suite.add_test(TestEqual(rot2_7pi_6,rot2_7pi_6_true,'rot2(7π/6)',15));
 test_suite.add_test(TestEqual(rot2_5pi_4,rot2_5pi_4_true,'rot2(5π/4)'));
+test_suite.add_test(TestEqual(rot2_4pi_3,rot2_4pi_3_true,'rot2(4π/3)',15));
 test_suite.add_test(TestEqual(rot2_3pi_2,rot2_3pi_2_true,'rot2(3π/2)',15));
+test_suite.add_test(TestEqual(rot2_5pi_3,rot2_5pi_3_true,'rot2(5π/3)',15));
 test_suite.add_test(TestEqual(rot2_7pi_4,rot2_7pi_4_true,'rot2(7π/4)',15));
+test_suite.add_test(TestEqual(rot2_11pi_6,rot2_11pi_6_true,'rot2(11π/6)',15));
 test_suite.add_test(TestEqual(rot2_2pi,rot2_2pi_true,'rot2(2π)',15));
 
 
@@ -180,10 +292,22 @@ rot3_0_true = [1   0   0;
                0   1   0;
                0   0   1];
 
+% θ = π/6
+rot3_pi_6 = rot3(pi/6);
+rot3_pi_6_true = [ sqrt(3)/2   1/2         0;
+                  -1/2         sqrt(3)/2   0;
+                   0           0           1];
+
 % θ = π/4
 rot3_pi_4 = rot3(pi/4);
 rot3_pi_4_true = [ sqrt(2)/2   sqrt(2)/2   0;
                   -sqrt(2)/2   sqrt(2)/2   0;
+                   0           0           1];
+
+% θ = π/3
+rot3_pi_3 = rot3(pi/3);
+rot3_pi_3_true = [ 1/2         sqrt(3)/2   0;
+                  -sqrt(3)/2   1/2         0;
                    0           0           1];
 
 % θ = π/2
@@ -192,10 +316,22 @@ rot3_pi_2_true = [ 0   1   0;
                   -1   0   0;
                    0   0   1];
 
+% θ = 2π/3
+rot3_2pi_3 = rot3(2*pi/3);
+rot3_2pi_3_true = [-1/2         sqrt(3)/2   0;
+                   -sqrt(3)/2  -1/2        0;
+                    0           0          1];
+
 % θ = 3π/4
 rot3_3pi_4 = rot3(3*pi/4);
 rot3_3pi_4_true = [-sqrt(2)/2   sqrt(2)/2   0;
                    -sqrt(2)/2  -sqrt(2)/2   0;
+                    0           0           1];
+
+% θ = 5π/6
+rot3_5pi_6 = rot3(5*pi/6);
+rot3_5pi_6_true = [-sqrt(3)/2   1/2         0;
+                   -1/2        -sqrt(3)/2   0;
                     0           0           1];
 
 % θ = π
@@ -204,10 +340,22 @@ rot3_pi_true = [-1   0   0;
                  0  -1   0;
                  0   0   1];
 
+% θ = 7π/6
+rot3_7pi_6 = rot3(7*pi/6);
+rot3_7pi_6_true = [-sqrt(3)/2  -1/2         0;
+                    1/2        -sqrt(3)/2   0;
+                    0           0           1];
+
 % θ = 5π/4
 rot3_5pi_4 = rot3(5*pi/4);
 rot3_5pi_4_true = [-sqrt(2)/2  -sqrt(2)/2   0;
                     sqrt(2)/2  -sqrt(2)/2   0;
+                    0           0           1];
+
+% θ = 4π/3
+rot3_4pi_3 = rot3(4*pi/3);
+rot3_4pi_3_true = [-1/2        -sqrt(3)/2   0;
+                    sqrt(3)/2  -1/2         0;
                     0           0           1];
 
 % θ = 3π/2
@@ -216,11 +364,23 @@ rot3_3pi_2_true = [0  -1   0;
                    1   0   0;
                    0   0   1];
 
+% θ = 5π/3
+rot3_5pi_3 = rot3(5*pi/3);
+rot3_5pi_3_true = [1/2        -sqrt(3)/2   0;
+                   sqrt(3)/2   1/2         0;
+                   0           0           1];
+
 % θ = 7π/4
 rot3_7pi_4 = rot3(7*pi/4);
 rot3_7pi_4_true = [sqrt(2)/2  -sqrt(2)/2   0;
                    sqrt(2)/2   sqrt(2)/2   0;
                    0           0           1];
+
+% θ = 11π/6
+rot3_11pi_6 = rot3(11*pi/6);
+rot3_11pi_6_true = [sqrt(3)/2  -1/2         0;
+                    1/2         sqrt(3)/2   0;
+                    0           0           1];
 
 % θ = 2π
 rot3_2pi = rot3(2*pi);
@@ -228,15 +388,23 @@ rot3_2pi_true = [1   0   0;
                  0   1   0;
                  0   0   1];
 
-% adds tests
+% % adds tests
 test_suite.add_test(TestEqual(rot3_0,rot3_0_true,'rot3(0)'));
+test_suite.add_test(TestEqual(rot3_pi_6,rot3_pi_6_true,'rot3(π/6)'));
 test_suite.add_test(TestEqual(rot3_pi_4,rot3_pi_4_true,'rot3(π/4)'));
+test_suite.add_test(TestEqual(rot3_pi_3,rot3_pi_3_true,'rot3(π/3)',15));
 test_suite.add_test(TestEqual(rot3_pi_2,rot3_pi_2_true,'rot3(π/2)'));
+test_suite.add_test(TestEqual(rot3_2pi_3,rot3_2pi_3_true,'rot3(2π/3)',15));
 test_suite.add_test(TestEqual(rot3_3pi_4,rot3_3pi_4_true,'rot3(3π/4)'));
+test_suite.add_test(TestEqual(rot3_5pi_6,rot3_5pi_6_true,'rot3(5π/6)'));
 test_suite.add_test(TestEqual(rot3_pi,rot3_pi_true,'rot3(π)',15));
+test_suite.add_test(TestEqual(rot3_7pi_6,rot3_7pi_6_true,'rot3(7π/6)',15));
 test_suite.add_test(TestEqual(rot3_5pi_4,rot3_5pi_4_true,'rot3(5π/4)'));
+test_suite.add_test(TestEqual(rot3_4pi_3,rot3_4pi_3_true,'rot3(4π/3)',15));
 test_suite.add_test(TestEqual(rot3_3pi_2,rot3_3pi_2_true,'rot3(3π/2)',15));
+test_suite.add_test(TestEqual(rot3_5pi_3,rot3_5pi_3_true,'rot3(5π/3)',15));
 test_suite.add_test(TestEqual(rot3_7pi_4,rot3_7pi_4_true,'rot3(7π/4)',15));
+test_suite.add_test(TestEqual(rot3_11pi_6,rot3_11pi_6_true,'rot3(11π/6)',15));
 test_suite.add_test(TestEqual(rot3_2pi,rot3_2pi_true,'rot3(2π)',15));
 
 

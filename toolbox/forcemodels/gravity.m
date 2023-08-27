@@ -39,7 +39,7 @@ function g_ecef = gravity(r_ecef,C,S,N)
     
     % recursively compute the Legendre coefficients
     [V,W] = legendre_recursion(r_ecef,R,N);
-
+    
     % auxiliary parameter [m/s^2]
     a = mu/(2*R^2);
     
@@ -47,10 +47,10 @@ function g_ecef = gravity(r_ecef,C,S,N)
     gX = 0;
     gY = 0;
     gZ = 0;
-
+    
     % calculates the accelerations
     for n = 0:N
-
+        
         % zonal potential coefficient
         Cn0 = C(n,0);
         
@@ -61,14 +61,14 @@ function g_ecef = gravity(r_ecef,C,S,N)
         
         % sectorial (m = n) and tesseral (n > m) terms
         for m = 1:n
-
+            
             % auxiliary parameter
             b = (m-n-2)*(m-n-1);
-
+            
             % gravitational coefficients
             Cnm = C(n,m);
             Snm = S(n,m);
-
+            
             % accelerations due to gravity [m/s^2]
             gX = gX-a*(Cnm*V(n+1,m+1)+Snm*W(n+1,m+1))+a*b*(Cnm*V(n+1,m-...
                 1)+Snm*W(n+1,m-1));
@@ -77,7 +77,7 @@ function g_ecef = gravity(r_ecef,C,S,N)
             gZ = gZ-2*a*(n-m+1)*(C(n,m)*V(n+1,m)+S(n,m)*W(n+1,m));
             
         end
-    
+        
     end
     
     % gravitational acceleration resolved in ECEF frame [m/s^2]

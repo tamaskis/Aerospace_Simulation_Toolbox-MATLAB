@@ -1,0 +1,197 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>matderiv</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-08-12"><meta name="DC.source" content="matderiv_doc.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1><tt>matderiv</tt></h1><!--introduction--><p>Time derivative of a passive rotation matrix.</p><p><a href="index_kinematics.html">Back to <b>Kinematics</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">dRdt = matderiv(R_A2B,omega_A2B_B)
+</pre><h2 id="2">Inputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>R_A2B</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{R}_{A\to B}" title="" /></td>
+          <td>passive rotation matrix from frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;A" title="" /> to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+          <td style="text-align:center">3×3<BR>double</td>
+          <td style="text-align:center">-</td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>omega_A2B_B</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[{}^{B/A}\boldsymbol{\omega}\right]_{B}" title="" /></td>
+          <td>angular velocity of frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /> with respect to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;A" title="" />, expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+          <td style="text-align:center">3×1<BR>double</td>
+          <td style="text-align:center">rad/s</td>
+      </tr>
+  </table>
+</p><h2 id="3">Outputs</h2><p>
+  <table>
+      <tr>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
+          <td style="text-align:center"><TT>dRdt</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dfrac{d\mathbf{R}_{A\to B}}{dt}" title="" /></td>
+          <td>time derivative of the passive rotation matrix from frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;A" title="" /> to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+          <td style="text-align:center">3×3<BR>double</td>
+          <td style="text-align:center">1/s</td>
+      </tr>
+  </table>
+</p><h2 id="4">Example</h2><p>Consider the passive rotation matrix</p><p><img src="matderiv_doc_eq09520861465928576688.png" alt="$$\mathbf{R}_{A\to B}=\pmatrix{0.3536 &amp; 0.6124 &amp; -0.7071 \cr -0.4928 &amp; 0.7645 &amp; 0.4156 \cr 0.7951 &amp; 0.2015 &amp; 0.5721}$$" style="width:195px;height:40px;"></p><p>and the angular velocity</p><p><img src="matderiv_doc_eq01333383151613027072.png" alt="$$\left[{}^{B/A}\omega\right]_{B}=\pmatrix{1 \cr 2 \cr 3}\;\mathrm{rad/s}$$" style="width:112px;height:40px;"></p><p>Defining these quantities in MATLAB,</p><pre class="codeinput">omega_A2B_B = [1;2;3];
+R_A2B = [ 0.3536   0.6124  -0.7071
+         -0.4928   0.7645   0.4156
+          0.7951   0.2015   0.5721];
+</pre><p>Finding the time derivative of <img src="matderiv_doc_eq16178855915398483859.png" alt="$\mathbf{R}_{A\to B}$" style="width:29px;height:10px;">,</p><pre class="codeinput">dRdt = matderiv(R_A2B,omega_A2B_B)
+</pre><pre class="codeoutput">
+dRdt =
+
+   -3.0686    1.8905    0.1026
+   -0.2657   -1.6357    2.6934
+    1.2000    0.4603   -1.8298
+
+</pre><h2 id="6">See also</h2><p><a href="quateqn_doc.html"><tt>quateqn</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% |matderiv|
+% Time derivative of a passive rotation matrix.
+% 
+% <index_kinematics.html Back to *Kinematics*>.
+%% Syntax
+%   dRdt = matderiv(R_A2B,omega_A2B_B)
+%% Inputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>R_A2B</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathbf{R}_{A\to B}" title="" /></td>
+%           <td>passive rotation matrix from frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;A" title="" /> to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+%           <td style="text-align:center">3×3<BR>double</td>
+%           <td style="text-align:center">-</td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>omega_A2B_B</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[{}^{B/A}\boldsymbol{\omega}\right]_{B}" title="" /></td>
+%           <td>angular velocity of frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /> with respect to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;A" title="" />, expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+%           <td style="text-align:center">3×1<BR>double</td>
+%           <td style="text-align:center">rad/s</td>
+%       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
+%       <tr>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
+%           <td style="text-align:center"><TT>dRdt</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\dfrac{d\mathbf{R}_{A\to B}}{dt}" title="" /></td>
+%           <td>time derivative of the passive rotation matrix from frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;A" title="" /> to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;B" title="" /></td>
+%           <td style="text-align:center">3×3<BR>double</td>
+%           <td style="text-align:center">1/s</td>
+%       </tr>
+%   </table>
+% </html>
+%% Example
+% Consider the passive rotation matrix
+%
+% $$\mathbf{R}_{A\to B}=\pmatrix{0.3536 & 0.6124 & -0.7071 \cr -0.4928 & 0.7645 & 0.4156 \cr 0.7951 & 0.2015 & 0.5721}$$
+%
+% and the angular velocity
+%
+% $$\left[{}^{B/A}\omega\right]_{B}=\pmatrix{1 \cr 2 \cr 3}\;\mathrm{rad/s}$$
+%
+% Defining these quantities in MATLAB,
+omega_A2B_B = [1;2;3];
+R_A2B = [ 0.3536   0.6124  -0.7071
+         -0.4928   0.7645   0.4156
+          0.7951   0.2015   0.5721];
+%%
+% Finding the time derivative of $\mathbf{R}_{A\to B}$,
+dRdt = matderiv(R_A2B,omega_A2B_B)
+%% See also 
+% <quateqn_doc.html |quateqn|>
+##### SOURCE END #####
+--></body></html>

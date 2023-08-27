@@ -45,7 +45,7 @@
 %
 %==========================================================================
 function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
-
+    
     % extract fields of XYs_iau06
     ax = XYs_iau06.ax;
     ay = XYs_iau06.ay;
@@ -59,11 +59,11 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
     
     % fundamental arguments for nutation theory [rad]
     F = fund_arg_iau06(T_TT);
-
+    
     % converts dX and dY to arcseconds
     dX = 0.001*dX;
     dY = 0.001*dY;
-
+    
     % converts dX and dY to radians
     dX = arcsec2rad(dX);
     dY = arcsec2rad(dY);
@@ -71,18 +71,18 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
     % --------------
     % Calculating X.
     % --------------
-
+    
     % 0th term
     X0 = (pi/648000)*(-0.016617+2004.191898*T_TT-0.4297829*T_TT^2-...
         0.19861834*T_TT^3+0.000007578*T_TT^4+0.0000059285*T_TT^5);
-
+    
     % 1st term
     X1 = 0;
     for i = 1:1306
         f = 0; for j = 1:14, f = f+M(i,j)*F(j); end
         X1 = X1+ax(i)*sin(f)+bx(i)*cos(f);
     end
-
+    
     % 2nd term
     X2 = 0;
     for i = 1307:1559
@@ -90,7 +90,7 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         X2 = X2+ax(i)*sin(f)+bx(i)*cos(f);
     end
     X2 = X2*T_TT;
-
+    
     % 3rd term
     X3 = 0;
     for i = 1560:1595
@@ -98,7 +98,7 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         X3 = X3+ax(i)*sin(f)+bx(i)*cos(f);
     end
     X3 = X3*T_TT^2;
-
+    
     % 4th term
     X4 = 0;
     for i = 1596:1599
@@ -106,29 +106,29 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         X4 = X4+ax(i)*sin(f)+bx(i)*cos(f);
     end
     X4 = X4*T_TT^3;
-
+    
     % 5th term
     f = 0; for j = 1:14, f = f+M(1600,j)*F(j); end
     X5 = T_TT^4*(ax(1600)*cos(f)+bx(1600)*sin(f));
-
+    
     % X [rad]
     X = X0+X1+X2+X3+X4+X5+dX;
-
+    
     % --------------
     % Calculating Y.
     % --------------
-
+    
     % 0th term
     Y0 = (pi/648000)*(-0.006951-0.025896*T_TT-22.4072747*T_TT^2+...
         0.00190059*T_TT^3+0.001112526*T_TT^4+0.0000001358*T_TT^5);
-
+    
     % 1st term
     Y1 = 0;
     for i = 1:962
         g = 0; for j = 1:14, g = g+N(i,j)*F(j); end
         Y1 = Y1+ay(i)*sin(g)+by(i)*cos(g);
     end
-
+    
     % 2nd term
     Y2 = 0;
     for i = 963:1239
@@ -136,7 +136,7 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         Y2 = Y2+ay(i)*sin(g)+by(i)*cos(g);
     end
     Y2 = Y2*T_TT;
-
+    
     % 3rd term
     Y3 = 0;
     for i = 1240:1269
@@ -144,7 +144,7 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         Y3 = Y3+ay(i)*sin(g)+by(i)*cos(g);
     end
     Y3 = Y3*T_TT^2;
-
+    
     % 4th term
     Y4 = 0;
     for i = 1270:1274
@@ -152,29 +152,29 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         Y4 = Y4+ay(i)*sin(g)+by(i)*cos(g);
     end
     Y4 = Y4*T_TT^3;
-
+    
     % 5th term
     g = 0; for j = 1:14, g = g+N(1275,j)*F(j); end
     Y5 = T_TT^4*(ay(1275)*cos(g)+by(1275)*sin(g));
-
+    
     % Y [rad]
     Y = Y0+Y1+Y2+Y3+Y4+Y5+dY;
     
     % --------------
     % Calculating s.
     % --------------
-
+    
     % 0th term
     s0 = (pi/648000)*(-0.006951-0.025896*T_TT-22.4072747*T_TT^2+...
         0.00190059*T_TT^3+0.001112526*T_TT^4+0.0000001358*T_TT^5);
-
+    
     % 1st term
     s1 = 0;
     for i = 1:33
         h = 0; for j = 1:14, h = h+O(i,j)*F(j); end
         s1 = s1+as(i)*sin(h)+bs(i)*cos(h);
     end
-
+    
     % 2nd term
     s2 = 0;
     for i = 34:36
@@ -182,7 +182,7 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         s2 = s2+as(i)*sin(h)+bs(i)*cos(h);
     end
     s2 = s2*T_TT;
-
+    
     % 3rd term
     s3 = 0;
     for i = 37:61
@@ -190,7 +190,7 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         s3 = s3+as(i)*sin(h)+bs(i)*cos(h);
     end
     s3 = s3*T_TT^2;
-
+    
     % 4th term
     s4 = 0;
     for i = 62:65
@@ -198,14 +198,14 @@ function Q = Q_iau06(T_TT,dX,dY,XYs_iau06)
         s4 = s4+as(i)*sin(h)+bs(i)*cos(h);
     end
     s4 = s4*T_TT^3;
-
+    
     % 5th term
     h = 0; for j = 1:14, h = h+O(66,j)*F(j); end
     s5 = T_TT^4*(as(66)*cos(h)+bs(66)*sin(h));
     
     % s [rad]
     s = -((X*Y)/2)+s0+s1+s2+s3+s4+s5;
-
+    
     % ---------------------------
     % Precession-nutation matrix.
     % ---------------------------

@@ -41,10 +41,10 @@
 %
 %==========================================================================
 function [r_eci,v_eci] = ecef2eci(r_ecef,v_ecef,w_eci,R_ecef2eci)
-
+    
     % position resolved in ECI frame
     r_eci = R_ecef2eci*r_ecef;
-
+    
     % inertial velocity resolved in ECI frame
     v_eci = R_ecef2eci*v_ecef+cross(w_eci,r_eci);
     

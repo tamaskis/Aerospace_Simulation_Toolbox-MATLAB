@@ -30,6 +30,7 @@ addpath(genpath('../toolbox'));
 %% RUNS ALL TESTS
 
 %TEST_angles;
+%TEST_gravity;
 %TEST_kinematics;
 TEST_rotations;
 %TEST_time_scales;

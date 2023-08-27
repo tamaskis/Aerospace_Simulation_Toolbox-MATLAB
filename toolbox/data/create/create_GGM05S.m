@@ -4,7 +4,7 @@
 % Creates GGM05S gravity model data.
 %
 % Author: Tamas Kis
-% Last Update: 2022-02-15
+% Last Update: 2023-06-26
 %
 % ----------------------
 % Generated data format.
@@ -36,6 +36,17 @@
 %    N   N-1  |  C(N,N-1)   S(N,N-1)
 %    N    N   |   C(N,N)     S(N,N)
 %   ---------------------------------
+%
+% Note that this data may be embedded in a larger table, and that any of
+% the first three rows may be missing since they are typically
+%
+%   --------------------------------
+%    n    m   |  C_norm      S_norm
+%   --------------------------------
+%    0    0   |     1           0
+%    1    0   |     0           0
+%    1    1   |     0           0
+%   --------------------------------
 
 
 
@@ -49,34 +60,16 @@ clear; clc; close all;
 %% NORMALIZED GRAVITATIONAL COEFFICIENTS
 
 % read in data
-data = readmatrix('../rawdata/GGM05S.txt');
-
-% keep columns 2-5 only
-data = data(:,2:5);
-
-% adds first three rows
-first3 = [0  0  1  0;
-          1  0  0  0;
-          1  1  0  0];
-data = [first3;
-        data];
-
-% turns first two columns into integers
-data(:,1:2) = round(data(:,1:2));
-
-% separate C and S data
-C_data = data(:,1:3);
-S_data = [data(:,1:2),data(:,4)];
-
-% preallocates matrices to store normalized C and S coefficients
-C_norm = zeros(181,181);
-S_norm = zeros(181,181);
-
-% populates coefficient matrices
-for i = 1:size(C_data,1)
-    C_norm(C_data(i,1)+1,C_data(i,2)+1) = C_data(i,3);
-    S_norm(S_data(i,1)+1,S_data(i,2)+1) = S_data(i,3);
-end
+path = '../rawdata/GGM05S.txt';
+N = 180;
+r_start = 1;
+r_miss = 3;
+n_col = 2;
+m_col = 3;
+C_col = 4;
+S_col = 5;
+[C_norm,S_norm] = process_gravity_data(path,N,r_start,r_miss,n_col,...
+    m_col,C_col,S_col);
 
 % stores the normalized coefficients in a structure
 GGM05S.C_norm = C_norm;

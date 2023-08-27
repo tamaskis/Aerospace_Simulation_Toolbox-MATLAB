@@ -7,7 +7,7 @@
 % See also matchain.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-07
+% Last Update: 2023-08-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,8 +22,8 @@
 % ------
 % INPUT:
 % ------
-%   R_A2B   - (3×3 double) rotation matrix representing rotation from frame
-%             A to frame B
+%   R_A2B   - (3×3 double) passive rotation matrix from coordinate frame A
+%             to coordinate frame B
 %   rA      - (3×1 double) vector expressed in coordinate frame A
 %
 % -------

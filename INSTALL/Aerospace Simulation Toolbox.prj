@@ -120,7 +120,7 @@
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/Applications/MATLAB_R2022a.app</root>
+      <root>/Applications/MATLAB_R2023a.app</root>
       <toolboxes />
     </matlab>
     <platform>

@@ -7,7 +7,7 @@
 % See also rot1, rot3, rot313, rot321.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-07
+% Last Update: 2023-08-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -27,7 +27,7 @@
 % -------
 % OUTPUT:
 % -------
-%   R2      - (3×3 double) rotation matrix about 2nd axis (passive)
+%   R2      - (3×3 double) passive rotation matrix about 2nd axis
 %
 %==========================================================================
 function R2 = rot2(theta)

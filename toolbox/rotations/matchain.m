@@ -7,7 +7,7 @@
 % See also matrotate.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-07
+% Last Update: 2023-08-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -22,16 +22,16 @@
 % ------
 % INPUT:
 % ------
-%   R_A2B   - (3×3 double) rotation matrix representing rotation from frame
-%             A to frame B
-%   R_B2C   - (3×3 double) rotation matrix representing rotation from frame
-%             B to frame C
+%   R_A2B   - (3×3 double) passive rotation matrix from coordinate frame A
+%             to coordinate frame B
+%   R_B2C   - (3×3 double) passive rotation matrix from coordinate frame B
+%             to coordinate frame C
 %
 % -------
 % OUTPUT:
 % -------
-%   R_A2C   - (3×3 double) rotation matrix representing rotation from frame
-%             A to frame C
+%   R_A2C   - (3×3 double) passive rotation matrix from coordinate frame A
+%             to coordinate frame C
 %     
 %==========================================================================
 function R_A2C = matchain(R_A2B,R_B2C)

@@ -39,6 +39,7 @@
 % -----
 %   • This function assumes the scalar-first convention for quaternions.
 %   • The scalar part, q₀, is chosen to be positive.
+%   • q is normalized.
 %
 %==========================================================================
 function q = eul2quat_321(psi,theta,phi)

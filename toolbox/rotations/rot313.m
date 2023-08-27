@@ -8,7 +8,7 @@
 % See also rot1, rot2, rot3, rot321.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-07
+% Last Update: 2023-08-13
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -30,7 +30,8 @@
 % -------
 % OUTPUT:
 % -------
-%   R313    - (3×3 double) rotation matrix for 3-1-3 rotation sequence
+%   R313    - (3×3 double) passive rotation matrix for 3-1-3 rotation
+%             sequence
 %
 %==========================================================================
 function R313 = rot313(theta1,theta2,theta3)
