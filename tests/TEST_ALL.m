@@ -32,6 +32,7 @@ addpath(genpath('../toolbox'));
 %TEST_angles;
 %TEST_gravity;
 %TEST_kinematics;
-TEST_rotations;
+TEST_orbit;
+%TEST_rotations;
 %TEST_time_scales;
 %TEST_time_units;

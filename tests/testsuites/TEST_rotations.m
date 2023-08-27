@@ -263,7 +263,7 @@ rot2_2pi_true = [1   0   0;
                  0   1   0;
                  0   0   1];
 
-% % adds tests
+% adds tests
 test_suite.add_test(TestEqual(rot2_0,rot2_0_true,'rot2(0)'));
 test_suite.add_test(TestEqual(rot2_pi_6,rot2_pi_6_true,'rot2(π/6)'));
 test_suite.add_test(TestEqual(rot2_pi_4,rot2_pi_4_true,'rot2(π/4)'));
@@ -319,8 +319,8 @@ rot3_pi_2_true = [ 0   1   0;
 % θ = 2π/3
 rot3_2pi_3 = rot3(2*pi/3);
 rot3_2pi_3_true = [-1/2         sqrt(3)/2   0;
-                   -sqrt(3)/2  -1/2        0;
-                    0           0          1];
+                   -sqrt(3)/2  -1/2         0;
+                    0           0           1];
 
 % θ = 3π/4
 rot3_3pi_4 = rot3(3*pi/4);
@@ -388,7 +388,7 @@ rot3_2pi_true = [1   0   0;
                  0   1   0;
                  0   0   1];
 
-% % adds tests
+% adds tests
 test_suite.add_test(TestEqual(rot3_0,rot3_0_true,'rot3(0)'));
 test_suite.add_test(TestEqual(rot3_pi_6,rot3_pi_6_true,'rot3(π/6)'));
 test_suite.add_test(TestEqual(rot3_pi_4,rot3_pi_4_true,'rot3(π/4)'));
