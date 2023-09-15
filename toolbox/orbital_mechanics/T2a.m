@@ -21,7 +21,7 @@
 % INPUT:
 % ------
 %   T       - (1×1 double) orbital period [s]
-%   mu      - (1×1 double) standard gravitational parameter [m^3/s^2]
+%   mu      - (1×1 double) standard gravitational parameter [m³/s²]
 %
 % -------
 % OUTPUT:

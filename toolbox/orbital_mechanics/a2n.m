@@ -1,8 +1,8 @@
 %==========================================================================
 %
-% a2T  Orbital period from semi-major axis.
+% a2n  Mean motion from semi-major axis.
 %
-%   T = a2T(a,mu)
+%   n = a2n(a,mu)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-09-14
@@ -26,7 +26,7 @@
 % -------
 % OUTPUT:
 % -------
-%   T       - (1×1 double) orbital period [s]
+%   n       - (1×1 double) mean motion [rad/s]
 %
 % -----
 % NOTE:
@@ -35,6 +35,6 @@
 %     (0 < e < 1) orbits.
 %
 %==========================================================================
-function T = a2T(a,mu)
-    T = 2*pi*sqrt(a^3/mu); 
+function n = a2n(a,mu)
+    n = sqrt(mu/a^3);
 end

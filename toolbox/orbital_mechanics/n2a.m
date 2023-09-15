@@ -1,8 +1,8 @@
 %==========================================================================
 %
-% a2T  Orbital period from semi-major axis.
+% n2a  Semi-major axis from mean motion.
 %
-%   T = a2T(a,mu)
+%   a = n2a(n,mu)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-09-14
@@ -20,13 +20,13 @@
 % ------
 % INPUT:
 % ------
-%   a       - (1×1 double) semi-major axis [m]
+%   n       - (1×1 double) mean motion [rad/s]
 %   mu      - (1×1 double) standard gravitational parameter [m³/s²]
 %
 % -------
 % OUTPUT:
 % -------
-%   T       - (1×1 double) orbital period [s]
+%   a       - (1×1 double) semi-major axis [m]
 %
 % -----
 % NOTE:
@@ -35,6 +35,6 @@
 %     (0 < e < 1) orbits.
 %
 %==========================================================================
-function T = a2T(a,mu)
-    T = 2*pi*sqrt(a^3/mu); 
+function a = n2a(n,mu)
+    a = (mu/n^2)^(1/3);
 end

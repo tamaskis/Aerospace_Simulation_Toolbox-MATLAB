@@ -4,14 +4,16 @@
 %
 %   T = n2T(n)
 %
-% See also a2n, a2T, n2a, T2a, T2n.
+% Copyright © 2022 Tamas Kis
+% Last Update: 2023-09-14
+% Website: https://tamaskis.github.io
+% Contact: tamas.a.kis@outlook.com
 %
-% Author: Tamas Kis
-% Last Update: 2022-02-05
+% TOOLBOX DOCUMENTATION:
+% https://tamaskis.github.io/Aerospace_Simulation_Toolbox-MATLAB/
 %
-% REFERENCES:
-%   [1] Vallado, "Fundamentals of Astrodynamics and Applications", 4th Ed.,
-%       Eq. (1-27) (p. 31)
+% TECHNICAL DOCUMENTATION:
+% https://tamaskis.github.io/files/Aerospace_Simulation.pdf
 %
 %--------------------------------------------------------------------------
 %
@@ -28,8 +30,8 @@
 % -----
 % NOTE:
 % -----
-%   --> This function is only valid for circular (e = 0) and elliptical
-%       (0 < e < 1) orbits.
+%   • This function is only valid for circular (e = 0) and elliptical
+%     (0 < e < 1) orbits.
 %
 %==========================================================================
 function T = n2T(n)
