@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>rvh2e_vec</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-08-27"><meta name="DC.source" content="rvh2e_vec_doc.m"><style type="text/css">
+      --><title>rvh2e_vec</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-05"><meta name="DC.source" content="rvh2e_vec_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -80,21 +80,21 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       <tr>
           <td style="text-align:center"><TT>r</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{r}]_{\mathcal{I}}" title="" /></td>
-          <td>position expressed in the inertial frame</td>
+          <td>position expressed in an inertial frame</td>
           <td style="text-align:center">3×1<BR>double</td>
           <td style="text-align:center">m</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>v</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[{}^{\mathcal{I}}\boldsymbol{v}\right]_{\mathcal{I}}" title="" /></td>
-          <td>inertial velocity expressed in the inertial frame</td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\boldsymbol{v}\right]_{\mathcal{I}}" title="" /></td>
+          <td>inertial velocity expressed in an inertial frame</td>
           <td style="text-align:center">3×1<BR>double</td>
           <td style="text-align:center">m/s</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>h</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[{}^{\mathcal{I}}\boldsymbol{h}\right]_{\mathcal{I}}" title="" /></td>
-          <td>inertial specific angular momentum expressed in the inertial frame</td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\boldsymbol{h}\right]_{\mathcal{I}}" title="" /></td>
+          <td>inertial specific angular momentum expressed in an inertial frame</td>
           <td style="text-align:center">3×1<BR>double</td>
           <td style="text-align:center">m²/s</td>
       </tr>
@@ -118,7 +118,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       <tr>
           <td style="text-align:center"><TT>e_vec</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{e}]_{\mathcal{I}}" title="" /></td>
-          <td>eccentricity vector expressed in the inertial frame</td>
+          <td>eccentricity vector expressed in an inertial frame</td>
           <td style="text-align:center">3×1<BR>double</td>
           <td style="text-align:center">-</td>
       </tr>
@@ -137,9 +137,9 @@ h = [ 830987456;
 </pre><pre class="codeoutput">
 e_vec =
 
-  -0.029973965190951
-   0.066603000645626
-   0.068285909115768
+   -0.0300
+    0.0666
+    0.0683
 
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
@@ -163,21 +163,21 @@ e_vec =
 %       <tr>
 %           <td style="text-align:center"><TT>r</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{r}]_{\mathcal{I}}" title="" /></td>
-%           <td>position expressed in the inertial frame</td>
+%           <td>position expressed in an inertial frame</td>
 %           <td style="text-align:center">3×1<BR>double</td>
 %           <td style="text-align:center">m</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>v</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[{}^{\mathcal{I}}\boldsymbol{v}\right]_{\mathcal{I}}" title="" /></td>
-%           <td>inertial velocity expressed in the inertial frame</td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\boldsymbol{v}\right]_{\mathcal{I}}" title="" /></td>
+%           <td>inertial velocity expressed in an inertial frame</td>
 %           <td style="text-align:center">3×1<BR>double</td>
 %           <td style="text-align:center">m/s</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>h</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[{}^{\mathcal{I}}\boldsymbol{h}\right]_{\mathcal{I}}" title="" /></td>
-%           <td>inertial specific angular momentum expressed in the inertial frame</td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\boldsymbol{h}\right]_{\mathcal{I}}" title="" /></td>
+%           <td>inertial specific angular momentum expressed in an inertial frame</td>
 %           <td style="text-align:center">3×1<BR>double</td>
 %           <td style="text-align:center">m²/s</td>
 %       </tr>
@@ -203,7 +203,7 @@ e_vec =
 %       <tr>
 %           <td style="text-align:center"><TT>e_vec</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{e}]_{\mathcal{I}}" title="" /></td>
-%           <td>eccentricity vector expressed in the inertial frame</td>
+%           <td>eccentricity vector expressed in an inertial frame</td>
 %           <td style="text-align:center">3×1<BR>double</td>
 %           <td style="text-align:center">-</td>
 %       </tr>
