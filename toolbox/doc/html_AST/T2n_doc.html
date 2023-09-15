@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>T2n</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-08"><meta name="DC.source" content="T2n_doc.m"><style type="text/css">
+      --><title>T2n</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-14"><meta name="DC.source" content="T2n_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,11 +67,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>T2n</tt></h1><!--introduction--><p>Mean motion from orbital period.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#3">Input/Output Parameters</a></li><li><a href="#4">Example</a></li><li><a href="#6">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">n = T2n(T)
-</pre><h2 id="2">Description</h2><p><tt>n = T2n(T)</tt> finds the mean motion, <img src="T2n_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;">, given the orbital period, <img src="T2n_doc_eq02773292069783016909.png" alt="$T$" style="width:8px;height:8px;">, for a circular (<img src="T2n_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) or elliptical (<img src="T2n_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbit.</p><h2 id="3">Input/Output Parameters</h2><p>
+  </style></head><body><div class="content"><h1><tt>T2n</tt></h1><!--introduction--><p>Mean motion from orbital period.</p><p><a href="index_orbital_mechanics.html">Back to <b>Orbital Mechanics</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">n = T2n(T)
+</pre><h2 id="2">Inputs</h2><p>
   <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -79,15 +78,23 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>T</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;T" title="" /></td></td>
           <td>orbital period</td>
           <td style="text-align:center">1×1<BR>double</td>
           <td style="text-align:center">s</td>
       </tr>
+  </table>
+</p><h2 id="3">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>n</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /></td>
           <td>mean motion</td>
@@ -95,29 +102,25 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">rad/s</td>
       </tr>
   </table>
-</p><h2 id="4">Example</h2><p><i>Find the mean motion for an orbit around the Earth with orbital period <img src="T2n_doc_eq11818816407649946688.png" alt="$T=1.5\;\mathrm{h}$" style="width:46px;height:8px;">.</i></p><p>Defining the orbital period in seconds,</p><pre class="codeinput">T = 1.5*3600;
+</p><h2 id="4">Note</h2><div><ul><li>This function is only valid for circular (<img src="T2n_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) and elliptical (<img src="T2n_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbits.</li></ul></div><h2 id="5">Example</h2><p><i>Find the mean motion for an orbit around the Earth with orbital period <img src="T2n_doc_eq11818816407649946688.png" alt="$T=1.5\;\mathrm{h}$" style="width:46px;height:8px;">.</i></p><p>Defining the orbital period in seconds,</p><pre class="codeinput">T = 1.5*3600;
 </pre><p>Finding the mean motion (<img src="T2n_doc_eq14868716931547744474.png" alt="$\mathrm{rad/s}$" style="width:26px;height:11px;">),</p><pre class="codeinput">n = T2n(T)
 </pre><pre class="codeoutput">
 n =
 
-    0.0012
+   0.001163552834663
 
-</pre><h2 id="6">See also</h2><p><a href="a2n_doc.html"><tt>a2n</tt></a> | <a href="a2T_doc.html"><tt>a2T</tt></a> | <a href="n2a_doc.html"><tt>n2a</tt></a> | <a href="n2T_doc.html"><tt>n2T</tt></a> | <a href="T2a_doc.html"><tt>T2a</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |T2n|
 % Mean motion from orbital period.
 % 
-% <index.html Back to Aerospace Simulation Toolbox Contents>.
+% <index_orbital_mechanics.html Back to *Orbital Mechanics*>.
 %% Syntax
 %   n = T2n(T)
-%% Description
-% |n = T2n(T)| finds the mean motion, $n$, given the orbital period, $T$, 
-% for a circular ($e=0$) or elliptical ($0<e<1$) orbit.
-%% Input/Output Parameters
+%% Inputs
 % <html>
 %   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -125,15 +128,25 @@ n =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>T</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;T" title="" /></td></td>
 %           <td>orbital period</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %           <td style="text-align:center">s</td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>n</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /></td>
 %           <td>mean motion</td>
@@ -142,6 +155,8 @@ n =
 %       </tr>
 %   </table>
 % </html>
+%% Note
+% * This function is only valid for circular ($e=0$) and elliptical ($0<e<1$) orbits.
 %% Example
 % _Find the mean motion for an orbit around the Earth with orbital period 
 % $T=1.5\;\mathrm{h}$._
@@ -151,11 +166,5 @@ T = 1.5*3600;
 %%
 % Finding the mean motion ($\mathrm{rad/s}$),
 n = T2n(T)
-%% See also
-% <a2n_doc.html |a2n|> | 
-% <a2T_doc.html |a2T|> | 
-% <n2a_doc.html |n2a|> | 
-% <n2T_doc.html |n2T|> | 
-% <T2a_doc.html |T2a|>
 ##### SOURCE END #####
 --></body></html>

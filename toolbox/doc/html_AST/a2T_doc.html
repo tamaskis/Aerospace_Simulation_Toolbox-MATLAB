@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>a2T</tt></h1><!--introduction--><p>Orbital period from semi-major axis.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Example #1: Orbit around the Earth.</a></li><li><a href="#8">Example #2: Orbit around the moon.</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">T = a2T(a,mu)
+  </style></head><body><div class="content"><h1><tt>a2T</tt></h1><!--introduction--><p>Orbital period from semi-major axis.</p><p><a href="index_orbital_mechanics.html">Back to <b>Orbital Mechanics</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example #1: Orbit around the Earth.</a></li><li><a href="#9">Example #2: Orbit around the Moon.</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">T = a2T(a,mu)
 </pre><h2 id="2">Inputs</h2><p>
   <table>
       <tr>
@@ -109,35 +109,35 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center">s</td>
       </tr>
   </table>
-</p><h2 id="4">Example #1: Orbit around the Earth.</h2><p><i>Find the period of an orbit around the Earth with semi-major axis <img src="a2T_doc_eq17980462415949572653.png" alt="$a=7000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 7000*1000;
+</p><h2 id="4">Note</h2><div><ul><li>This function is only valid for circular (<img src="a2T_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) and elliptical (<img src="a2T_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbits.</li></ul></div><h2 id="5">Example #1: Orbit around the Earth.</h2><p><i>Find the period of an orbit around the Earth with semi-major axis <img src="a2T_doc_eq17980462415949572653.png" alt="$a=7000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 7000*1000;
 </pre><p>Standard gravitational parameter of the Earth (in <img src="a2T_doc_eq03238926069325008863.png" alt="$\mathrm{m^{3}/s^{2}}$" style="width:27px;height:12px;">),</p><pre class="codeinput">mu = MU_EARTH;
 </pre><p>Finding the orbital period (in <img src="a2T_doc_eq06216042132226195025.png" alt="$\mathrm{s}$" style="width:4px;height:6px;">),</p><pre class="codeinput">T = a2T(a,mu);
 </pre><p>Converting the orbital period to hours,</p><pre class="codeinput">T = T/3600
 </pre><pre class="codeoutput">
 T =
 
-    1.6190
+   1.619032399966496
 
-</pre><h2 id="8">Example #2: Orbit around the moon.</h2><p><i>Find the period of an orbit around the Moon with semi-major axis <img src="a2T_doc_eq15656791416632496945.png" alt="$a=3000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 3000*1000;
+</pre><h2 id="9">Example #2: Orbit around the Moon.</h2><p><i>Find the period of an orbit around the Moon with semi-major axis <img src="a2T_doc_eq15656791416632496945.png" alt="$a=3000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 3000*1000;
 </pre><p>Standard gravitational parameter of the Moon (in <img src="a2T_doc_eq03238926069325008863.png" alt="$\mathrm{m^{3}/s^{2}}$" style="width:27px;height:12px;">),</p><pre class="codeinput">mu = MU_MOON;
 </pre><p>Finding the orbital period (in <img src="a2T_doc_eq06216042132226195025.png" alt="$\mathrm{s}$" style="width:4px;height:6px;">),</p><pre class="codeinput">T = a2T(a,mu)
 </pre><pre class="codeoutput">
 T =
 
-   1.4745e+04
+     1.474482615552693e+04
 
 </pre><p>Converting the orbital period to hours,</p><pre class="codeinput">T = T/3600
 </pre><pre class="codeoutput">
 T =
 
-    4.0958
+   4.095785043201925
 
 </pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |a2T|
 % Orbital period from semi-major axis.
 % 
-% <index.html Back to Aerospace Simulation Toolbox Contents>.
+% <index_orbital_mechanics.html Back to *Orbital Mechanics*>.
 %% Syntax
 %   T = a2T(a,mu)
 %% Inputs
@@ -185,6 +185,8 @@ T =
 %       </tr>
 %   </table>
 % </html>
+%% Note
+% * This function is only valid for circular ($e=0$) and elliptical ($0<e<1$) orbits.
 %% Example #1: Orbit around the Earth.
 % _Find the period of an orbit around the Earth with semi-major axis
 % $a=7000\;\mathrm{km}$._
@@ -201,7 +203,7 @@ T = a2T(a,mu);
 %%
 % Converting the orbital period to hours,
 T = T/3600
-%% Example #2: Orbit around the moon.
+%% Example #2: Orbit around the Moon.
 % _Find the period of an orbit around the Moon with semi-major axis
 % $a=3000\;\mathrm{km}$._
 %

@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>a2n</title><meta name="generator" content="MATLAB 9.12"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-05-08"><meta name="DC.source" content="a2n_doc.m"><style type="text/css">
+      --><title>a2n</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-14"><meta name="DC.source" content="a2n_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,12 +67,10 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>a2n</tt></h1><!--introduction--><p>Mean motion from semi-major axis.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Description</a></li><li><a href="#4">Input/Output Parameters</a></li><li><a href="#5">Example #1: Orbit around the Earth.</a></li><li><a href="#7">Example #2: Orbit around the moon.</a></li><li><a href="#10">See also</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">a = a2n(a)
-a = a2n(a,mu)
-</pre><h2 id="2">Description</h2><p><tt>a = a2n(a)</tt> finds the mean motion, <img src="a2n_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;">, given the semi-major axis, <img src="a2n_doc_eq04574278970515790912.png" alt="$a$" style="width:6px;height:6px;">, for a circular (<img src="a2n_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) or elliptical (<img src="a2n_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbit around the Earth.</p><p><tt>a = a2n(a,mu)</tt> finds the mean motion, <img src="a2n_doc_eq17555110721583917243.png" alt="$n$" style="width:7px;height:6px;">, given the semi-major axis, <img src="a2n_doc_eq04574278970515790912.png" alt="$a$" style="width:6px;height:6px;">, for a circular (<img src="a2n_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) or elliptical (<img src="a2n_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbit around a cental body with gravitational parameter <img src="a2n_doc_eq06904339251718989188.png" alt="$\mu$" style="width:7px;height:8px;">.</p><h2 id="4">Input/Output Parameters</h2><p>
+  </style></head><body><div class="content"><h1><tt>a2n</tt></h1><!--introduction--><p>Mean motion from semi-major axis.</p><p><a href="index_orbital_mechanics.html">Back to <b>Orbital Mechanics</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Note</a></li><li><a href="#5">Example #1: Orbit around the Earth.</a></li><li><a href="#8">Example #2: Orbit around the Moon.</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">a = a2n(a,mu)
+</pre><h2 id="2">Inputs</h2><p>
   <table>
       <tr>
-          <td></td>
           <td style="text-align:center"><b>Variable</b></td>
           <td style="text-align:center"><b>Symbol</b></td>
           <td style="text-align:center"><b>Description</b></td>
@@ -80,7 +78,6 @@ a = a2n(a,mu)
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td rowspan="2" style="text-align:center"><b>Input</b></td>
           <td style="text-align:center"><TT>a</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;a" title="" /></td>
           <td>semi-major axis</td>
@@ -90,12 +87,21 @@ a = a2n(a,mu)
       <tr>
           <td style="text-align:center"><TT>mu</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mu" title="" /></td>
-          <td>(OPTIONAL) gravitational parameter</td>
+          <td>standard gravitational parameter</td>
           <td style="text-align:center">1×1<BR>double</td>
           <td style="text-align:center">m<sup>3</sup>/s<sup>2</sup></td>
       </tr>
+  </table>
+</p><h2 id="3">Outputs</h2><p>
+  <table>
       <tr>
-          <td rowspan="1" style="text-align:center"><b>Output</b></td>
+          <td style="text-align:center"><b>Variable</b></td>
+          <td style="text-align:center"><b>Symbol</b></td>
+          <td style="text-align:center"><b>Description</b></td>
+          <td style="text-align:center"><b>Format</b></td>
+          <td style="text-align:center"><b>Units</b></td>
+      </tr>
+      <tr>
           <td style="text-align:center"><TT>n</TT></td>
           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /></td></td>
           <td>mean motion</td>
@@ -103,42 +109,34 @@ a = a2n(a,mu)
           <td style="text-align:center">rad/s</td>
       </tr>
   </table>
-</p><h2 id="5">Example #1: Orbit around the Earth.</h2><p><i>Find the mean motion for an orbit around the Earth with semi-major axis <img src="a2n_doc_eq17980462415949572653.png" alt="$a=7000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 7000*1000;
-</pre><p>Finding the mean motion (in <img src="a2n_doc_eq14868716931547744474.png" alt="$\mathrm{rad/s}$" style="width:26px;height:11px;">),</p><pre class="codeinput">n = a2n(a)
-</pre><pre class="codeoutput">
-n =
-
-    0.0011
-
-</pre><h2 id="7">Example #2: Orbit around the moon.</h2><p><i>Find the mean motion for an orbit around the Moon with semi-major axis <img src="a2n_doc_eq15656791416632496945.png" alt="$a=3000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 3000*1000;
-</pre><p>Gravitational parameter of the moon (in <img src="a2n_doc_eq03238926069325008863.png" alt="$\mathrm{m^{3}/s^{2}}$" style="width:27px;height:12px;">),</p><pre class="codeinput">mu = MU_MOON;
+</p><h2 id="4">Note</h2><div><ul><li>This function is only valid for circular (<img src="a2n_doc_eq16923577353206667653.png" alt="$e=0$" style="width:25px;height:8px;">) and elliptical (<img src="a2n_doc_eq05576799394469056516.png" alt="$0<e<1$" style="width:45px;height:8px;">) orbits.</li></ul></div><h2 id="5">Example #1: Orbit around the Earth.</h2><p><i>Find the mean motion for an orbit around the Earth with semi-major axis <img src="a2n_doc_eq17980462415949572653.png" alt="$a=7000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 7000*1000;
+</pre><p>Standard gravitational parameter of the Earth (in <img src="a2n_doc_eq03238926069325008863.png" alt="$\mathrm{m^{3}/s^{2}}$" style="width:27px;height:12px;">),</p><pre class="codeinput">mu = MU_EARTH;
 </pre><p>Finding the mean motion (in <img src="a2n_doc_eq14868716931547744474.png" alt="$\mathrm{rad/s}$" style="width:26px;height:11px;">),</p><pre class="codeinput">n = a2n(a,mu)
 </pre><pre class="codeoutput">
 n =
 
-   4.2613e-04
+   0.001078007612467
 
-</pre><h2 id="10">See also</h2><p><a href="a2T_doc.html"><tt>a2T</tt></a> | <a href="n2a_doc.html"><tt>n2a</tt></a> | <a href="n2T_doc.html"><tt>n2T</tt></a> | <a href="T2a_doc.html"><tt>T2a</tt></a> | <a href="T2n_doc.html"><tt>T2n</tt></a></p><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2022a</a><br></p></div><!--
+</pre><h2 id="8">Example #2: Orbit around the Moon.</h2><p><i>Find the mean motion for an orbit around the Moon with semi-major axis <img src="a2n_doc_eq15656791416632496945.png" alt="$a=3000\;\mathrm{km}$" style="width:60px;height:8px;">.</i></p><p>Defining the semi-major axis in meters,</p><pre class="codeinput">a = 3000*1000;
+</pre><p>Standard gravitational parameter of the Moon (in <img src="a2n_doc_eq03238926069325008863.png" alt="$\mathrm{m^{3}/s^{2}}$" style="width:27px;height:12px;">),</p><pre class="codeinput">mu = MU_MOON;
+</pre><p>Finding the mean motion (in <img src="a2n_doc_eq14868716931547744474.png" alt="$\mathrm{rad/s}$" style="width:26px;height:11px;">),</p><pre class="codeinput">n = a2n(a,mu)
+</pre><pre class="codeoutput">
+n =
+
+     4.261281374839680e-04
+
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% |a2n|
 % Mean motion from semi-major axis.
 % 
-% <index.html Back to Aerospace Simulation Toolbox Contents>.
+% <index_orbital_mechanics.html Back to *Orbital Mechanics*>.
 %% Syntax
-%   a = a2n(a)
 %   a = a2n(a,mu)
-%% Description
-% |a = a2n(a)| finds the mean motion, $n$, given the semi-major axis, $a$,
-% for a circular ($e=0$) or elliptical ($0<e<1$) orbit around the Earth.
-%%
-% |a = a2n(a,mu)| finds the mean motion, $n$, given the semi-major axis, 
-% $a$, for a circular ($e=0$) or elliptical ($0<e<1$) orbit around a cental
-% body with gravitational parameter $\mu$.
-%% Input/Output Parameters
+%% Inputs
 % <html>
 %   <table>
 %       <tr>
-%           <td></td>
 %           <td style="text-align:center"><b>Variable</b></td>
 %           <td style="text-align:center"><b>Symbol</b></td>
 %           <td style="text-align:center"><b>Description</b></td>
@@ -146,7 +144,6 @@ n =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td rowspan="2" style="text-align:center"><b>Input</b></td>
 %           <td style="text-align:center"><TT>a</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;a" title="" /></td>
 %           <td>semi-major axis</td>
@@ -156,12 +153,23 @@ n =
 %       <tr>
 %           <td style="text-align:center"><TT>mu</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mu" title="" /></td>
-%           <td>(OPTIONAL) gravitational parameter</td>
+%           <td>standard gravitational parameter</td>
 %           <td style="text-align:center">1×1<BR>double</td>
 %           <td style="text-align:center">m<sup>3</sup>/s<sup>2</sup></td>
 %       </tr>
+%   </table>
+% </html>
+%% Outputs
+% <html>
+%   <table>
 %       <tr>
-%           <td rowspan="1" style="text-align:center"><b>Output</b></td>
+%           <td style="text-align:center"><b>Variable</b></td>
+%           <td style="text-align:center"><b>Symbol</b></td>
+%           <td style="text-align:center"><b>Description</b></td>
+%           <td style="text-align:center"><b>Format</b></td>
+%           <td style="text-align:center"><b>Units</b></td>
+%       </tr>
+%       <tr>
 %           <td style="text-align:center"><TT>n</TT></td>
 %           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;n" title="" /></td></td>
 %           <td>mean motion</td>
@@ -170,6 +178,8 @@ n =
 %       </tr>
 %   </table>
 % </html>
+%% Note
+% * This function is only valid for circular ($e=0$) and elliptical ($0<e<1$) orbits.
 %% Example #1: Orbit around the Earth.
 % _Find the mean motion for an orbit around the Earth with semi-major axis
 % $a=7000\;\mathrm{km}$._
@@ -177,25 +187,23 @@ n =
 % Defining the semi-major axis in meters,
 a = 7000*1000;
 %%
+% Standard gravitational parameter of the Earth (in 
+% $\mathrm{m^{3}/s^{2}}$),
+mu = MU_EARTH;
+%%
 % Finding the mean motion (in $\mathrm{rad/s}$),
-n = a2n(a)
-%% Example #2: Orbit around the moon.
+n = a2n(a,mu)
+%% Example #2: Orbit around the Moon.
 % _Find the mean motion for an orbit around the Moon with semi-major axis
 % $a=3000\;\mathrm{km}$._
 %
 % Defining the semi-major axis in meters,
 a = 3000*1000;
 %%
-% Gravitational parameter of the moon (in $\mathrm{m^{3}/s^{2}}$),
+% Standard gravitational parameter of the Moon (in $\mathrm{m^{3}/s^{2}}$),
 mu = MU_MOON;
 %%
 % Finding the mean motion (in $\mathrm{rad/s}$),
 n = a2n(a,mu)
-%% See also
-% <a2T_doc.html |a2T|> | 
-% <n2a_doc.html |n2a|> | 
-% <n2T_doc.html |n2T|> | 
-% <T2a_doc.html |T2a|> |
-% <T2n_doc.html |T2n|>
 ##### SOURCE END #####
 --></body></html>
