@@ -4,7 +4,7 @@
 % Unit testing of the TODO functions.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-08-26
+% Last Update: 2023-09-14
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -27,6 +27,14 @@ rng(1);
 %% INITIALIZE TEST SUITE
 
 test_suite = TestSuite('orbital mechanics tests');
+
+
+
+%% a2T
+
+a = 7e6;
+mu = 3.986004418e14;
+test_suite.add_test(TestEqual(a2T(a,mu),5.828516637686015e3,'a2T'));
 
 
 
@@ -341,6 +349,14 @@ mu = 3.986004418e14;
 e = rvh2e(r,v,h,mu);
 e_true = 0.099986817471287;
 test_suite.add_test(TestEqual(e,e_true,'rvh2e',15));
+
+
+
+%% T2a
+
+T = 5400;
+mu = 3.986004418e14;
+test_suite.add_test(TestEqual(T2a(T,mu),6.652555701327529e6,'T2a'));
 
 
 
