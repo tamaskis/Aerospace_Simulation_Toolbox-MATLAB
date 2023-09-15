@@ -302,6 +302,24 @@ test_suite.add_test(TestEqual(e,e_true,'rv2e',15));
 
 
 
+%% rv2fpa
+
+% positive
+r = [4.1852e7;6.2778e7;10.463e7];
+v = [2.5936e4;5.1872e4;0];
+phi_fpa = rv2fpa(r,v);
+phi_fpa_true = 0.6192;
+test_suite.add_test(TestEqual(phi_fpa,phi_fpa_true,'rv2fpa positive',4));
+
+% negative
+r = [5053;-2276;-5182];
+v = [113286;181566;48281];
+phi_fpa = rv2fpa(r,v);
+phi_fpa_true = -0.054698152803929;
+test_suite.add_test(TestEqual(phi_fpa,phi_fpa_true,'rv2fpa negative',15));
+
+
+
 %% rvh2e_vec
 
 r = [5053;-2276;-5182];
