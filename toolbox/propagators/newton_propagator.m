@@ -172,7 +172,7 @@ function [dXdt,extra] = newton_propagator(X,t,prop,sat,ae_rtn,drho,dB)
         % IAU2006/2000  CIO based theory
         [R_ecef2eci,R_eci2ecef,w_eci,Q,R,W] = iau06(MJD_UT1,MJD_TT,xp,...
             yp,dX,dY,LOD,prop.data.XYs_iau06);
-
+        
     else
 
         % rotation matrix from ECI frame to ECEF frame

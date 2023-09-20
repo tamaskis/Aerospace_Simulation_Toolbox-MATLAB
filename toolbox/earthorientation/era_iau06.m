@@ -36,5 +36,11 @@ function ERA = era_iau06(MJD_UT1)
     
     % wrap ERA to the interval [0,2π)
     ERA = mod(ERA,2*pi);
+
+
+
+    % Tu = (JD_UT1-2451545.0)/36525;
+    % ERA = 2*pi*(0.7790572732640+1.00273781191135448*Tu*36525);
+    % ERA = mod(ERA,2*pi);
     
 end
