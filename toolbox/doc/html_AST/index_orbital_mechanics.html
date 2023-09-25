@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>Orbital Mechanics</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-08-27"><meta name="DC.source" content="index_orbital_mechanics.m"><style type="text/css">
+      --><title>Orbital Mechanics</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-05"><meta name="DC.source" content="index_orbital_mechanics.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>Orbital Mechanics</h1><!--introduction--><p><a href="index.html">Back to <b>Aerospace Simulation Toolbox Documentation</b></a>.</p><!--/introduction--><div><ul><li><a href="rot_pqw2rsw_doc.html"><b><tt>rot_pqw2rsw</tt></b></a> Passive rotation matrix from the perifocal (PQW) frame to the RSW frame.</li><li><a href="rot_rsw2pqw_doc.html"><b><tt>rot_rsw2pqw</tt></b></a> Passive rotation matrix from the RSW frame to the perifocal (PQW) frame.</li><li><a href="rv2e_vec_doc.html"><b><tt>rv2e_vec</tt></b></a> Eccentricity vector from position and velocity.</li><li><a href="rv2e_doc.html"><b><tt>rv2e</tt></b></a> Eccentricity from position and velocity.</li><li><a href="rvh2e_vec_doc.html"><b><tt>rvh2e_vec</tt></b></a> Eccentricity vector from position, velocity, and specific angular momentum.</li><li><a href="rvh2e_doc.html"><b><tt>rvh2e</tt></b></a> Eccentricity from position, velocity, and specific angular momentum.</li></ul></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
+  </style></head><body><div class="content"><h1>Orbital Mechanics</h1><!--introduction--><p><a href="index.html">Back to <b>Aerospace Simulation Toolbox Documentation</b></a>.</p><!--/introduction--><div><ul><li><a href="rot_pqw2rsw_doc.html"><b><tt>rot_pqw2rsw</tt></b></a> Passive rotation matrix from the perifocal (PQW) frame to the RSW frame.</li><li><a href="rot_rsw2pqw_doc.html"><b><tt>rot_rsw2pqw</tt></b></a> Passive rotation matrix from the RSW frame to the perifocal (PQW) frame.</li><li><a href="rv2e_vec_doc.html"><b><tt>rv2e_vec</tt></b></a> Eccentricity vector from position and velocity.</li><li><a href="rv2e_doc.html"><b><tt>rv2e</tt></b></a> Eccentricity from position and velocity.</li><li><a href="rv2fpa_doc.html"><b><tt>rv2fpa</tt></b></a> Flight path angle from position and velocity.</li><li><a href="rvh2e_vec_doc.html"><b><tt>rvh2e_vec</tt></b></a> Eccentricity vector from position, velocity, and specific angular momentum.</li><li><a href="rvh2e_doc.html"><b><tt>rvh2e</tt></b></a> Eccentricity from position, velocity, and specific angular momentum.</li></ul></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Orbital Mechanics
 % <index.html Back to *Aerospace Simulation Toolbox Documentation*>.
@@ -76,6 +76,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 % * <rot_rsw2pqw_doc.html *|rot_rsw2pqw|*> Passive rotation matrix from the RSW frame to the perifocal (PQW) frame.
 % * <rv2e_vec_doc.html *|rv2e_vec|*> Eccentricity vector from position and velocity.
 % * <rv2e_doc.html *|rv2e|*> Eccentricity from position and velocity.
+% * <rv2fpa_doc.html *|rv2fpa|*> Flight path angle from position and velocity.
 % * <rvh2e_vec_doc.html *|rvh2e_vec|*> Eccentricity vector from position, velocity, and specific angular momentum.
 % * <rvh2e_doc.html *|rvh2e|*> Eccentricity from position, velocity, and specific angular momentum.
 ##### SOURCE END #####

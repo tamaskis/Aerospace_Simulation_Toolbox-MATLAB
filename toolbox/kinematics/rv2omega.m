@@ -34,6 +34,11 @@
 % NOTE:
 % -----
 %   • r and v can be input in any units, but they MUST be consistent.
+%   • The rotating frame, R, is defined such that the unit vector of r
+%     defines the 1st axis, the unit vector of r × v defines the 3rd axis,
+%     and the 2nd axis completes the right-handed triad.
+%   • The 1st and 2nd axes of the rotating frame, R, define the
+%     instantaneous plane of motion in which both r and v lie.
 %
 %==========================================================================
 function omega_I2R_I = rv2omega(r,v)
