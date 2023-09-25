@@ -48,7 +48,7 @@ function [a,e,i,Om,w,nu,ang] = eci2oe(r,v)
     
     % stores dot product between position and velocity [m^2/s]
     r_dot_v = idot(r,v);
-        
+    
     % eccentricity vector and its magnitude
     e_vec = (v_mag^2/mu-1/r_mag)*r-(r_dot_v/mu)*v;
     e = inorm(e_vec);
@@ -70,17 +70,17 @@ function [a,e,i,Om,w,nu,ang] = eci2oe(r,v)
     
     % specific mechanical energy [m^2/s^2]
     Em = v_mag^2/2-mu/r_mag;
-
+    
     % semi-major axis [m]
     if e == 1
         a = inf;
     else
         a = -mu/(2*Em);
     end
-
+    
     % inclination [rad]
     i = acos(hK/h_mag);
-
+    
     % right ascension of the ascending node [rad]
     if nJ >= 0
         Om = acos(nI/n_mag);
