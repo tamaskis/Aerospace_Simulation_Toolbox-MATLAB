@@ -1,10 +1,10 @@
 %% TEST_kinematics.m
 % Aerospace Simulation Toolbox
 %
-% Unit testing of the rv2w, skew2vec, and vec2skew functions.
+% Unit testing of kinematics functions.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-05-07
+% Last Update: 2023-09-24
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -91,6 +91,15 @@ R_A2B = [ 0.3536   0.6124  -0.7071
           0.7951   0.2015   0.5721];
 omega_A2B_B = [1;2;3];
 test_suite.add_test(TestEqual(matderiv(R_A2B,omega_A2B_B),[-3.0686,1.8905,0.1026;-0.2657,-1.6357,2.6934;1.2000,0.4603,-1.8298],'matderiv test 3',15));
+
+
+
+%% rv2omega
+
+r = [1;2;3];
+v = [-3;-2;-1];
+omega_I2R_I = rv2omega(r,v);
+test_suite.add_test(TestEqual(omega_I2R_I,[2/7;-4/7;2/7],'rv2omega'));
 
 
 
