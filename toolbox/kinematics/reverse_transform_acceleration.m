@@ -1,9 +1,9 @@
 %==========================================================================
 %
-% forward_transform_acceleration  Transformation of the acceleration of a
-% point from a stationary frame to a moving frame.
+% reverse_transform_acceleration  Transformation of the acceleration of a
+% point from a moving frame to a stationary frame.
 %
-%   a_B2P_B_B = forward_transform_acceleration(a_A2P_A_A,v_B2P_B_B,...
+%   a_A2P_A_A = reverse_transform_acceleration(a_B2P_B_B,v_B2P_B_B,...
 %       r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A)
 %
 % Copyright © 2022 Tamas Kis
@@ -22,8 +22,8 @@
 % ------
 % INPUT:
 % ------
-%   a_A2P_A_A   - (3×1 double) acceleration of point P with respect to
-%                 frame A origin, relative to frame A, expressed in frame A
+%   a_B2P_B_B   - (3×1 double) acceleration of point P with respect to
+%                 frame B origin, relative to frame B, expressed in frame B
 %   v_B2P_B_B   - (3×1 double) velocity of point P with respect to frame B
 %                 origin, relative to frame B, expressed in frame B
 %   r_B2P_B     - (3×1 double) position of point P with respect to frame B
@@ -41,11 +41,11 @@
 % -------
 % OUTPUT:
 % -------
-%   a_B2P_B_B   - (3×1 double) acceleration of point P with respect to
-%                 frame B origin, relative to frame B, expressed in frame B
+%   a_A2P_A_A   - (3×1 double) acceleration of point P with respect to
+%                 frame A origin, relative to frame A, expressed in frame A
 %
 %==========================================================================
-function a_B2P_B_B = forward_transform_acceleration(a_A2P_A_A,v_B2P_B_B,...
+function a_A2P_A_A = reverse_transform_acceleration(a_B2P_B_B,v_B2P_B_B,...
     r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A)
     
     % term 1
@@ -61,10 +61,10 @@ function a_B2P_B_B = forward_transform_acceleration(a_A2P_A_A,v_B2P_B_B,...
     t4 = cross(alpha_A2B_B,r_B2P_B);
     
     % term 5
-    t5 = R_A2B*(a_A2P_A_A-a_A2B_A_A);
+    t5 = a_B2P_B_B+t4+t3+t2;
     
-    % acceleration of point P with respect to frame B origin, relative to
-    % frame B, expressed in frame B
-    a_B2P_B_B = t5-t4-t3-t2;
+    % acceleration of point P with respect to frame A origin, relative to
+    % frame A, expressed in frame A
+    a_A2P_A_A = a_A2B_A_A+(R_A2B.')*t5;
     
 end
