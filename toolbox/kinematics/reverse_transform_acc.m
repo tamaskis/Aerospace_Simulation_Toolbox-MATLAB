@@ -1,10 +1,10 @@
 %==========================================================================
 %
-% reverse_transform_acceleration  Transformation of the acceleration of a
-% point from a moving frame to a stationary frame.
+% reverse_transform_acc  Transformation of the acceleration of a point from
+% a moving frame to a stationary frame.
 %
-%   a_A2P_A_A = reverse_transform_acceleration(a_B2P_B_B,v_B2P_B_B,...
-%       r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A)
+%   a_A2P_A_A = reverse_transform_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,R_A2B,...
+%       omega_A2B_B,alpha_A2B_B,a_A2B_A_A)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-10-31
@@ -45,8 +45,8 @@
 %                 frame A origin, relative to frame A, expressed in frame A
 %
 %==========================================================================
-function a_A2P_A_A = reverse_transform_acceleration(a_B2P_B_B,v_B2P_B_B,...
-    r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A)
+function a_A2P_A_A = reverse_transform_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,...
+    R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A)
     
     % term 1
     t1 = cross(omega_A2B_B,r_B2P_B);

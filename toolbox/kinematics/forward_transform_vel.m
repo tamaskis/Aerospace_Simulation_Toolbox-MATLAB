@@ -1,9 +1,9 @@
 %==========================================================================
 %
-% forward_transform_velocity  Transformation of the velocity of a point
+% forward_transform_vel  Transformation of the velocity of a point
 % from a stationary frame to a moving frame.
 %
-%   v_B2P_B_B = forward_transform_velocity(v_A2P_A_A,r_B2P_B,R_A2B,...
+%   v_B2P_B_B = forward_transform_vel(v_A2P_A_A,r_B2P_B,R_A2B,...
 %       omega_A2B_B,v_A2B_A_A)
 %
 % Copyright © 2022 Tamas Kis
@@ -40,7 +40,7 @@
 %                 origin, relative to frame B, expressed in frame B
 %
 %==========================================================================
-function v_B2P_B_B = forward_transform_velocity(v_A2P_A_A,r_B2P_B,R_A2B,...
+function v_B2P_B_B = forward_transform_vel(v_A2P_A_A,r_B2P_B,R_A2B,...
     omega_A2B_B,v_A2B_A_A)
     v_B2P_B_B = R_A2B*(v_A2P_A_A-v_A2B_A_A)-cross(omega_A2B_B,r_B2P_B);
 end

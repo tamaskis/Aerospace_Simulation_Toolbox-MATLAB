@@ -1,9 +1,9 @@
 %==========================================================================
 %
-% reverse_transform_position  Transformation of the position of a point
-% from a moving frame to a stationary frame.
+% reverse_transform_pos  Transformation of the position of a point from a
+% moving frame to a stationary frame.
 %
-%   r_A2P_A = reverse_transform_position(r_B2P_B,R_A2B,r_A2B_A)
+%   r_A2P_A = reverse_transform_pos(r_B2P_B,R_A2B,r_A2B_A)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-10-31
@@ -34,6 +34,6 @@
 %             origin, expressed in frame A
 %
 %==========================================================================
-function r_A2P_A = reverse_transform_position(r_B2P_B,R_A2B,r_A2B_A)
+function r_A2P_A = reverse_transform_pos(r_B2P_B,R_A2B,r_A2B_A)
     r_A2P_A = r_A2B_A+(R_A2B.')*r_B2P_B;
 end
