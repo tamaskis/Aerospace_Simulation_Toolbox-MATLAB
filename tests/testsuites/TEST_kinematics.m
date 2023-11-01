@@ -73,6 +73,58 @@ test_suite.add_test(TestEqual(add_ang_vel(omega_A2B_B,omega_B2C_C,R_B2C),[3.4571
 
 
 
+%% forward_transform_acc + reverse_transform_acc
+
+% test #1
+a_A2P_A_A = [1;2;3];
+v_B2P_B_B = [0;0;0];
+r_B2P_B = [0;0;0];
+R_A2B = eye(3);
+omega_A2B_B = [0;0;0];
+alpha_A2B_B = [0;0;0];
+a_A2B_A_A = [0;0;0];
+a_B2P_B_B = [1;2;3];
+test_suite.add_test(TestEqual(forward_transform_acc(a_A2P_A_A,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_B2P_B_B,'forward_transform_acc test 1'));
+test_suite.add_test(TestEqual(reverse_transform_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_A2P_A_A,'reverse_transform_acc test 1'));
+
+% test #2
+a_A2P_A_A = [1;2;3];
+v_B2P_B_B = [0;0;0];
+r_B2P_B = [0;0;0];
+R_A2B = eye(3);
+omega_A2B_B = [0;0;0];
+alpha_A2B_B = [0;0;0];
+a_A2B_A_A = [1;2;3];
+a_B2P_B_B = [0;0;0];
+test_suite.add_test(TestEqual(forward_transform_acc(a_A2P_A_A,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_B2P_B_B,'forward_transform_acc test 2'));
+test_suite.add_test(TestEqual(reverse_transform_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_A2P_A_A,'reverse_transform_acc test 2'));
+
+% test #3
+a_A2P_A_A = [1;2;3];
+v_B2P_B_B = [0;0;0];
+r_B2P_B = [0;0;0];
+R_A2B = eye(3);
+omega_A2B_B = [0;0;0];
+alpha_A2B_B = [0;0;0];
+a_A2B_A_A = [2;3;4];
+a_B2P_B_B = [-1;-1;-1];
+test_suite.add_test(TestEqual(forward_transform_acc(a_A2P_A_A,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_B2P_B_B,'forward_transform_acc test 3'));
+test_suite.add_test(TestEqual(reverse_transform_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_A2P_A_A,'reverse_transform_acc test 3'));
+
+% test #4
+a_A2P_A_A = [1;2;3];
+v_B2P_B_B = [4;5;6];
+r_B2P_B = [7;8;9];
+R_A2B = rot321(pi/3,-5*pi/6,3*pi/4);
+omega_A2B_B = [10;11;12];
+alpha_A2B_B = [13;14;15];
+a_A2B_A_A = [16;17;18];
+a_B2P_B_B = [-112.754809471617;42.5477445560671;54.6876840908573];
+test_suite.add_test(TestEqual(forward_transform_acc(a_A2P_A_A,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_B2P_B_B,'forward_transform_acc test 4',12));
+test_suite.add_test(TestEqual(reverse_transform_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_A2P_A_A,'reverse_transform_acc test 4',12));
+
+
+
 %% matderiv
 
 % test #1
