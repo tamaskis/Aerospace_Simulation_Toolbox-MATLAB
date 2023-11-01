@@ -75,6 +75,8 @@ test_suite.add_test(TestEqual(add_ang_vel(omega_A2B_B,omega_B2C_C,R_B2C),[3.4571
 
 %% forward_transform_acc + reverse_transform_acc
 
+% TODO: test with rotations only
+
 % test #1
 a_A2P_A_A = [1;2;3];
 v_B2P_B_B = [0;0;0];
@@ -124,8 +126,53 @@ test_suite.add_test(TestEqual(forward_transform_acc(a_A2P_A_A,v_B2P_B_B,r_B2P_B,
 test_suite.add_test(TestEqual(reverse_transform_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A),a_A2P_A_A,'reverse_transform_acc test 4',12));
 
 
+%% forward_transform_pos + reverse_transform_pos
+
+% test #1
+r_A2P_A = [1;2;3];
+R_A2B = eye(3);
+r_A2B_A = [0;0;0];
+r_B2P_B = [1;2;3];
+test_suite.add_test(TestEqual(forward_transform_pos(r_A2P_A,R_A2B,r_A2B_A),r_B2P_B,'forward_transform_pos test 1'));
+test_suite.add_test(TestEqual(reverse_transform_pos(r_B2P_B,R_A2B,r_A2B_A),r_A2P_A,'reverse_transform_pos test 1'));
+
+% test #2
+r_A2P_A = [1;2;3];
+R_A2B = eye(3);
+r_A2B_A = [1;2;3];
+r_B2P_B = [0;0;0];
+test_suite.add_test(TestEqual(forward_transform_pos(r_A2P_A,R_A2B,r_A2B_A),r_B2P_B,'forward_transform_pos test 2'));
+test_suite.add_test(TestEqual(reverse_transform_pos(r_B2P_B,R_A2B,r_A2B_A),r_A2P_A,'reverse_transform_pos test 2'));
+
+% test #3
+r_A2P_A = [1;2;3];
+R_A2B = eye(3);
+r_A2B_A = [2;3;4];
+r_B2P_B = [-1;-1;-1];
+test_suite.add_test(TestEqual(forward_transform_pos(r_A2P_A,R_A2B,r_A2B_A),r_B2P_B,'forward_transform_pos test 2'));
+test_suite.add_test(TestEqual(reverse_transform_pos(r_B2P_B,R_A2B,r_A2B_A),r_A2P_A,'reverse_transform_pos test 2'));
+
+% test #4
+r_A2P_A = [1;2;3];
+R_A2B = rot3(pi);
+r_A2B_A = [0;0;0];
+r_B2P_B = [-1;-2;3];
+test_suite.add_test(TestEqual(forward_transform_pos(r_A2P_A,R_A2B,r_A2B_A),r_B2P_B,'forward_transform_pos test 2'));
+test_suite.add_test(TestEqual(reverse_transform_pos(r_B2P_B,R_A2B,r_A2B_A),r_A2P_A,'reverse_transform_pos test 2',15));
+
+% test #5
+r_A2P_A = [1;2;3];
+R_A2B = eul2mat_321(pi/3,-5*pi/6,3*pi/4);
+r_A2B_A = [4;5;6];
+r_B2P_B = [2.04903810567666;2.50954891121342;-4.06246318182855];
+test_suite.add_test(TestEqual(forward_transform_pos(r_A2P_A,R_A2B,r_A2B_A),r_B2P_B,'forward_transform_pos test 2',14));
+test_suite.add_test(TestEqual(reverse_transform_pos(r_B2P_B,R_A2B,r_A2B_A),r_A2P_A,'reverse_transform_pos test 2',14));
+
+
 
 %% forward_transform_vel + reverse_transform_vel
+
+% TODO: test with rotations only
 
 % test #1
 v_A2P_A_A = [1;2;3];
