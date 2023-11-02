@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% forward_transform_mov_vel  Transformation of the velocity of a point
-% from a stationary frame to a moving (rotating + translating) frame.
+% forward_transform_mov_vel  Velocity transformation from a stationary
+% frame to a moving (rotating + translating) frame.
 %
 %   v_B2P_B_B = forward_transform_mov_vel(v_A2P_A_A,r_B2P_B,R_A2B,...
 %       omega_A2B_B,v_A2B_A_A)

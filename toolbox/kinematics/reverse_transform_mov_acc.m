@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% reverse_transform_mov_acc  Transformation of the acceleration of a point
-% from a moving (rotating + translating) frame to a stationary frame.
+% reverse_transform_mov_acc  Acceleration transformation from a moving
+% (rotating + translating) frame to a stationary frame.
 %
 %   a_A2P_A_A = reverse_transform_mov_acc(a_B2P_B_B,v_B2P_B_B,r_B2P_B,...
 %       R_A2B,omega_A2B_B,alpha_A2B_B,a_A2B_A_A)

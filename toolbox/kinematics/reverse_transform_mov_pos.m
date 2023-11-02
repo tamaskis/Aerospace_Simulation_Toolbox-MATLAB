@@ -1,7 +1,7 @@
 %==========================================================================
 %
-% reverse_transform_mov_pos  Transformation of the position of a point from
-% a moving (rotating + translating) frame to a stationary frame.
+% reverse_transform_mov_pos  Position transformation from a moving
+% (rotating + translating) frame to a stationary frame.
 %
 %   r_A2P_A = reverse_transform_mov_pos(r_B2P_B,R_A2B,r_A2B_A)
 %
