@@ -1,9 +1,9 @@
 %==========================================================================
 %
-% reverse_transform_vel  Transformation of the velocity of a point from a
-% moving frame to a stationary frame.
+% forward_transform_mov_vel  Transformation of the velocity of a point
+% from a stationary frame to a moving (rotating + translating) frame.
 %
-%   v_A2P_A_A = reverse_transform_vel(v_B2P_B_B,r_B2P_B,R_A2B,...
+%   v_B2P_B_B = forward_transform_mov_vel(v_A2P_A_A,r_B2P_B,R_A2B,...
 %       omega_A2B_B,v_A2B_A_A)
 %
 % Copyright © 2022 Tamas Kis
@@ -22,8 +22,8 @@
 % ------
 % INPUT:
 % ------
-%   v_B2P_B_B   - (3×1 double) velocity of point P with respect to frame B
-%                 origin, relative to frame B, expressed in frame B
+%   v_A2P_A_A   - (3×1 double) velocity of point P with respect to frame A
+%                 origin, relative to frame A, expressed in frame A
 %   r_B2P_B     - (3×1 double) position of point P with respect to frame B
 %                 origin, expressed in frame B
 %   R_A2B       - (3×3 double) passive rotation matrix from frame A to
@@ -36,11 +36,11 @@
 % -------
 % OUTPUT:
 % -------
-%   v_A2P_A_A   - (3×1 double) velocity of point P with respect to frame A
-%                 origin, relative to frame A, expressed in frame A
+%   v_B2P_B_B   - (3×1 double) velocity of point P with respect to frame B
+%                 origin, relative to frame B, expressed in frame B
 %
 %==========================================================================
-function v_A2P_A_A = reverse_transform_vel(v_B2P_B_B,r_B2P_B,R_A2B,...
+function v_B2P_B_B = forward_transform_mov_vel(v_A2P_A_A,r_B2P_B,R_A2B,...
     omega_A2B_B,v_A2B_A_A)
-    v_A2P_A_A = v_A2B_A_A+(R_A2B.')*(v_B2P_B_B+cross(omega_A2B_B,r_B2P_B));
+    v_B2P_B_B = R_A2B*(v_A2P_A_A-v_A2B_A_A)-cross(omega_A2B_B,r_B2P_B);
 end

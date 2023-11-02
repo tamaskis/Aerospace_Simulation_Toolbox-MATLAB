@@ -1,9 +1,9 @@
 %==========================================================================
 %
-% forward_transform_pos  Transformation of the position of a point from a
-% stationary frame to a moving frame.
+% forward_transform_mov_pos  Transformation of the position of a point from
+% a stationary frame to a moving (rotating + translating) frame.
 %
-%   r_B2P_B = forward_transform_pos(r_A2P_A,R_A2B,r_A2B_A)
+%   r_B2P_B = forward_transform_mov_pos(r_A2P_A,R_A2B,r_A2B_A)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2023-10-31
@@ -34,6 +34,6 @@
 %             origin, expressed in frame B
 %
 %==========================================================================
-function r_B2P_B = forward_transform_pos(r_A2P_A,R_A2B,r_A2B_A)
+function r_B2P_B = forward_transform_mov_pos(r_A2P_A,R_A2B,r_A2B_A)
     r_B2P_B = R_A2B*(r_A2P_A-r_A2B_A);
 end
