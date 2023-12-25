@@ -57,6 +57,44 @@ test_suite.add_test(TestEqual(get_dut1(cal2mjd([2017,12,23,0,0,0])),0.2252297,'Î
 test_suite.add_test(TestEqual(get_dut1(cal2mjd([1991,12,31,0,0,0])),-0.1251659,'Î”UT1 for 1991 December 31'));
 
 
+%% ut12utc
+
+test_suite.add_test(TestEqual(ut12utc(53139.6965224155,-0.463326),53139.6965277778,'ut12utc',9));
+
+
+
+%% utc2ut1
+
+test_suite.add_test(TestEqual(ut12utc(53139.6965277778,-0.463326),53139.6965331404,'utc2ut1',10));
+
+
+
+%% gps2tai
+
+test_suite.add_test(TestEqual(gps2tai(53139.6966782407),53139.6968981481,'gps2tai',10));
+
+
+
+%% tai2gps
+
+test_suite.add_test(TestEqual(tai2gps(53139.6968981481),53139.6966782407,'tai2gps',10));
+
+
+
+%% tai2tt
+
+test_suite.add_test(TestEqual(tai2tt(53139.6968981481),53139.6972706481,'tai2tt',10));
+
+
+%%
+
+cal2mjd([2004,5,14,16,42,59.5367])
+cal2mjd([2004,5,14,16,43,0.0000])
+cal2mjd([2004,5,14,16,43,32.0000])
+cal2mjd([2004,5,14,16,43,13.0000])
+cal2mjd([2004,5,14,16,44,4.1856])
+
+
 
 %% RUNS TEST SUITE
 
