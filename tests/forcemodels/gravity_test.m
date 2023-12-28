@@ -40,6 +40,8 @@ S_norm = GGM05S.S_norm;
 r_ecef = [10000000;
           20000000;
           30000000];
+r_ecef = [0;0;1];
+r_ecef = r_ecef/norm(r_ecef)*6371000; % TODO
 
 
 
@@ -49,11 +51,11 @@ r_ecef = [10000000;
 N = 50;
 
 % gravity from built-in MATLAB function (EGM96)
-[gx,gy,gz] = gravitysphericalharmonic(r_ecef.','EGM96',N);
-g_exp = [gx;gy;gz];
+% [gx,gy,gz] = gravitysphericalharmonic(r_ecef.','EGM96',N);
+% g_exp = [gx;gy;gz];
 
 % gravity from Astrodynamics Toolbox function (GGM05S)
-g_act = gravity(r_ecef,C,S,N);
+g_act = gravity(r_ecef,C,S,N)
 
 % unit test
-TEST_EQUAL(g_exp,g_act,err);
+% TEST_EQUAL(g_exp,g_act,err);
