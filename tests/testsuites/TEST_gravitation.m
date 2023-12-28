@@ -73,8 +73,8 @@ N = [1;
      0.125*sqrt(1/35)];
 test_suite.add_test(TestEqual(kaula_norm_vector(4),N,'kaula_norm_vector up to degree/order 4'));
 
-% random selected tests up to degree/order 120
-N = kaula_norm_vector(2190);
+% random selected tests up to degree/order 1000
+N = kaula_norm_vector(1000);
 
 % randomly selected tests
 test_suite.add_test(TestEqual(N(grav_model_index(5,0)),kaula_norm_factor_testing(5,0),'kaula_norm_vector for (n,m) = (5,0)'));
