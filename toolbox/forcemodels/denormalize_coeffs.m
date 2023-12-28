@@ -42,7 +42,7 @@ function [C,S] = denormalize_coeffs(C_norm,S_norm)
     
     % maximum degree
     N = (-3+sqrt(8*L+1))/2;
-    N
+    
     % Kaula normalization vector
     N_kaula = kaula_norm_vector(N);
     

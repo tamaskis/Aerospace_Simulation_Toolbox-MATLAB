@@ -152,6 +152,24 @@ test_suite.add_test(TestEqual(gravity(altdir2rad(10,[0;1;0]),C,S,50),[-0.0004881
 test_suite.add_test(TestEqual(gravity(altdir2rad(1000,[-5;1;-3]),C,S,50),[6.19829668007732;-1.23966700067842;3.72815460451779],'gravity, TODO',14));
 
 
+%% TODO NEW TESTS
+
+% relative error tolerance
+err = 1e-8;
+
+% loads gravitational model
+EGM2008 = load_EGM2008;
+
+% de-normalized gravity coefficients
+[C,S] = denormalize_coeffs(EGM2008.C_norm,EGM2008.S_norm);
+
+% gravity from Astrodynamics Toolbox function (GGM05S)
+grav_accel_spherical_harmonic(altdir2rad(1,[1;1;1]),EGM2008.mu,EGM2008.R,C,S,50,50)
+test_suite.add_test(TestEqual(grav_accel_spherical_harmonic(altdir2rad(1,[1;1;1]),EGM2008.mu,EGM2008.R,C,S,50,50),[-5.66209216008867;-5.66210745212866;-5.67998610408259],'gravity, TODO',14));
+test_suite.add_test(TestEqual(grav_accel_spherical_harmonic(altdir2rad(10,[0;1;0]),EGM2008.mu,EGM2008.R,C,S,50,50),[-0.000488193651484778;-9.80513663465309;1.72469937384792e-05],'gravity, TODO',14));
+test_suite.add_test(TestEqual(grav_accel_spherical_harmonic(altdir2rad(1000,[-5;1;-3]),EGM2008.mu,EGM2008.R,C,S,50,50),[6.19829668007732;-1.23966700067842;3.72815460451779],'gravity, TODO',14));
+
+
 
 %% RUNS TEST SUITE
 
