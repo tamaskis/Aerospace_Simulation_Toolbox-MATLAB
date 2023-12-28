@@ -38,7 +38,7 @@ function g_ecef = gravity(r_ecef,C,S,N)
     R = R_EARTH;    % mean equatorial radius [m]
     
     % recursively compute the Legendre coefficients
-    [V,W] = legendre_recursion(r_ecef,R,N);
+    [V,W] = legendre_recursion_old(r_ecef,R,N);
     
     % auxiliary parameter [m/s^2]
     a = mu/(2*R^2);

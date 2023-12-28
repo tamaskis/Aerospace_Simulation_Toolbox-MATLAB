@@ -41,7 +41,7 @@ function [dadr_g,dadv_g] = dadX_gravity(r_ecef,C,S,N,R_ecef2eci)
     
     % recursively compute the Legendre coefficients
     [V,W] = legendre_recursion(r_ecef,R,N);
-
+    
     % auxiliary parameter independent of n and m [1/s^2]
     a = mu/R^3;
     
@@ -51,10 +51,10 @@ function [dadr_g,dadv_g] = dadX_gravity(r_ecef,C,S,N,R_ecef2eci)
     dgXdZ = 0;
     dgYdZ = 0;
     dgZdZ = 0;
-
+    
     % calculates the partial derivatives w.r.t. position
     for n = 0:N
-
+        
         % auxiliary parameters independent of m
         b = n+1;
         c = (n+1)*(n+2);
@@ -89,7 +89,7 @@ function [dadr_g,dadv_g] = dadX_gravity(r_ecef,C,S,N,R_ecef2eci)
         
         % remaining sectorial (m = n) and tesseral (n > m) terms
         for m = 2:n
-
+            
             % auxiliary parameters
             e = (n-m+1)/2;
             f = (m-n-2)*(m-n-1);
@@ -114,11 +114,11 @@ function [dadr_g,dadv_g] = dadX_gravity(r_ecef,C,S,N,R_ecef2eci)
             dgXdZ = dgXdZ+(a*(e*(i*beta+j*gamma)-h*(i*delta+j*epsilon)));
             dgYdZ = dgYdZ+(a*(e*(i*gamma-j*beta)+h*(i*epsilon-j*delta)));
             dgZdZ = dgZdZ+(a*f*(i*x+j*y));
-
+            
         end
-
+        
     end
-
+    
     % remaining partial derivatives with respect to position, resolved in
     % ECEF frame [1/s^2]
     dgYdX = dgXdY;
@@ -131,7 +131,7 @@ function [dadr_g,dadv_g] = dadX_gravity(r_ecef,C,S,N,R_ecef2eci)
     dadr_g_ecef = [dgXdX   dgXdY   dgXdZ;
                    dgYdX   dgYdY   dgYdZ;
                    dgZdX   dgZdY   dgZdZ];
-
+    
     % partial derivative of gravitational acceleration with respect to
     % position, resolved in ECI frame [1/s^2]
     dadr_g = R_ecef2eci*dadr_g_ecef*(R_ecef2eci.');

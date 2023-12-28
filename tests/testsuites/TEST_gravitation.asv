@@ -111,15 +111,15 @@ test_suite.add_test(TestEqual(N(grav_model_index(1000,100)),7.11140241518136e-29
 % [C,S] = denormalize_coeffs(C_norm,S_norm);
 % 
 % % negative of second zonal harmonic should equal J2
-% test_suite.add_test(TestEqual(-C(grav_model_index(2,0)),0.00108262617385222),'TODO C(2,0)');
+% test_suite.add_test(TestEqual(-C(grav_model_index(2,0)),0.00108262617385222),'normalized gravitational coefficients, (n,m) = (2,0)');
 
 % % n = 4, m = 1
-% test_suite.add_test(TestEqual(C(4,1),-5.08643560439584e-7,err),'TODO C(4,1)');
-% test_suite.add_test(TestEqual(S(4,1),-4.49265432143808e-7,err),'TODO S(4,1)');
+% test_suite.add_test(TestEqual(C(4,1),-5.08643560439584e-7,err),'normalized gravitational coefficients, (n,m) = (2,0)');
+% test_suite.add_test(TestEqual(S(4,1),-4.49265432143808e-7,err),'normalized gravitational coefficients, (n,m) = (2,0)');
 % 
 % % n = 41, m = 4
-% test_suite.add_test(TestEqual(C(41,4),-7.19967819600023e-15,err),'TODO C(41,4)');
-% test_suite.add_test(TestEqual(S(41,4),1.63027868851955e-14,err),'TODO S(41,4)');
+% test_suite.add_test(TestEqual(C(41,4),-7.19967819600023e-15,err),'normalized gravitational coefficients, (n,m) = (2,0)');
+% test_suite.add_test(TestEqual(S(41,4),1.63027868851955e-14,err),'normalized gravitational coefficients, (n,m) = (2,0)');
 
 
 
@@ -142,15 +142,17 @@ S_norm = GGM05S.S_norm;
 r_ecef = [0;0;1];
 r_ecef = r_ecef/norm(r_ecef)*6371000; % TODO
 
+
+% degree/order of gravity model to use
+N = 50;
+
 % gravity from built-in MATLAB function (EGM96)
 % [gx,gy,gz] = gravitysphericalharmonic(r_ecef.','EGM96',N);
 % g_exp = [gx;gy;gz];
 
 % gravity from Astrodynamics Toolbox function (GGM05S)
-test_suite.add_test(TestEqual(gravity(altdir2rad(1,[1;1;1]),C,S,50),[-5.66209216008867;-5.66210745212866;-5.67998610408259],'gravity, TODO',14));
-test_suite.add_test(TestEqual(gravity(altdir2rad(10,[0;1;0]),C,S,50),[-0.000488193651484778;-9.80513663465309;1.72469937384792e-05],'gravity, TODO',14));
-test_suite.add_test(TestEqual(gravity(altdir2rad(1000,[-5;1;-3]),C,S,50),[6.19829668007732;-1.23966700067842;3.72815460451779],'gravity, TODO',14));
-
+r_ecef = [1;1;1]*alt2rad(1);
+test_suite.add_test(TestEqual(gravity(r_ecef,C,S,N),1.63027868851955e-14,'gravity, TODO'));
 
 
 %% RUNS TEST SUITE
@@ -166,7 +168,7 @@ function N_nm = kaula_norm_factor_testing(n,m)
     N_nm = sqrt((factorial(n-m)*(2*n+1)*(2-eq(0,m)))/factorial(n+m));
 end
 
-% altitude (km) + direction (vector) to radius (m)
+% altitude (km) + direto radius (m)
 function r = altdir2rad(h,direction)
-    r = (6371+h)*1000*direction/norm(direction);
+    r = (6371+h)*1000;
 end

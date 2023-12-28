@@ -5,7 +5,7 @@
 %   [C,S] = denormalize_coeffs(C_norm,S_norm)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-12-28
+% Last Update: 2023-12-25
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -37,31 +37,33 @@
 %==========================================================================
 function [C,S] = denormalize_coeffs(C_norm,S_norm)
     
-    % gravitational model length
-    L = length(C_norm);
+    % determine maximum degree/order
+    N = size(C_norm,1)-1;
     
-    % maximum degree
-    N = (-3+sqrt(8*L+1))/2;
-    N
-    % Kaula normalization vector
-    N_kaula = kaula_norm_vector(N);
-    
-    % preallocates unnormalized coefficient vectors
-    C = zeros(L,1);
-    S = zeros(L,1);
+    % preallocate matrices for un-normalized coefficients
+    C_unnorm = zeros(N+1,N+1);
+    S_unnorm = zeros(N+1,N+1);
     
     % loop through all nonzero elements
     for n = 0:N
         for m = 0:n
             
-            % gravitational model index
-            l = grav_model_index(n,m);
+            % scaling coefficient
+            Pi = sqrt(factorial(n+m)/((2-eq(0,m))*(2*n+1)*factorial(n-m)));
             
-            % denormalize the normalized gravitational coefficients
-            C(l) = N_kaula(l)*C_norm(l);
-            S(l) = N_kaula(l)*S_norm(l);
+            % elements to access (shift to account for 1-based indexing)
+            i = n+1;
+            j = m+1;
+            
+            % denormalize coefficients
+            C_unnorm(i,j) = C_norm(i,j)/Pi;
+            S_unnorm(i,j) = S_norm(i,j)/Pi;
             
         end
     end
+    
+    % assign function handles to return coefficients of degree n + order m
+    C = @(n,m) C_unnorm(n+1,m+1);
+    S = @(n,m) S_unnorm(n+1,m+1);
     
 end
