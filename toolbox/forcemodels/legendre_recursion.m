@@ -64,17 +64,17 @@ function [V,W] = legendre_recursion(r_pcpf,R,N)
     L3 = (N+4)*(N+5)/2;
     
     % initialize V and W
-    V = zeros(L3);
-    W = zeros(L3);
+    V = zeros(L3,1);
+    W = zeros(L3,1);
     
-    % TODO
-    b = grav_model_index(0,0);
+    % gravitional model index for (n,m) = (0,0)
+    l1 = grav_model_index(0,0);
     
     % first zonal term (n = m = 0)
-    V(b) = R/r;
+    V(l1) = R/r;
     
     % second zonal terms (n = 1, m = 0)
-    V(grav_model_index(1,0)) = z*V(b);
+    V(grav_model_index(1,0)) = z*V(l1);
     
     % remaining zonal terms (2 ≤ n ≤ N+1, m = 0)
     for n = 2:(N+2)
@@ -85,25 +85,30 @@ function [V,W] = legendre_recursion(r_pcpf,R,N)
     % tesseral and sectorial terms
     for m = 1:(N+2)
         
-        % TODO
-        c = grav_model_index(m-1,m-1);
-        d = grav_model_index(m,m);
+        % gravitational model indices
+        l2 = grav_model_index(m-1,m-1);
+        l3 = grav_model_index(m,m);
         
         % sectorial terms (n = m)
-        V(d) = (2*m-1)*(x*V(c)-y*W(c));
-        W(d) = (2*m-1)*(x*W(c)+y*V(c));
+        V(l3) = (2*m-1)*(x*V(l2)-y*W(l2));
+        W(l3) = (2*m-1)*(x*W(l2)+y*V(l2));
         
         % tesseral terms (n > m)
         for n = (m+1):(N+2)
             
-            % TODO
-            e = grav_model_index(n-1,m);
-            f = grav_model_index(n-2,m);
-            g = grav_model_index(n,m);
+            % gravitational model indices
+            l4 = grav_model_index(n-1,m);
+            l5 = grav_model_index(n-2,m);
+            l6 = grav_model_index(n,m);
             
             % coefficients
-            V(g) = (z*(2*n-1)*V(e)-a*(n+m-1)*V(f))/(n-m);
-            W(g) = (z*(2*n-1)*W(e)-a*(n+m-1)*W(f))/(n-m);
+            if (n > m+1)
+                V(l6) = (z*(2*n-1)*V(l4)-a*(n+m-1)*V(l5))/(n-m);
+                W(l6) = (z*(2*n-1)*W(l4)-a*(n+m-1)*W(l5))/(n-m);
+            else
+                V(l6) = (z*(2*n-1)*V(l4))/(n-m);
+                W(l6) = (z*(2*n-1)*W(l4))/(n-m);
+            end
             
         end
         
