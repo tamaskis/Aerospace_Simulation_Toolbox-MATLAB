@@ -1,12 +1,11 @@
 %==========================================================================
 %
-% grav_accel_spherical_harmonic  Gravitational acceleration using a
-% spherical harmonic model.
+% grav_accel  Gravitational acceleration using a spherical harmonic model.
 %
-%   g_pcpf = grav_accel_spherical_harmonic(r_pcpf,mu,R,C,S,N,M)
+%   g_pcpf = grav_accel(r_pcpf,mu,R,C,S,N,M)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-12-28
+% Last Update: 2024-01-02
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -39,7 +38,7 @@
 %   W       - (L₃×1 double) Legendre coefficient vector
 %
 %==========================================================================
-function [g_pcpf,V,W] = grav_accel_spherical_harmonic(r_pcpf,mu,R,C,S,N,M)
+function [g_pcpf,V,W] = grav_accel(r_pcpf,mu,R,C,S,N,M)
     
     % recursively computess the Legendre coefficients
     [V,W] = legendre_recursion(r_pcpf,R,N);

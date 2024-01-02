@@ -37,7 +37,7 @@ function EGM2008 = load_EGM2008(N)
     
     % loads full set of gravity coefficients
     EGM2008 = load_numeric_data('EGM2008.mat');
-
+    
     % % TODO
     % L = (N+1)*(N+2)/2;
     % 
