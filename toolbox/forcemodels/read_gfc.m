@@ -20,14 +20,28 @@
 % ------
 % INPUT:
 % ------
-%   path    - (char array) relative or absolute file path (including .gfc
-%             extension)
-%   N       - (OPTIONAL) (1×1 double) maximum degree
+%   path        - (char array) relative or absolute file path (including
+%                 .gfc extension)
+%   N           - (OPTIONAL) (1×1 double) maximum degree
 %
 % -------
 % OUTPUT:
 % -------
-%   TODO
+%   mu          - (1×1 double) standard gravitational parameter [m³/s²]
+%   R           - (1×1 double) reference radius [m]
+%   tide_system - (char array) tide system ('tide-free' or 'zero-tide')
+%   N_max       - (1×1 double) maximum possible degree
+%   C           - (L×1 double) unnormalized coefficient vector
+%   S           - (L×1 double) unnormalized coefficient vector
+%   C_norm      - (L×1 double) normalized coefficient vector
+%   S_norm      - (L×1 double) normalized coefficient vector
+%
+% -----
+% NOTE:
+% -----
+%   • L = (Nₘₐₓ+1)(Nₘₐₓ+2)/2 where Nₘₐₓ is the maximum possible degree.
+%   • If N is specified, then N_max is automatically set to N (if N is less
+%     than the maximum possible degree).
 %
 %==========================================================================
 function [mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(path,N)
@@ -85,7 +99,7 @@ function [mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(path,N)
         parts = strsplit(lines{idx});
         tide_system = strrep(parts{2},'_','-');
     else
-        tide_system = 'TODO default value';
+        tide_system = 'unknown';
     end
     
     % gets the line storing normalization info
@@ -115,10 +129,11 @@ function [mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(path,N)
     
     % gravitation model length (i.e. truncates model) TODO
     if (nargin >= 2) && ~isempty(N)
-        L = (N+1)*(N+2)/2;
-    else
-        L = (N_max+1)*(N_max+2)/2;
+        N_max = min(N,N_max);
     end
+    
+    % gravitational model length
+    L = grav_model_length(N_max);
     
     % preallocates arrays
     C0 = zeros(L,1);
