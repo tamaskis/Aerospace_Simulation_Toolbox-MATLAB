@@ -179,18 +179,22 @@ test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #8 vs. Ge
 GEM10 = load_GEM10;
 
 % extract parameters
-mu = GEM10.mu;
-R = GEM10.R;
-% mu = 398600.47e9;
-% R = 6378139.0;
+mu = 398600.47e9;
+R = 6378139.0;
 C = GEM10.C;
 S = GEM10.S;
 
 % GEM10 4x4 test
 r_ecef = [5489150.0;802222.0;3140916.0];
-g_exp = [-8.442606335554723;-1.233932430518343;-4.846524863326083];
+g_exp = [-8.44269212018857;-1.233936337854853;-4.846593523466143];
 g_act = grav_accel(r_ecef,mu,R,C,S,4,4);
 test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel GEM10 test #1',14));
+
+% GEM10 5x5 test
+r_ecef = [5489150.0;802222.0;3140916.0];
+g_exp = [-8.442606335554723;-1.233932430518343;-4.846524863326083];
+g_act = grav_accel(r_ecef,mu,R,C,S,5,5);
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel GEM10 test #2',14));
 
 
 % echo 29.6833313596959 8.31473347702043 2000.66675581597 | Gravity -n egm2008 -N 2 -M 0 -p 16

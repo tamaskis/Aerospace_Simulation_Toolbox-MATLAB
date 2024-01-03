@@ -23,30 +23,17 @@
 % ------
 % INPUT:
 % ------
-%   r0_ecef     - (1×1 double) origin of ENU frame resolved in ECEF frame
+%   lat0        - (1×1 double) planetodetic latitude of ENU frame origin
+%                 [°]
+%   lon0        - (1×1 double) planetodetic longitude of ENU frame origin
+%                 [°]
 %
 % -------
 % OUTPUT:
 % -------
-%   R_enu2ecef  - (3×3 double) rotation matrix (ENU --> ECEF)
-%
-% -----
-% NOTE:
-% -----
-%   --> r_ecef and r0_ecef can be input in any units, but they MUST be
-%       consistent.
+%   R_enu2ecef  - (3×3 double) rotation matrix from ENU frame to PCPF frame
 %
 %==========================================================================
-function R_enu2ecef = enu2ecef_matrix(r0_ecef)
-    
-    % geodetic latitude and longitude of ENU frame's origin [°]
-    [lat0,lon0] = ecef2geod(r0_ecef);
-    
-    % convert geodetic latitude and longitude to radians
-    lat0 = deg2rad(lat0);
-    lon0 = deg2rad(lon0);
-    
-    % rotation matrix (ENU --> ECEF)
+function R_enu2ecef = rot_enu2pcpf(lat0,lon0)
     R_enu2ecef = rot3(-lon0-pi/2)*rot1(lat0-pi/2);
-    
 end
