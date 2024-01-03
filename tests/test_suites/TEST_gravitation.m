@@ -94,83 +94,106 @@ test_suite.add_test(TestEqual(N(grav_model_index(1000,100)),7.11140241518136e-29
 
 %% grav_accel
 
+% --------------
+% EGM2008 tests.
+% --------------
+
 % loads gravitational model
 EGM2008 = load_EGM2008;
 
 % extract parameters
 mu = EGM2008.mu;
 R = EGM2008.R;
-C_norm = EGM2008.C_norm;
-S_norm = EGM2008.S_norm;
-
-% denormalizes coefficients
-[C,S] = denormalize_coeffs(EGM2008.C_norm,EGM2008.S_norm);
+C = EGM2008.C;
+S = EGM2008.S;
 
 % EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (10,10)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40619073945194;-8.5014299770321;-4.64141141193325];
 g_exp_geo = [-1.40619073945194;-8.50142997703209;-4.64141141193325];
 g_act = grav_accel(r_ecef,mu,R,C,S,10,10);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #1',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #1 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #1',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #1 vs. GeographicLib',13));
 
 % EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (40,40)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40628962068093;-8.50140471638599;-4.64078257142567];
 g_exp_geo = [-1.40628962068093;-8.50140471638596;-4.64078257142567];
 g_act = grav_accel(r_ecef,mu,R,C,S,40,40);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #2',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #2 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #2',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #2 vs. GeographicLib',13));
 
 % EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (40,10)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40622816377887;-8.50141193972164;-4.64104122564417];
 g_exp_geo = [-1.40622816377887;-8.50141193972162;-4.64104122564417];
 g_act = grav_accel(r_ecef,mu,R,C,S,40,10);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #3',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #3 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #3',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #3 vs. GeographicLib',13));
 
 % EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (120,120)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40651132644688;-8.50064118963623;-4.63994260559607];
 g_exp_geo = [-1.40651132644688;-8.50064118963615;-4.63994260559605];
 g_act = grav_accel(r_ecef,mu,R,C,S,120,120);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #4',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #4 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #4',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #4 vs. GeographicLib',13));
 
 % EGM2008, tide-free, (lat,lon,alt) = (89.9999°,0°,10000 m), (N,M) = (120,120)
 r_ecef = [11.1868512488;0.0000000000;6366752.3142354172];
 g_exp = [0.000110167378093474;-3.15305636293367e-5;-9.8015134741633];
 g_exp_geo = [0.000110167378093823;-3.15305636293e-5;-9.8015134741633];
 g_act = grav_accel(r_ecef,mu,R,C,S,120,120);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #5',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #5 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #5',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #5 vs. GeographicLib',13));
 
 % EGM2008, tide-free, (lat,lon,alt) = (90°,0°,10000 m), (N,M) = (120,120)
 r_ecef = [0.0000000000;0.0000000000;6366752.3142451793];
 g_exp = [0.000127335598760036;-3.15305796924751e-5;-9.80151347850754];
 g_exp_geo = [0.0001273355987601;-3.15305796925e-5;-9.80151347850754];
 g_act = grav_accel(r_ecef,mu,R,C,S,120,120);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #6',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #6 vs. GeographicLib',14));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #6',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #6 vs. GeographicLib',14));
 
 % EGM2008, tide-free, (lat,lon,alt) = (85°,-45°,5 m), (N,M) = (80,65)
 r_ecef = [394387.0359271481;-394387.0359271481;6332405.8449596651];
 g_exp = [-0.607868793518749;0.608020342523899;-9.79454638520474];
 g_exp_geo = [-0.607868793518748;0.608020342523899;-9.79454638520476];
 g_act = grav_accel(r_ecef,mu,R,C,S,80,65);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #7',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #7 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #7',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #7 vs. GeographicLib',13));
 
 % EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (2,0)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40623496535577;-8.50146718973369;-4.6415442471915];
 g_exp_geo = [-1.40623496535577;-8.50146718973369;-4.6415442471915];
 g_act = grav_accel(r_ecef,mu,R,C,S,2,0);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel test #8',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel test #8 vs. GeographicLib',14));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #8',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #8 vs. GeographicLib',14));
+
+% ------------
+% GEM10 tests.
+% ------------
+% 
+% loads gravitational model
+GEM10 = load_GEM10;
+
+% extract parameters
+mu = GEM10.mu;
+R = GEM10.R;
+% mu = 398600.47e9;
+% R = 6378139.0;
+C = GEM10.C;
+S = GEM10.S;
+
+% GEM10 4x4 test
+r_ecef = [5489150.0;802222.0;3140916.0];
+g_exp = [-8.442606335554723;-1.233932430518343;-4.846524863326083];
+g_act = grav_accel(r_ecef,mu,R,C,S,4,4);
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel GEM10 test #1',14));
 
 
+% echo 29.6833313596959 8.31473347702043 2000.66675581597 | Gravity -n egm2008 -N 2 -M 0 -p 16
 
 %% TODO
 

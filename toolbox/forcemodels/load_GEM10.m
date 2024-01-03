@@ -1,8 +1,8 @@
 %==========================================================================
 %
-% load_EGM2008  Loads EGM2008 data.
+% load_GEM10  Loads GEM10 data.
 %
-%   EGM2008 = load_EGM2008
+%   GEM10 = load_GEM10
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2024-01-02
@@ -20,7 +20,7 @@
 % -------
 % OUTPUT:
 % -------
-%   EGM2008  - (1×1 struct) EGM2008 data
+%   GEM10  - (1×1 struct) GEM10 data
 %       • mu          - (1×1 double) standard gravitational parameter
 %                       [m³/s²]
 %       • R           - (1×1 double) reference radius [m]
@@ -33,6 +33,6 @@
 %       • S_norm      - (L×1 double) normalized coefficient vector
 %
 %==========================================================================
-function EGM2008 = load_EGM2008
-    EGM2008 = load_numeric_data('EGM2008.mat');
+function GEM10 = load_GEM10
+    GEM10 = load_numeric_data('GEM10.mat');
 end

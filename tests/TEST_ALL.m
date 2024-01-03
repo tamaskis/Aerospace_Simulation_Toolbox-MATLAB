@@ -20,7 +20,7 @@
 clear; clc; close all;
 
 % adds path to testing scripts
-addpath('testsuites')
+addpath('test_suites')
 
 % adds path to toolbox
 addpath(genpath('../toolbox'));

@@ -155,9 +155,7 @@ function [mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(path,N)
         m = str2double(parts{3});
         
         % skips iteration if n > N_max or m > N_max
-        %   --> this happens since the loop will iterate over L
-        %       coefficients, but coefficients for some combinations of
-        %       (n,m) may not be tabulated
+        %   
         if (n > N_max) || (m > N_max)
             continue;
         end

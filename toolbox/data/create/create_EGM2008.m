@@ -86,7 +86,7 @@ EGM2008.S_norm = S_norm;
 % 
 % % limit to degree/order 360
 % C_norm = C_norm(1:L);
-% S_norm = S_norm(1:65341);
+% S_norm = S_norm(1:L);
 % 
 % % denormalize the coefficients
 % [C,S] = denormalize_coeffs(C_norm,S_norm);
