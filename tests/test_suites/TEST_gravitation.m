@@ -4,7 +4,7 @@
 % Unit testing of gravitation functions.
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2024-01-01
+% Last Update: 2024-01-09
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -94,9 +94,9 @@ test_suite.add_test(TestEqual(N(grav_model_index(1000,100)),7.11140241518136e-29
 
 %% grav_accel
 
-% --------------
-% EGM2008 tests.
-% --------------
+% ------------------------------
+% EGM2008 tests - GeographicLib.
+% ------------------------------
 
 % loads gravitational model
 EGM2008 = load_EGM2008;
@@ -171,10 +171,14 @@ g_act = grav_accel(r_ecef,mu,R,C,S,2,0);
 test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #8',14));
 test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #8 vs. GeographicLib',14));
 
+% ------------------------------
+% EGM2008 tests - GeographicLib.
+% ------------------------------
+
 % ------------
 % GEM10 tests.
 % ------------
-% 
+
 % loads gravitational model
 GEM10 = load_GEM10;
 
