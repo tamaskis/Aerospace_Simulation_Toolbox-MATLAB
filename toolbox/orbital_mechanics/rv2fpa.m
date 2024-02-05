@@ -2,10 +2,10 @@
 %
 % rv2fpa  Flight path angle from position and velocity.
 %
-%   phi_fpa = rv2fpa(r,v)
+%   gamma = rv2fpa(r,v)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-09-05
+% Last Update: 2023-09-19
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -27,9 +27,14 @@
 % -------
 % OUTPUT:
 % -------
-%   phi_fpa - (1×1 double) flight path angle [rad]
+%   gamma - (1×1 double) flight path angle [rad]
+%
+% -----
+% NOTE:
+% -----
+%   -π/2 ≤ γ ≤ π/2
 %
 %==========================================================================
-function phi_fpa = rv2fpa(r,v)
-    phi_fpa = asin(idot(r,v)/(inorm(r)*inorm(v)));
+function gamma = rv2fpa(r,v)
+    gamma = asin(idot(r,v)/(inorm(r)*inorm(v)));
 end
