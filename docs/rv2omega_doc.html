@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>rv2e_vec</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-05"><meta name="DC.source" content="rv2e_vec_doc.m"><style type="text/css">
+      --><title>rv2omega</title><meta name="generator" content="MATLAB 9.14"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-09-24"><meta name="DC.source" content="rv2omega_doc.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -67,7 +67,7 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1><tt>rv2e_vec</tt></h1><!--introduction--><p>Eccentricity vector from position and velocity.</p><p><a href="index_orbital_mechanics.html">Back to <b>Orbital Mechanics</b></a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Example</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">e_vec = rv2e_vec(r,v,mu)
+  </style></head><body><div class="content"><h1><tt>rv2omega</tt></h1><!--introduction--><p>Angular velocity of a rotating coordinate frame from position and inertial velocity.</p><p><a href="index.html">Back to Aerospace Simulation Toolbox Contents</a>.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Syntax</a></li><li><a href="#2">Inputs</a></li><li><a href="#3">Outputs</a></li><li><a href="#4">Note</a></li></ul></div><h2 id="1">Syntax</h2><pre class="language-matlab">omega_I2R_I = rv2omega(r,v)
 </pre><h2 id="2">Inputs</h2><p>
   <table>
       <tr>
@@ -79,24 +79,17 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
       </tr>
       <tr>
           <td style="text-align:center"><TT>r</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{r}]_{\mathcal{I}}" title="" /></td>
-          <td>position expressed in an inertial frame</td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{r}]_{\mathcal{I}}"/></td>
+          <td>position expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/></td>
           <td style="text-align:center">3×1<BR>double</td>
-          <td style="text-align:center">m</td>
+          <td style="text-align:center">any</td>
       </tr>
       <tr>
           <td style="text-align:center"><TT>v</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\boldsymbol{v}\right]_{\mathcal{I}}" title="" /></td>
-          <td>inertial velocity expressed in an inertial frame</td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{v}]_{\mathcal{I}}"/></td>
+          <td>inertial velocity expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/></td>
           <td style="text-align:center">3×1<BR>double</td>
-          <td style="text-align:center">m/s</td>
-      </tr>
-      <tr>
-          <td style="text-align:center"><TT>mu</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mu" title="" /></td>
-          <td>standard gravitational parameter</td>
-          <td style="text-align:center">1×1<BR>double</td>
-          <td style="text-align:center">m³/s²</td>
+          <td style="text-align:center">any</td>
       </tr>
   </table>
 </p><h2 id="3">Outputs</h2><p>
@@ -109,36 +102,21 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
           <td style="text-align:center"><b>Units</b></td>
       </tr>
       <tr>
-          <td style="text-align:center"><TT>e_vec</TT></td>
-          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{e}]_{\mathcal{I}}" title="" /></td>
-          <td>eccentricity vector expressed in an inertial frame</td>
+          <td style="text-align:center"><TT>omega_I2R_I</TT></td>
+          <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[{}^{\mathcal{R}/\mathcal{I}}\boldsymbol{\omega}]_{\mathcal{I}}" title="" /></td>
+          <td>angular velocity of frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{R}"/> with respect to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/>, expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/></td>
           <td style="text-align:center">3×1<BR>double</td>
-          <td style="text-align:center">-</td>
+          <td style="text-align:center">rad/s</td>
       </tr>
   </table>
-</p><h2 id="4">Example</h2><p>Consider the following position and ECI velocity, both expressed in the ECI frame.</p><p><img src="rv2e_vec_doc_eq01373251095547225142.png" alt="$$[\mathbf{r}]_{\mathrm{eci}}=\pmatrix{5053 \cr -2276 \cr -5182}\;\mathrm{m}$$" style="width:102px;height:40px;"></p><p><img src="rv2e_vec_doc_eq02942846099062234565.png" alt="$$\left[{}^{\mathrm{eci}}\mathbf{v}\right]_{\mathrm{eci}}=\pmatrix{113286 \cr 181566 \cr 48281}\;\mathrm{m/s}$$" style="width:128px;height:40px;"></p><p>Defining these quantities in MATLAB,</p><pre class="codeinput">r = [ 5053;
-     -2276;
-     -5182];
-v = [113286;
-     181566;
-     48281];
-</pre><p>Additionally, let the standard gravitational parameter be <img src="rv2e_vec_doc_eq11955896016935062256.png" alt="$\mu=3.986004418\times10^{14}\;\mathrm{m^{3}/s^{2}}$" style="width:142px;height:12px;">.</p><pre class="codeinput">mu = 3.986004418e14;
-</pre><p>Computing the eccentricity vector expressed in the ECI frame,</p><pre class="codeinput">e_vec = rv2e_vec(r,v,mu)
-</pre><pre class="codeoutput">
-e_vec =
-
-   -0.0300
-    0.0666
-    0.0683
-
-</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
+</p><h2 id="4">Note</h2><div><ul><li><tt>r</tt> and <tt>v</tt> can be input in any units, but they <i>must</i> be consistent.</li><li>The rotating frame, <img src="rv2omega_doc_eq04843170888871284642.png" alt="$R$" style="width:9px;height:8px;">, is defined such that the unit vector of <img src="rv2omega_doc_eq01064019894779013849.png" alt="$[\mathbf{r}]_{I}$" style="width:15px;height:11px;"> defines the 1st axis, the unit vector of <img src="rv2omega_doc_eq18179799165665412386.png" alt="$[\mathbf{r}]_{I}\times[\mathbf{v}]_{I}$" style="width:45px;height:11px;"> defines the 3rd axis, and the 2nd axis completes the right-handed triad.</li><li>The 1st and 2nd axes of the rotating frame, <img src="rv2omega_doc_eq04843170888871284642.png" alt="$R$" style="width:9px;height:8px;">, define the instantaneous plane of motion in which both <img src="rv2omega_doc_eq01064019894779013849.png" alt="$[\mathbf{r}]_{I}$" style="width:15px;height:11px;"> and <img src="rv2omega_doc_eq00108530671495237593.png" alt="$[\mathbf{v}]_{I}$" style="width:16px;height:11px;"> lie.</li></ul></div><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023a</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% |rv2e_vec|
-% Eccentricity vector from position and velocity.
+%% |rv2omega|
+% Angular velocity of a rotating coordinate frame from position and inertial velocity.
 % 
-% <index_orbital_mechanics.html Back to *Orbital Mechanics*>.
+% <index.html Back to Aerospace Simulation Toolbox Contents>.
 %% Syntax
-%   e_vec = rv2e_vec(r,v,mu)
+%   omega_I2R_I = rv2omega(r,v)
 %% Inputs
 % <html>
 %   <table>
@@ -151,24 +129,17 @@ e_vec =
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>r</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{r}]_{\mathcal{I}}" title="" /></td>
-%           <td>position expressed in an inertial frame</td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{r}]_{\mathcal{I}}"/></td>
+%           <td>position expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/></td>
 %           <td style="text-align:center">3×1<BR>double</td>
-%           <td style="text-align:center">m</td>
+%           <td style="text-align:center">any</td>
 %       </tr>
 %       <tr>
 %           <td style="text-align:center"><TT>v</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\left[\boldsymbol{v}\right]_{\mathcal{I}}" title="" /></td>
-%           <td>inertial velocity expressed in an inertial frame</td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{v}]_{\mathcal{I}}"/></td>
+%           <td>inertial velocity expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/></td>
 %           <td style="text-align:center">3×1<BR>double</td>
-%           <td style="text-align:center">m/s</td>
-%       </tr>
-%       <tr>
-%           <td style="text-align:center"><TT>mu</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;\mu" title="" /></td>
-%           <td>standard gravitational parameter</td>
-%           <td style="text-align:center">1×1<BR>double</td>
-%           <td style="text-align:center">m³/s²</td>
+%           <td style="text-align:center">any</td>
 %       </tr>
 %   </table>
 % </html>
@@ -183,35 +154,22 @@ e_vec =
 %           <td style="text-align:center"><b>Units</b></td>
 %       </tr>
 %       <tr>
-%           <td style="text-align:center"><TT>e_vec</TT></td>
-%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[\boldsymbol{e}]_{\mathcal{I}}" title="" /></td>
-%           <td>eccentricity vector expressed in an inertial frame</td>
+%           <td style="text-align:center"><TT>omega_I2R_I</TT></td>
+%           <td style="text-align:center"><img src="https://latex.codecogs.com/svg.latex?\inline&space;[{}^{\mathcal{R}/\mathcal{I}}\boldsymbol{\omega}]_{\mathcal{I}}" title="" /></td>
+%           <td>angular velocity of frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{R}"/> with respect to frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/>, expressed in frame <img src="https://latex.codecogs.com/svg.latex?\inline&space;\mathcal{I}"/></td>
 %           <td style="text-align:center">3×1<BR>double</td>
-%           <td style="text-align:center">-</td>
+%           <td style="text-align:center">rad/s</td>
 %       </tr>
 %   </table>
 % </html>
-%% Example
-% Consider the following position and ECI velocity, both expressed in the
-% ECI frame.
-%
-% $$[\mathbf{r}]_{\mathrm{eci}}=\pmatrix{5053 \cr -2276 \cr -5182}\;\mathrm{m}$$
-%
-% $$\left[{}^{\mathrm{eci}}\mathbf{v}\right]_{\mathrm{eci}}=\pmatrix{113286 \cr 181566 \cr 48281}\;\mathrm{m/s}$$
-%
-% Defining these quantities in MATLAB,
-r = [ 5053;
-     -2276;
-     -5182];
-v = [113286;
-     181566;
-     48281];
-%%
-% Additionally, let the standard gravitational parameter be
-% $\mu=3.986004418\times10^{14}\;\mathrm{m^{3}/s^{2}}$.
-mu = 3.986004418e14;
-%%
-% Computing the eccentricity vector expressed in the ECI frame,
-e_vec = rv2e_vec(r,v,mu)
+%% Note
+% * |r| and |v| can be input in any units, but they _must_ be consistent.
+% * The rotating frame, $R$, is defined such that the unit vector of
+% $[\mathbf{r}]_{I}$ defines the 1st axis, the unit vector of 
+% $[\mathbf{r}]_{I}\times[\mathbf{v}]_{I}$ defines the 3rd axis, and the
+% 2nd axis completes the right-handed triad.
+% * The 1st and 2nd axes of the rotating frame, $R$, define the
+% instantaneous plane of motion in which both $[\mathbf{r}]_{I}$ and 
+% $[\mathbf{v}]_{I}$ lie.
 ##### SOURCE END #####
 --></body></html>
