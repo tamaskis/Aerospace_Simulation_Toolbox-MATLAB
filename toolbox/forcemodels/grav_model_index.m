@@ -1,12 +1,11 @@
 %==========================================================================
 %
-% gravity_coeff_index  Gravity coefficient index for a given degree and
-% order.
+% grav_model_index  Gravitational model index for a given degree and order.
 %
-%   l = gravity_coeff_index(n,m)
+%   l = grav_model_index(n,m)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-07-12
+% Last Update: 2023-12-25
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -27,9 +26,9 @@
 % -------
 % OUTPUT:
 % -------
-%   l       - (1×1 double) gravity coefficient index
+%   l       - (1×1 double) gravitational model index
 %
 %==========================================================================
-function l = gravity_coeff_index(n,m)
+function l = grav_model_index(n,m)
     l = (n*(n+1)/2)+m+1;
 end

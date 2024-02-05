@@ -1,11 +1,11 @@
 %==========================================================================
 %
-% ecef2enu_matrix  Rotation matrix from Earth-centered Earth-fixed (ECEF) 
-% frame to East, North, Up (ENU) frame.
+% enu2ecef_matrix  Rotation matrix from East, North, Up (ENU) frame to 
+% Earth-centered Earth-fixed (ECEF) frame.
 %
-%   R_ecef2enu = ecef2enu(r0_ecef)
+%   R_enu2ecef = enu2ecef(r0_ecef)
 %
-% See also enu2ecef_matrix.
+% See also ecef2enu_matrix.
 %
 % Author: Tamas Kis
 % Last Update: 2022-02-26
@@ -23,24 +23,17 @@
 % ------
 % INPUT:
 % ------
-%   r0_ecef     - (1×1 double) origin of ENU frame resolved in ECEF frame
+%   lat0        - (1×1 double) planetodetic latitude of ENU frame origin
+%                 [°]
+%   lon0        - (1×1 double) planetodetic longitude of ENU frame origin
+%                 [°]
 %
 % -------
 % OUTPUT:
 % -------
-%   R_ecef2enu  - (3×3 double) rotation matrix (ECEF --> ENU)
+%   R_enu2ecef  - (3×3 double) rotation matrix from ENU frame to PCPF frame
 %
 %==========================================================================
-function R_ecef2enu = ecef2enu_matrix(r0_ecef)
-    
-    % geodetic latitude and longitude of ENU frame's origin [°]
-    [lat0,lon0] = ecef2geod(r0_ecef);
-    
-    % convert geodetic latitude and longitude to radians
-    lat0 = deg2rad(lat0);
-    lon0 = deg2rad(lon0);
-    
-    % rotation matrix (ECEF --> ENU)
-    R_ecef2enu = rot1(pi/2-lat0)*rot3(pi/2+lon0);
-    
+function R_enu2ecef = rot_enu2pcpf(lat0,lon0)
+    R_enu2ecef = rot3(-lon0-pi/2)*rot1(lat0-pi/2);
 end

@@ -20,7 +20,7 @@
 clear; clc; close all;
 
 % adds path to testing scripts
-addpath('testsuites')
+addpath('test_suites')
 
 % adds path to toolbox
 addpath(genpath('../toolbox'));
@@ -30,7 +30,7 @@ addpath(genpath('../toolbox'));
 %% RUNS ALL TESTS
 
 %TEST_angles;
-%TEST_gravity;
+%TEST_gravitation;
 TEST_kinematics;
 %TEST_orbital_mechanics;
 %TEST_rotations;

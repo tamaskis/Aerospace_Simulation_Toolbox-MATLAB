@@ -45,7 +45,7 @@ alpha_B2C_C = [1;2;3];
 R_B2C = [ 0.3536   0.6124  -0.7071
          -0.4928   0.7645   0.4156
           0.7951   0.2015   0.5721];
-test_suite.add_test(TestEqual(add_ang_acc(omega_A2B_B,alpha_A2B_B,omega_B2C_C,alpha_B2C_C,R_B2C),[-1.5344;31.6318;-9.7037],'add_ang_acc test 2'));
+test_suite.add_test(TestEqual(add_ang_acc(omega_A2B_B,alpha_A2B_B,omega_B2C_C,alpha_B2C_C,R_B2C),[-1.5344;31.6318;-9.7037],'add_ang_acc test 2',15));
 
 
 
@@ -69,7 +69,7 @@ omega_B2C_C = [4;5;6];
 R_B2C = [ 0.3536   0.6124  -0.7071
          -0.4928   0.7645   0.4156
           0.7951   0.2015   0.5721];
-test_suite.add_test(TestEqual(add_ang_vel(omega_A2B_B,omega_B2C_C,R_B2C),[3.4571;7.2830;8.9144],'add_ang_vel test 3'));
+test_suite.add_test(TestEqual(add_ang_vel(omega_A2B_B,omega_B2C_C,R_B2C),[3.4571;7.2830;8.9144],'add_ang_vel test 3',15));
 
 
 

@@ -2,7 +2,7 @@
 % Astrodynamics Toolbox
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2023-06-26
+% Last Update: 2024-01-02
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -16,39 +16,21 @@
 % Generated data format.
 % ----------------------
 %
-% This script produces "EGM2008.mat" which stores the 1×1 struct "EGM2008"
-% with the following fields:
-%   • C_norm - (181×181 double) normalized gravitational coefficients
-%   • S_norm - (181×181 double) normalized gravitational coefficients
+% This script produces "EGM2008.mat" which stores the 1×1 struct
+% "EGM2008" with the following fields:
+%   mu          - (1×1 double) standard gravitational parameter [m³/s²]
+%   R           - (1×1 double) reference radius [m]
+%   tide_system - (char array) tide system ('tide-free' or 'zero-tide')
+%   N_max       - (1×1 double) maximum possible degree
+%   C           - (L×1 double) unnormalized coefficient vector
+%   S           - (L×1 double) unnormalized coefficient vector
+%   C_norm      - (L×1 double) normalized coefficient vector
+%   S_norm      - (L×1 double) normalized coefficient vector
+%   dC_perm     - (1×1 double) permanent tide offset
 %
-% ----------------
-% Raw data format.
-% ----------------
+% Note that
 %
-%   --------------------------------
-%    n    m   |  C_norm      S_norm
-%   --------------------------------
-%    2    0   |   C(2,0)     S(2,0)
-%    2    1   |   C(2,1)     S(2,1)
-%    2    2   |   C(2,2)     S(2,2)
-%    3    0   |   C(3,0)     S(3,0)
-%    3    1   |   C(3,1)     S(3,1)
-%    3    2   |   C(3,2)     S(3,2)
-%    3    3   |   C(3,3)     S(3,3)
-%    :    :   |    :           :
-%    N   N-1  |  C(N,N-1)   S(N,N-1)
-%    N    N   |   C(N,N)     S(N,N)
-%   ---------------------------------
-%
-% Note that the raw data is missing the first three rows:
-%
-%   --------------------------------
-%    n    m   |  C_norm      S_norm
-%   --------------------------------
-%    0    0   |     1           0
-%    1    0   |     0           0
-%    1    1   |     0           0
-%   --------------------------------
+%   L = (Nₘₐₓ+1)(Nₘₐₓ+2)/2 where Nₘₐₓ is the maximum possible degree.
 
 
 
@@ -59,30 +41,75 @@ clear; clc; close all;
 
 
 
-%% NORMALIZED GRAVITATIONAL COEFFICIENTS
+%% MAXIMUM DEGREE FOR TRUNCATING ORIGINAL DATA FILES
+% We do this because the original data file stores coefficients up to
+% maximum degree/order 2190, which takes up a lot of memory.
 
-% reads in raw data as a matrix
-T = readmatrix('../rawdata/EGM2008_to2190_TideFree');
+N = 360;
 
-% keeps only those columns that store the relevant data, and orders them as
-% [n,m,C,S]
-T = T(:,1:4);
 
-% matrix storing first three rows
-A = [0  0  1  0;
-     1  0  0  0;
-     1  1  0  0];
 
-% adds first three rows to coefficient table
-T = [A;T];
+%% USING GRAVITY COEFFICIENT FILE
 
-% converts coefficient table to coefficient matrices, keeping up to
-% degree/order 180
-[C_norm,S_norm] = coefftab2mat(T,180);
+% reads GCF file
+[mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(...
+    '../../../rawdata/EGM2008.gfc',N);
 
-% stores the normalized coefficients in a structure
+% stores data in structure
+EGM2008.mu = mu;
+EGM2008.R = R;
+EGM2008.tide_system = tide_system;
+EGM2008.N_max = N_max;
+EGM2008.C = C;
+EGM2008.S = S;
 EGM2008.C_norm = C_norm;
 EGM2008.S_norm = S_norm;
 
-% saves GGM05S as a .mat file
+
+
+%% USING ORIGINAL FILES
+
+% % load in the gravitational data file as a matrix (for EGM2008, the data
+% % file only contains tabular data)
+% T = readmatrix('../../../rawdata/EGM2008_to2190_TideFree');
+% 
+% % extracts the normalized coefficient vectors
+% C_norm = T(:,3);
+% S_norm = T(:,4);
+% 
+% % adds missing rows
+% C_norm = [1;0;0;C_norm];
+% S_norm = [0;0;0;S_norm];
+% 
+% % gravitational model length
+% L = grav_model_length(N);
+% 
+% % limit to degree/order 360
+% C_norm = C_norm(1:L);
+% S_norm = S_norm(1:L);
+% 
+% % denormalize the coefficients
+% [C,S] = denormalize_coeffs(C_norm,S_norm);
+% 
+% % stores data in a structure
+% EGM2008.mu = 3986004.415e8;
+% EGM2008.R = 6378136.3;
+% EGM2008.tide_system = 'tide-free';
+% EGM2008.N_max = N;
+% EGM2008.C = C;
+% EGM2008.S = S;
+% EGM2008.C_norm = C_norm;
+% EGM2008.S_norm = S_norm;
+
+
+
+%% ADDS PERMANENT TIDE OFFSET
+
+EGM2008.dC_perm = -4.1736e-9;
+
+
+
+%% SAVING .MAT FILE
+
+% saves EGM2008 as a .mat file
 save('../datafiles/EGM2008.mat','EGM2008');
