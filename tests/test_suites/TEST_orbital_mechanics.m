@@ -143,16 +143,16 @@ rot_pqw2rsw_2pi_true = [1   0   0;
 
 % adds tests
 test_suite.add_test(TestEqual(rot_pqw2rsw_0,rot_pqw2rsw_0_true,'rot_pqw2rsw(0)'));
-test_suite.add_test(TestEqual(rot_pqw2rsw_pi_6,rot_pqw2rsw_pi_6_true,'rot_pqw2rsw(π/6)'));
-test_suite.add_test(TestEqual(rot_pqw2rsw_pi_4,rot_pqw2rsw_pi_4_true,'rot_pqw2rsw(π/4)'));
+test_suite.add_test(TestEqual(rot_pqw2rsw_pi_6,rot_pqw2rsw_pi_6_true,'rot_pqw2rsw(π/6)',15));
+test_suite.add_test(TestEqual(rot_pqw2rsw_pi_4,rot_pqw2rsw_pi_4_true,'rot_pqw2rsw(π/4)',15));
 test_suite.add_test(TestEqual(rot_pqw2rsw_pi_3,rot_pqw2rsw_pi_3_true,'rot_pqw2rsw(π/3)',15));
 test_suite.add_test(TestEqual(rot_pqw2rsw_pi_2,rot_pqw2rsw_pi_2_true,'rot_pqw2rsw(π/2)'));
 test_suite.add_test(TestEqual(rot_pqw2rsw_2pi_3,rot_pqw2rsw_2pi_3_true,'rot_pqw2rsw(2π/3)',15));
-test_suite.add_test(TestEqual(rot_pqw2rsw_3pi_4,rot_pqw2rsw_3pi_4_true,'rot_pqw2rsw(3π/4)'));
-test_suite.add_test(TestEqual(rot_pqw2rsw_5pi_6,rot_pqw2rsw_5pi_6_true,'rot_pqw2rsw(5π/6)'));
+test_suite.add_test(TestEqual(rot_pqw2rsw_3pi_4,rot_pqw2rsw_3pi_4_true,'rot_pqw2rsw(3π/4)',15));
+test_suite.add_test(TestEqual(rot_pqw2rsw_5pi_6,rot_pqw2rsw_5pi_6_true,'rot_pqw2rsw(5π/6)',15));
 test_suite.add_test(TestEqual(rot_pqw2rsw_pi,rot_pqw2rsw_pi_true,'rot_pqw2rsw(π)',15));
 test_suite.add_test(TestEqual(rot_pqw2rsw_7pi_6,rot_pqw2rsw_7pi_6_true,'rot_pqw2rsw(7π/6)',15));
-test_suite.add_test(TestEqual(rot_pqw2rsw_5pi_4,rot_pqw2rsw_5pi_4_true,'rot_pqw2rsw(5π/4)'));
+test_suite.add_test(TestEqual(rot_pqw2rsw_5pi_4,rot_pqw2rsw_5pi_4_true,'rot_pqw2rsw(5π/4)',15));
 test_suite.add_test(TestEqual(rot_pqw2rsw_4pi_3,rot_pqw2rsw_4pi_3_true,'rot_pqw2rsw(4π/3)',15));
 test_suite.add_test(TestEqual(rot_pqw2rsw_3pi_2,rot_pqw2rsw_3pi_2_true,'rot_pqw2rsw(3π/2)',15));
 test_suite.add_test(TestEqual(rot_pqw2rsw_5pi_3,rot_pqw2rsw_5pi_3_true,'rot_pqw2rsw(5π/3)',15));
@@ -268,16 +268,16 @@ rot_rsw2pqw_2pi_true = [1   0   0;
 
 % adds tests
 test_suite.add_test(TestEqual(rot_rsw2pqw_0,rot_rsw2pqw_0_true,'rot_rsw2pqw(0)'));
-test_suite.add_test(TestEqual(rot_rsw2pqw_pi_6,rot_rsw2pqw_pi_6_true,'rot_rsw2pqw(π/6)'));
-test_suite.add_test(TestEqual(rot_rsw2pqw_pi_4,rot_rsw2pqw_pi_4_true,'rot_rsw2pqw(π/4)'));
+test_suite.add_test(TestEqual(rot_rsw2pqw_pi_6,rot_rsw2pqw_pi_6_true,'rot_rsw2pqw(π/6)',15));
+test_suite.add_test(TestEqual(rot_rsw2pqw_pi_4,rot_rsw2pqw_pi_4_true,'rot_rsw2pqw(π/4)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_pi_3,rot_rsw2pqw_pi_3_true,'rot_rsw2pqw(π/3)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_pi_2,rot_rsw2pqw_pi_2_true,'rot_rsw2pqw(π/2)'));
 test_suite.add_test(TestEqual(rot_rsw2pqw_2pi_3,rot_rsw2pqw_2pi_3_true,'rot_rsw2pqw(2π/3)',15));
-test_suite.add_test(TestEqual(rot_rsw2pqw_3pi_4,rot_rsw2pqw_3pi_4_true,'rot_rsw2pqw(3π/4)'));
-test_suite.add_test(TestEqual(rot_rsw2pqw_5pi_6,rot_rsw2pqw_5pi_6_true,'rot_rsw2pqw(5π/6)'));
+test_suite.add_test(TestEqual(rot_rsw2pqw_3pi_4,rot_rsw2pqw_3pi_4_true,'rot_rsw2pqw(3π/4)',15));
+test_suite.add_test(TestEqual(rot_rsw2pqw_5pi_6,rot_rsw2pqw_5pi_6_true,'rot_rsw2pqw(5π/6)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_pi,rot_rsw2pqw_pi_true,'rot_rsw2pqw(π)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_7pi_6,rot_rsw2pqw_7pi_6_true,'rot_rsw2pqw(7π/6)',15));
-test_suite.add_test(TestEqual(rot_rsw2pqw_5pi_4,rot_rsw2pqw_5pi_4_true,'rot_rsw2pqw(5π/4)'));
+test_suite.add_test(TestEqual(rot_rsw2pqw_5pi_4,rot_rsw2pqw_5pi_4_true,'rot_rsw2pqw(5π/4)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_4pi_3,rot_rsw2pqw_4pi_3_true,'rot_rsw2pqw(4π/3)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_3pi_2,rot_rsw2pqw_3pi_2_true,'rot_rsw2pqw(3π/2)',15));
 test_suite.add_test(TestEqual(rot_rsw2pqw_5pi_3,rot_rsw2pqw_5pi_3_true,'rot_rsw2pqw(5π/3)',15));

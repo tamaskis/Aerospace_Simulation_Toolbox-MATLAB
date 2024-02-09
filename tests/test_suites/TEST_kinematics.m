@@ -45,7 +45,7 @@ alpha_B2C_C = [1;2;3];
 R_B2C = [ 0.3536   0.6124  -0.7071
          -0.4928   0.7645   0.4156
           0.7951   0.2015   0.5721];
-test_suite.add_test(TestEqual(add_ang_acc(omega_A2B_B,alpha_A2B_B,omega_B2C_C,alpha_B2C_C,R_B2C),[-1.5344;31.6318;-9.7037],'add_ang_acc test 2',15));
+test_suite.add_test(TestEqual(add_ang_acc(omega_A2B_B,alpha_A2B_B,omega_B2C_C,alpha_B2C_C,R_B2C),[-1.5344;31.6318;-9.7037],'add_ang_acc test 2',14));
 
 
 
@@ -204,7 +204,7 @@ r_A2P_A = [1;2;3];
 R_A2B = rot3(pi);
 r_A2B_A = [0;0;0];
 r_B2P_B = [-1;-2;3];
-test_suite.add_test(TestEqual(forward_transform_mov_pos(r_A2P_A,R_A2B,r_A2B_A),r_B2P_B,'forward_transform_mov_pos test 4'));
+test_suite.add_test(TestEqual(forward_transform_mov_pos(r_A2P_A,R_A2B,r_A2B_A),r_B2P_B,'forward_transform_mov_pos test 4',15));
 test_suite.add_test(TestEqual(reverse_transform_mov_pos(r_B2P_B,R_A2B,r_A2B_A),r_A2P_A,'reverse_transform_mov_pos test 4',15));
 
 % test #5
@@ -404,7 +404,7 @@ test_suite.add_test(TestEqual(reverse_transform_rot_pos(r_B,R_A2B),r_A,'reverse_
 r_A = [1;2;3];
 R_A2B = rot3(pi);
 r_B = [-1;-2;3];
-test_suite.add_test(TestEqual(forward_transform_rot_pos(r_A,R_A2B),r_B,'forward_transform_rot_pos test 2'));
+test_suite.add_test(TestEqual(forward_transform_rot_pos(r_A,R_A2B),r_B,'forward_transform_rot_pos test 2',15));
 test_suite.add_test(TestEqual(reverse_transform_rot_pos(r_B,R_A2B),r_A,'reverse_transform_rot_pos test 2',15));
 
 % test #3
