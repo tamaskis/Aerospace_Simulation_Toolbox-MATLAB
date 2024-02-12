@@ -94,9 +94,9 @@ test_suite.add_test(TestEqual(N(grav_model_index(1000,100)),7.11140241518136e-29
 
 %% grav_accel
 
-% ------------------------------
-% EGM2008 tests - GeographicLib.
-% ------------------------------
+% --------------
+% EGM2008 tests.
+% --------------
 
 % loads gravitational model
 EGM2008 = load_EGM2008;
@@ -107,73 +107,94 @@ R = EGM2008.R;
 C = EGM2008.C;
 S = EGM2008.S;
 
-% EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (10,10)
+% Test Case #1: EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (10,10)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40619073945194;-8.5014299770321;-4.64141141193325];
 g_exp_geo = [-1.40619073945194;-8.50142997703209;-4.64141141193325];
 g_act = grav_accel(r_ecef,mu,R,C,S,10,10);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #1',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #1 vs. GeographicLib',13));
+g_mag_exp = 9.78746054627678;
+g_mag_exp_icgem = 9.787460546277;
+g_mag_act = norm(g_act);
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #1 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #1 - vector (vs. GeographicLib)',13));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp,'grav_accel EGM2008 test #1 - scalar',14));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp_icgem,'grav_accel EGM2008 test #1 - scalar (vs. ICGEM)',12));
 
-% EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (40,40)
+% Test Case #2: EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (40,40)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40628962068093;-8.50140471638599;-4.64078257142567];
 g_exp_geo = [-1.40628962068093;-8.50140471638596;-4.64078257142567];
 g_act = grav_accel(r_ecef,mu,R,C,S,40,40);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #2',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #2 vs. GeographicLib',13));
+g_mag_exp = 9.78715461839002;
+g_mag_exp_icgem = 9.787154618390;
+g_mag_act = norm(g_act);
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #2 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #2 - vector (vs. GeographicLib)',13));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp,'grav_accel EGM2008 test #2 - scalar',14));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp_icgem,'grav_accel EGM2008 test #2 - scalar (vs. ICGEM)',13));
 
-% EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (40,10)
+% Test Case #3: EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (40,10)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40622816377887;-8.50141193972164;-4.64104122564417];
 g_exp_geo = [-1.40622816377887;-8.50141193972162;-4.64104122564417];
 g_act = grav_accel(r_ecef,mu,R,C,S,40,10);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #3',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #3 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #3 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #3 - vector (vs. GeographicLib)',13));
 
-% EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (120,120)
+% Test Case #4: EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (120,120)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40651132644688;-8.50064118963623;-4.63994260559607];
 g_exp_geo = [-1.40651132644688;-8.50064118963615;-4.63994260559605];
 g_act = grav_accel(r_ecef,mu,R,C,S,120,120);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #4',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #4 vs. GeographicLib',13));
+g_mag_exp = 9.78612498027636;
+g_mag_exp_icgem = 9.786124980276;
+g_mag_act = norm(g_act);
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #4 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #4 - vector (vs. GeographicLib)',13));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp,'grav_accel EGM2008 test #4 - scalar',14));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp_icgem,'grav_accel EGM2008 test #4 - scalar (vs. ICGEM)',12));
 
-% EGM2008, tide-free, (lat,lon,alt) = (89.9999°,0°,10000 m), (N,M) = (120,120)
+% Test Case #5: EGM2008, tide-free, (lat,lon,alt) = (89.9999°,0°,10000 m), (N,M) = (120,120)
 r_ecef = [11.1868512488;0.0000000000;6366752.3142354172];
 g_exp = [0.000110167378093474;-3.15305636293367e-5;-9.8015134741633];
 g_exp_geo = [0.000110167378093823;-3.15305636293e-5;-9.8015134741633];
 g_act = grav_accel(r_ecef,mu,R,C,S,120,120);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #5',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #5 vs. GeographicLib',13));
+g_mag_exp = 9.80151347483315;
+g_mag_exp_icgem = 9.801513474833;
+g_mag_act = norm(g_act);
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #5 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #5 - vector (vs. GeographicLib)',13));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp,'grav_accel EGM2008 test #5 - scalar',16));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp_icgem,'grav_accel EGM2008 test #5 - scalar (vs. ICGEM)',12));
 
-% EGM2008, tide-free, (lat,lon,alt) = (90°,0°,10000 m), (N,M) = (120,120)
+% Test Case #6: EGM2008, tide-free, (lat,lon,alt) = (90°,0°,10000 m), (N,M) = (120,120)
 r_ecef = [0.0000000000;0.0000000000;6366752.3142451793];
 g_exp = [0.000127335598760036;-3.15305796924751e-5;-9.80151347850754];
 g_exp_geo = [0.0001273355987601;-3.15305796925e-5;-9.80151347850754];
 g_act = grav_accel(r_ecef,mu,R,C,S,120,120);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #6',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #6 vs. GeographicLib',14));
+g_mag_exp = 9.80151347938539;
+g_mag_exp_icgem = 9.801513478508;
+g_mag_act = norm(g_act);
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #6 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #6 - vector (vs. GeographicLib)',14));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp,'grav_accel EGM2008 test #6 - scalar',14));
+test_suite.add_test(TestEqual(g_mag_act,g_mag_exp_icgem,'grav_accel EGM2008 test #6 - scalar (vs. ICGEM)',9));
 
-% EGM2008, tide-free, (lat,lon,alt) = (85°,-45°,5 m), (N,M) = (80,65)
+% Test Case #7: EGM2008, tide-free, (lat,lon,alt) = (85°,-45°,5 m), (N,M) = (80,65)
 r_ecef = [394387.0359271481;-394387.0359271481;6332405.8449596651];
 g_exp = [-0.607868793518749;0.608020342523899;-9.79454638520474];
 g_exp_geo = [-0.607868793518748;0.608020342523899;-9.79454638520476];
 g_act = grav_accel(r_ecef,mu,R,C,S,80,65);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #7',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #7 vs. GeographicLib',13));
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #7 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #7 - vector (vs. GeographicLib)',13));
 
-% EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (2,0)
+% Test Case #8: EGM2008, tide-free, (lat,lon,alt) = (28.3922°,80.6077°,10000 m), (N,M) = (2,0)
 r_ecef = [917796.3478623135;5548585.9265594641;3019567.1751323733];
 g_exp = [-1.40623496535577;-8.50146718973369;-4.6415442471915];
 g_exp_geo = [-1.40623496535577;-8.50146718973369;-4.6415442471915];
 g_act = grav_accel(r_ecef,mu,R,C,S,2,0);
-test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #8',14));
-test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #8 vs. GeographicLib',14));
-
-% ------------------------------
-% EGM2008 tests - GeographicLib.
-% ------------------------------
+test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #8 - vector',14));
+test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #8 - vector (vs. GeographicLib)',14));
 
 % ------------
 % GEM10 tests.
