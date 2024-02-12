@@ -94,9 +94,9 @@ test_suite.add_test(TestEqual(N(grav_model_index(1000,100)),7.11140241518136e-29
 
 %% grav_accel
 
-% --------------
-% EGM2008 tests.
-% --------------
+% ------------------------
+% EGM2008 tide-free tests.
+% ------------------------
 
 % loads gravitational model
 EGM2008 = load_EGM2008;
@@ -195,6 +195,10 @@ g_exp_geo = [-1.40623496535577;-8.50146718973369;-4.6415442471915];
 g_act = grav_accel(r_ecef,mu,R,C,S,2,0);
 test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel EGM2008 test #8 - vector',14));
 test_suite.add_test(TestEqual(g_act,g_exp_geo,'grav_accel EGM2008 test #8 - vector (vs. GeographicLib)',14));
+
+% ------------------------
+% EGM2008 zero-tide tests.
+% ------------------------
 
 % ------------
 % GEM10 tests.

@@ -25,7 +25,8 @@
 %   r_pcpf  - (3×1 double) position expressed in planet-centered
 %             planet-fixed (PCPF) frame [m]
 %   R       - (1×1 double) reference radius [m]
-%   N       - (1×1 double) maximum order/degree of gravity model
+%   N       - (1×1 double) maximum degree
+%   M       - (1×1 double) maximum order
 %
 % -------
 % OUTPUT:
@@ -37,11 +38,12 @@
 % NOTE:
 % -----
 %   --> TODO: L3
+%   --> TODO: max order
 %
 %==========================================================================
 function [V,W] = legendre_recursion(r_pcpf,R,N)
     
-    % magnitude of pcpf position squared [m²]
+    % magnitude of PCPF position squared [m²]
     r_sqr = idot(r_pcpf,r_pcpf);
     
     % distance from center of the Earth [m]
@@ -81,9 +83,12 @@ function [V,W] = legendre_recursion(r_pcpf,R,N)
         V(grav_model_index(n,0)) = (z*(2*n-1)*V(grav_model_index(n-1,...
             0))-a*(n-1)*V(grav_model_index(n-2,0)))/n;
     end
+
+    % TODO truncate order
+    m_end = min(N+2,M);
     
     % tesseral and sectorial terms
-    for m = 1:(N+2)
+    for m = 1:m_end
         
         % gravitational model indices
         l2 = grav_model_index(m-1,m-1);
@@ -94,7 +99,7 @@ function [V,W] = legendre_recursion(r_pcpf,R,N)
         W(l3) = (2*m-1)*(x*W(l2)+y*V(l2));
         
         % tesseral terms (n > m)
-        for n = (m+1):(N+2)
+        for n = (m+1):m_end
             
             % gravitational model indices
             l4 = grav_model_index(n-1,m);
