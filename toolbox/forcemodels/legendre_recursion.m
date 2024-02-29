@@ -4,7 +4,7 @@
 % Legendre polynomials required for evaluating the gravitational 
 % acceleration.
 %
-%   [V,W] = legendre_recursion(r_pcpf,R,N)
+%   [V,W] = legendre_recursion(r_pcpf,R,N,M)
 %
 % Copyright © 2022 Tamas Kis
 % Last Update: 2024-02-28
@@ -31,13 +31,13 @@
 % -------
 % OUTPUT:
 % -------
-%   V       - (L₁×1 double) Legendre polynomial vector
-%   W       - (L₁×1 double) Legendre polynomial vector
+%   V       - (L×1 double) Legendre polynomial vector
+%   W       - (L×1 double) Legendre polynomial vector
 %
 % -----
 % NOTE:
 % -----
-%   • L₁ = (N+2)(N+3)/2
+%   • L = (N+1)(N+2)/2
 %
 %==========================================================================
 function [V,W] = legendre_recursion(r_pcpf,R,N,M)
@@ -62,11 +62,11 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
     z = R*rZ/r_sqr;
     
     % gravitational model length corresponding to a maximum degree of N+1
-    L1 = (N+2)*(N+3)/2;
+    L = (N+1)*(N+2)/2;
     
     % initialize V and W
-    V = zeros(L1,1);
-    W = zeros(L1,1);
+    V = zeros(L,1);
+    W = zeros(L,1);
     
     % gravitional model index for (n,m) = (0,0)
     l1 = grav_model_index(0,0);
@@ -88,11 +88,8 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
         V(l3) = (z*(2*n-1)*V(l2)-a*(n-1)*V(l1))/n;
     end
     
-    % truncation corresponding to the specified maximum order
-    m_end = min(N,M);
-    
     % tesseral and sectorial terms
-    for m = 1:m_end
+    for m = 1:M
         
         % gravitational model indices
         l1 = grav_model_index(m-1,m-1);
