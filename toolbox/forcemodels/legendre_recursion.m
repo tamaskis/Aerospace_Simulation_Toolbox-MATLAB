@@ -80,8 +80,8 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
     % second zonal term (n = 1, m = 0)
     V(l2) = z*V(l1);
     
-    % remaining zonal terms (2 ≤ n ≤ N+1, m = 0)
-    for n = 2:(N+1)
+    % remaining zonal terms (2 ≤ n ≤ N, m = 0)
+    for n = 2:N
         l1 = grav_model_index(n-2,0);
         l2 = grav_model_index(n-1,0);
         l3 = grav_model_index(n,0);
@@ -89,7 +89,7 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
     end
     
     % truncation corresponding to the specified maximum order
-    m_end = min(N+1,M+1);
+    m_end = min(N,M);
     
     % tesseral and sectorial terms
     for m = 1:m_end
@@ -108,7 +108,7 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
         W(l3) = z*(2*m+1)*W(l2);
         
         % tesseral terms (for n > m + 1)
-        for n = (m+2):(N+1)
+        for n = (m+2):N
             
             % gravitational model indices
             l1 = grav_model_index(n-2,m);

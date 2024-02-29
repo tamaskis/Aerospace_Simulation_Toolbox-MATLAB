@@ -41,7 +41,7 @@
 function [g_pcpf,V,W] = grav_accel(r_pcpf,mu,R,C,S,N,M)
     
     % recursively computess the Legendre coefficients
-    [V,W] = legendre_recursion(r_pcpf,R,N,M);
+    [V,W] = legendre_recursion(r_pcpf,R,N+1,M+1);
     
     % auxiliary parameter [m/s²]
     a = mu/(2*R^2);
