@@ -7,7 +7,7 @@
 %   [V,W] = legendre_recursion(r_pcpf,R,N)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2024-02-28
+% Last Update: 2023-12-28
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
@@ -56,7 +56,7 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
     rY = r_pcpf(2);
     rZ = r_pcpf(3);
     
-    % "normalized" PCPF position components
+    % normalized PCPF position components
     x = R*rX/r_sqr;
     y = R*rY/r_sqr;
     z = R*rZ/r_sqr;
@@ -97,27 +97,27 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
         % gravitational model indices
         l1 = grav_model_index(m-1,m-1);
         l2 = grav_model_index(m,m);
-        l3 = grav_model_index(m+1,m);
         
         % sectorial terms (n = m)
         V(l2) = (2*m-1)*(x*V(l1)-y*W(l1));
         W(l2) = (2*m-1)*(x*W(l1)+y*V(l1));
         
-        % tesseral terms (for n = m + 1)
-        V(l3) = z*(2*m+1)*V(l2);
-        W(l3) = z*(2*m+1)*W(l2);
-        
-        % tesseral terms (for n > m + 1)
-        for n = (m+2):(N+1)
+        % tesseral terms (n > m)
+        for n = (m+1):(N+1)
             
             % gravitational model indices
-            l1 = grav_model_index(n-2,m);
-            l2 = grav_model_index(n-1,m);
-            l3 = grav_model_index(n,m);
+            l3 = grav_model_index(n-2,m);
+            l4 = grav_model_index(n-1,m);
+            l5 = grav_model_index(n,m);
             
             % coefficients
-            V(l3) = (z*(2*n-1)*V(l2)-a*(n+m-1)*V(l1))/(n-m);
-            W(l3) = (z*(2*n-1)*W(l2)-a*(n+m-1)*W(l1))/(n-m);
+            if (n > m+1)
+                V(l5) = (z*(2*n-1)*V(l4)-a*(n+m-1)*V(l3))/(n-m);
+                W(l5) = (z*(2*n-1)*W(l4)-a*(n+m-1)*W(l3))/(n-m);
+            else
+                V(l5) = (z*(2*n-1)*V(l4))/(n-m);
+                W(l5) = (z*(2*n-1)*W(l4))/(n-m);
+            end
             
         end
         

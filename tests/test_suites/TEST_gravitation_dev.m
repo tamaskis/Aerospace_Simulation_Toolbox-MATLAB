@@ -23,4 +23,9 @@ clear; close all;
 
 %% DEV
 
-read_gfc('../../rawdata/GEM10.gfc');
+% read_gfc('../../rawdata/GEM10.gfc');
+
+
+[V,W] = legendre_recursion([10000000;20000000;30000000],6378136.3,4,4);
+length(V)
+length(W)

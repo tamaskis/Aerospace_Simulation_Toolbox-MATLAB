@@ -262,7 +262,10 @@ test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel GEM10 test #2',14));
 %% legendre_recursion
 
 % executes legendre_recursion function
-[V,W] = legendre_recursion([10000000;20000000;30000000],6378136.3,4);
+[V,W] = legendre_recursion([10000000;20000000;30000000],6378136.3,4,4);
+
+% TODO: tests for truncated version
+% TODO: test lengths
 
 % V coefficients
 test_suite.add_test(TestEqual(V(grav_model_index(0,0)),0.170462862862472,'legendre_recursion, V(0,0)',15));
