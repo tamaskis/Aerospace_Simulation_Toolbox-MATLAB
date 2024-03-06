@@ -226,36 +226,44 @@ g_act = grav_accel(r_ecef,mu,R,C,S,5,5);
 test_suite.add_test(TestEqual(g_act,g_exp,'grav_accel GEM10 test #2',14));
 
 
-% echo 29.6833313596959 8.31473347702043 2000.66675581597 | Gravity -n egm2008 -N 2 -M 0 -p 16
+% TODO
+% echo 29.6833313596959 8.31473347702043 2000.66675581597 | Gravity -n egm2008 -N 2 -M 0 -p 16 
 
-%% TODO
+%% denormalize_coeffs
 
-% % relative error tolerance TODO
-% err = 1e-3;
-% 
-% % TODO
-% % These test cases are adapted from Vallado, "Fundamentals of Astrodynamics 
-% % and Applications", 4th Ed. (pp. 547, 1040). Note that they use a 
-% % different gravity model, hence the error tolerance defined above.
-% 
-% % load gravity coefficients
-% GGM05S = load_GGM05S;
-% C_norm = GGM05S.C_norm;
-% S_norm = GGM05S.S_norm;
-% 
-% % de-normalized gravity coefficients
-% [C,S] = denormalize_coeffs(C_norm,S_norm);
-% 
-% % negative of second zonal harmonic should equal J2
-% test_suite.add_test(TestEqual(-C(grav_model_index(2,0)),0.00108262617385222),'TODO C(2,0)');
+% TODO
+% These test cases are adapted from Vallado, "Fundamentals of Astrodynamics 
+% and Applications", 4th Ed. (pp. 547, 1040). Note that they use a 
+% different gravity model, hence the error tolerance defined above.
 
-% % n = 4, m = 1
-% test_suite.add_test(TestEqual(C(4,1),-5.08643560439584e-7,err),'TODO C(4,1)');
-% test_suite.add_test(TestEqual(S(4,1),-4.49265432143808e-7,err),'TODO S(4,1)');
-% 
-% % n = 41, m = 4
-% test_suite.add_test(TestEqual(C(41,4),-7.19967819600023e-15,err),'TODO C(41,4)');
-% test_suite.add_test(TestEqual(S(41,4),1.63027868851955e-14,err),'TODO S(41,4)');
+% load gravity coefficients
+EGM2008 = load_EGM2008;
+C_norm = EGM2008.C_norm;
+S_norm = EGM2008.S_norm;
+
+% de-normalized gravity coefficients
+[C,S] = denormalize_coeffs(C_norm,S_norm);
+
+% negative of second zonal harmonic should equal J2 TODO
+% TODO add separate test for J2
+test_suite.add_test(TestEqual(C(grav_model_index(2,0)),-0.00108262617385222,'TODO C(2,0)'));
+test_suite.add_test(TestEqual(S(grav_model_index(2,0)),0,'TODO S(2,0)'));
+
+% n = 4, m = 1
+test_suite.add_test(TestEqual(C(grav_model_index(4,1)),-5.08643560439584e-7,'TODO C(4,1)'));
+test_suite.add_test(TestEqual(S(grav_model_index(4,1)),-4.49265432143808e-7,'TODO S(4,1)'));
+
+% n = 15, m = 0
+test_suite.add_test(TestEqual(C(grav_model_index(15,0)),1.2205438928287e-8,'TODO C(15,0)'));
+test_suite.add_test(TestEqual(S(grav_model_index(15,0)),0,'TODO S(15,0)'));
+
+% n = 41, m = 4
+test_suite.add_test(TestEqual(C(grav_model_index(41,4)),-7.19967819600023e-15,'TODO C(41,4)'));
+test_suite.add_test(TestEqual(S(grav_model_index(41,4)),1.63027868851955e-14,'TODO S(41,4)'));
+
+% n = 70, m = 70
+test_suite.add_test(TestEqual(C(grav_model_index(41,4)),-7.19967819600023e-15,'TODO C(41,4)'));
+test_suite.add_test(TestEqual(S(grav_model_index(41,4)),-4.134214655e-9,'TODO S(41,4)'));
 
 
 
