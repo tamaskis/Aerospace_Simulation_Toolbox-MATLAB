@@ -253,6 +253,10 @@ test_suite.add_test(TestEqual(S(grav_model_index(2,0)),0,'TODO S(2,0)'));
 test_suite.add_test(TestEqual(C(grav_model_index(4,1)),-5.08643560439584e-7,'TODO C(4,1)'));
 test_suite.add_test(TestEqual(S(grav_model_index(4,1)),-4.49265432143808e-7,'TODO S(4,1)'));
 
+% n = 4, m = 4
+test_suite.add_test(TestEqual(C(grav_model_index(4,4)),-3.98320424873187e-9,'TODO C(4,4)'));
+test_suite.add_test(TestEqual(S(grav_model_index(4,4)),6.52467287187687e-9,'TODO S(4,4)'));
+
 % n = 15, m = 0
 test_suite.add_test(TestEqual(C(grav_model_index(15,0)),1.2205438928287e-8,'TODO C(15,0)'));
 test_suite.add_test(TestEqual(S(grav_model_index(15,0)),0,'TODO S(15,0)'));
@@ -262,8 +266,8 @@ test_suite.add_test(TestEqual(C(grav_model_index(41,4)),-7.19967819600023e-15,'T
 test_suite.add_test(TestEqual(S(grav_model_index(41,4)),1.63027868851955e-14,'TODO S(41,4)'));
 
 % n = 70, m = 70
-test_suite.add_test(TestEqual(C(grav_model_index(41,4)),-7.19967819600023e-15,'TODO C(41,4)'));
-test_suite.add_test(TestEqual(S(grav_model_index(41,4)),-4.134214655e-9,'TODO S(41,4)'));
+test_suite.add_test(TestEqual(C(grav_model_index(70,70)),1.3648928460977e-129,'TODO C(70,70)',140));
+test_suite.add_test(TestEqual(S(grav_model_index(70,70)),-6.4297909837118e-130,'TODO S(70,70)',140));
 
 
 
