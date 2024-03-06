@@ -61,7 +61,7 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
     y = R*rY/r_sqr;
     z = R*rZ/r_sqr;
     
-    % gravitational model length corresponding to a maximum degree of N+1
+    % gravitational model length corresponding to a maximum degree of N
     L = (N+1)*(N+2)/2;
     
     % initialize V and W
@@ -101,8 +101,10 @@ function [V,W] = legendre_recursion(r_pcpf,R,N,M)
         W(l2) = (2*m-1)*(x*W(l1)+y*V(l1));
         
         % tesseral terms (for n = m + 1)
-        V(l3) = z*(2*m+1)*V(l2);
-        W(l3) = z*(2*m+1)*W(l2);
+        if m < N
+            V(l3) = z*(2*m+1)*V(l2);
+            W(l3) = z*(2*m+1)*W(l2);
+        end
         
         % tesseral terms (for n > m + 1)
         for n = (m+2):N
