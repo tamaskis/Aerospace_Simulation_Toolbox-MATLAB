@@ -7,7 +7,6 @@
 %   [V,W] = legendre_recursion(r_pcpf,R,N,M)
 %
 % Copyright © 2022 Tamas Kis
-% Last Update: 2024-02-28
 % Website: https://tamaskis.github.io
 % Contact: tamas.a.kis@outlook.com
 %
