@@ -1,6 +1,6 @@
 %==========================================================================
 %
-% grav_model_length  Gravitational model length.
+% grav_model_length  Gravitational model length for a given maximum degree.
 %
 %   l = grav_model_index(N)
 %

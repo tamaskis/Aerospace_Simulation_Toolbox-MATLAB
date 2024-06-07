@@ -49,6 +49,6 @@ function f_J2_rtn = J2_rtn(r,i,u)
     % frame [m/s^2]
     f_J2_rtn = k*[1-3*sin(i)^2*sin(u)^2;
                   sin(i)^2*sin(u)*cos(u);
-                  sin(i)*cos*(i)*sin(u)];
+                  sin(i)*cos(i)*sin(u)];
 
 end

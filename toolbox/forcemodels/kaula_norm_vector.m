@@ -86,7 +86,7 @@ function N_vec = kaula_norm_vector(N)
         
     end
     
-    % computes normalization vectors for m ≥ 2 from degree 5 to degree N
+    % computes normalization factors for m ≥ 2 from degree 5 to degree N
     for n = 5:N
         for m = 1:(n-1)
             

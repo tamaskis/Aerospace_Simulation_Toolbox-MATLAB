@@ -41,7 +41,7 @@
 % -----
 %   • L = (Nₘₐₓ+1)(Nₘₐₓ+2)/2 where Nₘₐₓ is the maximum possible degree.
 %   • If N is specified, then N_max is automatically set to N (if N is less
-%     than the maximum possible degree).
+%     than the maximum possible degree available in the data file).
 %
 %==========================================================================
 function [mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(path,N)
@@ -69,7 +69,7 @@ function [mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(path,N)
         end
     end
     
-    % extracts the standard gravitational parameter [m]
+    % extracts the reference radius [m]
     parts = strsplit(lines{idx});
     R = str2double(parts{2});
     
@@ -127,7 +127,7 @@ function [mu,R,tide_system,N_max,C,S,C_norm,S_norm] = read_gfc(path,N)
         end
     end
     
-    % gravitation model length (i.e. truncates model) TODO
+    % update maximum degree (i.e. truncates model) TODO
     if (nargin >= 2) && ~isempty(N)
         N_max = min(N,N_max);
     end

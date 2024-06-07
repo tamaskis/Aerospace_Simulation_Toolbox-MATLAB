@@ -40,7 +40,7 @@
 %==========================================================================
 function [g_pcpf,V,W] = grav_accel(r_pcpf,mu,R,C,S,N,M)
     
-    % recursively computess the Legendre coefficients
+    % recursively computes the Legendre coefficients
     [V,W] = legendre_recursion(r_pcpf,R,N+1,M+1);
     
     % auxiliary parameter [m/s²]
@@ -65,7 +65,7 @@ function [g_pcpf,V,W] = grav_accel(r_pcpf,mu,R,C,S,N,M)
         gY = gY-2*a*Cn0*W(l1);
         gZ = gZ-2*a*(n+1)*Cn0*V(grav_model_index(n+1,0));
         
-        % truncates at the specified maximum orderf
+        % truncates at the specified maximum order
         m_end = min(n,M);
         
         % sectorial (m = n) and tesseral (n > m) terms
